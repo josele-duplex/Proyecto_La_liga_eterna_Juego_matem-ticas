@@ -1,11 +1,12 @@
 {
-  "nota": "Calendario/mapa de la Liga: lista de estadios (misiones). Cada estadio lanza una serie de 'retos' (puzles que elige la progresion). Los puzles NO se organizan por estadio (eso es por concepto+fase en los indices); el estadio es solo el marco de aventura.",
+  "nota": "Calendario/mapa de la Liga: lista de estadios (misiones). Cada estadio lanza una serie de 'retos' (puzles que elige la progresion). Los puzles NO se organizan por estadio (eso es por concepto+fase en los indices); el estadio es solo el marco de aventura. 'imagen' es opcional: ruta a una ilustracion (ej. 'assets/img/estadio-cantera.webp'); mientras sea null se usa un escudo de iniciales generado por CSS.",
   "estadios": [
     {
       "id": "estadio-cantera",
       "nombre": "Estadio de la Cantera",
       "descripcion": "Tu primer partido como guardián. Resuelve los retos para ganar el partido.",
-      "retos": 3
+      "retos": 3,
+      "imagen": null
     }
   ]
 }

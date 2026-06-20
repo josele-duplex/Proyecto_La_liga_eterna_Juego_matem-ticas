@@ -1,7 +1,48 @@
 /* Estilos de Liga Eterna: Los Guardianes del Juego */
 
+/* --- Tokens de diseño: cambiar aquí cambia todo el aspecto, nunca en cada componente. --- */
+:root {
+  --color-fondo: #f7f9fb;
+  --color-texto: #1c2530;
+  --color-primario: #1565c0;
+  --color-primario-oscuro: #0d47a1;
+  --color-exito-fondo: #c8f0c8;
+  --color-exito-borde: #2e7d32;
+  --color-exito-texto: #2e7d32;
+  --color-reintenta-fondo: #ffe0b2;
+  --color-reintenta-borde: #ff9100;
+  --color-reintenta-texto: #e65100;
+  --color-pista-fondo: #fff6d6;
+  --color-pista-borde: #f0c000;
+
+  --fuente-principal: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --radio-borde: 10px;
+  --espacio: 1rem;
+}
+
+/* Tema "mundo": calendario y selección de jugador. Verde césped + azul deportivo. */
+body.tema-mundo {
+  --color-primario: #1a7a3c;
+  --color-primario-oscuro: #145c2d;
+}
+
+/* Tema "mate": mientras se juega un puzle. Azules/turquesas, más "holográfico". */
+body.tema-mate {
+  --color-primario: #2979ff;
+  --color-primario-oscuro: #1c54b2;
+}
+
+/* Tema "recompensa": pantalla de partido ganado. Dorado/naranja de celebración. */
+body.tema-recompensa {
+  --color-primario: #ff9100;
+  --color-primario-oscuro: #c66900;
+  --color-exito-texto: #c66900;
+}
+
 body {
-  font-family: sans-serif;
+  font-family: var(--fuente-principal);
+  background-color: var(--color-fondo);
+  color: var(--color-texto);
   margin: 2rem;
 }
 
@@ -11,40 +52,42 @@ body {
 
 .opciones {
   display: flex;
-  gap: 1rem;
-  margin-top: 1rem;
+  flex-wrap: wrap;
+  gap: var(--espacio);
+  margin-top: var(--espacio);
 }
 
 .opcion {
   font-size: 1.2rem;
   padding: 0.8rem 1.5rem;
+  border-radius: var(--radio-borde);
 }
 
 .opcion-correcta {
-  background-color: #c8f0c8;
-  border-color: #2e7d32;
+  background-color: var(--color-exito-fondo);
+  border-color: var(--color-exito-borde);
 }
 
 .opcion-incorrecta {
-  background-color: #f8d0d0;
-  border-color: #c62828;
+  background-color: var(--color-reintenta-fondo);
+  border-color: var(--color-reintenta-borde);
 }
 
 .feedback {
   font-size: 1.2rem;
-  margin-top: 1rem;
+  margin-top: var(--espacio);
 }
 
 .feedback-correcto {
-  color: #2e7d32;
+  color: var(--color-exito-texto);
 }
 
 .feedback-incorrecto {
-  color: #c62828;
+  color: var(--color-reintenta-texto);
 }
 
 .zona-pistas {
-  margin-top: 1rem;
+  margin-top: var(--espacio);
 }
 
 .boton-pista {
@@ -54,8 +97,8 @@ body {
 
 .pista {
   font-size: 1.1rem;
-  background-color: #fff6d6;
-  border-left: 4px solid #f0c000;
+  background-color: var(--color-pista-fondo);
+  border-left: 4px solid var(--color-pista-borde);
   padding: 0.6rem 0.9rem;
   margin: 0.5rem 0 0;
 }
@@ -64,7 +107,7 @@ body {
   display: flex;
   flex-wrap: wrap;
   gap: 0.3rem;
-  margin-top: 1rem;
+  margin-top: var(--espacio);
 }
 
 .punto-recta {
@@ -76,32 +119,100 @@ body {
 .boton-siguiente {
   font-size: 1.2rem;
   padding: 0.7rem 1.4rem;
-  margin-top: 1rem;
-  background-color: #1a7a3c;
+  margin-top: var(--espacio);
+  background-color: var(--color-primario);
   color: #fff;
   border: none;
-  border-radius: 6px;
+  border-radius: var(--radio-borde);
+}
+
+.boton-voz {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+  margin-bottom: var(--espacio);
+  background: none;
+  border: 2px solid var(--color-primario);
+  color: var(--color-primario-oscuro);
+  border-radius: var(--radio-borde);
 }
 
 .calendario {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: var(--espacio);
+  margin-top: var(--espacio);
 }
 
 .estadio {
-  border: 2px solid #1a7a3c;
-  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border: 2px solid var(--color-primario);
+  border-radius: var(--radio-borde);
   padding: 1rem 1.2rem;
   max-width: 22rem;
 }
 
 .estadio h2 {
   margin: 0 0 0.4rem;
-  color: #1a7a3c;
+  color: var(--color-primario-oscuro);
 }
 
 .estadio p {
   margin: 0 0 0.6rem;
+}
+
+/* Escudo de estadio: usa <img> si hay imagen, o esta inicial generada si no. */
+.escudo-estadio {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  margin-bottom: 0.6rem;
+}
+
+.escudo-placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-primario);
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: bold;
+}
+
+.boton-sonido {
+  font-size: 1.1rem;
+  padding: 0.3rem 0.6rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* Confeti de celebración: unos cuantos cuadraditos cayendo, breve y discreto. */
+.confeti {
+  position: relative;
+  height: 0;
+}
+
+.confeti span {
+  position: absolute;
+  top: -1rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  animation: caer-confeti 1.2s ease-in forwards;
+}
+
+@keyframes caer-confeti {
+  to {
+    transform: translateY(4rem) rotate(180deg);
+    opacity: 0;
+  }
+}
+
+/* Quien pida menos movimiento no recibe animaciones de transición ni confeti. */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
 }

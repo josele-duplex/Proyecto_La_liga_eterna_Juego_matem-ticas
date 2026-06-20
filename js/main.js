@@ -19,6 +19,7 @@ let calendario = null;
 let recompensas = null;
 
 async function arrancar() {
+  Sonido.cargarPreferencia();
   indice = await (await fetch('data/puzzles/8-anios/indice.json')).json();
   calendario = await (await fetch('data/estadios.json')).json();
   recompensas = await (await fetch('data/recompensas.json')).json();
@@ -33,6 +34,7 @@ async function arrancar() {
 
 // --- Pantalla 1: elegir jugador ---
 function mostrarSelectorPerfil() {
+  UI.aplicarTema('mundo');
   limpiarPantalla();
   document.getElementById('barra-perfil').innerHTML = '';
 
@@ -59,6 +61,7 @@ function mostrarSelectorPerfil() {
 
 // --- Pantalla 2: calendario de la Liga (elegir estadio) ---
 function mostrarCalendario(perfilId) {
+  UI.aplicarTema('mundo');
   limpiarPantalla();
   mostrarBarraPerfil(perfilId, { mostrarVolver: false });
 
@@ -73,6 +76,8 @@ function mostrarCalendario(perfilId) {
   calendario.estadios.forEach((estadio) => {
     const tarjeta = document.createElement('div');
     tarjeta.className = 'estadio';
+
+    tarjeta.appendChild(UI.crearEscudo(estadio));
 
     const nombre = document.createElement('h2');
     nombre.textContent = estadio.nombre;
@@ -100,6 +105,7 @@ function iniciarEstadio(perfilId, estadio) {
 }
 
 async function jugarReto(perfilId, estadio, sesion) {
+  UI.aplicarTema('mate');
   limpiarPantalla();
   mostrarBarraPerfil(perfilId, { mostrarVolver: true });
 
@@ -110,21 +116,37 @@ async function jugarReto(perfilId, estadio, sesion) {
 
   mostrarRetoActual(puzzle, sesion);
 
-  Engine.render(puzzle, app, (puzzleResuelto, resultado) => {
-    const progresoActual = Storage.cargarProgreso(perfilId);
-    progresoActual.ultimoPuzleId = puzzleResuelto.id;
-    Progression.actualizar(progresoActual, indice, puzzleResuelto.concepto, puzzleResuelto.fase_cpa, resultado);
-    otorgarRecompensa(progresoActual, puzzleResuelto.estrategia);
-    Storage.guardarProgreso(perfilId, progresoActual);
-    mostrarBarraPerfil(perfilId, { mostrarVolver: true });
+  Engine.render(
+    puzzle,
+    app,
+    (puzzleResuelto, resultado) => {
+      const progresoActual = Storage.cargarProgreso(perfilId);
+      progresoActual.ultimoPuzleId = puzzleResuelto.id;
+      Progression.actualizar(progresoActual, indice, puzzleResuelto.concepto, puzzleResuelto.fase_cpa, resultado);
+      otorgarRecompensa(progresoActual, puzzleResuelto.estrategia);
+      Storage.guardarProgreso(perfilId, progresoActual);
+      Sonido.sonidoAcierto();
+      mostrarBarraPerfil(perfilId, { mostrarVolver: true });
 
-    sesion.hechos++;
-    if (sesion.hechos >= sesion.total) {
-      mostrarPartidoGanado(perfilId, estadio);
-    } else {
-      mostrarBotonSiguiente(perfilId, estadio, sesion);
-    }
-  });
+      sesion.hechos++;
+      if (sesion.hechos >= sesion.total) {
+        mostrarPartidoGanado(perfilId, estadio);
+      } else {
+        mostrarBotonSiguiente(perfilId, estadio, sesion);
+      }
+    },
+    () => Sonido.sonidoFallo()
+  );
+
+  mostrarBotonVoz(app, puzzle);
+}
+
+function mostrarBotonVoz(app, puzzle) {
+  const boton = document.createElement('button');
+  boton.className = 'boton-voz';
+  boton.textContent = '🔊 Escuchar al entrenador';
+  boton.addEventListener('click', () => Sonido.decirVoz(puzzle.enunciado.voz));
+  app.insertBefore(boton, app.firstChild);
 }
 
 function mostrarBotonSiguiente(perfilId, estadio, sesion) {
@@ -138,6 +160,7 @@ function mostrarBotonSiguiente(perfilId, estadio, sesion) {
 }
 
 function mostrarPartidoGanado(perfilId, estadio) {
+  UI.aplicarTema('recompensa');
   const zona = document.getElementById('siguiente');
   zona.innerHTML = '';
 
@@ -151,6 +174,9 @@ function mostrarPartidoGanado(perfilId, estadio) {
   boton.textContent = 'Volver al calendario';
   boton.addEventListener('click', () => mostrarCalendario(perfilId));
   zona.appendChild(boton);
+
+  Sonido.sonidoVictoria();
+  UI.celebrarVictoria(zona);
 }
 
 function mostrarRetoActual(puzzle, sesion) {
@@ -183,7 +209,15 @@ function mostrarBarraPerfil(perfilId, opciones) {
     if (!insignia) return;
     const span = document.createElement('span');
     span.title = `${insignia.nombre} (x${progreso.insignias[estrategia]})`;
-    span.textContent = `${insignia.icono} `;
+    if (insignia.imagen) {
+      const img = document.createElement('img');
+      img.src = insignia.imagen;
+      img.alt = insignia.nombre;
+      img.className = 'icono-insignia';
+      span.appendChild(img);
+    } else {
+      span.textContent = `${insignia.icono} `;
+    }
     barra.appendChild(span);
   });
 
@@ -193,6 +227,15 @@ function mostrarBarraPerfil(perfilId, opciones) {
     volver.addEventListener('click', () => mostrarCalendario(perfilId));
     barra.appendChild(volver);
   }
+
+  const sonidoBoton = document.createElement('button');
+  sonidoBoton.className = 'boton-sonido';
+  sonidoBoton.title = 'Activar o desactivar el sonido';
+  sonidoBoton.textContent = Sonido.activo ? '🔊' : '🔇';
+  sonidoBoton.addEventListener('click', () => {
+    sonidoBoton.textContent = Sonido.alternar() ? '🔊' : '🔇';
+  });
+  barra.appendChild(sonidoBoton);
 
   const boton = document.createElement('button');
   boton.textContent = 'Cambiar de jugador';

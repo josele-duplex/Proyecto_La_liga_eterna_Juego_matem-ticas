@@ -1,8 +1,8 @@
 {
-  "nota": "Energia e insignias que se ganan al resolver un puzle. Cada estrategia (campo puzzle.estrategia) tiene su propia insignia, para premiar el COMO se resuelve, no solo el acierto. Anade aqui una entrada cuando crees un puzle con una estrategia nueva.",
+  "nota": "Energia e insignias que se ganan al resolver un puzle. Cada estrategia (campo puzzle.estrategia) tiene su propia insignia, para premiar el COMO se resuelve, no solo el acierto. Anade aqui una entrada cuando crees un puzle con una estrategia nueva. 'imagen' es opcional por insignia: ruta a una ilustracion; mientras sea null se usa el 'icono' (emoji).",
   "energiaPorPuzle": 10,
   "insignias": {
-    "completar_diez": { "nombre": "Maestro de la Decena", "icono": "🔟" },
-    "usar_decenas_como_referencia": { "nombre": "Navegante de la Recta", "icono": "🧭" }
+    "completar_diez": { "nombre": "Maestro de la Decena", "icono": "🔟", "imagen": null },
+    "usar_decenas_como_referencia": { "nombre": "Navegante de la Recta", "icono": "🧭", "imagen": null }
   }
 }

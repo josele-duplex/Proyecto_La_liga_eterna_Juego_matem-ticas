@@ -5,8 +5,9 @@
 const Engine = {
   // alResolver(puzzle, resultado) es opcional: avisa UNA vez, cuando el puzle se resuelve, e incluye
   // resultado = { intentosFallidos, pistasUsadas } para que otras piezas (progresión, evaluación)
-  // sepan cómo le fue, sin que el motor sepa qué harán con ese dato.
-  render(puzzle, container, alResolver) {
+  // sepan cómo le fue. alFallar() es opcional: avisa en cada intento fallido (p. ej. para un sonido).
+  // El motor solo notifica: no sabe qué hará nadie con esos avisos.
+  render(puzzle, container, alResolver, alFallar) {
     container.innerHTML = '';
 
     const enunciado = document.createElement('p');
@@ -34,6 +35,7 @@ const Engine = {
       } else {
         intentosFallidos++;
         pistas.activar();
+        if (alFallar) alFallar();
       }
     };
 
