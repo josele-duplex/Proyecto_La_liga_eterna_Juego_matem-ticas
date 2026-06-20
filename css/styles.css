@@ -1,1 +1,21 @@
 /* Estilos de Liga Eterna: Los Guardianes del Juego */
+
+body {
+  font-family: sans-serif;
+  margin: 2rem;
+}
+
+.enunciado {
+  font-size: 1.4rem;
+}
+
+.opciones {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.opcion {
+  font-size: 1.2rem;
+  padding: 0.8rem 1.5rem;
+}
