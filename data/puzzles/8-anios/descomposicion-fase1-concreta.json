@@ -1,0 +1,52 @@
+{
+  "id": "8-descomposicion-1-001",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "descomposicion",
+  "fase_cpa": 1,
+  "edad": "8-anios",
+  "estrategia": "completar_diez",
+  "enunciado": {
+    "texto": "Tienes 8 balones en la caja y llegan 5 más. Completa primero la caja de 10. ¿Cuántos balones hay en total?",
+    "voz": "Mete dos balones más para llenar la caja de diez. ¿Cuántos te quedan fuera?"
+  },
+  "datos": {
+    "representacion": "objetos",
+    "objeto": "balon",
+    "operacion": {
+      "expresion": "8 + 5",
+      "sumandos": [8, 5]
+    },
+    "marco_diez": {
+      "casillas_llenas": 8,
+      "objetos_que_llegan": 5
+    }
+  },
+  "respuesta": {
+    "opciones": [
+      { "id": "a", "texto": "12 balones" },
+      { "id": "b", "texto": "13 balones" },
+      { "id": "c", "texto": "14 balones" }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Mira la caja de 10. ¿Cuántos balones faltan para llenarla?",
+      "accion_visual": "resaltar_huecos_marco"
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Coge 2 balones del grupo de 5 para completar la caja de 10. Te quedan 3 sueltos."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "8 + 2 = 10, y 10 + 3 = … ¿cuántos balones hay en total?"
+    }
+  ],
+  "nota": "Suma 8+5 cruzando la decena. Fase concreta: se cuentan balones reales dentro de un marco de diez."
+}

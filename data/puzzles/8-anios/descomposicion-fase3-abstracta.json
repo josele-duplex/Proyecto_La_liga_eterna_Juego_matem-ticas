@@ -1,0 +1,46 @@
+{
+  "id": "8-descomposicion-3-001",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "descomposicion",
+  "fase_cpa": 3,
+  "edad": "8-anios",
+  "estrategia": "completar_diez",
+  "enunciado": {
+    "texto": "¿Cuánto es 8 + 5?",
+    "voz": "Descompón el 5 para completar la decena."
+  },
+  "datos": {
+    "representacion": "numerica",
+    "operacion": {
+      "expresion": "8 + 5",
+      "sumandos": [8, 5]
+    }
+  },
+  "respuesta": {
+    "opciones": [
+      { "id": "a", "texto": "12" },
+      { "id": "b", "texto": "13" },
+      { "id": "c", "texto": "14" }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "¿Cuánto le falta a 8 para llegar a 10?"
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Parte el 5 en 2 + 3. Usa el 2 para hacer 8 + 2 = 10."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "10 + 3 = … ¿cuánto suma en total?"
+    }
+  ],
+  "nota": "Mismo reto (8+5) en fase abstracta: solo números, sin apoyo visual. La estrategia premiada sigue siendo completar la decena."
+}

@@ -1,0 +1,51 @@
+{
+  "id": "8-descomposicion-2-001",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "descomposicion",
+  "fase_cpa": 2,
+  "edad": "8-anios",
+  "estrategia": "completar_diez",
+  "enunciado": {
+    "texto": "El marco de diez tiene 8 puntos y al lado hay 5 puntos sueltos. ¿Cuánto suman en total?",
+    "voz": "Imagina que mueves dos puntos para llenar el marco de diez."
+  },
+  "datos": {
+    "representacion": "marco_diez",
+    "operacion": {
+      "expresion": "8 + 5",
+      "sumandos": [8, 5]
+    },
+    "marco_diez": {
+      "puntos_dentro": 8,
+      "puntos_fuera": 5
+    }
+  },
+  "respuesta": {
+    "opciones": [
+      { "id": "a", "texto": "13" },
+      { "id": "b", "texto": "15" },
+      { "id": "c", "texto": "12" }
+    ],
+    "correcta": "a"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "¿Cuántos huecos vacíos quedan en el marco de diez?",
+      "accion_visual": "resaltar_huecos_marco"
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Mueve 2 puntos de los 5 sueltos al marco. El marco vale 10 y quedan 3 fuera."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "10 + 3 = … ¿cuál es el total?"
+    }
+  ],
+  "nota": "Mismo reto que la fase 1 (8+5) pero pictórico: puntos dibujados en un marco de diez, sin objetos reales."
+}
