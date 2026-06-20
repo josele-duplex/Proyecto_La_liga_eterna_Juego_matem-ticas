@@ -19,3 +19,26 @@ body {
   font-size: 1.2rem;
   padding: 0.8rem 1.5rem;
 }
+
+.opcion-correcta {
+  background-color: #c8f0c8;
+  border-color: #2e7d32;
+}
+
+.opcion-incorrecta {
+  background-color: #f8d0d0;
+  border-color: #c62828;
+}
+
+.feedback {
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+.feedback-correcto {
+  color: #2e7d32;
+}
+
+.feedback-incorrecto {
+  color: #c62828;
+}
