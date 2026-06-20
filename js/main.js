@@ -15,27 +15,26 @@ const NOMBRES_CONCEPTO = {
 };
 
 let indice = null;
+let calendario = null;
 
 async function arrancar() {
-  const respuesta = await fetch('data/puzzles/8-anios/indice.json');
-  indice = await respuesta.json();
+  indice = await (await fetch('data/puzzles/8-anios/indice.json')).json();
+  calendario = await (await fetch('data/estadios.json')).json();
 
   const perfilActivo = Storage.cargarPerfilActivo();
   if (perfilActivo) {
-    mostrarPuzle(perfilActivo);
+    mostrarCalendario(perfilActivo);
   } else {
     mostrarSelectorPerfil();
   }
 }
 
+// --- Pantalla 1: elegir jugador ---
 function mostrarSelectorPerfil() {
+  limpiarPantalla();
   document.getElementById('barra-perfil').innerHTML = '';
-  document.getElementById('siguiente').innerHTML = '';
-  document.getElementById('progreso').textContent = '';
 
   const app = document.getElementById('app');
-  app.innerHTML = '';
-
   const titulo = document.createElement('p');
   titulo.className = 'enunciado';
   titulo.textContent = '¿Quién juega?';
@@ -43,59 +42,120 @@ function mostrarSelectorPerfil() {
 
   const lista = document.createElement('div');
   lista.className = 'opciones';
-
   PERFILES.forEach((perfil) => {
     const boton = document.createElement('button');
     boton.className = 'opcion';
     boton.textContent = perfil.nombre;
     boton.addEventListener('click', () => {
       Storage.guardarPerfilActivo(perfil.id);
-      mostrarPuzle(perfil.id);
+      mostrarCalendario(perfil.id);
     });
     lista.appendChild(boton);
   });
-
   app.appendChild(lista);
 }
 
-async function mostrarPuzle(perfilId) {
-  mostrarBarraPerfil(perfilId);
-  document.getElementById('siguiente').innerHTML = '';
+// --- Pantalla 2: calendario de la Liga (elegir estadio) ---
+function mostrarCalendario(perfilId) {
+  limpiarPantalla();
+  mostrarBarraPerfil(perfilId, { mostrarVolver: false });
+
+  const app = document.getElementById('app');
+  const titulo = document.createElement('p');
+  titulo.className = 'enunciado';
+  titulo.textContent = 'Calendario de la Liga';
+  app.appendChild(titulo);
+
+  const lista = document.createElement('div');
+  lista.className = 'calendario';
+  calendario.estadios.forEach((estadio) => {
+    const tarjeta = document.createElement('div');
+    tarjeta.className = 'estadio';
+
+    const nombre = document.createElement('h2');
+    nombre.textContent = estadio.nombre;
+    tarjeta.appendChild(nombre);
+
+    const desc = document.createElement('p');
+    desc.textContent = estadio.descripcion;
+    tarjeta.appendChild(desc);
+
+    const jugar = document.createElement('button');
+    jugar.className = 'boton-siguiente';
+    jugar.textContent = 'Jugar partido';
+    jugar.addEventListener('click', () => iniciarEstadio(perfilId, estadio));
+    tarjeta.appendChild(jugar);
+
+    lista.appendChild(tarjeta);
+  });
+  app.appendChild(lista);
+}
+
+// --- Pantalla 3: jugar la serie de retos de un estadio ---
+function iniciarEstadio(perfilId, estadio) {
+  const sesion = { hechos: 0, total: estadio.retos };
+  jugarReto(perfilId, estadio, sesion);
+}
+
+async function jugarReto(perfilId, estadio, sesion) {
+  limpiarPantalla();
+  mostrarBarraPerfil(perfilId, { mostrarVolver: true });
 
   const progreso = Storage.cargarProgreso(perfilId);
   const entrada = Progression.siguiente(progreso, indice);
-
-  const respuesta = await fetch(entrada.ruta);
-  const puzzle = await respuesta.json();
+  const puzzle = await (await fetch(entrada.ruta)).json();
   const app = document.getElementById('app');
 
-  mostrarRetoActual(puzzle);
+  mostrarRetoActual(puzzle, sesion);
 
   Engine.render(puzzle, app, (puzzleResuelto, resultado) => {
     const progresoActual = Storage.cargarProgreso(perfilId);
     progresoActual.ultimoPuzleId = puzzleResuelto.id;
     Progression.actualizar(progresoActual, indice, puzzleResuelto.concepto, puzzleResuelto.fase_cpa, resultado);
     Storage.guardarProgreso(perfilId, progresoActual);
-    mostrarBotonSiguiente(perfilId);
+
+    sesion.hechos++;
+    if (sesion.hechos >= sesion.total) {
+      mostrarPartidoGanado(perfilId, estadio);
+    } else {
+      mostrarBotonSiguiente(perfilId, estadio, sesion);
+    }
   });
 }
 
-function mostrarBotonSiguiente(perfilId) {
+function mostrarBotonSiguiente(perfilId, estadio, sesion) {
   const zona = document.getElementById('siguiente');
   zona.innerHTML = '';
   const boton = document.createElement('button');
   boton.className = 'boton-siguiente';
   boton.textContent = 'Siguiente reto →';
-  boton.addEventListener('click', () => mostrarPuzle(perfilId));
+  boton.addEventListener('click', () => jugarReto(perfilId, estadio, sesion));
   zona.appendChild(boton);
 }
 
-function mostrarRetoActual(puzzle) {
-  const concepto = NOMBRES_CONCEPTO[puzzle.concepto] || puzzle.concepto;
-  document.getElementById('progreso').textContent = `Reto actual: ${concepto} · fase ${puzzle.fase_cpa}`;
+function mostrarPartidoGanado(perfilId, estadio) {
+  const zona = document.getElementById('siguiente');
+  zona.innerHTML = '';
+
+  const mensaje = document.createElement('p');
+  mensaje.className = 'feedback feedback-correcto';
+  mensaje.textContent = `¡Partido ganado en ${estadio.nombre}!`;
+  zona.appendChild(mensaje);
+
+  const boton = document.createElement('button');
+  boton.className = 'boton-siguiente';
+  boton.textContent = 'Volver al calendario';
+  boton.addEventListener('click', () => mostrarCalendario(perfilId));
+  zona.appendChild(boton);
 }
 
-function mostrarBarraPerfil(perfilId) {
+function mostrarRetoActual(puzzle, sesion) {
+  const concepto = NOMBRES_CONCEPTO[puzzle.concepto] || puzzle.concepto;
+  document.getElementById('progreso').textContent =
+    `Reto ${sesion.hechos + 1} de ${sesion.total} · ${concepto} · fase ${puzzle.fase_cpa}`;
+}
+
+function mostrarBarraPerfil(perfilId, opciones) {
   const nombrePerfil = PERFILES.find((perfil) => perfil.id === perfilId).nombre;
   const barra = document.getElementById('barra-perfil');
   barra.innerHTML = '';
@@ -104,6 +164,13 @@ function mostrarBarraPerfil(perfilId) {
   texto.textContent = `Jugando: ${nombrePerfil} — `;
   barra.appendChild(texto);
 
+  if (opciones && opciones.mostrarVolver) {
+    const volver = document.createElement('button');
+    volver.textContent = 'Volver al calendario';
+    volver.addEventListener('click', () => mostrarCalendario(perfilId));
+    barra.appendChild(volver);
+  }
+
   const boton = document.createElement('button');
   boton.textContent = 'Cambiar de jugador';
   boton.addEventListener('click', () => {
@@ -111,6 +178,12 @@ function mostrarBarraPerfil(perfilId) {
     mostrarSelectorPerfil();
   });
   barra.appendChild(boton);
+}
+
+function limpiarPantalla() {
+  document.getElementById('app').innerHTML = '';
+  document.getElementById('siguiente').innerHTML = '';
+  document.getElementById('progreso').textContent = '';
 }
 
 arrancar();

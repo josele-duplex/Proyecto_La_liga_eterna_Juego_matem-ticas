@@ -82,3 +82,26 @@ body {
   border: none;
   border-radius: 6px;
 }
+
+.calendario {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.estadio {
+  border: 2px solid #1a7a3c;
+  border-radius: 10px;
+  padding: 1rem 1.2rem;
+  max-width: 22rem;
+}
+
+.estadio h2 {
+  margin: 0 0 0.4rem;
+  color: #1a7a3c;
+}
+
+.estadio p {
+  margin: 0 0 0.6rem;
+}
