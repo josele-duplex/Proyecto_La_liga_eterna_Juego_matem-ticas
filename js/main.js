@@ -16,10 +16,12 @@ const NOMBRES_CONCEPTO = {
 
 let indice = null;
 let calendario = null;
+let recompensas = null;
 
 async function arrancar() {
   indice = await (await fetch('data/puzzles/8-anios/indice.json')).json();
   calendario = await (await fetch('data/estadios.json')).json();
+  recompensas = await (await fetch('data/recompensas.json')).json();
 
   const perfilActivo = Storage.cargarPerfilActivo();
   if (perfilActivo) {
@@ -112,7 +114,9 @@ async function jugarReto(perfilId, estadio, sesion) {
     const progresoActual = Storage.cargarProgreso(perfilId);
     progresoActual.ultimoPuzleId = puzzleResuelto.id;
     Progression.actualizar(progresoActual, indice, puzzleResuelto.concepto, puzzleResuelto.fase_cpa, resultado);
+    otorgarRecompensa(progresoActual, puzzleResuelto.estrategia);
     Storage.guardarProgreso(perfilId, progresoActual);
+    mostrarBarraPerfil(perfilId, { mostrarVolver: true });
 
     sesion.hechos++;
     if (sesion.hechos >= sesion.total) {
@@ -155,14 +159,33 @@ function mostrarRetoActual(puzzle, sesion) {
     `Reto ${sesion.hechos + 1} de ${sesion.total} · ${concepto} · fase ${puzzle.fase_cpa}`;
 }
 
+// Da energía y, según la estrategia usada, una insignia distinta. Modifica el progreso recibido.
+function otorgarRecompensa(progreso, estrategia) {
+  progreso.energia = (progreso.energia || 0) + recompensas.energiaPorPuzle;
+  if (recompensas.insignias[estrategia]) {
+    progreso.insignias = progreso.insignias || {};
+    progreso.insignias[estrategia] = (progreso.insignias[estrategia] || 0) + 1;
+  }
+}
+
 function mostrarBarraPerfil(perfilId, opciones) {
   const nombrePerfil = PERFILES.find((perfil) => perfil.id === perfilId).nombre;
+  const progreso = Storage.cargarProgreso(perfilId);
   const barra = document.getElementById('barra-perfil');
   barra.innerHTML = '';
 
   const texto = document.createElement('span');
-  texto.textContent = `Jugando: ${nombrePerfil} — `;
+  texto.textContent = `Jugando: ${nombrePerfil} — ⚡ ${progreso.energia || 0} — `;
   barra.appendChild(texto);
+
+  Object.keys(progreso.insignias || {}).forEach((estrategia) => {
+    const insignia = recompensas.insignias[estrategia];
+    if (!insignia) return;
+    const span = document.createElement('span');
+    span.title = `${insignia.nombre} (x${progreso.insignias[estrategia]})`;
+    span.textContent = `${insignia.icono} `;
+    barra.appendChild(span);
+  });
 
   if (opciones && opciones.mostrarVolver) {
     const volver = document.createElement('button');
