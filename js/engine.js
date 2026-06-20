@@ -1,4 +1,6 @@
 // MOTOR: juega cualquier puzle a partir de su JSON. No sabe nada del estadio, la energía ni la edad del jugador.
+// render() reparte el trabajo según puzzle.tipo. Lo común a cualquier tipo (enunciado, feedback,
+// pistas) vive aquí; lo específico de cada tipo vive en su propio "renderXxx".
 
 const Engine = {
   // alResponder(puzzle, esCorrecta) es opcional: avisa a quien llamó al motor de cada intento,
@@ -11,44 +13,78 @@ const Engine = {
     enunciado.textContent = puzzle.enunciado.texto;
     container.appendChild(enunciado);
 
-    const opciones = document.createElement('div');
-    opciones.className = 'opciones';
-
     const feedback = document.createElement('p');
     feedback.className = 'feedback';
 
-    // Zona de pistas: el botón solo aparece cuando el jugador falla (andamiaje T2.1).
-    const zonaPistas = document.createElement('div');
-    zonaPistas.className = 'zona-pistas';
+    const pistas = this.crearControlPistas(puzzle);
 
-    const botonPista = document.createElement('button');
-    botonPista.className = 'boton-pista';
-    botonPista.textContent = 'Pedir una pista';
-    botonPista.hidden = true;
+    const marcarResultado = (esCorrecta) => {
+      feedback.textContent = esCorrecta
+        ? '¡Muy bien! Has acertado.'
+        : 'No era esa. Prueba otra vez o pide una pista.';
+      feedback.className = esCorrecta ? 'feedback feedback-correcto' : 'feedback feedback-incorrecto';
 
-    const listaPistas = document.createElement('div');
-    listaPistas.className = 'lista-pistas';
+      if (esCorrecta) {
+        pistas.ocultar();
+      } else {
+        pistas.activar();
+      }
 
-    zonaPistas.appendChild(botonPista);
-    zonaPistas.appendChild(listaPistas);
+      if (alResponder) {
+        alResponder(puzzle, esCorrecta);
+      }
+    };
 
-    let pistasMostradas = 0;
-    let resuelto = false;
+    const renderTipo = puzzle.tipo === 'recta_numerica' ? this.renderRectaNumerica : this.renderOpcionMultiple;
+    container.appendChild(renderTipo.call(this, puzzle, marcarResultado));
 
-    // Muestra la siguiente pista (visual → procedimiento → guiada). Nunca da la respuesta directa.
-    botonPista.addEventListener('click', () => {
-      if (pistasMostradas >= puzzle.pistas.length) return;
-      const pista = puzzle.pistas[pistasMostradas];
+    container.appendChild(feedback);
+    container.appendChild(pistas.elemento);
+  },
+
+  // El botón de pista solo aparece tras el primer fallo. Nunca da la respuesta directa.
+  crearControlPistas(puzzle) {
+    const zona = document.createElement('div');
+    zona.className = 'zona-pistas';
+
+    const boton = document.createElement('button');
+    boton.className = 'boton-pista';
+    boton.textContent = 'Pedir una pista';
+    boton.hidden = true;
+
+    const lista = document.createElement('div');
+    lista.className = 'lista-pistas';
+
+    zona.appendChild(boton);
+    zona.appendChild(lista);
+
+    let mostradas = 0;
+    boton.addEventListener('click', () => {
+      if (mostradas >= puzzle.pistas.length) return;
+      const pista = puzzle.pistas[mostradas];
       const texto = document.createElement('p');
       texto.className = 'pista';
       texto.textContent = `Pista ${pista.nivel}: ${pista.texto}`;
-      listaPistas.appendChild(texto);
-      pistasMostradas++;
-      if (pistasMostradas >= puzzle.pistas.length) {
-        botonPista.disabled = true;
-        botonPista.textContent = 'No hay más pistas';
+      lista.appendChild(texto);
+      mostradas++;
+      if (mostradas >= puzzle.pistas.length) {
+        boton.disabled = true;
+        boton.textContent = 'No hay más pistas';
       }
     });
+
+    return {
+      elemento: zona,
+      activar() { boton.hidden = false; },
+      ocultar() { boton.hidden = true; }
+    };
+  },
+
+  // tipo "opcion_multiple": el jugador toca uno de varios botones de respuesta.
+  renderOpcionMultiple(puzzle, marcarResultado) {
+    const opciones = document.createElement('div');
+    opciones.className = 'opciones';
+    let resuelto = false;
 
     puzzle.respuesta.opciones.forEach((opcion) => {
       const boton = document.createElement('button');
@@ -63,27 +99,48 @@ const Engine = {
           resuelto = true;
           boton.classList.add('opcion-correcta');
           Array.from(opciones.children).forEach((b) => { b.disabled = true; });
-          feedback.textContent = '¡Muy bien! Has acertado.';
-          feedback.className = 'feedback feedback-correcto';
-          botonPista.hidden = true;
         } else {
-          // Al fallar no se revela la respuesta: se marca el error, se deja reintentar y se ofrecen pistas.
           boton.classList.add('opcion-incorrecta');
           boton.disabled = true;
-          feedback.textContent = 'No era esa. Prueba otra vez o pide una pista.';
-          feedback.className = 'feedback feedback-incorrecto';
-          botonPista.hidden = false;
         }
 
-        if (alResponder) {
-          alResponder(puzzle, esCorrecta);
-        }
+        marcarResultado(esCorrecta);
       });
       opciones.appendChild(boton);
     });
 
-    container.appendChild(opciones);
-    container.appendChild(feedback);
-    container.appendChild(zonaPistas);
+    return opciones;
+  },
+
+  // tipo "recta_numerica": el jugador toca el punto correcto en una recta numérica.
+  renderRectaNumerica(puzzle, marcarResultado) {
+    const { desde, hasta, paso } = puzzle.datos.recta;
+    const recta = document.createElement('div');
+    recta.className = 'recta-numerica';
+    let resuelto = false;
+
+    for (let valor = desde; valor <= hasta; valor += paso) {
+      const punto = document.createElement('button');
+      punto.className = 'punto-recta';
+      punto.textContent = valor;
+      punto.addEventListener('click', () => {
+        if (resuelto) return;
+        const esCorrecta = valor === puzzle.respuesta.valor_correcto;
+
+        if (esCorrecta) {
+          resuelto = true;
+          punto.classList.add('opcion-correcta');
+          Array.from(recta.children).forEach((b) => { b.disabled = true; });
+        } else {
+          punto.classList.add('opcion-incorrecta');
+          punto.disabled = true;
+        }
+
+        marcarResultado(esCorrecta);
+      });
+      recta.appendChild(punto);
+    }
+
+    return recta;
   }
 };

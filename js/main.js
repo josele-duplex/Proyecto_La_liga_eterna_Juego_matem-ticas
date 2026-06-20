@@ -8,6 +8,13 @@ const PERFILES = [
   { id: 'invitado-3', nombre: 'Invitado 3' }
 ];
 
+// Provisional: hasta que exista progression.js (T2.3), se elige el puzle a mano con un botón de prueba.
+const PUZLES_EJEMPLO = [
+  'data/puzzles/8-anios/descomposicion-fase3-abstracta.json',
+  'data/puzzles/8-anios/recta-numerica-fase2-pictorica.json'
+];
+let indicePuzleActual = 0;
+
 async function arrancar() {
   const perfilActivo = Storage.cargarPerfilActivo();
   if (perfilActivo) {
@@ -49,7 +56,7 @@ function mostrarSelectorPerfil() {
 async function mostrarPuzle(perfilId) {
   mostrarBarraPerfil(perfilId);
 
-  const respuesta = await fetch('data/puzzles/8-anios/descomposicion-fase3-abstracta.json');
+  const respuesta = await fetch(PUZLES_EJEMPLO[indicePuzleActual]);
   const puzzle = await respuesta.json();
   const app = document.getElementById('app');
 
@@ -87,6 +94,14 @@ function mostrarBarraPerfil(perfilId) {
     mostrarSelectorPerfil();
   });
   barra.appendChild(boton);
+
+  const botonPuzle = document.createElement('button');
+  botonPuzle.textContent = 'Probar otro tipo de puzle';
+  botonPuzle.addEventListener('click', () => {
+    indicePuzleActual = (indicePuzleActual + 1) % PUZLES_EJEMPLO.length;
+    mostrarPuzle(perfilId);
+  });
+  barra.appendChild(botonPuzle);
 }
 
 arrancar();

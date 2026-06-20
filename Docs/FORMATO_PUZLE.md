@@ -35,8 +35,9 @@ Estos son los campos de una ficha. Los que llevan ⭐ son los que el plan técni
 
 El motor no tiene un "if" por cada reto posible. En su lugar, conoce un **puñado de tipos de interacción**, y cada `tipo` define qué forma tienen `datos` y `respuesta`. Así, añadir variedad = añadir fichas, no reescribir el motor.
 
-- En la Fase 1 nos basta con **un** tipo: `opcion_multiple` (el niño toca una de varias opciones). Los tres ejemplos lo usan.
-- Más adelante (T2.2) añadiremos otros tipos sin tocar las fichas existentes, por ejemplo: `entrada_numerica` (escribir el número), `recta_numerica` (señalar un punto), `agrupar` (juntar objetos en grupos).
+- En la Fase 1 usamos **un** tipo: `opcion_multiple` (el niño toca una de varias opciones). Los tres primeros ejemplos lo usan.
+- En T2.2 se añadió un segundo tipo, `recta_numerica` (señalar un punto en una recta), **sin tocar nada del código de `opcion_multiple`**: esto confirma que el motor reparte el trabajo por `tipo` tal y como se diseñó.
+- Quedan pendientes de añadir cuando hagan falta: `entrada_numerica` (escribir el número), `agrupar` (juntar objetos en grupos).
 - **Regla de oro:** si un `tipo` nuevo no cabe en este esquema sin forzarlo, no lo parcheamos: revisamos el formato. Ese es justo el riesgo nº 1 del plan.
 
 ### Forma de `datos` y `respuesta` para `tipo: "opcion_multiple"`
@@ -46,6 +47,13 @@ El motor no tiene un "if" por cada reto posible. En su lugar, conoce un **puñad
 - `datos` puede llevar campos extra de apoyo visual (p. ej. `marco_diez` con cuántas casillas hay llenas).
 - `respuesta.opciones`: lista de opciones, cada una con `id` y `texto`.
 - `respuesta.correcta`: el `id` de la opción correcta.
+
+### Forma de `datos` y `respuesta` para `tipo: "recta_numerica"`
+
+- `datos.recta`: `{ desde, hasta, paso }` — define los puntos que se pueden tocar (de `desde` a `hasta`, cada `paso`).
+- `respuesta.valor_correcto`: el número que hay que señalar.
+
+Ejemplo: [`data/puzzles/8-anios/recta-numerica-fase2-pictorica.json`](../data/puzzles/8-anios/recta-numerica-fase2-pictorica.json).
 
 ---
 
