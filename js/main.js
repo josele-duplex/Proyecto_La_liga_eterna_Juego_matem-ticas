@@ -53,9 +53,11 @@ async function mostrarPuzle(perfilId) {
   const puzzle = await respuesta.json();
   const app = document.getElementById('app');
 
-  Engine.render(puzzle, app, (puzzleResuelto) => {
-    Storage.guardarUltimoPuzle(perfilId, puzzleResuelto.id);
-    mostrarProgreso(perfilId);
+  Engine.render(puzzle, app, (puzzleResuelto, esCorrecta) => {
+    if (esCorrecta) {
+      Storage.guardarUltimoPuzle(perfilId, puzzleResuelto.id);
+      mostrarProgreso(perfilId);
+    }
   });
 
   mostrarProgreso(perfilId);

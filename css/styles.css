@@ -42,3 +42,20 @@ body {
 .feedback-incorrecto {
   color: #c62828;
 }
+
+.zona-pistas {
+  margin-top: 1rem;
+}
+
+.boton-pista {
+  font-size: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+.pista {
+  font-size: 1.1rem;
+  background-color: #fff6d6;
+  border-left: 4px solid #f0c000;
+  padding: 0.6rem 0.9rem;
+  margin: 0.5rem 0 0;
+}
