@@ -2,7 +2,9 @@
 
 const Engine = {
   // Muestra un puzle en pantalla. De momento solo el tipo "opcion_multiple".
-  render(puzzle, container) {
+  // alResponder(puzzle, esCorrecta) es opcional: avisa a quien llamó al motor de que se ha
+  // respondido, sin que el motor sepa qué hace esa otra pieza con el resultado (guardar, puntuar...).
+  render(puzzle, container, alResponder) {
     container.innerHTML = '';
 
     const enunciado = document.createElement('p');
@@ -22,7 +24,7 @@ const Engine = {
       boton.textContent = opcion.texto;
       boton.dataset.opcionId = opcion.id;
       boton.addEventListener('click', () => {
-        this.responder(puzzle, opcion.id, opciones, feedback);
+        this.responder(puzzle, opcion.id, opciones, feedback, alResponder);
       });
       opciones.appendChild(boton);
     });
@@ -32,7 +34,7 @@ const Engine = {
   },
 
   // Comprueba la respuesta elegida y muestra una reacción distinta para acierto y error.
-  responder(puzzle, opcionElegidaId, opciones, feedback) {
+  responder(puzzle, opcionElegidaId, opciones, feedback, alResponder) {
     const esCorrecta = opcionElegidaId === puzzle.respuesta.correcta;
 
     Array.from(opciones.children).forEach((boton) => {
@@ -46,6 +48,10 @@ const Engine = {
 
     feedback.textContent = esCorrecta ? '¡Muy bien! Has acertado.' : 'No era esa. La respuesta correcta está marcada en verde.';
     feedback.className = esCorrecta ? 'feedback feedback-correcto' : 'feedback feedback-incorrecto';
+
+    if (alResponder) {
+      alResponder(puzzle, esCorrecta);
+    }
   }
 };
 
