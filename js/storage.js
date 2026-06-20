@@ -25,9 +25,7 @@ const Storage = {
     return guardado ? JSON.parse(guardado) : {};
   },
 
-  guardarUltimoPuzle(perfilId, puzzleId) {
-    const progreso = this.cargarProgreso(perfilId);
-    progreso.ultimoPuzleId = puzzleId;
+  guardarProgreso(perfilId, progreso) {
     localStorage.setItem(this.claveProgreso(perfilId), JSON.stringify(progreso));
   }
 };

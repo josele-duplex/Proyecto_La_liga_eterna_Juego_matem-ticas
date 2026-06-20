@@ -1,0 +1,30 @@
+{
+  "edad": "8-anios",
+  "nota": "Catalogo de los puzles disponibles para esta edad. La progresion (progression.js) lo lee para elegir el siguiente puzle por concepto y fase, sin tener que listar carpetas (imposible en un sitio estatico). Manten este indice en sync al anadir puzles nuevos.",
+  "puzles": [
+    {
+      "id": "8-descomposicion-1-001",
+      "concepto": "descomposicion",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/8-anios/descomposicion-fase1-concreta.json"
+    },
+    {
+      "id": "8-descomposicion-2-001",
+      "concepto": "descomposicion",
+      "fase_cpa": 2,
+      "ruta": "data/puzzles/8-anios/descomposicion-fase2-pictorica.json"
+    },
+    {
+      "id": "8-descomposicion-3-001",
+      "concepto": "descomposicion",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/8-anios/descomposicion-fase3-abstracta.json"
+    },
+    {
+      "id": "8-recta-numerica-2-001",
+      "concepto": "recta_numerica",
+      "fase_cpa": 2,
+      "ruta": "data/puzzles/8-anios/recta-numerica-fase2-pictorica.json"
+    }
+  ]
+}

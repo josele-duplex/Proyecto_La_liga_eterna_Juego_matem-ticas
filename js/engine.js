@@ -3,9 +3,10 @@
 // pistas) vive aquí; lo específico de cada tipo vive en su propio "renderXxx".
 
 const Engine = {
-  // alResponder(puzzle, esCorrecta) es opcional: avisa a quien llamó al motor de cada intento,
-  // sin que el motor sepa qué hace esa otra pieza con el resultado (guardar, puntuar...).
-  render(puzzle, container, alResponder) {
+  // alResolver(puzzle, resultado) es opcional: avisa UNA vez, cuando el puzle se resuelve, e incluye
+  // resultado = { intentosFallidos, pistasUsadas } para que otras piezas (progresión, evaluación)
+  // sepan cómo le fue, sin que el motor sepa qué harán con ese dato.
+  render(puzzle, container, alResolver) {
     container.innerHTML = '';
 
     const enunciado = document.createElement('p');
@@ -17,6 +18,7 @@ const Engine = {
     feedback.className = 'feedback';
 
     const pistas = this.crearControlPistas(puzzle);
+    let intentosFallidos = 0;
 
     const marcarResultado = (esCorrecta) => {
       feedback.textContent = esCorrecta
@@ -26,12 +28,12 @@ const Engine = {
 
       if (esCorrecta) {
         pistas.ocultar();
+        if (alResolver) {
+          alResolver(puzzle, { intentosFallidos, pistasUsadas: pistas.usadas() });
+        }
       } else {
+        intentosFallidos++;
         pistas.activar();
-      }
-
-      if (alResponder) {
-        alResponder(puzzle, esCorrecta);
       }
     };
 
@@ -76,7 +78,8 @@ const Engine = {
     return {
       elemento: zona,
       activar() { boton.hidden = false; },
-      ocultar() { boton.hidden = true; }
+      ocultar() { boton.hidden = true; },
+      usadas() { return mostradas; }
     };
   },
 

@@ -8,14 +8,18 @@ const PERFILES = [
   { id: 'invitado-3', nombre: 'Invitado 3' }
 ];
 
-// Provisional: hasta que exista progression.js (T2.3), se elige el puzle a mano con un botón de prueba.
-const PUZLES_EJEMPLO = [
-  'data/puzzles/8-anios/descomposicion-fase3-abstracta.json',
-  'data/puzzles/8-anios/recta-numerica-fase2-pictorica.json'
-];
-let indicePuzleActual = 0;
+// Nombres bonitos para mostrar el concepto en pantalla.
+const NOMBRES_CONCEPTO = {
+  descomposicion: 'descomposición',
+  recta_numerica: 'recta numérica'
+};
+
+let indice = null;
 
 async function arrancar() {
+  const respuesta = await fetch('data/puzzles/8-anios/indice.json');
+  indice = await respuesta.json();
+
   const perfilActivo = Storage.cargarPerfilActivo();
   if (perfilActivo) {
     mostrarPuzle(perfilActivo);
@@ -26,6 +30,7 @@ async function arrancar() {
 
 function mostrarSelectorPerfil() {
   document.getElementById('barra-perfil').innerHTML = '';
+  document.getElementById('siguiente').innerHTML = '';
   document.getElementById('progreso').textContent = '';
 
   const app = document.getElementById('app');
@@ -55,27 +60,39 @@ function mostrarSelectorPerfil() {
 
 async function mostrarPuzle(perfilId) {
   mostrarBarraPerfil(perfilId);
+  document.getElementById('siguiente').innerHTML = '';
 
-  const respuesta = await fetch(PUZLES_EJEMPLO[indicePuzleActual]);
+  const progreso = Storage.cargarProgreso(perfilId);
+  const entrada = Progression.siguiente(progreso, indice);
+
+  const respuesta = await fetch(entrada.ruta);
   const puzzle = await respuesta.json();
   const app = document.getElementById('app');
 
-  Engine.render(puzzle, app, (puzzleResuelto, esCorrecta) => {
-    if (esCorrecta) {
-      Storage.guardarUltimoPuzle(perfilId, puzzleResuelto.id);
-      mostrarProgreso(perfilId);
-    }
-  });
+  mostrarRetoActual(puzzle);
 
-  mostrarProgreso(perfilId);
+  Engine.render(puzzle, app, (puzzleResuelto, resultado) => {
+    const progresoActual = Storage.cargarProgreso(perfilId);
+    progresoActual.ultimoPuzleId = puzzleResuelto.id;
+    Progression.actualizar(progresoActual, indice, puzzleResuelto.concepto, puzzleResuelto.fase_cpa, resultado);
+    Storage.guardarProgreso(perfilId, progresoActual);
+    mostrarBotonSiguiente(perfilId);
+  });
 }
 
-function mostrarProgreso(perfilId) {
-  const progreso = Storage.cargarProgreso(perfilId);
-  const elemento = document.getElementById('progreso');
-  elemento.textContent = progreso.ultimoPuzleId
-    ? `Último puzle resuelto: ${progreso.ultimoPuzleId}`
-    : 'Todavía no has resuelto ningún puzle.';
+function mostrarBotonSiguiente(perfilId) {
+  const zona = document.getElementById('siguiente');
+  zona.innerHTML = '';
+  const boton = document.createElement('button');
+  boton.className = 'boton-siguiente';
+  boton.textContent = 'Siguiente reto →';
+  boton.addEventListener('click', () => mostrarPuzle(perfilId));
+  zona.appendChild(boton);
+}
+
+function mostrarRetoActual(puzzle) {
+  const concepto = NOMBRES_CONCEPTO[puzzle.concepto] || puzzle.concepto;
+  document.getElementById('progreso').textContent = `Reto actual: ${concepto} · fase ${puzzle.fase_cpa}`;
 }
 
 function mostrarBarraPerfil(perfilId) {
@@ -94,14 +111,6 @@ function mostrarBarraPerfil(perfilId) {
     mostrarSelectorPerfil();
   });
   barra.appendChild(boton);
-
-  const botonPuzle = document.createElement('button');
-  botonPuzle.textContent = 'Probar otro tipo de puzle';
-  botonPuzle.addEventListener('click', () => {
-    indicePuzleActual = (indicePuzleActual + 1) % PUZLES_EJEMPLO.length;
-    mostrarPuzle(perfilId);
-  });
-  barra.appendChild(botonPuzle);
 }
 
 arrancar();

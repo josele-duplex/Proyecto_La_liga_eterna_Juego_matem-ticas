@@ -72,3 +72,13 @@ body {
   padding: 0.5rem 0.7rem;
   min-width: 2.2rem;
 }
+
+.boton-siguiente {
+  font-size: 1.2rem;
+  padding: 0.7rem 1.4rem;
+  margin-top: 1rem;
+  background-color: #1a7a3c;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+}
