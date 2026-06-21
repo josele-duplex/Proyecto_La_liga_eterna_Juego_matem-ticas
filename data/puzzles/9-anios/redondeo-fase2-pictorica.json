@@ -1,0 +1,23 @@
+{
+  "id": "9-redondeo-2-001",
+  "version": 1,
+  "tipo": "recta_numerica",
+  "concepto": "redondeo",
+  "fase_cpa": 2,
+  "edad": "9-anios",
+  "estrategia": "redondear",
+  "enunciado": {
+    "texto": "Toca la decena más cercana al 14.",
+    "voz": "El catorce, ¿a qué decena lo redondeas?"
+  },
+  "datos": {
+    "recta": { "desde": 0, "hasta": 30, "paso": 10 }
+  },
+  "respuesta": { "valor_correcto": 10 },
+  "pistas": [
+    { "nivel": 1, "tipo": "visual", "texto": "El 14 está entre el 10 y el 20." },
+    { "nivel": 2, "tipo": "procedimiento", "texto": "Del 14 al 10 hay 4 pasos; del 14 al 20 hay 6 pasos." },
+    { "nivel": 3, "tipo": "guiada", "texto": "Está más cerca del 10, así que redondeamos a 10." }
+  ],
+  "nota": "T3.2: redondeo fase pictorica. Numero entre dos decenas, hay que elegir la mas cercana."
+}

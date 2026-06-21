@@ -1,0 +1,60 @@
+{
+  "edad": "9-anios",
+  "nota": "Catalogo de los puzles disponibles para 9 anios. Mismo formato que los indices de 6 y 8. Manten en sync al anadir puzles. (De momento ningun perfil esta asignado a 9-anios; basta con poner edad: '9-anios' a un perfil en main.js para usarlo.)",
+  "puzles": [
+    {
+      "id": "9-multiplicacion-1-001",
+      "concepto": "multiplicacion",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/9-anios/multiplicacion-fase1-concreta.json"
+    },
+    {
+      "id": "9-multiplicacion-2-001",
+      "concepto": "multiplicacion",
+      "fase_cpa": 2,
+      "ruta": "data/puzzles/9-anios/multiplicacion-fase2-pictorica.json"
+    },
+    {
+      "id": "9-multiplicacion-3-001",
+      "concepto": "multiplicacion",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/multiplicacion-fase3-abstracta.json"
+    },
+    {
+      "id": "9-fracciones-1-001",
+      "concepto": "fracciones",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/9-anios/fracciones-fase1-concreta.json"
+    },
+    {
+      "id": "9-fracciones-2-001",
+      "concepto": "fracciones",
+      "fase_cpa": 2,
+      "ruta": "data/puzzles/9-anios/fracciones-fase2-pictorica.json"
+    },
+    {
+      "id": "9-fracciones-3-001",
+      "concepto": "fracciones",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/fracciones-fase3-abstracta.json"
+    },
+    {
+      "id": "9-redondeo-1-001",
+      "concepto": "redondeo",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/9-anios/redondeo-fase1-concreta.json"
+    },
+    {
+      "id": "9-redondeo-2-001",
+      "concepto": "redondeo",
+      "fase_cpa": 2,
+      "ruta": "data/puzzles/9-anios/redondeo-fase2-pictorica.json"
+    },
+    {
+      "id": "9-redondeo-3-001",
+      "concepto": "redondeo",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/redondeo-fase3-abstracta.json"
+    }
+  ]
+}

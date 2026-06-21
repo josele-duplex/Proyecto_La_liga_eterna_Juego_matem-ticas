@@ -1,0 +1,29 @@
+{
+  "id": "8-dobles-3-001",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "dobles",
+  "fase_cpa": 3,
+  "edad": "8-anios",
+  "estrategia": "usar_dobles",
+  "enunciado": {
+    "texto": "8 + 8 = ?",
+    "voz": "El doble de ocho."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      { "id": "a", "texto": "14" },
+      { "id": "b", "texto": "15" },
+      { "id": "c", "texto": "16" },
+      { "id": "d", "texto": "17" }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    { "nivel": 1, "tipo": "visual", "texto": "Imagina dos torres iguales de 8." },
+    { "nivel": 2, "tipo": "procedimiento", "texto": "El doble de 8: piensa en 8 + 8." },
+    { "nivel": 3, "tipo": "guiada", "texto": "8 + 8 es lo mismo que 10 + 6." }
+  ],
+  "nota": "T3.2: dobles fase abstracta. Solo numeros."
+}

@@ -1,0 +1,29 @@
+{
+  "id": "9-fracciones-2-001",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "fracciones",
+  "fase_cpa": 2,
+  "edad": "9-anios",
+  "estrategia": "repartir_partes",
+  "enunciado": {
+    "texto": "El campo está dividido en 8 zonas iguales y tu equipo defiende 4 de ellas. ¿Qué fracción del campo defendéis? Elige la más sencilla.",
+    "voz": "Cuatro zonas de ocho. ¿Cuánto es eso del campo entero?"
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      { "id": "a", "texto": "1/4" },
+      { "id": "b", "texto": "1/2" },
+      { "id": "c", "texto": "4/4" },
+      { "id": "d", "texto": "1/8" }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    { "nivel": 1, "tipo": "visual", "texto": "4 de 8 zonas es la mitad del campo." },
+    { "nivel": 2, "tipo": "procedimiento", "texto": "4/8: ¿cuántas veces cabe 4 en 8? Justo 2 veces." },
+    { "nivel": 3, "tipo": "guiada", "texto": "4 de 8 es lo mismo que 1 de 2, o sea 1/2." }
+  ],
+  "nota": "T3.2: fracciones fase pictorica. Equivalencia simple 4/8 = 1/2."
+}

@@ -1,0 +1,23 @@
+{
+  "id": "8-recta-numerica-1-001",
+  "version": 1,
+  "tipo": "recta_numerica",
+  "concepto": "recta_numerica",
+  "fase_cpa": 1,
+  "edad": "8-anios",
+  "estrategia": "usar_decenas_como_referencia",
+  "enunciado": {
+    "texto": "Toca el punto donde está el 8 en la recta numérica.",
+    "voz": "Busca el ocho. Está cerca del diez, justo dos antes."
+  },
+  "datos": {
+    "recta": { "desde": 0, "hasta": 20, "paso": 1 }
+  },
+  "respuesta": { "valor_correcto": 8 },
+  "pistas": [
+    { "nivel": 1, "tipo": "visual", "texto": "El 10 está a mitad de camino entre 0 y 20." },
+    { "nivel": 2, "tipo": "procedimiento", "texto": "El 8 está justo antes del 10: dos pasos antes." },
+    { "nivel": 3, "tipo": "guiada", "texto": "Desde el 10, retrocede 2: 9, 8." }
+  ],
+  "nota": "T3.2: recta_numerica fase concreta (numero pequeno y cercano al 10). Completa la fase 1 que faltaba."
+}

@@ -60,7 +60,8 @@ const Progression = {
   },
 
   // Elige el siguiente puzle: del concepto actual, el de fase más cercana a la fase objetivo
-  // del jugador. Devuelve la entrada del índice { id, concepto, fase_cpa, ruta }.
+  // del jugador. Si hay varios igual de adecuados (misma fase), elige al azar y evita repetir
+  // el último, para dar variedad. Devuelve la entrada del índice { id, concepto, fase_cpa, ruta }.
   siguiente(progreso, indice) {
     const conceptos = this.conceptos(indice);
     const concepto = (progreso.conceptoActual && conceptos.includes(progreso.conceptoActual))
@@ -73,7 +74,15 @@ const Progression = {
       : Math.min(...this.fasesDe(indice, concepto));
 
     const candidatos = indice.puzles.filter((p) => p.concepto === concepto);
-    candidatos.sort((a, b) => Math.abs(a.fase_cpa - faseObjetivo) - Math.abs(b.fase_cpa - faseObjetivo));
-    return candidatos[0];
+    const distancia = (p) => Math.abs(p.fase_cpa - faseObjetivo);
+    const minDistancia = Math.min(...candidatos.map(distancia));
+    let mejores = candidatos.filter((p) => distancia(p) === minDistancia);
+
+    if (mejores.length > 1 && progreso.ultimoPuzleId) {
+      const sinRepetir = mejores.filter((p) => p.id !== progreso.ultimoPuzleId);
+      if (sinRepetir.length > 0) mejores = sinRepetir;
+    }
+
+    return mejores[Math.floor(Math.random() * mejores.length)];
   }
 };

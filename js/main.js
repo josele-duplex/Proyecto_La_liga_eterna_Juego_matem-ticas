@@ -1,12 +1,38 @@
 // Arranca el juego y conecta las piezas (engine, progression, storage, ui, audio, assessment).
 
 const PERFILES = [
-  { id: 'pepe', nombre: 'Pepe', avatar: 'assets/img/avatar-pepe.webp', edad: '8-anios' },
-  { id: 'bruno', nombre: 'Bruno', avatar: 'assets/img/avatar-bruno.webp', edad: '6-anios' },
-  { id: 'david', nombre: 'David', avatar: 'assets/img/avatar-david.webp', edad: '6-anios' },
-  { id: 'invitado-1', nombre: 'Invitado 1', edad: '8-anios' },
-  { id: 'invitado-2', nombre: 'Invitado 2', edad: '8-anios' },
-  { id: 'invitado-3', nombre: 'Invitado 3', edad: '8-anios' }
+  { id: 'pepe', nombre: 'Pepe', avatar: 'assets/img/avatar-pepe.webp' },
+  { id: 'bruno', nombre: 'Bruno', avatar: 'assets/img/avatar-bruno.webp' },
+  { id: 'david', nombre: 'David', avatar: 'assets/img/avatar-david.webp' },
+  { id: 'invitado-1', nombre: 'Invitado 1' },
+  { id: 'invitado-2', nombre: 'Invitado 2' },
+  { id: 'invitado-3', nombre: 'Invitado 3' }
+];
+
+// Modos de juego (cada jugador elige el suyo, no viene fijado). 'edad' apunta al banco de puzles.
+const MODOS = [
+  {
+    id: 'promesas',
+    nombre: 'Promesas',
+    icono: '🌱',
+    descripcion: 'Da tus primeros toques: reconoce cantidades, compara y completa 10.',
+    edad: '6-anios'
+  },
+  {
+    id: 'estrellas',
+    nombre: 'Estrellas',
+    icono: '⭐',
+    descripcion: 'Juega como un crack: descomposición, dobles, casi-dobles y recta numérica.',
+    edad: '8-anios'
+  },
+  {
+    id: 'leyendas',
+    nombre: 'Leyendas',
+    icono: '🏆',
+    descripcion: 'El equipo de los más grandes: multiplicación, fracciones y redondeo.',
+    edad: '9-anios',
+    desbloqueadoPor: 'estrellas'
+  }
 ];
 
 // Nombres bonitos para mostrar el concepto en pantalla.
@@ -15,7 +41,12 @@ const NOMBRES_CONCEPTO = {
   recta_numerica: 'recta numérica',
   subitizacion: 'reconocer cantidades',
   comparar: 'comparar',
-  completar_diez: 'completar diez'
+  completar_diez: 'completar diez',
+  dobles: 'dobles',
+  casi_dobles: 'casi-dobles',
+  multiplicacion: 'multiplicación',
+  fracciones: 'fracciones',
+  redondeo: 'redondeo'
 };
 
 let indicesPorEdad = {};
@@ -26,15 +57,32 @@ async function arrancar() {
   Sonido.cargarPreferencia();
   indicesPorEdad['6-anios'] = await (await fetch('data/puzzles/6-anios/indice.json')).json();
   indicesPorEdad['8-anios'] = await (await fetch('data/puzzles/8-anios/indice.json')).json();
+  indicesPorEdad['9-anios'] = await (await fetch('data/puzzles/9-anios/indice.json')).json();
   calendario = await (await fetch('data/estadios.json')).json();
   recompensas = await (await fetch('data/recompensas.json')).json();
 
   const perfilActivo = Storage.cargarPerfilActivo();
-  if (perfilActivo) {
+  if (perfilActivo && modoDe(perfilActivo)) {
     mostrarCalendario(perfilActivo);
+  } else if (perfilActivo) {
+    mostrarSelectorModo(perfilActivo);
   } else {
     mostrarSelectorPerfil();
   }
+}
+
+// Devuelve el modo guardado del jugador (o null si todavía no ha elegido ninguno).
+function modoDe(perfilId) {
+  const progreso = Storage.cargarProgreso(perfilId);
+  return MODOS.find((m) => m.id === progreso.modoId) || null;
+}
+
+// Un modo está disponible si no necesita desbloqueo, o si el jugador ya lo ha desbloqueado.
+// El disparador que desbloquea (dominar el modo anterior por repetición o rapidez) llegará en T3.3.
+function modoDesbloqueado(perfilId, modo) {
+  if (!modo.desbloqueadoPor) return true;
+  const progreso = Storage.cargarProgreso(perfilId);
+  return (progreso.modosDesbloqueados || []).includes(modo.id);
 }
 
 // --- Pantalla 1: elegir jugador ---
@@ -60,15 +108,15 @@ function mostrarSelectorPerfil() {
     boton.appendChild(nombre);
     boton.addEventListener('click', () => {
       Storage.guardarPerfilActivo(perfil.id);
-      mostrarCalendario(perfil.id);
+      mostrarSelectorModo(perfil.id);
     });
     lista.appendChild(boton);
   });
   app.appendChild(lista);
 }
 
-// --- Pantalla 2: calendario de la Liga (elegir estadio) ---
-function mostrarCalendario(perfilId) {
+// --- Pantalla 2: elegir modo de juego (Promesas / Estrellas) ---
+function mostrarSelectorModo(perfilId) {
   UI.aplicarTema('mundo');
   limpiarPantalla();
   mostrarBarraPerfil(perfilId, { mostrarVolver: false });
@@ -76,7 +124,61 @@ function mostrarCalendario(perfilId) {
   const app = document.getElementById('app');
   const titulo = document.createElement('p');
   titulo.className = 'enunciado';
-  titulo.textContent = 'Calendario de la Liga';
+  titulo.textContent = '¿En qué equipo juegas hoy?';
+  app.appendChild(titulo);
+
+  const lista = document.createElement('div');
+  lista.className = 'calendario';
+  MODOS.forEach((modo) => {
+    const tarjeta = document.createElement('div');
+    tarjeta.className = 'estadio';
+
+    const desbloqueado = modoDesbloqueado(perfilId, modo);
+
+    const nombre = document.createElement('h2');
+    nombre.textContent = desbloqueado ? `${modo.icono} ${modo.nombre}` : `🔒 ${modo.nombre}`;
+    tarjeta.appendChild(nombre);
+
+    const desc = document.createElement('p');
+    desc.textContent = modo.descripcion;
+    tarjeta.appendChild(desc);
+
+    if (desbloqueado) {
+      const elegir = document.createElement('button');
+      elegir.className = 'boton-siguiente';
+      elegir.textContent = 'Jugar en este equipo';
+      elegir.addEventListener('click', () => {
+        const progreso = Storage.cargarProgreso(perfilId);
+        progreso.modoId = modo.id;
+        Storage.guardarProgreso(perfilId, progreso);
+        mostrarCalendario(perfilId);
+      });
+      tarjeta.appendChild(elegir);
+    } else {
+      tarjeta.classList.add('estadio-bloqueado');
+      const candado = document.createElement('p');
+      candado.className = 'aviso-bloqueado';
+      const requisito = MODOS.find((m) => m.id === modo.desbloqueadoPor);
+      candado.textContent = `Domina el equipo ${requisito ? requisito.nombre : 'anterior'} para desbloquearlo.`;
+      tarjeta.appendChild(candado);
+    }
+
+    lista.appendChild(tarjeta);
+  });
+  app.appendChild(lista);
+}
+
+// --- Pantalla 3: calendario de la Liga (elegir estadio) ---
+function mostrarCalendario(perfilId) {
+  UI.aplicarTema('mundo');
+  limpiarPantalla();
+  mostrarBarraPerfil(perfilId, { mostrarVolver: false });
+
+  const modo = modoDe(perfilId) || MODOS[0];
+  const app = document.getElementById('app');
+  const titulo = document.createElement('p');
+  titulo.className = 'enunciado';
+  titulo.textContent = `Calendario de la Liga — ${modo.icono} ${modo.nombre}`;
   app.appendChild(titulo);
 
   const lista = document.createElement('div');
@@ -106,7 +208,7 @@ function mostrarCalendario(perfilId) {
   app.appendChild(lista);
 }
 
-// --- Pantalla 3: jugar la serie de retos de un estadio ---
+// --- Pantalla 4: jugar la serie de retos de un estadio ---
 function iniciarEstadio(perfilId, estadio) {
   const sesion = { hechos: 0, total: estadio.retos };
   jugarReto(perfilId, estadio, sesion);
@@ -117,8 +219,8 @@ async function jugarReto(perfilId, estadio, sesion) {
   limpiarPantalla();
   mostrarBarraPerfil(perfilId, { mostrarVolver: true });
 
-  const perfil = PERFILES.find((p) => p.id === perfilId);
-  const indice = indicesPorEdad[perfil.edad];
+  const modo = modoDe(perfilId) || MODOS[0];
+  const indice = indicesPorEdad[modo.edad];
   const progreso = Storage.cargarProgreso(perfilId);
   const entrada = Progression.siguiente(progreso, indice);
   const puzzle = await (await fetch(entrada.ruta)).json();
@@ -249,6 +351,13 @@ function mostrarBarraPerfil(perfilId, opciones) {
     volver.textContent = 'Volver al calendario';
     volver.addEventListener('click', () => mostrarCalendario(perfilId));
     barra.appendChild(volver);
+  }
+
+  if (modoDe(perfilId)) {
+    const cambiarModo = document.createElement('button');
+    cambiarModo.textContent = 'Cambiar de equipo';
+    cambiarModo.addEventListener('click', () => mostrarSelectorModo(perfilId));
+    barra.appendChild(cambiarModo);
   }
 
   const sonidoBoton = document.createElement('button');

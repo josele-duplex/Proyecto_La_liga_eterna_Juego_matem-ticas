@@ -1,0 +1,29 @@
+{
+  "id": "9-multiplicacion-2-001",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "multiplicacion",
+  "fase_cpa": 2,
+  "edad": "9-anios",
+  "estrategia": "multiplicar_grupos",
+  "enunciado": {
+    "texto": "En las gradas hay 4 filas con 5 aficionados en cada fila. ¿Cuántos aficionados hay?",
+    "voz": "Cuatro filas de cinco. Cuatro veces cinco."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      { "id": "a", "texto": "9" },
+      { "id": "b", "texto": "15" },
+      { "id": "c", "texto": "20" },
+      { "id": "d", "texto": "25" }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    { "nivel": 1, "tipo": "visual", "texto": "Imagina 4 filas, y en cada fila 5 personas." },
+    { "nivel": 2, "tipo": "procedimiento", "texto": "Suma 5 cuatro veces: 5 + 5 + 5 + 5." },
+    { "nivel": 3, "tipo": "guiada", "texto": "5 + 5 = 10, y 10 + 10 = 20. Es 4 × 5." }
+  ],
+  "nota": "T3.2: multiplicacion fase pictorica. Disposicion en filas (4x5), sin dibujar cada elemento."
+}

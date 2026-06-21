@@ -1,0 +1,23 @@
+{
+  "id": "8-recta-numerica-3-001",
+  "version": 1,
+  "tipo": "recta_numerica",
+  "concepto": "recta_numerica",
+  "fase_cpa": 3,
+  "edad": "8-anios",
+  "estrategia": "usar_decenas_como_referencia",
+  "enunciado": {
+    "texto": "Toca el número que está 4 antes del 20.",
+    "voz": "Empieza en el veinte y retrocede cuatro pasos."
+  },
+  "datos": {
+    "recta": { "desde": 0, "hasta": 20, "paso": 1 }
+  },
+  "respuesta": { "valor_correcto": 16 },
+  "pistas": [
+    { "nivel": 1, "tipo": "visual", "texto": "Localiza el 20, al final de la recta." },
+    { "nivel": 2, "tipo": "procedimiento", "texto": "Retrocede 4 pasos desde el 20: 19, 18, 17, 16." },
+    { "nivel": 3, "tipo": "guiada", "texto": "20 - 4 = ... ¿qué número estás buscando?" }
+  ],
+  "nota": "T3.2: recta_numerica fase abstracta. El valor se calcula (20-4), no se da directo. Completa la fase 3 que faltaba."
+}

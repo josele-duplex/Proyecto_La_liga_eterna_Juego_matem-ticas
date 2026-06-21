@@ -1,0 +1,29 @@
+{
+  "id": "9-fracciones-1-001",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "fracciones",
+  "fase_cpa": 1,
+  "edad": "9-anios",
+  "estrategia": "repartir_partes",
+  "enunciado": {
+    "texto": "En el descanso parten una pizza en 4 trozos iguales 🍕🍕🍕🍕 y te comes 1 trozo. ¿Qué fracción de la pizza te comiste?",
+    "voz": "Cuatro trozos iguales y te comes uno. Un trozo de cuatro."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      { "id": "a", "texto": "1/2" },
+      { "id": "b", "texto": "1/3" },
+      { "id": "c", "texto": "1/4" },
+      { "id": "d", "texto": "3/4" }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    { "nivel": 1, "tipo": "visual", "texto": "La pizza tiene 4 trozos en total: ese es el número de abajo." },
+    { "nivel": 2, "tipo": "procedimiento", "texto": "Arriba va lo que te comiste (1), abajo el total de trozos (4)." },
+    { "nivel": 3, "tipo": "guiada", "texto": "1 trozo de 4 se escribe 1/4." }
+  ],
+  "nota": "T3.2: fracciones fase concreta. Reparto de una pizza en partes iguales."
+}

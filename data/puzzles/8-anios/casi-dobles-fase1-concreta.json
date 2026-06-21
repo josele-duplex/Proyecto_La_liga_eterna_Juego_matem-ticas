@@ -1,0 +1,29 @@
+{
+  "id": "8-casi-dobles-1-001",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "casi_dobles",
+  "fase_cpa": 1,
+  "edad": "8-anios",
+  "estrategia": "usar_casi_dobles",
+  "enunciado": {
+    "texto": "Un equipo tiene ⚽⚽⚽⚽⚽⚽ (6) y el otro ⚽⚽⚽⚽⚽⚽⚽ (7). ¿Cuántos balones en total?",
+    "voz": "Seis y siete. Casi un doble: seis más seis, y uno más."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      { "id": "a", "texto": "12" },
+      { "id": "b", "texto": "13" },
+      { "id": "c", "texto": "14" },
+      { "id": "d", "texto": "15" }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    { "nivel": 1, "tipo": "visual", "texto": "Casi son iguales: 6 y 7. Solo se diferencian en 1." },
+    { "nivel": 2, "tipo": "procedimiento", "texto": "Usa el doble de 6 (que es 12) y suma 1 más." },
+    { "nivel": 3, "tipo": "guiada", "texto": "6 + 6 = 12, y uno más es 13." }
+  ],
+  "nota": "T3.2: casi-dobles fase concreta. 6+7 apoyandose en el doble de 6."
+}

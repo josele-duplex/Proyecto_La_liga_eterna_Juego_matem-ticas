@@ -1,0 +1,29 @@
+{
+  "id": "8-casi-dobles-2-001",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "casi_dobles",
+  "fase_cpa": 2,
+  "edad": "8-anios",
+  "estrategia": "usar_casi_dobles",
+  "enunciado": {
+    "texto": "El portero paró 7 tiros en el primer tiempo y 8 en el segundo. ¿Cuántas paradas hizo?",
+    "voz": "Siete y ocho. Casi un doble: el doble de siete y uno más."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      { "id": "a", "texto": "14" },
+      { "id": "b", "texto": "15" },
+      { "id": "c", "texto": "16" },
+      { "id": "d", "texto": "17" }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    { "nivel": 1, "tipo": "visual", "texto": "7 y 8 se diferencian solo en 1." },
+    { "nivel": 2, "tipo": "procedimiento", "texto": "El doble de 7 es 14; ahora suma 1 más." },
+    { "nivel": 3, "tipo": "guiada", "texto": "7 + 7 = 14, y uno más es 15." }
+  ],
+  "nota": "T3.2: casi-dobles fase pictorica. 7+8 apoyandose en el doble de 7."
+}

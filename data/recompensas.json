@@ -5,6 +5,11 @@
     "completar_diez": { "nombre": "Maestro de la Decena", "icono": "🔟", "imagen": null },
     "usar_decenas_como_referencia": { "nombre": "Navegante de la Recta", "icono": "🧭", "imagen": "assets/img/insignia-usar-decenas-como-referencia.webp" },
     "reconocer_patron": { "nombre": "Ojo de Águila", "icono": "👁️", "imagen": null },
-    "comparar_cantidades": { "nombre": "Juez de la Cantidad", "icono": "⚖️", "imagen": null }
+    "comparar_cantidades": { "nombre": "Juez de la Cantidad", "icono": "⚖️", "imagen": null },
+    "usar_dobles": { "nombre": "Rey de los Dobles", "icono": "👯", "imagen": null },
+    "usar_casi_dobles": { "nombre": "As del Casi-Doble", "icono": "✨", "imagen": null },
+    "multiplicar_grupos": { "nombre": "Capitán de los Grupos", "icono": "✖️", "imagen": null },
+    "repartir_partes": { "nombre": "Repartidor Justo", "icono": "🍕", "imagen": null },
+    "redondear": { "nombre": "Maestro del Redondeo", "icono": "🎯", "imagen": null }
   }
 }

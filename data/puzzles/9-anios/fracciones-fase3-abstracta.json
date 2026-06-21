@@ -1,0 +1,29 @@
+{
+  "id": "9-fracciones-3-001",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "fracciones",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "repartir_partes",
+  "enunciado": {
+    "texto": "¿Cuánto es 1/2 de 8?",
+    "voz": "La mitad de ocho."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      { "id": "a", "texto": "2" },
+      { "id": "b", "texto": "4" },
+      { "id": "c", "texto": "6" },
+      { "id": "d", "texto": "8" }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    { "nivel": 1, "tipo": "visual", "texto": "Reparte 8 en 2 grupos iguales." },
+    { "nivel": 2, "tipo": "procedimiento", "texto": "La mitad significa partir en 2 partes iguales." },
+    { "nivel": 3, "tipo": "guiada", "texto": "8 dividido en 2 partes son 4 en cada parte." }
+  ],
+  "nota": "T3.2: fracciones fase abstracta. Fraccion de una cantidad, solo numeros."
+}

@@ -21,10 +21,64 @@
       "ruta": "data/puzzles/8-anios/descomposicion-fase3-abstracta.json"
     },
     {
+      "id": "8-descomposicion-2-002",
+      "concepto": "descomposicion",
+      "fase_cpa": 2,
+      "ruta": "data/puzzles/8-anios/descomposicion-fase2-pictorica-b.json"
+    },
+    {
+      "id": "8-recta-numerica-1-001",
+      "concepto": "recta_numerica",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/8-anios/recta-numerica-fase1-concreta.json"
+    },
+    {
       "id": "8-recta-numerica-2-001",
       "concepto": "recta_numerica",
       "fase_cpa": 2,
       "ruta": "data/puzzles/8-anios/recta-numerica-fase2-pictorica.json"
+    },
+    {
+      "id": "8-recta-numerica-3-001",
+      "concepto": "recta_numerica",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/8-anios/recta-numerica-fase3-abstracta.json"
+    },
+    {
+      "id": "8-dobles-1-001",
+      "concepto": "dobles",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/8-anios/dobles-fase1-concreta.json"
+    },
+    {
+      "id": "8-dobles-2-001",
+      "concepto": "dobles",
+      "fase_cpa": 2,
+      "ruta": "data/puzzles/8-anios/dobles-fase2-pictorica.json"
+    },
+    {
+      "id": "8-dobles-3-001",
+      "concepto": "dobles",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/8-anios/dobles-fase3-abstracta.json"
+    },
+    {
+      "id": "8-casi-dobles-1-001",
+      "concepto": "casi_dobles",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/8-anios/casi-dobles-fase1-concreta.json"
+    },
+    {
+      "id": "8-casi-dobles-2-001",
+      "concepto": "casi_dobles",
+      "fase_cpa": 2,
+      "ruta": "data/puzzles/8-anios/casi-dobles-fase2-pictorica.json"
+    },
+    {
+      "id": "8-casi-dobles-3-001",
+      "concepto": "casi_dobles",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/8-anios/casi-dobles-fase3-abstracta.json"
     }
   ]
 }

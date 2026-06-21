@@ -1,0 +1,29 @@
+{
+  "id": "8-descomposicion-2-002",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "descomposicion",
+  "fase_cpa": 2,
+  "edad": "8-anios",
+  "estrategia": "completar_diez",
+  "enunciado": {
+    "texto": "Para sumar 7 + 5, primero completas la decena: 7 + 3 son 10. ¿Cuánto te queda por sumar?",
+    "voz": "Siete más cinco. Primero llega a diez, luego suma lo que sobra."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      { "id": "a", "texto": "1" },
+      { "id": "b", "texto": "2" },
+      { "id": "c", "texto": "3" },
+      { "id": "d", "texto": "4" }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    { "nivel": 1, "tipo": "visual", "texto": "Has usado 3 del 5 para llegar a 10." },
+    { "nivel": 2, "tipo": "procedimiento", "texto": "Del 5, ya gastaste 3. ¿Cuánto queda?" },
+    { "nivel": 3, "tipo": "guiada", "texto": "5 - 3 = ... eso es lo que falta por sumar (y 10 + 2 = 12)." }
+  ],
+  "nota": "T3.2: segundo puzle de descomposicion en fase 2 (7+5), distinto al 8+5 original. Da variedad dentro de la misma fase para probar la seleccion aleatoria de la progresion."
+}

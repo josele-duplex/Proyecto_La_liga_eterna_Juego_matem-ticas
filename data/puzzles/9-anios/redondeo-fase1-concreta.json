@@ -1,0 +1,23 @@
+{
+  "id": "9-redondeo-1-001",
+  "version": 1,
+  "tipo": "recta_numerica",
+  "concepto": "redondeo",
+  "fase_cpa": 1,
+  "edad": "9-anios",
+  "estrategia": "redondear",
+  "enunciado": {
+    "texto": "El 8 está entre el 0 y el 10. Toca la decena a la que está MÁS cerca.",
+    "voz": "El ocho, ¿a qué decena está más cerca, al cero o al diez?"
+  },
+  "datos": {
+    "recta": { "desde": 0, "hasta": 20, "paso": 10 }
+  },
+  "respuesta": { "valor_correcto": 10 },
+  "pistas": [
+    { "nivel": 1, "tipo": "visual", "texto": "Mira si el 8 está más cerca del 0 o del 10." },
+    { "nivel": 2, "tipo": "procedimiento", "texto": "Del 8 al 10 hay 2 pasos; del 8 al 0 hay 8 pasos." },
+    { "nivel": 3, "tipo": "guiada", "texto": "Está mucho más cerca del 10, así que redondeamos a 10." }
+  ],
+  "nota": "T3.2: redondeo fase concreta usando recta_numerica con paso 10 (solo las decenas son tocables)."
+}

@@ -1,0 +1,29 @@
+{
+  "id": "9-redondeo-3-001",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "redondeo",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "redondear",
+  "enunciado": {
+    "texto": "Redondea 27 a la decena más cercana.",
+    "voz": "Veintisiete, ¿a qué decena se redondea?"
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      { "id": "a", "texto": "20" },
+      { "id": "b", "texto": "25" },
+      { "id": "c", "texto": "30" },
+      { "id": "d", "texto": "40" }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    { "nivel": 1, "tipo": "visual", "texto": "El 27 está entre el 20 y el 30." },
+    { "nivel": 2, "tipo": "procedimiento", "texto": "Mira la unidad: 7. Si es 5 o más, sube a la decena de arriba." },
+    { "nivel": 3, "tipo": "guiada", "texto": "27 está más cerca de 30 que de 20, así que redondea a 30." }
+  ],
+  "nota": "T3.2: redondeo fase abstracta. Numero de dos cifras, sin recta."
+}
