@@ -1,8 +1,9 @@
 // Arranca el juego y conecta las piezas (engine, progression, storage, ui, audio, assessment).
 
 const PERFILES = [
-  { id: 'pepe', nombre: 'Pepe' },
-  { id: 'bruno', nombre: 'Bruno' },
+  { id: 'pepe', nombre: 'Pepe', avatar: 'assets/img/avatar-pepe.webp' },
+  { id: 'bruno', nombre: 'Bruno', avatar: 'assets/img/avatar-bruno.webp' },
+  { id: 'david', nombre: 'David', avatar: 'assets/img/avatar-david.webp' },
   { id: 'invitado-1', nombre: 'Invitado 1' },
   { id: 'invitado-2', nombre: 'Invitado 2' },
   { id: 'invitado-3', nombre: 'Invitado 3' }
@@ -48,8 +49,11 @@ function mostrarSelectorPerfil() {
   lista.className = 'opciones';
   PERFILES.forEach((perfil) => {
     const boton = document.createElement('button');
-    boton.className = 'opcion';
-    boton.textContent = perfil.nombre;
+    boton.className = 'opcion boton-perfil';
+    boton.appendChild(UI.crearAvatarPerfil(perfil));
+    const nombre = document.createElement('span');
+    nombre.textContent = perfil.nombre;
+    boton.appendChild(nombre);
     boton.addEventListener('click', () => {
       Storage.guardarPerfilActivo(perfil.id);
       mostrarCalendario(perfil.id);
@@ -142,11 +146,22 @@ async function jugarReto(perfilId, estadio, sesion) {
 }
 
 function mostrarBotonVoz(app, puzzle) {
+  const fila = document.createElement('div');
+  fila.className = 'fila-voz';
+
+  const avatarCapi = document.createElement('img');
+  avatarCapi.className = 'avatar-capi';
+  avatarCapi.src = 'assets/img/avatar-capi.webp';
+  avatarCapi.alt = 'Capi';
+  fila.appendChild(avatarCapi);
+
   const boton = document.createElement('button');
   boton.className = 'boton-voz';
   boton.textContent = '🔊 Escuchar al entrenador';
   boton.addEventListener('click', () => Sonido.decirVoz(puzzle.enunciado.voz));
-  app.insertBefore(boton, app.firstChild);
+  fila.appendChild(boton);
+
+  app.insertBefore(fila, app.firstChild);
 }
 
 function mostrarBotonSiguiente(perfilId, estadio, sesion) {
@@ -195,13 +210,15 @@ function otorgarRecompensa(progreso, estrategia) {
 }
 
 function mostrarBarraPerfil(perfilId, opciones) {
-  const nombrePerfil = PERFILES.find((perfil) => perfil.id === perfilId).nombre;
+  const perfil = PERFILES.find((p) => p.id === perfilId);
   const progreso = Storage.cargarProgreso(perfilId);
   const barra = document.getElementById('barra-perfil');
   barra.innerHTML = '';
 
+  barra.appendChild(UI.crearAvatarMini(perfil));
+
   const texto = document.createElement('span');
-  texto.textContent = `Jugando: ${nombrePerfil} — ⚡ ${progreso.energia || 0} — `;
+  texto.textContent = `Jugando: ${perfil.nombre} — ⚡ ${progreso.energia || 0} — `;
   barra.appendChild(texto);
 
   Object.keys(progreso.insignias || {}).forEach((estrategia) => {

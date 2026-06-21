@@ -3,6 +3,6 @@
   "energiaPorPuzle": 10,
   "insignias": {
     "completar_diez": { "nombre": "Maestro de la Decena", "icono": "🔟", "imagen": null },
-    "usar_decenas_como_referencia": { "nombre": "Navegante de la Recta", "icono": "🧭", "imagen": null }
+    "usar_decenas_como_referencia": { "nombre": "Navegante de la Recta", "icono": "🧭", "imagen": "assets/img/insignia-usar-decenas-como-referencia.webp" }
   }
 }

@@ -21,6 +21,36 @@ const UI = {
     return escudo;
   },
 
+  // Avatar grande (selector de jugador). Si el perfil no tiene "avatar", usa una inicial.
+  crearAvatarPerfil(perfil) {
+    if (perfil.avatar) {
+      const img = document.createElement('img');
+      img.className = 'avatar-perfil';
+      img.src = perfil.avatar;
+      img.alt = perfil.nombre;
+      return img;
+    }
+    const placeholder = document.createElement('div');
+    placeholder.className = 'avatar-perfil avatar-placeholder';
+    placeholder.textContent = perfil.nombre.charAt(0).toUpperCase();
+    return placeholder;
+  },
+
+  // Avatar pequeño (barra superior). Mismo criterio que crearAvatarPerfil, en miniatura.
+  crearAvatarMini(perfil) {
+    if (perfil.avatar) {
+      const img = document.createElement('img');
+      img.className = 'avatar-mini';
+      img.src = perfil.avatar;
+      img.alt = perfil.nombre;
+      return img;
+    }
+    const placeholder = document.createElement('span');
+    placeholder.className = 'avatar-mini avatar-placeholder';
+    placeholder.textContent = perfil.nombre.charAt(0).toUpperCase();
+    return placeholder;
+  },
+
   prefiereMenosMovimiento() {
     return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   },

@@ -6,7 +6,7 @@
       "nombre": "Estadio de la Cantera",
       "descripcion": "Tu primer partido como guardián. Resuelve los retos para ganar el partido.",
       "retos": 3,
-      "imagen": null
+      "imagen": "assets/img/estadio-cantera.webp"
     }
   ]
 }
