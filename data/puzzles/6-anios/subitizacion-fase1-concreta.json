@@ -1,0 +1,29 @@
+{
+  "id": "6-subitizacion-1-001",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "subitizacion",
+  "fase_cpa": 1,
+  "edad": "6-anios",
+  "estrategia": "reconocer_patron",
+  "enunciado": {
+    "texto": "⚽⚽⚽ ¿Cuántos balones ves? Intenta saberlo sin contarlos uno a uno.",
+    "voz": "Mira el grupo de balones de un solo vistazo, sin contarlos."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      { "id": "a", "texto": "2" },
+      { "id": "b", "texto": "3" },
+      { "id": "c", "texto": "4" },
+      { "id": "d", "texto": "5" }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    { "nivel": 1, "tipo": "visual", "texto": "Fíjate en el grupo de balones de un solo vistazo." },
+    { "nivel": 2, "tipo": "procedimiento", "texto": "¿Son menos balones que los dedos de una mano?" },
+    { "nivel": 3, "tipo": "guiada", "texto": "Hay 2 balones juntos y 1 más. 2 y 1 más, ¿cuánto es?" }
+  ],
+  "nota": "T3.1: subitizacion fase concreta. Cantidad pequeña (3) para reconocer de un vistazo."
+}

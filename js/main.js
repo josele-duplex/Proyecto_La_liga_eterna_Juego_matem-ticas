@@ -1,27 +1,31 @@
 // Arranca el juego y conecta las piezas (engine, progression, storage, ui, audio, assessment).
 
 const PERFILES = [
-  { id: 'pepe', nombre: 'Pepe', avatar: 'assets/img/avatar-pepe.webp' },
-  { id: 'bruno', nombre: 'Bruno', avatar: 'assets/img/avatar-bruno.webp' },
-  { id: 'david', nombre: 'David', avatar: 'assets/img/avatar-david.webp' },
-  { id: 'invitado-1', nombre: 'Invitado 1' },
-  { id: 'invitado-2', nombre: 'Invitado 2' },
-  { id: 'invitado-3', nombre: 'Invitado 3' }
+  { id: 'pepe', nombre: 'Pepe', avatar: 'assets/img/avatar-pepe.webp', edad: '8-anios' },
+  { id: 'bruno', nombre: 'Bruno', avatar: 'assets/img/avatar-bruno.webp', edad: '6-anios' },
+  { id: 'david', nombre: 'David', avatar: 'assets/img/avatar-david.webp', edad: '6-anios' },
+  { id: 'invitado-1', nombre: 'Invitado 1', edad: '8-anios' },
+  { id: 'invitado-2', nombre: 'Invitado 2', edad: '8-anios' },
+  { id: 'invitado-3', nombre: 'Invitado 3', edad: '8-anios' }
 ];
 
 // Nombres bonitos para mostrar el concepto en pantalla.
 const NOMBRES_CONCEPTO = {
   descomposicion: 'descomposición',
-  recta_numerica: 'recta numérica'
+  recta_numerica: 'recta numérica',
+  subitizacion: 'reconocer cantidades',
+  comparar: 'comparar',
+  completar_diez: 'completar diez'
 };
 
-let indice = null;
+let indicesPorEdad = {};
 let calendario = null;
 let recompensas = null;
 
 async function arrancar() {
   Sonido.cargarPreferencia();
-  indice = await (await fetch('data/puzzles/8-anios/indice.json')).json();
+  indicesPorEdad['6-anios'] = await (await fetch('data/puzzles/6-anios/indice.json')).json();
+  indicesPorEdad['8-anios'] = await (await fetch('data/puzzles/8-anios/indice.json')).json();
   calendario = await (await fetch('data/estadios.json')).json();
   recompensas = await (await fetch('data/recompensas.json')).json();
 
@@ -113,6 +117,8 @@ async function jugarReto(perfilId, estadio, sesion) {
   limpiarPantalla();
   mostrarBarraPerfil(perfilId, { mostrarVolver: true });
 
+  const perfil = PERFILES.find((p) => p.id === perfilId);
+  const indice = indicesPorEdad[perfil.edad];
   const progreso = Storage.cargarProgreso(perfilId);
   const entrada = Progression.siguiente(progreso, indice);
   const puzzle = await (await fetch(entrada.ruta)).json();

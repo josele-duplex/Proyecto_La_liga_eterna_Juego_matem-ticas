@@ -1,0 +1,27 @@
+{
+  "id": "6-comparar-3-001",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "comparar",
+  "fase_cpa": 3,
+  "edad": "6-anios",
+  "estrategia": "comparar_cantidades",
+  "enunciado": {
+    "texto": "¿Cuál número es mayor: 6 o 4?",
+    "voz": "Sin dibujos esta vez. ¿Cuál de estos dos números es mayor?"
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      { "id": "a", "texto": "6" },
+      { "id": "b", "texto": "4" }
+    ],
+    "correcta": "a"
+  },
+  "pistas": [
+    { "nivel": 1, "tipo": "visual", "texto": "Imagina 6 balones en fila y 4 balones en otra fila." },
+    { "nivel": 2, "tipo": "procedimiento", "texto": "¿Qué fila sería más larga, la de 6 o la de 4?" },
+    { "nivel": 3, "tipo": "guiada", "texto": "Cuenta hacia delante: 4, 5, 6. El último número al contar es el mayor." }
+  ],
+  "nota": "T3.1: comparar fase abstracta. Solo numeros, sin apoyo visual."
+}

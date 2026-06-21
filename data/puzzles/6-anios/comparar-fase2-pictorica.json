@@ -1,0 +1,27 @@
+{
+  "id": "6-comparar-2-001",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "comparar",
+  "fase_cpa": 2,
+  "edad": "6-anios",
+  "estrategia": "comparar_cantidades",
+  "enunciado": {
+    "texto": "Equipo Azul: 🔵🔵🔵🔵 Equipo Rojo: 🔴🔴🔴 ¿Qué equipo tiene menos jugadores?",
+    "voz": "Esta vez busca el equipo con menos jugadores."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      { "id": "a", "texto": "Equipo Azul" },
+      { "id": "b", "texto": "Equipo Rojo" }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    { "nivel": 1, "tipo": "visual", "texto": "Compara los dos grupos. ¿Cuál parece más pequeño?" },
+    { "nivel": 2, "tipo": "procedimiento", "texto": "Cuenta cada equipo: Azul y Rojo." },
+    { "nivel": 3, "tipo": "guiada", "texto": "El Azul tiene 4. El Rojo tiene 3. ¿Cuál número es más pequeño?" }
+  ],
+  "nota": "T3.1: comparar fase pictorica. Ahora se pregunta por el menor, y la diferencia es mas ajustada (4 vs 3)."
+}

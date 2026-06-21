@@ -1,0 +1,23 @@
+{
+  "id": "6-completar-diez-2-001",
+  "version": 1,
+  "tipo": "recta_numerica",
+  "concepto": "completar_diez",
+  "fase_cpa": 2,
+  "edad": "6-anios",
+  "estrategia": "completar_diez",
+  "enunciado": {
+    "texto": "Ya tienes 7. Toca el número al que llegas si avanzas 3 pasos más.",
+    "voz": "Empieza en el 7 y avanza 3 pasos. ¿A qué número llegas?"
+  },
+  "datos": {
+    "recta": { "desde": 0, "hasta": 10, "paso": 1 }
+  },
+  "respuesta": { "valor_correcto": 10 },
+  "pistas": [
+    { "nivel": 1, "tipo": "visual", "texto": "Busca el número 7 en la recta." },
+    { "nivel": 2, "tipo": "procedimiento", "texto": "Desde el 7, cuenta 3 pasos hacia la derecha: 8, 9, 10." },
+    { "nivel": 3, "tipo": "guiada", "texto": "7 más 3, ¿qué número es?" }
+  ],
+  "nota": "T3.1: completar_diez fase pictorica (6 anios), usa recta_numerica (mismo tipo que en 8 anios)."
+}

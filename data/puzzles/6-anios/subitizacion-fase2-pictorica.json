@@ -1,0 +1,29 @@
+{
+  "id": "6-subitizacion-2-001",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "subitizacion",
+  "fase_cpa": 2,
+  "edad": "6-anios",
+  "estrategia": "reconocer_patron",
+  "enunciado": {
+    "texto": "⚽⚽ ⚽⚽ Los balones están en dos grupos de 2. ¿Cuántos hay en total?",
+    "voz": "Los balones están agrupados de dos en dos. Cuenta los grupos."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      { "id": "a", "texto": "3" },
+      { "id": "b", "texto": "4" },
+      { "id": "c", "texto": "5" },
+      { "id": "d", "texto": "6" }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    { "nivel": 1, "tipo": "visual", "texto": "Hay dos grupos, y cada grupo tiene 2 balones." },
+    { "nivel": 2, "tipo": "procedimiento", "texto": "2 y 2 más, ¿cuánto es?" },
+    { "nivel": 3, "tipo": "guiada", "texto": "Si tienes 2 en una mano y 2 en la otra, ¿cuántos tienes en total?" }
+  ],
+  "nota": "T3.1: subitizacion fase pictorica. Patron agrupado (2+2) en vez de cantidad suelta."
+}

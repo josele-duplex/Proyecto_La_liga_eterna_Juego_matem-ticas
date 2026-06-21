@@ -1,0 +1,29 @@
+{
+  "id": "6-subitizacion-3-001",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "subitizacion",
+  "fase_cpa": 3,
+  "edad": "6-anios",
+  "estrategia": "reconocer_patron",
+  "enunciado": {
+    "texto": "Piensa en 5 balones. Si quito 1, ¿cuántos quedan?",
+    "voz": "Imagina 5 balones. Quitamos uno. ¿Cuántos quedan?"
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      { "id": "a", "texto": "3" },
+      { "id": "b", "texto": "4" },
+      { "id": "c", "texto": "5" },
+      { "id": "d", "texto": "6" }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    { "nivel": 1, "tipo": "visual", "texto": "Imagina los 5 balones en fila." },
+    { "nivel": 2, "tipo": "procedimiento", "texto": "Quita uno de la fila. ¿Cuántos quedan en la fila?" },
+    { "nivel": 3, "tipo": "guiada", "texto": "5 menos 1, ¿cuánto es?" }
+  ],
+  "nota": "T3.1: subitizacion fase abstracta. Sin apoyo visual, solo con el numero."
+}
