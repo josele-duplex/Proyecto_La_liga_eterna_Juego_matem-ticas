@@ -1,145 +1,350 @@
-/* Estilos de Liga Eterna: Los Guardianes del Juego */
+/* Estilos de Liga Eterna: Los Guardianes del Juego
+   Dirección de arte (guía de estilo del usuario): app de fútbol cálida y premium, lectura
+   instantánea en tablet, color con función, error en naranja (no rojo). Todo el aspecto se
+   controla con los tokens de :root y las clases de tema; el motor y la lógica nunca fijan color. */
 
-/* --- Tokens de diseño: cambiar aquí cambia todo el aspecto, nunca en cada componente. --- */
+/* ============================================================
+   1. Tokens de diseño — cambiar aquí cambia todo el aspecto.
+   ============================================================ */
 :root {
-  --color-fondo: #f7f9fb;
+  /* Color base (lo redefinen los temas por zona más abajo). */
+  --color-fondo-a: #eaf3ff;
+  --color-fondo-b: #e7f7ee;
   --color-texto: #1c2530;
+  --color-texto-suave: #5b6672;
   --color-primario: #1565c0;
   --color-primario-oscuro: #0d47a1;
-  --color-exito-fondo: #c8f0c8;
+  --color-superficie: #ffffff;
+
+  /* Estados (comunes a todos los temas). */
+  --color-exito-fondo: #d8f5d8;
   --color-exito-borde: #2e7d32;
-  --color-exito-texto: #2e7d32;
-  --color-reintenta-fondo: #ffe0b2;
+  --color-exito-texto: #1e6522;
+  --color-reintenta-fondo: #ffe7c2;
   --color-reintenta-borde: #ff9100;
-  --color-reintenta-texto: #e65100;
+  --color-reintenta-texto: #c2561a;
   --color-pista-fondo: #fff6d6;
   --color-pista-borde: #f0c000;
 
-  --fuente-principal: system-ui, -apple-system, "Segoe UI", sans-serif;
-  --radio-borde: 10px;
+  /* Forma y profundidad. */
+  --fuente-principal: "Nunito", "Baloo 2", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --radio: 16px;
+  --radio-grande: 22px;
+  --radio-pildora: 999px;
   --espacio: 1rem;
+  --sombra-suave: 0 6px 18px rgba(20, 40, 70, 0.10);
+  --sombra-media: 0 10px 28px rgba(20, 40, 70, 0.16);
+  --sombra-boton: 0 4px 0 rgba(0, 0, 0, 0.12);
+  --borde-sutil: 1px solid rgba(20, 40, 70, 0.08);
 }
 
-/* Tema "mundo": calendario y selección de jugador. Verde césped + azul deportivo. */
+/* Tema "mundo": calendario y selección. Verde césped + azul deportivo. */
 body.tema-mundo {
   --color-primario: #1a7a3c;
   --color-primario-oscuro: #145c2d;
+  --color-fondo-a: #e7f7ee;
+  --color-fondo-b: #dcefff;
 }
 
-/* Tema "mate": mientras se juega un puzle. Azules/turquesas, más "holográfico". */
+/* Tema "mate": mientras se juega un puzle. Azules/turquesas, foco y claridad. */
 body.tema-mate {
   --color-primario: #2979ff;
   --color-primario-oscuro: #1c54b2;
+  --color-fondo-a: #e3f1ff;
+  --color-fondo-b: #e2fbf4;
 }
 
-/* Tema "recompensa": pantalla de partido ganado. Dorado/naranja de celebración. */
+/* Tema "recompensa": partido ganado. Dorado/naranja de celebración. */
 body.tema-recompensa {
   --color-primario: #ff9100;
   --color-primario-oscuro: #c66900;
-  --color-exito-texto: #c66900;
+  --color-exito-texto: #b8590f;
+  --color-fondo-a: #fff3d6;
+  --color-fondo-b: #ffe6c2;
 }
+
+/* ============================================================
+   2. Estructura general (marco de la app).
+   ============================================================ */
+* { box-sizing: border-box; }
 
 body {
   font-family: var(--fuente-principal);
-  background-color: var(--color-fondo);
   color: var(--color-texto);
-  margin: 2rem;
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(160deg, var(--color-fondo-a), var(--color-fondo-b));
+  background-attachment: fixed;
+  -webkit-text-size-adjust: 100%;
+  transition: background 0.4s ease;
 }
 
-.enunciado {
-  font-size: 1.4rem;
-}
-
-.opciones {
+.marco {
+  max-width: 760px;
+  margin: 0 auto;
+  min-height: 100vh;
+  padding: 1rem 1.1rem 2.5rem;
   display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Lienzo: la tarjeta principal donde vive cada pantalla. */
+.lienzo {
+  background: var(--color-superficie);
+  border-radius: var(--radio-grande);
+  box-shadow: var(--sombra-suave);
+  border: var(--borde-sutil);
+  padding: 1.4rem 1.3rem 1.6rem;
+}
+
+/* ============================================================
+   3. Barra superior (marcador / perfil).
+   ============================================================ */
+.barra-perfil:empty { display: none; }
+
+.barra-perfil {
+  display: flex;
+  align-items: center;
   flex-wrap: wrap;
-  gap: var(--espacio);
+  gap: 0.5rem;
+  background: var(--color-superficie);
+  border-radius: var(--radio-pildora);
+  box-shadow: var(--sombra-suave);
+  border: var(--borde-sutil);
+  padding: 0.5rem 0.8rem;
+}
+
+.barra-perfil > span {
+  font-weight: 700;
+  color: var(--color-texto);
+}
+
+/* Botones secundarios de la barra (cambiar equipo/jugador): píldoras discretas. */
+.barra-perfil button {
+  font-family: inherit;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 0.4rem 0.9rem;
+  border: 2px solid rgba(20, 40, 70, 0.12);
+  background: #fff;
+  color: var(--color-primario-oscuro);
+  border-radius: var(--radio-pildora);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, transform 0.05s ease;
+}
+
+.barra-perfil button:hover { background: #f2f6fb; border-color: var(--color-primario); }
+.barra-perfil button:active { transform: scale(0.96); }
+
+/* El botón de sonido y el de cambiar jugador se empujan a la derecha. */
+.barra-perfil .boton-sonido { margin-left: auto; }
+
+.icono-insignia {
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 50%;
+  object-fit: cover;
+  vertical-align: middle;
+  margin-right: 0.15rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
+}
+
+/* Marcador inferior: "Reto 1 de 3 · concepto · fase 2". */
+.marcador {
+  margin: 0;
+  text-align: center;
+  font-weight: 700;
+  color: var(--color-texto-suave);
+  letter-spacing: 0.02em;
+}
+
+.marcador:not(:empty) {
+  background: var(--color-superficie);
+  border-radius: var(--radio-pildora);
+  box-shadow: var(--sombra-suave);
+  border: var(--borde-sutil);
+  padding: 0.55rem 1rem;
+}
+
+/* ============================================================
+   4. Tipografía de contenido.
+   ============================================================ */
+.enunciado {
+  font-size: 1.55rem;
+  font-weight: 800;
+  line-height: 1.25;
+  margin: 0.2rem 0 1rem;
+  color: var(--color-texto);
+}
+
+/* ============================================================
+   5. Botón primario (jugar, siguiente, elegir...).
+   ============================================================ */
+.boton-siguiente {
+  font-family: inherit;
+  font-size: 1.15rem;
+  font-weight: 800;
+  padding: 0.85rem 1.5rem;
+  margin-top: var(--espacio);
+  background: linear-gradient(180deg, var(--color-primario), var(--color-primario-oscuro));
+  color: #fff;
+  border: none;
+  border-radius: var(--radio-pildora);
+  box-shadow: var(--sombra-boton);
+  cursor: pointer;
+  transition: transform 0.06s ease, filter 0.15s ease;
+}
+
+.boton-siguiente:hover { filter: brightness(1.06); }
+.boton-siguiente:active { transform: translateY(2px); box-shadow: 0 2px 0 rgba(0, 0, 0, 0.12); }
+
+/* Botón "escuchar al entrenador": secundario, contorneado. */
+.boton-voz {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 700;
+  padding: 0.55rem 1.1rem;
+  background: #fff;
+  border: 2px solid var(--color-primario);
+  color: var(--color-primario-oscuro);
+  border-radius: var(--radio-pildora);
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.05s ease;
+}
+
+.boton-voz:hover { background: #f2f6fb; }
+.boton-voz:active { transform: scale(0.97); }
+
+.boton-sonido {
+  font-size: 1.2rem;
+  padding: 0.3rem 0.55rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  line-height: 1;
+}
+
+/* ============================================================
+   6. Opciones de respuesta (opción múltiple).
+   ============================================================ */
+.opciones {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr));
+  gap: 0.8rem;
   margin-top: var(--espacio);
 }
 
 .opcion {
-  font-size: 1.2rem;
-  padding: 0.8rem 1.5rem;
-  border-radius: var(--radio-borde);
+  font-family: inherit;
+  font-size: 1.5rem;
+  font-weight: 800;
+  padding: 1.1rem 1rem;
+  min-height: 4.2rem;
+  background: #fff;
+  color: var(--color-texto);
+  border: 2.5px solid rgba(20, 40, 70, 0.14);
+  border-radius: var(--radio);
+  cursor: pointer;
+  transition: transform 0.06s ease, border-color 0.15s ease, background 0.15s ease;
 }
+
+.opcion:hover:not(:disabled) { border-color: var(--color-primario); background: #f6faff; }
+.opcion:active:not(:disabled) { transform: scale(0.97); }
 
 .opcion-correcta {
-  background-color: var(--color-exito-fondo);
+  background: var(--color-exito-fondo);
   border-color: var(--color-exito-borde);
-}
-
-.opcion-incorrecta {
-  background-color: var(--color-reintenta-fondo);
-  border-color: var(--color-reintenta-borde);
-}
-
-.feedback {
-  font-size: 1.2rem;
-  margin-top: var(--espacio);
-}
-
-.feedback-correcto {
   color: var(--color-exito-texto);
 }
 
-.feedback-incorrecto {
+.opcion-incorrecta {
+  background: var(--color-reintenta-fondo);
+  border-color: var(--color-reintenta-borde);
   color: var(--color-reintenta-texto);
 }
 
-.zona-pistas {
-  margin-top: var(--espacio);
-}
-
-.boton-pista {
-  font-size: 1rem;
-  padding: 0.5rem 1rem;
-}
-
-.pista {
-  font-size: 1.1rem;
-  background-color: var(--color-pista-fondo);
-  border-left: 4px solid var(--color-pista-borde);
-  padding: 0.6rem 0.9rem;
-  margin: 0.5rem 0 0;
-}
-
+/* ============================================================
+   7. Recta numérica (césped táctico).
+   ============================================================ */
 .recta-numerica {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.3rem;
+  gap: 0.4rem;
   margin-top: var(--espacio);
+  padding: 0.9rem;
+  border-radius: var(--radio);
+  background:
+    repeating-linear-gradient(90deg, #1a7a3c 0 38px, #1c8442 38px 76px);
+  box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.18);
 }
 
 .punto-recta {
-  font-size: 1rem;
-  padding: 0.5rem 0.7rem;
-  min-width: 2.2rem;
+  font-family: inherit;
+  font-size: 1.15rem;
+  font-weight: 800;
+  padding: 0.55rem 0.7rem;
+  min-width: 2.6rem;
+  min-height: 2.8rem;
+  background: rgba(255, 255, 255, 0.92);
+  color: var(--color-texto);
+  border: 2px solid rgba(255, 255, 255, 0.6);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: transform 0.06s ease, background 0.15s ease;
 }
 
-.boton-siguiente {
+.punto-recta:hover:not(:disabled) { background: #fff; transform: translateY(-2px); }
+.punto-recta:active:not(:disabled) { transform: scale(0.95); }
+.punto-recta.opcion-correcta { background: var(--color-exito-fondo); border-color: var(--color-exito-borde); }
+.punto-recta.opcion-incorrecta { background: var(--color-reintenta-fondo); border-color: var(--color-reintenta-borde); }
+
+/* ============================================================
+   8. Feedback y pistas.
+   ============================================================ */
+.feedback {
   font-size: 1.2rem;
-  padding: 0.7rem 1.4rem;
+  font-weight: 800;
   margin-top: var(--espacio);
-  background-color: var(--color-primario);
-  color: #fff;
-  border: none;
-  border-radius: var(--radio-borde);
+  min-height: 1.4rem;
 }
 
-.boton-voz {
+.feedback-correcto { color: var(--color-exito-texto); }
+.feedback-incorrecto { color: var(--color-reintenta-texto); }
+
+.zona-pistas { margin-top: var(--espacio); }
+
+.boton-pista {
+  font-family: inherit;
   font-size: 1rem;
-  padding: 0.5rem 1rem;
-  margin-bottom: var(--espacio);
-  background: none;
-  border: 2px solid var(--color-primario);
-  color: var(--color-primario-oscuro);
-  border-radius: var(--radio-borde);
+  font-weight: 700;
+  padding: 0.55rem 1.1rem;
+  background: var(--color-pista-fondo);
+  border: 2px solid var(--color-pista-borde);
+  color: #8a6d00;
+  border-radius: var(--radio-pildora);
+  cursor: pointer;
 }
 
+.boton-pista:disabled { opacity: 0.6; cursor: default; }
+
+.pista {
+  font-size: 1.1rem;
+  font-weight: 600;
+  background: var(--color-pista-fondo);
+  border-left: 5px solid var(--color-pista-borde);
+  border-radius: 10px;
+  padding: 0.7rem 1rem;
+  margin: 0.6rem 0 0;
+}
+
+/* ============================================================
+   9. Tarjetas: calendario, estadios, modos.
+   ============================================================ */
 .calendario {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--espacio);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+  gap: 1rem;
   margin-top: var(--espacio);
 }
 
@@ -147,132 +352,157 @@ body {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  border: 2px solid var(--color-primario);
-  border-radius: var(--radio-borde);
-  padding: 1rem 1.2rem;
-  max-width: 22rem;
+  background: #fff;
+  border: var(--borde-sutil);
+  border-radius: var(--radio);
+  padding: 1.1rem 1.2rem 1.2rem;
+  box-shadow: var(--sombra-suave);
+  transition: transform 0.12s ease, box-shadow 0.12s ease;
 }
+
+.estadio:hover { transform: translateY(-3px); box-shadow: var(--sombra-media); }
 
 .estadio h2 {
   margin: 0 0 0.4rem;
+  font-size: 1.3rem;
   color: var(--color-primario-oscuro);
 }
 
-.estadio-bloqueado {
-  border-color: #9aa3ab;
-  opacity: 0.7;
-}
+.estadio p { margin: 0 0 0.8rem; color: var(--color-texto-suave); line-height: 1.35; }
+.estadio .boton-siguiente { margin-top: auto; align-self: stretch; }
 
-.estadio-bloqueado h2 {
-  color: #6b7280;
-}
+.estadio-bloqueado { opacity: 0.72; box-shadow: none; }
+.estadio-bloqueado:hover { transform: none; box-shadow: none; }
+.estadio-bloqueado h2 { color: #6b7280; }
+.aviso-bloqueado { font-style: italic; color: #6b7280; margin-top: auto; }
 
-.aviso-bloqueado {
-  font-style: italic;
-  color: #6b7280;
-}
-
-.estadio p {
-  margin: 0 0 0.6rem;
-}
-
-/* Escudo de estadio: usa <img> si hay imagen, o esta inicial generada si no. */
+/* Escudo de estadio: <img> si hay imagen, o inicial generada si no. */
 .escudo-estadio {
-  width: 3rem;
-  height: 3rem;
+  width: 3.4rem;
+  height: 3.4rem;
   border-radius: 50%;
-  margin-bottom: 0.6rem;
+  margin-bottom: 0.7rem;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
 }
 
 .escudo-placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-primario);
+  background: linear-gradient(180deg, var(--color-primario), var(--color-primario-oscuro));
   color: #fff;
-  font-size: 1.4rem;
-  font-weight: bold;
+  font-size: 1.6rem;
+  font-weight: 800;
 }
 
+/* ============================================================
+   10. Selector de jugador (avatares).
+   ============================================================ */
 .boton-perfil {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.5rem;
+  background: #fff;
+  border: 2.5px solid rgba(20, 40, 70, 0.12);
+  border-radius: var(--radio);
+  padding: 0.9rem 0.8rem;
+  font-family: inherit;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--color-texto);
+  cursor: pointer;
+  transition: transform 0.1s ease, border-color 0.15s ease, box-shadow 0.12s ease;
 }
 
+.boton-perfil:hover { border-color: var(--color-primario); transform: translateY(-3px); box-shadow: var(--sombra-media); }
+.boton-perfil:active { transform: scale(0.97); }
+
 .avatar-perfil {
-  width: 80px;
-  height: 104px;
+  width: 92px;
+  height: 120px;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .avatar-mini {
-  width: 2rem;
-  height: 2rem;
+  width: 2.3rem;
+  height: 2.3rem;
   object-fit: cover;
   border-radius: 50%;
-  margin-right: 0.4rem;
-  vertical-align: middle;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
 .avatar-placeholder {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: var(--color-primario);
+  background: linear-gradient(180deg, var(--color-primario), var(--color-primario-oscuro));
   color: #fff;
-  font-weight: bold;
+  font-weight: 800;
 }
 
+/* ============================================================
+   11. Fila de Capi (voz del entrenador).
+   ============================================================ */
 .fila-voz {
   display: flex;
   align-items: center;
-  gap: 0.6rem;
+  gap: 0.7rem;
   margin-bottom: var(--espacio);
+  padding: 0.5rem 0.7rem;
+  background: #f4f8ff;
+  border-radius: var(--radio-pildora);
+  border: var(--borde-sutil);
 }
 
 .avatar-capi {
-  width: 2.6rem;
-  height: 2.6rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
   object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
 }
 
-.boton-sonido {
-  font-size: 1.1rem;
-  padding: 0.3rem 0.6rem;
-  background: none;
-  border: none;
-  cursor: pointer;
-}
+/* ============================================================
+   12. Celebración (confeti) y movimiento reducido.
+   ============================================================ */
+.zona-siguiente:empty { display: none; }
 
-/* Confeti de celebración: unos cuantos cuadraditos cayendo, breve y discreto. */
-.confeti {
-  position: relative;
-  height: 0;
-}
+.confeti { position: relative; height: 0; }
 
 .confeti span {
   position: absolute;
   top: -1rem;
-  width: 0.5rem;
-  height: 0.5rem;
-  animation: caer-confeti 1.2s ease-in forwards;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 2px;
+  animation: caer-confeti 1.3s ease-in forwards;
 }
 
 @keyframes caer-confeti {
-  to {
-    transform: translateY(4rem) rotate(180deg);
-    opacity: 0;
-  }
+  to { transform: translateY(5rem) rotate(220deg); opacity: 0; }
 }
 
-/* Quien pida menos movimiento no recibe animaciones de transición ni confeti. */
+/* Aparición suave de cada pantalla. */
+.lienzo, .estadio { animation: aparecer 0.28s ease both; }
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
 @media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition: none !important;
-  }
+  * { animation: none !important; transition: none !important; }
+}
+
+/* ============================================================
+   13. Ajustes para pantallas pequeñas (móvil).
+   ============================================================ */
+@media (max-width: 480px) {
+  .enunciado { font-size: 1.35rem; }
+  .opcion { font-size: 1.3rem; }
+  .marco { padding: 0.7rem 0.7rem 2rem; }
+  .lienzo { padding: 1.1rem 1rem 1.3rem; }
 }
