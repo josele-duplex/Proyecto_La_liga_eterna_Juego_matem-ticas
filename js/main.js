@@ -52,6 +52,9 @@ const NOMBRES_CONCEPTO = {
 let indicesPorEdad = {};
 let calendario = null;
 let recompensas = null;
+// Si el jugador acaba de desbloquear un equipo superior por ir sobrado, lo guardamos aquí para
+// sugerírselo al terminar el partido (un buen momento de pausa, no a mitad de un reto).
+let modoRecienDesbloqueado = null;
 
 async function arrancar() {
   Sonido.cargarPreferencia();
@@ -78,11 +81,28 @@ function modoDe(perfilId) {
 }
 
 // Un modo está disponible si no necesita desbloqueo, o si el jugador ya lo ha desbloqueado.
-// El disparador que desbloquea (dominar el modo anterior por repetición o rapidez) llegará en T3.3.
 function modoDesbloqueado(perfilId, modo) {
   if (!modo.desbloqueadoPor) return true;
   const progreso = Storage.cargarProgreso(perfilId);
   return (progreso.modosDesbloqueados || []).includes(modo.id);
+}
+
+// Tras una jugada: si el jugador va sobrado con su equipo actual (por repetición o rapidez) y hay
+// un equipo superior que se desbloquea con este, lo desbloquea. Modifica el progreso (lo guarda
+// quien llama) y devuelve el modo recién desbloqueado, o null si no hay nada que desbloquear ahora.
+function revisarDesbloqueo(progreso) {
+  const modoActual = MODOS.find((m) => m.id === progreso.modoId);
+  if (!modoActual) return null;
+
+  const superior = MODOS.find((m) => m.desbloqueadoPor === modoActual.id);
+  if (!superior) return null;
+
+  progreso.modosDesbloqueados = progreso.modosDesbloqueados || [];
+  if (progreso.modosDesbloqueados.includes(superior.id)) return null;
+  if (!Evaluacion.vaSobrado(progreso)) return null;
+
+  progreso.modosDesbloqueados.push(superior.id);
+  return superior;
 }
 
 // --- Pantalla 1: elegir jugador ---
@@ -235,6 +255,9 @@ async function jugarReto(perfilId, estadio, sesion) {
       const progresoActual = Storage.cargarProgreso(perfilId);
       progresoActual.ultimoPuzleId = puzzleResuelto.id;
       Progression.actualizar(progresoActual, indice, puzzleResuelto.concepto, puzzleResuelto.fase_cpa, resultado);
+      Evaluacion.registrar(progresoActual, puzzleResuelto, resultado);
+      const desbloqueado = revisarDesbloqueo(progresoActual);
+      if (desbloqueado) modoRecienDesbloqueado = desbloqueado;
       otorgarRecompensa(progresoActual, puzzleResuelto.estrategia);
       Storage.guardarProgreso(perfilId, progresoActual);
       Sonido.sonidoAcierto();
@@ -297,6 +320,28 @@ function mostrarPartidoGanado(perfilId, estadio) {
   boton.textContent = 'Volver al calendario';
   boton.addEventListener('click', () => mostrarCalendario(perfilId));
   zona.appendChild(boton);
+
+  // Si en este partido el jugador desbloqueó un equipo superior por ir sobrado, se lo sugerimos aquí.
+  if (modoRecienDesbloqueado) {
+    const modo = modoRecienDesbloqueado;
+    modoRecienDesbloqueado = null;
+
+    const aviso = document.createElement('p');
+    aviso.className = 'feedback feedback-correcto';
+    aviso.textContent = `¡Vas sobrado! Has desbloqueado el equipo ${modo.icono} ${modo.nombre}. ¿Te atreves con un reto mayor?`;
+    zona.appendChild(aviso);
+
+    const probar = document.createElement('button');
+    probar.className = 'boton-siguiente';
+    probar.textContent = `Jugar en ${modo.nombre}`;
+    probar.addEventListener('click', () => {
+      const progreso = Storage.cargarProgreso(perfilId);
+      progreso.modoId = modo.id;
+      Storage.guardarProgreso(perfilId, progreso);
+      mostrarCalendario(perfilId);
+    });
+    zona.appendChild(probar);
+  }
 
   Sonido.sonidoVictoria();
   UI.celebrarVictoria(zona);
