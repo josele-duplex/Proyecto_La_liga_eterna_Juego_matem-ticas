@@ -1,0 +1,53 @@
+{
+  "id": "8-decenas-1-002",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "decenas",
+  "fase_cpa": 1,
+  "edad": "8-anios",
+  "estrategia": "usar_valor_posicional",
+  "enunciado": {
+    "texto": "3 cajas de 10 balones y 4 sueltos. ¿Cuántos balones hay en total?",
+    "voz": "3 decenas y 4 unidades."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "24"
+      },
+      {
+        "id": "b",
+        "texto": "33"
+      },
+      {
+        "id": "c",
+        "texto": "34"
+      },
+      {
+        "id": "d",
+        "texto": "35"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Cada caja tiene 10: son 3 decenas."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "3 decenas son 30, y luego 4 sueltos."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "30 + 4 = 34."
+    }
+  ],
+  "nota": "Banco nuevo: decenas y unidades (valor posicional)."
+}

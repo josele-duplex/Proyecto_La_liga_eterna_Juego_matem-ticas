@@ -10,6 +10,12 @@
     "usar_casi_dobles": { "nombre": "As del Casi-Doble", "icono": "✨", "imagen": null },
     "multiplicar_grupos": { "nombre": "Capitán de los Grupos", "icono": "✖️", "imagen": "assets/img/insignias/insignia-multiplicar-grupos.webp" },
     "repartir_partes": { "nombre": "Repartidor Justo", "icono": "🍕", "imagen": "assets/img/insignias/insignia-repartir-partes.webp" },
-    "redondear": { "nombre": "Maestro del Redondeo", "icono": "🎯", "imagen": "assets/img/insignias/insignia-redondear.webp" }
+    "redondear": { "nombre": "Maestro del Redondeo", "icono": "🎯", "imagen": "assets/img/insignias/insignia-redondear.webp" },
+    "sumar": { "nombre": "Goleador", "icono": "⚽", "imagen": null },
+    "contar_secuencia": { "nombre": "Cuentapasos", "icono": "👣", "imagen": null },
+    "calcular_rapido": { "nombre": "Reflejos de Portero", "icono": "🧤", "imagen": null },
+    "ordenar_numeros": { "nombre": "Estratega de Alineación", "icono": "📋", "imagen": null },
+    "restar_estrategico": { "nombre": "Muro Defensivo", "icono": "🛡️", "imagen": null },
+    "usar_valor_posicional": { "nombre": "Arquitecto de Decenas", "icono": "🏛️", "imagen": null }
   }
 }

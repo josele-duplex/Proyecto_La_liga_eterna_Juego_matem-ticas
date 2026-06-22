@@ -1,0 +1,53 @@
+{
+  "id": "8-descomposicion-3-006",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "descomposicion",
+  "fase_cpa": 3,
+  "edad": "8-anios",
+  "estrategia": "completar_diez",
+  "enunciado": {
+    "texto": "¿Cuánto es 7 + 8? Apóyate en el 10.",
+    "voz": "7 más 8 pasando por el 10."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "14"
+      },
+      {
+        "id": "b",
+        "texto": "15"
+      },
+      {
+        "id": "c",
+        "texto": "16"
+      },
+      {
+        "id": "d",
+        "texto": "17"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Primero lleva el 7 hasta 10."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Quita 3 al 8 para completar la decena: 10 y lo que sobra."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "7 + 3 = 10, y 10 + 5 = 15."
+    }
+  ],
+  "nota": "Banco ampliado: descomposicion (completar la decena)."
+}

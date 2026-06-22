@@ -1,0 +1,53 @@
+{
+  "id": "8-casi-dobles-3-006",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "casi_dobles",
+  "fase_cpa": 3,
+  "edad": "8-anios",
+  "estrategia": "usar_casi_dobles",
+  "enunciado": {
+    "texto": "¿Cuánto es 8 + 9? Usa el doble de 8.",
+    "voz": "8 más 9, casi un doble."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "15"
+      },
+      {
+        "id": "b",
+        "texto": "16"
+      },
+      {
+        "id": "c",
+        "texto": "17"
+      },
+      {
+        "id": "d",
+        "texto": "18"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Fíjate: 8 y 9 casi son iguales."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Haz el doble de 8 y suma 1 más."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "8 + 8 = 16, y uno más es 17."
+    }
+  ],
+  "nota": "Banco ampliado: casi-dobles."
+}

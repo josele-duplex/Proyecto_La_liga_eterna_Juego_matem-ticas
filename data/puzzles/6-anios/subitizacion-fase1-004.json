@@ -1,0 +1,53 @@
+{
+  "id": "6-subitizacion-1-004",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "subitizacion",
+  "fase_cpa": 1,
+  "edad": "6-anios",
+  "estrategia": "reconocer_patron",
+  "enunciado": {
+    "texto": "⚽⚽ ¿Cuántos balones hay? Intenta saberlo de un vistazo, sin contar uno a uno.",
+    "voz": "Mira el grupo entero de una sola mirada."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "1"
+      },
+      {
+        "id": "b",
+        "texto": "2"
+      },
+      {
+        "id": "c",
+        "texto": "3"
+      },
+      {
+        "id": "d",
+        "texto": "4"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Mira todos los balones a la vez, no los señales uno a uno."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "¿Son más o menos que los dedos de una mano?"
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "Hay un grupo y, de un vistazo, son 2."
+    }
+  ],
+  "nota": "Banco ampliado: subitizacion concreta."
+}

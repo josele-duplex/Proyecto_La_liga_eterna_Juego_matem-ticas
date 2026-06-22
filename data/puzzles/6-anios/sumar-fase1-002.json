@@ -1,0 +1,53 @@
+{
+  "id": "6-sumar-1-002",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "sumar_hasta_diez",
+  "fase_cpa": 1,
+  "edad": "6-anios",
+  "estrategia": "sumar",
+  "enunciado": {
+    "texto": "⚽⚽⚽⚽ y ⚽⚽. ¿Cuántos balones hay en total?",
+    "voz": "4 más 2."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "5"
+      },
+      {
+        "id": "b",
+        "texto": "6"
+      },
+      {
+        "id": "c",
+        "texto": "7"
+      },
+      {
+        "id": "d",
+        "texto": "8"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Junta los dos grupos: 4 y 2."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Empieza en 4 y cuenta 2 más."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "4 + 2 = 6."
+    }
+  ],
+  "nota": "Banco nuevo: sumar hasta 10."
+}

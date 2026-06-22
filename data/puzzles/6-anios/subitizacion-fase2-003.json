@@ -1,0 +1,53 @@
+{
+  "id": "6-subitizacion-2-003",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "subitizacion",
+  "fase_cpa": 2,
+  "edad": "6-anios",
+  "estrategia": "reconocer_patron",
+  "enunciado": {
+    "texto": "Dos filas de 2 de balones. ¿Cuántos hay en total, sin contarlos de uno en uno?",
+    "voz": "Reconoce las filas de un vistazo."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "3"
+      },
+      {
+        "id": "b",
+        "texto": "4"
+      },
+      {
+        "id": "c",
+        "texto": "5"
+      },
+      {
+        "id": "d",
+        "texto": "6"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Mira la forma del grupo (las filas)."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Si son dos filas iguales, piensa en el doble."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "Son 4 balones en total."
+    }
+  ],
+  "nota": "Banco ampliado: subitizacion pictorica (patrones)."
+}

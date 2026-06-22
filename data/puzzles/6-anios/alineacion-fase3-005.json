@@ -1,0 +1,47 @@
+{
+  "id": "6-alineacion-3-005",
+  "version": 1,
+  "tipo": "ordenar",
+  "concepto": "alineacion",
+  "fase_cpa": 3,
+  "edad": "6-anios",
+  "estrategia": "ordenar_numeros",
+  "enunciado": {
+    "texto": "Alineación: toca los números de menor a mayor para ordenar al equipo.",
+    "voz": "Ordena tocando del más pequeño al más grande."
+  },
+  "datos": {
+    "numeros": [
+      7,
+      3,
+      9,
+      1
+    ]
+  },
+  "respuesta": {
+    "orden": [
+      1,
+      3,
+      7,
+      9
+    ]
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Empieza por el número más pequeño."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Cada vez, busca el menor de los que quedan."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "El más pequeño es 1; sigue subiendo desde ahí."
+    }
+  ],
+  "nota": "Banco nuevo: ordenar de menor a mayor."
+}

@@ -1,0 +1,53 @@
+{
+  "id": "6-sumar-3-009",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "sumar_hasta_diez",
+  "fase_cpa": 3,
+  "edad": "6-anios",
+  "estrategia": "sumar",
+  "enunciado": {
+    "texto": "¿Cuánto es 3 + 5?",
+    "voz": "3 más 5."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "7"
+      },
+      {
+        "id": "b",
+        "texto": "8"
+      },
+      {
+        "id": "c",
+        "texto": "9"
+      },
+      {
+        "id": "d",
+        "texto": "10"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Junta los dos grupos: 3 y 5."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Empieza en 3 y cuenta 5 más."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "3 + 5 = 8."
+    }
+  ],
+  "nota": "Banco nuevo: sumar hasta 10."
+}

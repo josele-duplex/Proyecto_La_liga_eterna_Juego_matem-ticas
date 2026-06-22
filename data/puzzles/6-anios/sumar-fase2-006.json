@@ -1,0 +1,53 @@
+{
+  "id": "6-sumar-2-006",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "sumar_hasta_diez",
+  "fase_cpa": 2,
+  "edad": "6-anios",
+  "estrategia": "sumar",
+  "enunciado": {
+    "texto": "Un grupo de 6 balones y otro de 2. ¿Cuántos son en total?",
+    "voz": "6 más 2."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "7"
+      },
+      {
+        "id": "b",
+        "texto": "8"
+      },
+      {
+        "id": "c",
+        "texto": "9"
+      },
+      {
+        "id": "d",
+        "texto": "10"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Junta los dos grupos: 6 y 2."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Empieza en 6 y cuenta 2 más."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "6 + 2 = 8."
+    }
+  ],
+  "nota": "Banco nuevo: sumar hasta 10."
+}

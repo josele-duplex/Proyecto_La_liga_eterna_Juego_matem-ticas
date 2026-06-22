@@ -1,0 +1,35 @@
+{
+  "id": "8-relampago-2-004",
+  "version": 1,
+  "tipo": "verdadero_falso",
+  "concepto": "relampago",
+  "fase_cpa": 2,
+  "edad": "8-anios",
+  "estrategia": "calcular_rapido",
+  "enunciado": {
+    "texto": "⚡ Relámpago: ¿es verdad que 9 + 7 = 15?",
+    "voz": "¿9 más 7 es 15?"
+  },
+  "datos": {},
+  "respuesta": {
+    "correcta": false
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Calcula 9 + 7 rápido."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Suma 9 y 7."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "9 + 7 = 16. ¿Es 15?"
+    }
+  ],
+  "nota": "Banco nuevo: relampago verdadero/falso (8)."
+}

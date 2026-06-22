@@ -1,0 +1,53 @@
+{
+  "id": "8-restar-1-002",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "restar",
+  "fase_cpa": 1,
+  "edad": "8-anios",
+  "estrategia": "restar_estrategico",
+  "enunciado": {
+    "texto": "Tenías 9 balones y se escapan 4. ¿Cuántos te quedan? (⚽⚽⚽⚽⚽⚽⚽⚽...)",
+    "voz": "9 menos 4."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "3"
+      },
+      {
+        "id": "b",
+        "texto": "4"
+      },
+      {
+        "id": "c",
+        "texto": "5"
+      },
+      {
+        "id": "d",
+        "texto": "6"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Parte de 9 y quita 4."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Cuenta hacia atrás 4 desde 9 (o baja al 10 primero)."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "9 - 4 = 5."
+    }
+  ],
+  "nota": "Banco nuevo: restar con estrategia."
+}

@@ -1,0 +1,45 @@
+{
+  "id": "6-comparar-3-005",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "comparar",
+  "fase_cpa": 3,
+  "edad": "6-anios",
+  "estrategia": "comparar_cantidades",
+  "enunciado": {
+    "texto": "¿Qué número es menor: 3 o 8?",
+    "voz": "Decide cuál es menor."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "3"
+      },
+      {
+        "id": "b",
+        "texto": "8"
+      }
+    ],
+    "correcta": "a"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Imagina los dos números en la recta: uno está más lejos."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "El menor está más a la izquierda."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "Entre 3 y 8, el menor es 3."
+    }
+  ],
+  "nota": "Banco ampliado: comparar abstracta."
+}

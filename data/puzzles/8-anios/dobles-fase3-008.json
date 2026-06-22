@@ -1,0 +1,53 @@
+{
+  "id": "8-dobles-3-008",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "dobles",
+  "fase_cpa": 3,
+  "edad": "8-anios",
+  "estrategia": "usar_dobles",
+  "enunciado": {
+    "texto": "¿Cuánto es el doble de 4? (4 + 4)",
+    "voz": "El doble de 4."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "6"
+      },
+      {
+        "id": "b",
+        "texto": "7"
+      },
+      {
+        "id": "c",
+        "texto": "8"
+      },
+      {
+        "id": "d",
+        "texto": "9"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Son dos grupos iguales de 4."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "El doble de 4 es 4 + 4."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "4 + 4 = 8."
+    }
+  ],
+  "nota": "Banco ampliado: dobles."
+}

@@ -1,0 +1,53 @@
+{
+  "id": "8-descomposicion-1-002",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "descomposicion",
+  "fase_cpa": 1,
+  "edad": "8-anios",
+  "estrategia": "completar_diez",
+  "enunciado": {
+    "texto": "Tienes 7 balones y llegan 5 más. Completa primero la decena. ¿Cuántos hay en total?",
+    "voz": "7 más 5 pasando por el 10."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "11"
+      },
+      {
+        "id": "b",
+        "texto": "12"
+      },
+      {
+        "id": "c",
+        "texto": "13"
+      },
+      {
+        "id": "d",
+        "texto": "14"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Primero lleva el 7 hasta 10."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Quita 3 al 5 para completar la decena: 10 y lo que sobra."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "7 + 3 = 10, y 10 + 2 = 12."
+    }
+  ],
+  "nota": "Banco ampliado: descomposicion (completar la decena)."
+}

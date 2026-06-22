@@ -1,0 +1,53 @@
+{
+  "id": "8-restar-3-007",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "restar",
+  "fase_cpa": 3,
+  "edad": "8-anios",
+  "estrategia": "restar_estrategico",
+  "enunciado": {
+    "texto": "¿Cuánto es 11 - 4?",
+    "voz": "11 menos 4."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "5"
+      },
+      {
+        "id": "b",
+        "texto": "6"
+      },
+      {
+        "id": "c",
+        "texto": "7"
+      },
+      {
+        "id": "d",
+        "texto": "8"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Parte de 11 y quita 4."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Cuenta hacia atrás 4 desde 11 (o baja al 10 primero)."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "11 - 4 = 7."
+    }
+  ],
+  "nota": "Banco nuevo: restar con estrategia."
+}

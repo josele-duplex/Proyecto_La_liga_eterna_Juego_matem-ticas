@@ -1,0 +1,53 @@
+{
+  "id": "8-dobles-3-006",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "dobles",
+  "fase_cpa": 3,
+  "edad": "8-anios",
+  "estrategia": "usar_dobles",
+  "enunciado": {
+    "texto": "¿Cuánto es el doble de 9? (9 + 9)",
+    "voz": "El doble de 9."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "16"
+      },
+      {
+        "id": "b",
+        "texto": "17"
+      },
+      {
+        "id": "c",
+        "texto": "18"
+      },
+      {
+        "id": "d",
+        "texto": "19"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Son dos grupos iguales de 9."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "El doble de 9 es 9 + 9."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "9 + 9 = 18."
+    }
+  ],
+  "nota": "Banco ampliado: dobles."
+}

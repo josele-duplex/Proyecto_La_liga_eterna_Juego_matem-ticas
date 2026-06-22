@@ -1,0 +1,53 @@
+{
+  "id": "8-descomposicion-2-005",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "descomposicion",
+  "fase_cpa": 2,
+  "edad": "8-anios",
+  "estrategia": "completar_diez",
+  "enunciado": {
+    "texto": "Marco de diez con 8 y al lado 6 sueltos. ¿Cuánto suman?",
+    "voz": "8 más 6 pasando por el 10."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "13"
+      },
+      {
+        "id": "b",
+        "texto": "14"
+      },
+      {
+        "id": "c",
+        "texto": "15"
+      },
+      {
+        "id": "d",
+        "texto": "16"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Primero lleva el 8 hasta 10."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Quita 2 al 6 para completar la decena: 10 y lo que sobra."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "8 + 2 = 10, y 10 + 4 = 14."
+    }
+  ],
+  "nota": "Banco ampliado: descomposicion (completar la decena)."
+}

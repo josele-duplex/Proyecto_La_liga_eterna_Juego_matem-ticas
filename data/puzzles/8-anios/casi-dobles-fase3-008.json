@@ -1,0 +1,53 @@
+{
+  "id": "8-casi-dobles-3-008",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "casi_dobles",
+  "fase_cpa": 3,
+  "edad": "8-anios",
+  "estrategia": "usar_casi_dobles",
+  "enunciado": {
+    "texto": "¿Cuánto es 4 + 5? Usa el doble de 4.",
+    "voz": "4 más 5, casi un doble."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "7"
+      },
+      {
+        "id": "b",
+        "texto": "8"
+      },
+      {
+        "id": "c",
+        "texto": "9"
+      },
+      {
+        "id": "d",
+        "texto": "10"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Fíjate: 4 y 5 casi son iguales."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Haz el doble de 4 y suma 1 más."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "4 + 4 = 8, y uno más es 9."
+    }
+  ],
+  "nota": "Banco ampliado: casi-dobles."
+}

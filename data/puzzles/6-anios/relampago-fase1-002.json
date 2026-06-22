@@ -1,0 +1,35 @@
+{
+  "id": "6-relampago-1-002",
+  "version": 1,
+  "tipo": "verdadero_falso",
+  "concepto": "relampago",
+  "fase_cpa": 1,
+  "edad": "6-anios",
+  "estrategia": "calcular_rapido",
+  "enunciado": {
+    "texto": "⚡ Relámpago: ¿es verdad que 4 + 1 = 6?",
+    "voz": "¿4 más 1 es 6?"
+  },
+  "datos": {},
+  "respuesta": {
+    "correcta": false
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Calcula 4 + 1 en tu cabeza."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Suma 4 y 1 contando rápido."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "4 + 1 = 5. ¿Coincide con 6?"
+    }
+  ],
+  "nota": "Banco nuevo: relampago verdadero/falso."
+}

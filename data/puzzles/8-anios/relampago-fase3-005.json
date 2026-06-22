@@ -1,0 +1,35 @@
+{
+  "id": "8-relampago-3-005",
+  "version": 1,
+  "tipo": "verdadero_falso",
+  "concepto": "relampago",
+  "fase_cpa": 3,
+  "edad": "8-anios",
+  "estrategia": "calcular_rapido",
+  "enunciado": {
+    "texto": "⚡ Relámpago: ¿es verdad que 13 - 4 = 9?",
+    "voz": "¿13 menos 4 es 9?"
+  },
+  "datos": {},
+  "respuesta": {
+    "correcta": true
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Calcula 13 - 4 rápido."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Quita 4 a 13."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "13 - 4 = 9. ¿Es 9?"
+    }
+  ],
+  "nota": "Banco nuevo: relampago verdadero/falso (8)."
+}

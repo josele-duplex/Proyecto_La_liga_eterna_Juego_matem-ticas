@@ -1,0 +1,45 @@
+{
+  "id": "8-alineacion-1-002",
+  "version": 1,
+  "tipo": "ordenar",
+  "concepto": "alineacion",
+  "fase_cpa": 1,
+  "edad": "8-anios",
+  "estrategia": "ordenar_numeros",
+  "enunciado": {
+    "texto": "Alineación: toca los números de menor a mayor para colocar la alineación.",
+    "voz": "Ordena del más pequeño al más grande."
+  },
+  "datos": {
+    "numeros": [
+      20,
+      11,
+      17
+    ]
+  },
+  "respuesta": {
+    "orden": [
+      11,
+      17,
+      20
+    ]
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Empieza por el más pequeño."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Cada vez busca el menor de los que quedan."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "El más pequeño es 11."
+    }
+  ],
+  "nota": "Banco nuevo: ordenar (8)."
+}

@@ -1,0 +1,53 @@
+{
+  "id": "6-completar-diez-1-003",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "completar_diez",
+  "fase_cpa": 1,
+  "edad": "6-anios",
+  "estrategia": "completar_diez",
+  "enunciado": {
+    "texto": "Tienes 6 balones en la caja. ¿Cuántas faltan para completar 10?",
+    "voz": "6 para llegar a 10."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "3"
+      },
+      {
+        "id": "b",
+        "texto": "4"
+      },
+      {
+        "id": "c",
+        "texto": "5"
+      },
+      {
+        "id": "d",
+        "texto": "6"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Piensa en el marco de diez con 6 llenas."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Cuenta los huecos que quedan hasta 10."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "6 + 4 = 10."
+    }
+  ],
+  "nota": "Banco ampliado: completar diez."
+}

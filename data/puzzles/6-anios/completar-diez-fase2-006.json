@@ -1,0 +1,53 @@
+{
+  "id": "6-completar-diez-2-006",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "completar_diez",
+  "fase_cpa": 2,
+  "edad": "6-anios",
+  "estrategia": "completar_diez",
+  "enunciado": {
+    "texto": "Tienes 4 casillas llenas del marco de diez. ¿Cuántas faltan para completar 10?",
+    "voz": "4 para llegar a 10."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "5"
+      },
+      {
+        "id": "b",
+        "texto": "6"
+      },
+      {
+        "id": "c",
+        "texto": "7"
+      },
+      {
+        "id": "d",
+        "texto": "8"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Piensa en el marco de diez con 4 llenas."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Cuenta los huecos que quedan hasta 10."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "4 + 6 = 10."
+    }
+  ],
+  "nota": "Banco ampliado: completar diez."
+}

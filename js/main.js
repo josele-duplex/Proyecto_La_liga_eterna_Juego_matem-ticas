@@ -49,7 +49,13 @@ const NOMBRES_CONCEPTO = {
   casi_dobles: 'casi-dobles',
   multiplicacion: 'multiplicación',
   fracciones: 'fracciones',
-  redondeo: 'redondeo'
+  redondeo: 'redondeo',
+  sumar_hasta_diez: 'sumar hasta 10',
+  secuencia: 'series de números',
+  relampago: 'relámpago',
+  alineacion: 'alineación',
+  restar: 'restar',
+  decenas: 'decenas y unidades'
 };
 
 let indicesPorEdad = {};

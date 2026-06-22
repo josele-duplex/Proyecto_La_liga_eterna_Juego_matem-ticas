@@ -1,0 +1,53 @@
+{
+  "id": "6-subitizacion-3-004",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "subitizacion",
+  "fase_cpa": 3,
+  "edad": "6-anios",
+  "estrategia": "reconocer_patron",
+  "enunciado": {
+    "texto": "Ves un grupo de 4 y otro de 2 de un vistazo. ¿Cuántos son juntos?",
+    "voz": "Un grupo de 4 y otro de 2."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "5"
+      },
+      {
+        "id": "b",
+        "texto": "6"
+      },
+      {
+        "id": "c",
+        "texto": "7"
+      },
+      {
+        "id": "d",
+        "texto": "8"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "No cuentes desde 1: parte del grupo de 4."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Desde 4, añade 2 más."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "4 + 2 = 6."
+    }
+  ],
+  "nota": "Banco ampliado: subitizacion conceptual (componer de un vistazo)."
+}

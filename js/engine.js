@@ -44,7 +44,14 @@ const Engine = {
       }
     };
 
-    const renderTipo = puzzle.tipo === 'recta_numerica' ? this.renderRectaNumerica : this.renderOpcionMultiple;
+    // Cada tipo de juego tiene su propia forma de pintarse. Añadir un juego nuevo = añadir un
+    // renderXxx y una entrada aquí; el resto del motor (enunciado, pistas, feedback) no cambia.
+    const renderers = {
+      recta_numerica: this.renderRectaNumerica,
+      verdadero_falso: this.renderVerdaderoFalso,
+      ordenar: this.renderOrdenar
+    };
+    const renderTipo = renderers[puzzle.tipo] || this.renderOpcionMultiple;
     container.appendChild(renderTipo.call(this, puzzle, marcarResultado));
 
     container.appendChild(feedback);
@@ -152,5 +159,74 @@ const Engine = {
     }
 
     return recta;
+  },
+
+  // tipo "verdadero_falso" (juego "Relámpago"): se muestra una afirmación y el niño decide si es
+  // verdadera o falsa. Para fluidez y cálculo mental rápido. respuesta.correcta es true/false.
+  renderVerdaderoFalso(puzzle, marcarResultado) {
+    const cont = document.createElement('div');
+    cont.className = 'opciones opciones-vf';
+    let resuelto = false;
+
+    [
+      { texto: '✅ Verdadero', valor: true },
+      { texto: '❌ Falso', valor: false }
+    ].forEach(({ texto, valor }) => {
+      const boton = document.createElement('button');
+      boton.className = 'opcion opcion-vf';
+      boton.textContent = texto;
+      boton.addEventListener('click', () => {
+        if (resuelto) return;
+        const esCorrecta = valor === puzzle.respuesta.correcta;
+        if (esCorrecta) {
+          resuelto = true;
+          boton.classList.add('opcion-correcta');
+          Array.from(cont.children).forEach((b) => { b.disabled = true; });
+        } else {
+          boton.classList.add('opcion-incorrecta');
+          boton.disabled = true;
+        }
+        marcarResultado(esCorrecta);
+      });
+      cont.appendChild(boton);
+    });
+
+    return cont;
+  },
+
+  // tipo "ordenar" (juego "Alineación"): el niño toca los números en orden (el correcto está en
+  // respuesta.orden; datos.numeros es el orden desordenado en que se muestran). Cada acierto fija
+  // un número; un toque fuera de orden cuenta como fallo. Se resuelve al colocar todos en orden.
+  renderOrdenar(puzzle, marcarResultado) {
+    const orden = puzzle.respuesta.orden;
+    const cont = document.createElement('div');
+    cont.className = 'opciones opciones-ordenar';
+    let siguiente = 0;
+    let resuelto = false;
+
+    puzzle.datos.numeros.forEach((num) => {
+      const boton = document.createElement('button');
+      boton.className = 'opcion opcion-ordenar';
+      boton.textContent = num;
+      boton.addEventListener('click', () => {
+        if (resuelto || boton.disabled) return;
+        if (num === orden[siguiente]) {
+          boton.classList.add('opcion-correcta');
+          boton.disabled = true;
+          siguiente++;
+          if (siguiente >= orden.length) {
+            resuelto = true;
+            marcarResultado(true);
+          }
+        } else {
+          boton.classList.add('opcion-incorrecta');
+          marcarResultado(false);
+          setTimeout(() => boton.classList.remove('opcion-incorrecta'), 500);
+        }
+      });
+      cont.appendChild(boton);
+    });
+
+    return cont;
   }
 };

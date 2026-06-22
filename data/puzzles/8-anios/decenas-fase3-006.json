@@ -1,0 +1,53 @@
+{
+  "id": "8-decenas-3-006",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "decenas",
+  "fase_cpa": 3,
+  "edad": "8-anios",
+  "estrategia": "usar_valor_posicional",
+  "enunciado": {
+    "texto": "¿Cuánto es 50 + 6?",
+    "voz": "50 más 6."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "46"
+      },
+      {
+        "id": "b",
+        "texto": "55"
+      },
+      {
+        "id": "c",
+        "texto": "56"
+      },
+      {
+        "id": "d",
+        "texto": "57"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "50 son decenas exactas."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Junta las decenas y las unidades."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "50 + 6 = 56."
+    }
+  ],
+  "nota": "Banco nuevo: decenas y unidades (valor posicional)."
+}

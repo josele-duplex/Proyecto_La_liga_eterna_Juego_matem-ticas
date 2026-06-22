@@ -1,0 +1,45 @@
+{
+  "id": "6-comparar-3-002",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "comparar",
+  "fase_cpa": 3,
+  "edad": "6-anios",
+  "estrategia": "comparar_cantidades",
+  "enunciado": {
+    "texto": "¿Qué número es mayor: 7 o 4?",
+    "voz": "Decide cuál es mayor."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "4"
+      },
+      {
+        "id": "b",
+        "texto": "7"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Imagina los dos números en la recta: uno está más lejos."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "El mayor está más a la derecha."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "Entre 7 y 4, el mayor es 7."
+    }
+  ],
+  "nota": "Banco ampliado: comparar abstracta."
+}

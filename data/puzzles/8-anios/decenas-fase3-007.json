@@ -1,0 +1,53 @@
+{
+  "id": "8-decenas-3-007",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "decenas",
+  "fase_cpa": 3,
+  "edad": "8-anios",
+  "estrategia": "usar_valor_posicional",
+  "enunciado": {
+    "texto": "¿Cuánto es 20 + 8?",
+    "voz": "20 más 8."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "18"
+      },
+      {
+        "id": "b",
+        "texto": "27"
+      },
+      {
+        "id": "c",
+        "texto": "28"
+      },
+      {
+        "id": "d",
+        "texto": "29"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "20 son decenas exactas."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Junta las decenas y las unidades."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "20 + 8 = 28."
+    }
+  ],
+  "nota": "Banco nuevo: decenas y unidades (valor posicional)."
+}
