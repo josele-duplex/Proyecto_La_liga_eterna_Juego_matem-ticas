@@ -657,16 +657,27 @@ button:focus-visible {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
 }
 
-/* Capi celebrando en la pantalla de partido ganado: cuerpo entero, con un brinco suave. */
+/* Capi y el avatar del jugador celebrando juntos en la pantalla de partido ganado (empatía:
+   el niño ve a "su" jugador, no solo al entrenador). Cuerpo entero, con un brinco suave. */
+.grupo-victoria {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 0.4rem;
+  margin: 0.2rem auto 0.6rem;
+}
+
+.avatar-victoria,
 .capi-victoria {
   display: block;
-  width: 11rem;
-  max-width: 60%;
+  width: 9.5rem;
+  max-width: 42%;
   height: auto;
-  margin: 0.2rem auto 0.6rem;
   filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.25));
   animation: capi-brinco 0.9s ease-in-out 3;
 }
+
+.avatar-victoria { animation-delay: 0.15s; }
 
 @keyframes capi-brinco {
   0%, 100% { transform: translateY(0) rotate(-1deg); }

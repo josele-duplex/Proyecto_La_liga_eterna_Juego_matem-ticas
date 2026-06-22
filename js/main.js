@@ -1,9 +1,9 @@
 // Arranca el juego y conecta las piezas (engine, progression, storage, ui, audio, assessment).
 
 const PERFILES = [
-  { id: 'pepe', nombre: 'Pepe', avatar: 'assets/img/avatares/avatar-pepe.webp' },
-  { id: 'bruno', nombre: 'Bruno', avatar: 'assets/img/avatares/avatar-bruno.webp' },
-  { id: 'david', nombre: 'David', avatar: 'assets/img/avatares/avatar-david.webp' },
+  { id: 'pepe', nombre: 'Pepe', avatar: 'assets/img/avatares/avatar-pepe.webp', avatarCelebrando: 'assets/img/avatares/avatar-pepe-celebrando.webp' },
+  { id: 'bruno', nombre: 'Bruno', avatar: 'assets/img/avatares/avatar-bruno.webp', avatarCelebrando: 'assets/img/avatares/avatar-bruno-celebrando.webp' },
+  { id: 'david', nombre: 'David', avatar: 'assets/img/avatares/avatar-david.webp', avatarCelebrando: 'assets/img/avatares/avatar-david-celebrando.webp' },
   { id: 'invitado-1', nombre: 'Invitado 1' },
   { id: 'invitado-2', nombre: 'Invitado 2' },
   { id: 'invitado-3', nombre: 'Invitado 3' }
@@ -458,16 +458,35 @@ function mostrarPartidoGanado(perfilId, estadio) {
   const zona = document.getElementById('siguiente');
   zona.innerHTML = '';
 
-  // Capi celebra con el jugador: refuerza la emoción del logro (sistema de expresiones, estado "victoria").
+  const perfil = PERFILES.find((p) => p.id === perfilId);
+
+  // Capi y el propio avatar del jugador celebran juntos: refuerza la emoción del logro y la
+  // empatía (el niño ve "su" jugador, no solo al entrenador). Los invitados no tienen pose
+  // "celebrando" propia, así que se queda solo con Capi.
+  const grupo = document.createElement('div');
+  grupo.className = 'grupo-victoria';
+
+  if (perfil && perfil.avatarCelebrando) {
+    const jugador = document.createElement('img');
+    jugador.className = 'avatar-victoria';
+    jugador.src = perfil.avatarCelebrando;
+    jugador.alt = `${perfil.nombre} celebra`;
+    grupo.appendChild(jugador);
+  }
+
   const capi = document.createElement('img');
   capi.className = 'capi-victoria';
   capi.src = 'assets/img/capi/avatar-capi-alegria.webp';
   capi.alt = '¡Capi celebra contigo!';
-  zona.appendChild(capi);
+  grupo.appendChild(capi);
+
+  zona.appendChild(grupo);
 
   const mensaje = document.createElement('p');
   mensaje.className = 'feedback feedback-correcto';
-  mensaje.textContent = `¡Partido ganado en ${estadio.nombre}!`;
+  mensaje.textContent = perfil
+    ? `¡Buen partido, ${perfil.nombre}! Has ganado en ${estadio.nombre}.`
+    : `¡Partido ganado en ${estadio.nombre}!`;
   zona.appendChild(mensaje);
 
   const boton = document.createElement('button');
