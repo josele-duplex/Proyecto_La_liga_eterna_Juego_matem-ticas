@@ -55,6 +55,17 @@ El motor no tiene un "if" por cada reto posible. En su lugar, conoce un **puñad
 
 Ejemplo: [`data/puzzles/8-anios/recta-numerica-fase2-pictorica.json`](../data/puzzles/8-anios/recta-numerica-fase2-pictorica.json).
 
+### Apoyo visual de la fase pictórica/concreta: `datos.visual` (opcional, cualquier tipo)
+
+Para que la fase **pictórica** muestre el dibujo de verdad (y no solo lo describa con palabras), un
+puzle puede incluir `datos.visual`. El motor lo dibuja encima de la respuesta. Es opcional: sin él, no
+se dibuja nada. Formas soportadas:
+
+- **Marco de diez:** `"visual": { "tipo": "marco_diez", "llenas": 8, "sueltos": 5 }` → un marco de 10
+  casillas con 8 marcadas y, al lado, 5 puntos sueltos. Para completar la decena y descomponer.
+- **Grupos de objetos:** `"visual": { "tipo": "grupos", "grupos": [7, 7], "icono": "⚽" }` → una fila
+  por grupo (aquí, dos filas de 7 balones). Para dobles, subitización de patrones, sumar dos grupos, etc.
+
 ### Forma de `datos` y `respuesta` para `tipo: "verdadero_falso"` (juego "Relámpago")
 
 - `datos`: vacío (la afirmación va en `enunciado.texto`, p. ej. "¿es verdad que 6 + 6 = 12?").

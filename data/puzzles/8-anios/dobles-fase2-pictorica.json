@@ -10,20 +10,53 @@
     "texto": "Dos equipos con la misma alineación: 7 jugadores cada uno. ¿Cuántos jugadores hay en el campo?",
     "voz": "Siete jugadores en cada equipo. El doble de siete."
   },
-  "datos": {},
+  "datos": {
+    "visual": {
+      "tipo": "grupos",
+      "grupos": [
+        7,
+        7
+      ],
+      "icono": "⚽"
+    }
+  },
   "respuesta": {
     "opciones": [
-      { "id": "a", "texto": "13" },
-      { "id": "b", "texto": "14" },
-      { "id": "c", "texto": "15" },
-      { "id": "d", "texto": "16" }
+      {
+        "id": "a",
+        "texto": "13"
+      },
+      {
+        "id": "b",
+        "texto": "14"
+      },
+      {
+        "id": "c",
+        "texto": "15"
+      },
+      {
+        "id": "d",
+        "texto": "16"
+      }
     ],
     "correcta": "b"
   },
   "pistas": [
-    { "nivel": 1, "tipo": "visual", "texto": "Los dos equipos tienen los mismos jugadores: 7 y 7." },
-    { "nivel": 2, "tipo": "procedimiento", "texto": "El doble de 7 es 7 + 7." },
-    { "nivel": 3, "tipo": "guiada", "texto": "7 + 7 = 14." }
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Los dos equipos tienen los mismos jugadores: 7 y 7."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "El doble de 7 es 7 + 7."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "7 + 7 = 14."
+    }
   ],
   "nota": "T3.2: dobles fase pictorica. Doble de 7 sin dibujar cada balon."
 }

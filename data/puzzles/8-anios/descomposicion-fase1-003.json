@@ -10,7 +10,13 @@
     "texto": "Tienes 9 balones y llegan 4 más. Completa primero la decena. ¿Cuántos hay en total?",
     "voz": "9 más 4 pasando por el 10."
   },
-  "datos": {},
+  "datos": {
+    "visual": {
+      "tipo": "marco_diez",
+      "llenas": 9,
+      "sueltos": 4
+    }
+  },
   "respuesta": {
     "opciones": [
       {

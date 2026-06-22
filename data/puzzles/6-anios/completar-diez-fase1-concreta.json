@@ -10,20 +10,50 @@
     "texto": "Tienes ⚽⚽⚽⚽⚽⚽⚽ (7 balones). ¿Cuántos te faltan para tener 10?",
     "voz": "Cuenta los balones que tienes y piensa cuántos faltan para llegar a 10."
   },
-  "datos": {},
+  "datos": {
+    "visual": {
+      "tipo": "marco_diez",
+      "llenas": 7,
+      "sueltos": 0
+    }
+  },
   "respuesta": {
     "opciones": [
-      { "id": "a", "texto": "2" },
-      { "id": "b", "texto": "3" },
-      { "id": "c", "texto": "4" },
-      { "id": "d", "texto": "5" }
+      {
+        "id": "a",
+        "texto": "2"
+      },
+      {
+        "id": "b",
+        "texto": "3"
+      },
+      {
+        "id": "c",
+        "texto": "4"
+      },
+      {
+        "id": "d",
+        "texto": "5"
+      }
     ],
     "correcta": "b"
   },
   "pistas": [
-    { "nivel": 1, "tipo": "visual", "texto": "Cuenta los balones: 1, 2, 3... hasta el último." },
-    { "nivel": 2, "tipo": "procedimiento", "texto": "Sigue contando desde 7 hasta llegar a 10: 8, 9, 10. ¿Cuántos pasos diste?" },
-    { "nivel": 3, "tipo": "guiada", "texto": "7 más 3 es 10. ¿Cuántos faltaban?" }
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Cuenta los balones: 1, 2, 3... hasta el último."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Sigue contando desde 7 hasta llegar a 10: 8, 9, 10. ¿Cuántos pasos diste?"
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "7 más 3 es 10. ¿Cuántos faltaban?"
+    }
   ],
   "nota": "T3.1: completar_diez fase concreta (6 anios), version mas sencilla que la de 8 anios. Reutiliza la estrategia completar_diez para compartir la insignia Maestro de la Decena."
 }

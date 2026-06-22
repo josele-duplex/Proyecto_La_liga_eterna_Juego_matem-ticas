@@ -10,7 +10,13 @@
     "texto": "Marco de diez con 8 y al lado 6 sueltos. ¿Cuánto suman?",
     "voz": "8 más 6 pasando por el 10."
   },
-  "datos": {},
+  "datos": {
+    "visual": {
+      "tipo": "marco_diez",
+      "llenas": 8,
+      "sueltos": 6
+    }
+  },
   "respuesta": {
     "opciones": [
       {

@@ -8,8 +8,9 @@ BASE = os.path.join(os.path.dirname(__file__), "..", "data", "puzzles")
 def esc(*objs):
     return None  # placeholder, no usado
 
-def mc(idp, concepto, fase, edad, estrategia, texto, voz, correcta, distractores, hints, nota):
-    """Construye una ficha opcion_multiple. 'correcta' y 'distractores' son numeros o strings."""
+def mc(idp, concepto, fase, edad, estrategia, texto, voz, correcta, distractores, hints, nota, visual=None):
+    """Construye una ficha opcion_multiple. 'correcta' y 'distractores' son numeros o strings.
+    'visual' (opcional) = dict de apoyo visual que el motor dibuja (marco_diez / grupos)."""
     opciones_val = [correcta] + [d for d in distractores if d != correcta]
     # quitar duplicados conservando orden
     vistos = []
@@ -34,7 +35,8 @@ def mc(idp, concepto, fase, edad, estrategia, texto, voz, correcta, distractores
     return {
         "id": idp, "version": 1, "tipo": "opcion_multiple", "concepto": concepto,
         "fase_cpa": fase, "edad": edad, "estrategia": estrategia,
-        "enunciado": {"texto": texto, "voz": voz}, "datos": {},
+        "enunciado": {"texto": texto, "voz": voz},
+        "datos": ({"visual": visual} if visual else {}),
         "respuesta": {"opciones": opciones, "correcta": correcta_id},
         "pistas": [
             {"nivel": 1, "tipo": "visual", "texto": hints[0]},
@@ -112,8 +114,8 @@ for i, (fase, n, emo) in enumerate(sub, start=2):
          "¿Son más o menos que los dedos de una mano?",
          f"Hay un grupo y, de un vistazo, son {n}."],
         "Banco ampliado: subitizacion concreta."))
-sub2 = [(2, 6, "Dos filas de 3"), (2, 4, "Dos filas de 2"), (2, 5, "Una fila de 5")]
-for i, (fase, n, desc) in enumerate(sub2, start=2):
+sub2 = [(2, 6, [3, 3], "Dos filas de 3"), (2, 4, [2, 2], "Dos filas de 2"), (2, 5, [5], "Una fila de 5")]
+for i, (fase, n, grupos, desc) in enumerate(sub2, start=2):
     fichas[E6].append(mc(
         f"6-subitizacion-2-{i:03d}", "subitizacion", 2, E6, "reconocer_patron",
         f"{desc} de balones. ¿Cuántos hay en total, sin contarlos de uno en uno?",
@@ -122,7 +124,8 @@ for i, (fase, n, desc) in enumerate(sub2, start=2):
         ["Mira la forma del grupo (las filas).",
          "Si son dos filas iguales, piensa en el doble.",
          f"Son {n} balones en total."],
-        "Banco ampliado: subitizacion pictorica (patrones)."))
+        "Banco ampliado: subitizacion pictorica (patrones).",
+        visual={"tipo": "grupos", "grupos": grupos, "icono": "⚽"}))
 sub3 = [(3, 7, 5, 2), (3, 8, 5, 3), (3, 6, 4, 2)]
 for i, (fase, n, a, b) in enumerate(sub3, start=2):
     fichas[E6].append(mc(
@@ -133,7 +136,8 @@ for i, (fase, n, a, b) in enumerate(sub3, start=2):
         [f"No cuentes desde 1: parte del grupo de {a}.",
          f"Desde {a}, añade {b} más.",
          f"{a} + {b} = {n}."],
-        "Banco ampliado: subitizacion conceptual (componer de un vistazo)."))
+        "Banco ampliado: subitizacion conceptual (componer de un vistazo).",
+        visual={"tipo": "grupos", "grupos": [a, b], "icono": "⚽"}))
 
 # comparar (comparar_cantidades) - siempre Azul vs Rojo, coherente con los emojis
 comp1 = [(1, 5, 3, "más"), (1, 2, 4, "más"), (1, 3, 5, "menos"), (1, 6, 4, "menos")]
@@ -175,6 +179,7 @@ for i, n in enumerate(cd, start=2):
         texto = f"{n} + ? = 10. ¿Qué número falta para llegar a 10?"
     else:
         texto = f"Tienes {n} {rep}. ¿Cuántas faltan para completar 10?"
+    vis = {"tipo": "marco_diez", "llenas": n, "sueltos": 0} if fase != 3 else None
     fichas[E6].append(mc(
         f"6-completar-diez-{fase}-{i:03d}", "completar_diez", fase, E6, "completar_diez",
         texto, f"{n} para llegar a 10.",
@@ -182,7 +187,7 @@ for i, n in enumerate(cd, start=2):
         [f"Piensa en el marco de diez con {n} llenas.",
          "Cuenta los huecos que quedan hasta 10.",
          f"{n} + {falta} = 10."],
-        "Banco ampliado: completar diez."))
+        "Banco ampliado: completar diez.", visual=vis))
 
 # sumar_hasta_diez (sumar)
 sumas = [(1, 2, 3), (1, 4, 2), (1, 3, 3), (2, 5, 3), (2, 4, 4), (2, 6, 2), (3, 5, 4), (3, 7, 2), (3, 3, 5)]
@@ -194,6 +199,7 @@ for i, (fase, a, b) in enumerate(sumas, start=1):
         texto = f"Un grupo de {a} balones y otro de {b}. ¿Cuántos son en total?"
     else:
         texto = f"¿Cuánto es {a} + {b}?"
+    vis = {"tipo": "grupos", "grupos": [a, b], "icono": "⚽"} if fase == 2 else None
     fichas[E6].append(mc(
         f"6-sumar-{fase}-{i:03d}", "sumar_hasta_diez", fase, E6, "sumar",
         texto, f"{a} más {b}.",
@@ -201,7 +207,7 @@ for i, (fase, a, b) in enumerate(sumas, start=1):
         [f"Junta los dos grupos: {a} y {b}.",
          f"Empieza en {a} y cuenta {b} más.",
          f"{a} + {b} = {s}."],
-        "Banco nuevo: sumar hasta 10."))
+        "Banco nuevo: sumar hasta 10.", visual=vis))
 
 # secuencia (contar_secuencia)
 seqs = [(1, [1,2,3], 1, 4), (1, [2,3,4], 1, 5), (2, [2,4,6], 2, 8), (2, [5,6,7], 1, 8),
@@ -262,6 +268,7 @@ for i, (fase, a, b) in enumerate(desc, start=2):
     else:
         texto = f"¿Cuánto es {a} + {b}? Apóyate en el 10."
     falta = 10 - a
+    vis = {"tipo": "marco_diez", "llenas": a, "sueltos": b} if fase != 3 else None
     fichas[E8].append(mc(
         f"8-descomposicion-{fase}-{i:03d}", "descomposicion", fase, E8, "completar_diez",
         texto, f"{a} más {b} pasando por el 10.",
@@ -269,7 +276,7 @@ for i, (fase, a, b) in enumerate(desc, start=2):
         [f"Primero lleva el {a} hasta 10.",
          f"Quita {falta} al {b} para completar la decena: 10 y lo que sobra.",
          f"{a} + {falta} = 10, y 10 + {b-falta} = {s}."],
-        "Banco ampliado: descomposicion (completar la decena)."))
+        "Banco ampliado: descomposicion (completar la decena).", visual=vis))
 
 # recta_numerica (usar_decenas_como_referencia)
 rectas = [(1, 6), (1, 9), (2, 14), (2, 17), (3, 12), (3, 18), (3, 11)]
@@ -298,6 +305,7 @@ for i, (fase, n) in enumerate(dob, start=2):
         texto = f"Dos grupos iguales de {n}. ¿Cuál es el doble de {n}?"
     else:
         texto = f"¿Cuánto es el doble de {n}? ({n} + {n})"
+    vis = {"tipo": "grupos", "grupos": [n, n], "icono": "⚽"} if fase == 2 else None
     fichas[E8].append(mc(
         f"8-dobles-{fase}-{i:03d}", "dobles", fase, E8, "usar_dobles",
         texto, f"El doble de {n}.",
@@ -305,7 +313,7 @@ for i, (fase, n) in enumerate(dob, start=2):
         [f"Son dos grupos iguales de {n}.",
          f"El doble de {n} es {n} + {n}.",
          f"{n} + {n} = {s}."],
-        "Banco ampliado: dobles."))
+        "Banco ampliado: dobles.", visual=vis))
 
 # casi_dobles (usar_casi_dobles)
 cdo = [(1, 4), (1, 6), (2, 5), (2, 7), (3, 8), (3, 6), (3, 4)]
@@ -318,6 +326,7 @@ for i, (fase, n) in enumerate(cdo, start=2):
         texto = f"{a} + {b}: casi son dos grupos iguales. ¿Cuánto suman?"
     else:
         texto = f"¿Cuánto es {a} + {b}? Usa el doble de {a}."
+    vis = {"tipo": "grupos", "grupos": [a, b], "icono": "⚽"} if fase != 3 else None
     fichas[E8].append(mc(
         f"8-casi-dobles-{fase}-{i:03d}", "casi_dobles", fase, E8, "usar_casi_dobles",
         texto, f"{a} más {b}, casi un doble.",
@@ -325,7 +334,7 @@ for i, (fase, n) in enumerate(cdo, start=2):
         [f"Fíjate: {a} y {b} casi son iguales.",
          f"Haz el doble de {a} y suma 1 más.",
          f"{a} + {a} = {a+a}, y uno más es {s}."],
-        "Banco ampliado: casi-dobles."))
+        "Banco ampliado: casi-dobles.", visual=vis))
 
 # restar (restar_estrategico)
 res = [(1, 7, 3), (1, 9, 4), (2, 12, 5), (2, 15, 6), (3, 14, 8), (3, 17, 9), (3, 11, 4)]

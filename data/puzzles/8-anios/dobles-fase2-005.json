@@ -10,7 +10,16 @@
     "texto": "Dos grupos iguales de 8. ¿Cuál es el doble de 8?",
     "voz": "El doble de 8."
   },
-  "datos": {},
+  "datos": {
+    "visual": {
+      "tipo": "grupos",
+      "grupos": [
+        8,
+        8
+      ],
+      "icono": "⚽"
+    }
+  },
   "respuesta": {
     "opciones": [
       {

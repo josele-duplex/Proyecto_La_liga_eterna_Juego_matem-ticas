@@ -10,7 +10,16 @@
     "texto": "7 + 8: casi son dos grupos iguales. ¿Cuánto suman?",
     "voz": "7 más 8, casi un doble."
   },
-  "datos": {},
+  "datos": {
+    "visual": {
+      "tipo": "grupos",
+      "grupos": [
+        7,
+        8
+      ],
+      "icono": "⚽"
+    }
+  },
   "respuesta": {
     "opciones": [
       {

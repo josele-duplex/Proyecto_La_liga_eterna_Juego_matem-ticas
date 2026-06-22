@@ -10,7 +10,16 @@
     "texto": "Un equipo con 6 y otro con 7 balones. ¿Cuántos hay en total?",
     "voz": "6 más 7, casi un doble."
   },
-  "datos": {},
+  "datos": {
+    "visual": {
+      "tipo": "grupos",
+      "grupos": [
+        6,
+        7
+      ],
+      "icono": "⚽"
+    }
+  },
   "respuesta": {
     "opciones": [
       {

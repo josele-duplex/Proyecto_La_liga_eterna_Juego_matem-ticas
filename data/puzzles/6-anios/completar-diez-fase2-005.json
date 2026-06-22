@@ -10,7 +10,13 @@
     "texto": "Tienes 1 casillas llenas del marco de diez. ¿Cuántas faltan para completar 10?",
     "voz": "1 para llegar a 10."
   },
-  "datos": {},
+  "datos": {
+    "visual": {
+      "tipo": "marco_diez",
+      "llenas": 1,
+      "sueltos": 0
+    }
+  },
   "respuesta": {
     "opciones": [
       {

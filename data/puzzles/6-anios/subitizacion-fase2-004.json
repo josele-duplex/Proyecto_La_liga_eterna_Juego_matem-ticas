@@ -10,7 +10,15 @@
     "texto": "Una fila de 5 de balones. ¿Cuántos hay en total, sin contarlos de uno en uno?",
     "voz": "Reconoce las filas de un vistazo."
   },
-  "datos": {},
+  "datos": {
+    "visual": {
+      "tipo": "grupos",
+      "grupos": [
+        5
+      ],
+      "icono": "⚽"
+    }
+  },
   "respuesta": {
     "opciones": [
       {

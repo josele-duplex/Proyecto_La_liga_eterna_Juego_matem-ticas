@@ -15,18 +15,35 @@
     "objeto": "balon",
     "operacion": {
       "expresion": "8 + 5",
-      "sumandos": [8, 5]
+      "sumandos": [
+        8,
+        5
+      ]
     },
     "marco_diez": {
       "casillas_llenas": 8,
       "objetos_que_llegan": 5
+    },
+    "visual": {
+      "tipo": "marco_diez",
+      "llenas": 8,
+      "sueltos": 5
     }
   },
   "respuesta": {
     "opciones": [
-      { "id": "a", "texto": "12 balones" },
-      { "id": "b", "texto": "13 balones" },
-      { "id": "c", "texto": "14 balones" }
+      {
+        "id": "a",
+        "texto": "12 balones"
+      },
+      {
+        "id": "b",
+        "texto": "13 balones"
+      },
+      {
+        "id": "c",
+        "texto": "14 balones"
+      }
     ],
     "correcta": "b"
   },

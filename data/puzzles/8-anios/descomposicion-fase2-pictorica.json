@@ -14,18 +14,35 @@
     "representacion": "marco_diez",
     "operacion": {
       "expresion": "8 + 5",
-      "sumandos": [8, 5]
+      "sumandos": [
+        8,
+        5
+      ]
     },
     "marco_diez": {
       "puntos_dentro": 8,
       "puntos_fuera": 5
+    },
+    "visual": {
+      "tipo": "marco_diez",
+      "llenas": 8,
+      "sueltos": 5
     }
   },
   "respuesta": {
     "opciones": [
-      { "id": "a", "texto": "13" },
-      { "id": "b", "texto": "15" },
-      { "id": "c", "texto": "12" }
+      {
+        "id": "a",
+        "texto": "13"
+      },
+      {
+        "id": "b",
+        "texto": "15"
+      },
+      {
+        "id": "c",
+        "texto": "12"
+      }
     ],
     "correcta": "a"
   },

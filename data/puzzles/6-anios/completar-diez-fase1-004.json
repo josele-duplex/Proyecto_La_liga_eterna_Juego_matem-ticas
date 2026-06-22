@@ -10,7 +10,13 @@
     "texto": "Tienes 8 balones en la caja. ¿Cuántas faltan para completar 10?",
     "voz": "8 para llegar a 10."
   },
-  "datos": {},
+  "datos": {
+    "visual": {
+      "tipo": "marco_diez",
+      "llenas": 8,
+      "sueltos": 0
+    }
+  },
   "respuesta": {
     "opciones": [
       {

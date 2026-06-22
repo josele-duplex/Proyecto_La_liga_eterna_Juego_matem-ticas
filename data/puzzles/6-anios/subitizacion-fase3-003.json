@@ -10,7 +10,16 @@
     "texto": "Ves un grupo de 5 y otro de 3 de un vistazo. ¿Cuántos son juntos?",
     "voz": "Un grupo de 5 y otro de 3."
   },
-  "datos": {},
+  "datos": {
+    "visual": {
+      "tipo": "grupos",
+      "grupos": [
+        5,
+        3
+      ],
+      "icono": "⚽"
+    }
+  },
   "respuesta": {
     "opciones": [
       {

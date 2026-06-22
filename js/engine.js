@@ -15,6 +15,13 @@ const Engine = {
     enunciado.textContent = puzzle.enunciado.texto;
     container.appendChild(enunciado);
 
+    // Apoyo visual de la fase pictórica/concreta: si el puzle trae datos.visual, se dibuja aquí
+    // (marco de diez, grupos de balones...). Así la fase "pictórica" muestra el dibujo de verdad,
+    // no solo lo describe con palabras. Si no hay datos.visual, no se dibuja nada (igual que antes).
+    if (puzzle.datos && puzzle.datos.visual) {
+      container.appendChild(this.renderVisual(puzzle.datos.visual));
+    }
+
     const feedback = document.createElement('p');
     feedback.className = 'feedback';
 
@@ -56,6 +63,62 @@ const Engine = {
 
     container.appendChild(feedback);
     container.appendChild(pistas.elemento);
+  },
+
+  // Dibuja el apoyo visual de un puzle a partir de datos.visual. Reparte por su 'tipo'.
+  renderVisual(visual) {
+    if (visual.tipo === 'marco_diez') return this.renderMarcoDiez(visual);
+    if (visual.tipo === 'grupos') return this.renderGrupos(visual);
+    return document.createElement('div');
+  },
+
+  // Marco de diez: 10 casillas (2 filas de 5). 'llenas' van marcadas (azules) y, si hay 'sueltos',
+  // se dibujan al lado como puntos naranjas. Sirve para completar la decena y descomponer.
+  renderMarcoDiez(visual) {
+    const llenas = visual.llenas || 0;
+    const sueltos = visual.sueltos || 0;
+    const wrap = document.createElement('div');
+    wrap.className = 'visual-apoyo visual-marco';
+
+    const marco = document.createElement('div');
+    marco.className = 'marco-diez';
+    for (let i = 0; i < 10; i++) {
+      const celda = document.createElement('div');
+      celda.className = i < llenas ? 'celda-marco celda-llena' : 'celda-marco';
+      marco.appendChild(celda);
+    }
+    wrap.appendChild(marco);
+
+    if (sueltos > 0) {
+      const grupo = document.createElement('div');
+      grupo.className = 'sueltos-marco';
+      for (let i = 0; i < sueltos; i++) {
+        const punto = document.createElement('span');
+        punto.className = 'punto-suelto';
+        grupo.appendChild(punto);
+      }
+      wrap.appendChild(grupo);
+    }
+    return wrap;
+  },
+
+  // Grupos de objetos (por defecto balones): una fila por grupo. Para "dos grupos de 7", dobles, etc.
+  renderGrupos(visual) {
+    const grupos = visual.grupos || [];
+    const icono = visual.icono || '⚽';
+    const wrap = document.createElement('div');
+    wrap.className = 'visual-apoyo visual-grupos';
+    grupos.forEach((n) => {
+      const fila = document.createElement('div');
+      fila.className = 'grupo-visual';
+      for (let i = 0; i < n; i++) {
+        const obj = document.createElement('span');
+        obj.textContent = icono;
+        fila.appendChild(obj);
+      }
+      wrap.appendChild(fila);
+    });
+    return wrap;
   },
 
   // El botón de pista solo aparece tras el primer fallo. Nunca da la respuesta directa.

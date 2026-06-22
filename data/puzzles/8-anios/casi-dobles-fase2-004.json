@@ -10,7 +10,16 @@
     "texto": "5 + 6: casi son dos grupos iguales. ¿Cuánto suman?",
     "voz": "5 más 6, casi un doble."
   },
-  "datos": {},
+  "datos": {
+    "visual": {
+      "tipo": "grupos",
+      "grupos": [
+        5,
+        6
+      ],
+      "icono": "⚽"
+    }
+  },
   "respuesta": {
     "opciones": [
       {

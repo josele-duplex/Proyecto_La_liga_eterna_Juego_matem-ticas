@@ -10,7 +10,16 @@
     "texto": "Dos grupos iguales de 6. ¿Cuál es el doble de 6?",
     "voz": "El doble de 6."
   },
-  "datos": {},
+  "datos": {
+    "visual": {
+      "tipo": "grupos",
+      "grupos": [
+        6,
+        6
+      ],
+      "icono": "⚽"
+    }
+  },
   "respuesta": {
     "opciones": [
       {

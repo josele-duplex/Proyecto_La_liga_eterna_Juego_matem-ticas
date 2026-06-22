@@ -10,7 +10,16 @@
     "texto": "Un grupo de 4 balones y otro de 4. ¿Cuántos son en total?",
     "voz": "4 más 4."
   },
-  "datos": {},
+  "datos": {
+    "visual": {
+      "tipo": "grupos",
+      "grupos": [
+        4,
+        4
+      ],
+      "icono": "⚽"
+    }
+  },
   "respuesta": {
     "opciones": [
       {

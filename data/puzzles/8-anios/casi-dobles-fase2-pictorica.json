@@ -10,20 +10,53 @@
     "texto": "El portero paró 7 tiros en el primer tiempo y 8 en el segundo. ¿Cuántas paradas hizo?",
     "voz": "Siete y ocho. Casi un doble: el doble de siete y uno más."
   },
-  "datos": {},
+  "datos": {
+    "visual": {
+      "tipo": "grupos",
+      "grupos": [
+        7,
+        8
+      ],
+      "icono": "⚽"
+    }
+  },
   "respuesta": {
     "opciones": [
-      { "id": "a", "texto": "14" },
-      { "id": "b", "texto": "15" },
-      { "id": "c", "texto": "16" },
-      { "id": "d", "texto": "17" }
+      {
+        "id": "a",
+        "texto": "14"
+      },
+      {
+        "id": "b",
+        "texto": "15"
+      },
+      {
+        "id": "c",
+        "texto": "16"
+      },
+      {
+        "id": "d",
+        "texto": "17"
+      }
     ],
     "correcta": "b"
   },
   "pistas": [
-    { "nivel": 1, "tipo": "visual", "texto": "7 y 8 se diferencian solo en 1." },
-    { "nivel": 2, "tipo": "procedimiento", "texto": "El doble de 7 es 14; ahora suma 1 más." },
-    { "nivel": 3, "tipo": "guiada", "texto": "7 + 7 = 14, y uno más es 15." }
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "7 y 8 se diferencian solo en 1."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "El doble de 7 es 14; ahora suma 1 más."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "7 + 7 = 14, y uno más es 15."
+    }
   ],
   "nota": "T3.2: casi-dobles fase pictorica. 7+8 apoyandose en el doble de 7."
 }

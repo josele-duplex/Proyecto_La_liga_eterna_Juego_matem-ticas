@@ -316,6 +316,67 @@ button:focus-visible {
   color: var(--color-reintenta-texto);
 }
 
+/* Apoyo visual de la fase pictórica/concreta (marco de diez, grupos de balones). */
+.visual-apoyo {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0.2rem 0 1rem;
+}
+
+.marco-diez {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 5px;
+  padding: 7px;
+  background: #eef3f8;
+  border: 2px solid rgba(20, 40, 70, 0.14);
+  border-radius: 12px;
+}
+
+.celda-marco {
+  width: 2.1rem;
+  height: 2.1rem;
+  border: 2px solid rgba(20, 40, 70, 0.18);
+  border-radius: 7px;
+  background: #fff;
+}
+
+.celda-llena {
+  background: radial-gradient(circle at 50% 42%, #3a90ff 0 56%, #1c54b2 57% 100%);
+  border-color: #1c54b2;
+}
+
+.sueltos-marco {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  max-width: 8.5rem;
+}
+
+.punto-suelto {
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 50%;
+  background: radial-gradient(circle at 50% 38%, #ffb14d 0 55%, #ef7d12 56% 100%);
+}
+
+.visual-grupos { gap: 1.4rem; }
+
+.grupo-visual {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3px;
+  max-width: 10rem;
+  padding: 0.5rem 0.7rem;
+  background: #eef3f8;
+  border: 2px solid rgba(20, 40, 70, 0.1);
+  border-radius: 12px;
+  font-size: 1.5rem;
+  line-height: 1.1;
+}
+
 /* Juego "Relámpago" (verdadero/falso): dos botones grandes a izquierda y derecha. */
 .opciones-vf { grid-template-columns: 1fr 1fr; }
 .opcion-vf { font-size: 1.3rem; min-height: 4.6rem; }

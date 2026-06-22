@@ -10,7 +10,16 @@
     "texto": "Un grupo de 5 balones y otro de 3. ¿Cuántos son en total?",
     "voz": "5 más 3."
   },
-  "datos": {},
+  "datos": {
+    "visual": {
+      "tipo": "grupos",
+      "grupos": [
+        5,
+        3
+      ],
+      "icono": "⚽"
+    }
+  },
   "respuesta": {
     "opciones": [
       {
