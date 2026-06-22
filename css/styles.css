@@ -26,41 +26,44 @@
   --color-pista-fondo: #fff6d6;
   --color-pista-borde: #f0c000;
 
+  /* Césped del estadio (constante: siempre estamos en el campo). Dos verdes de siega. */
+  --cesped-a: #2f8a4e;
+  --cesped-b: #2a7e46;
+  /* Luz del estadio: un foco de color que cambia según el momento del juego (lo fijan los temas). */
+  --foco-estadio: rgba(225, 255, 230, 0.55);
+
   /* Forma y profundidad. */
   --fuente-principal: "Nunito", "Baloo 2", system-ui, -apple-system, "Segoe UI", sans-serif;
   --radio: 16px;
   --radio-grande: 22px;
   --radio-pildora: 999px;
   --espacio: 1rem;
-  --sombra-suave: 0 6px 18px rgba(20, 40, 70, 0.10);
-  --sombra-media: 0 10px 28px rgba(20, 40, 70, 0.16);
+  --sombra-suave: 0 6px 18px rgba(10, 30, 15, 0.16);
+  --sombra-media: 0 14px 32px rgba(10, 30, 15, 0.26);
   --sombra-boton: 0 4px 0 rgba(0, 0, 0, 0.12);
   --borde-sutil: 1px solid rgba(20, 40, 70, 0.08);
 }
 
-/* Tema "mundo": calendario y selección. Verde césped + azul deportivo. */
+/* Tema "mundo": calendario y selección. Foco cálido de día de partido. */
 body.tema-mundo {
   --color-primario: #1a7a3c;
   --color-primario-oscuro: #145c2d;
-  --color-fondo-a: #e7f7ee;
-  --color-fondo-b: #dcefff;
+  --foco-estadio: rgba(232, 255, 224, 0.6);
 }
 
-/* Tema "mate": mientras se juega un puzle. Azules/turquesas, foco y claridad. */
+/* Tema "mate": mientras se juega un puzle. Foco azul de claridad/concentración. */
 body.tema-mate {
   --color-primario: #2979ff;
   --color-primario-oscuro: #1c54b2;
-  --color-fondo-a: #e3f1ff;
-  --color-fondo-b: #e2fbf4;
+  --foco-estadio: rgba(150, 205, 255, 0.5);
 }
 
-/* Tema "recompensa": partido ganado. Dorado/naranja de celebración. */
+/* Tema "recompensa": partido ganado. Foco dorado de celebración. */
 body.tema-recompensa {
   --color-primario: #ff9100;
   --color-primario-oscuro: #c66900;
   --color-exito-texto: #b8590f;
-  --color-fondo-a: #fff3d6;
-  --color-fondo-b: #ffe6c2;
+  --foco-estadio: rgba(255, 214, 130, 0.62);
 }
 
 /* ============================================================
@@ -70,16 +73,37 @@ body.tema-recompensa {
 
 html { touch-action: manipulation; }
 
+/* Fondo: terreno de juego de estadio. Cuatro capas (de arriba a abajo en el código):
+   1) foco de luz cenital (color según el momento del juego, lo fija el tema);
+   2) viñeta que oscurece los bordes para dar profundidad y volumen al campo;
+   3) franjas de siega del césped (lo que hace que "se lea" como un campo de fútbol);
+   4) verde base de respaldo. Va detrás de la tarjeta blanca, que flota sobre el campo. */
 body {
   font-family: var(--fuente-principal);
   color: var(--color-texto);
   margin: 0;
   min-height: 100vh;
-  background: linear-gradient(160deg, var(--color-fondo-a), var(--color-fondo-b));
+  background:
+    radial-gradient(125% 80% at 50% -12%, var(--foco-estadio), transparent 58%),
+    radial-gradient(150% 130% at 50% 45%, transparent 52%, rgba(6, 28, 14, 0.45)),
+    repeating-linear-gradient(90deg, var(--cesped-a) 0 46px, var(--cesped-b) 46px 92px),
+    var(--cesped-a);
   background-attachment: fixed;
   -webkit-text-size-adjust: 100%;
   overscroll-behavior-y: contain;
   transition: background 0.4s ease;
+}
+
+/* Línea de banda blanca tenue alrededor de la pantalla, como las marcas pintadas del césped.
+   z-index: -1 la deja sobre el campo pero detrás de las tarjetas; no intercepta toques. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 10px;
+  border: 2px solid rgba(255, 255, 255, 0.16);
+  border-radius: 20px;
+  pointer-events: none;
+  z-index: -1;
 }
 
 /* Pulido táctil (T3.6): un niño puede mantener pulsado o tocar dos veces sin querer.
@@ -506,6 +530,22 @@ button:focus-visible {
   border-radius: 50%;
   object-fit: cover;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+}
+
+/* Capi celebrando en la pantalla de partido ganado: cuerpo entero, con un brinco suave. */
+.capi-victoria {
+  display: block;
+  width: 11rem;
+  max-width: 60%;
+  height: auto;
+  margin: 0.2rem auto 0.6rem;
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.25));
+  animation: capi-brinco 0.9s ease-in-out 3;
+}
+
+@keyframes capi-brinco {
+  0%, 100% { transform: translateY(0) rotate(-1deg); }
+  50% { transform: translateY(-10px) rotate(1deg); }
 }
 
 /* ============================================================

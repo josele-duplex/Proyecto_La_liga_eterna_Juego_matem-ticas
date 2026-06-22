@@ -2,14 +2,14 @@
   "nota": "Energia e insignias que se ganan al resolver un puzle. Cada estrategia (campo puzzle.estrategia) tiene su propia insignia, para premiar el COMO se resuelve, no solo el acierto. Anade aqui una entrada cuando crees un puzle con una estrategia nueva. 'imagen' es opcional por insignia: ruta a una ilustracion; mientras sea null se usa el 'icono' (emoji).",
   "energiaPorPuzle": 10,
   "insignias": {
-    "completar_diez": { "nombre": "Maestro de la Decena", "icono": "🔟", "imagen": "assets/img/insignia-completar-diez.webp" },
-    "usar_decenas_como_referencia": { "nombre": "Navegante de la Recta", "icono": "🧭", "imagen": "assets/img/insignia-usar-decenas-como-referencia.webp" },
-    "reconocer_patron": { "nombre": "Maestro de Patrones", "icono": "👁️", "imagen": "assets/img/insignia-reconocer-patron.webp" },
-    "comparar_cantidades": { "nombre": "Juez de Cantidad", "icono": "⚖️", "imagen": "assets/img/insignia-comparar-cantidades.webp" },
-    "usar_dobles": { "nombre": "Rey de los Dobles", "icono": "👯", "imagen": "assets/img/insignia-usar-dobles.webp" },
+    "completar_diez": { "nombre": "Maestro de la Decena", "icono": "🔟", "imagen": "assets/img/insignias/insignia-completar-diez.webp" },
+    "usar_decenas_como_referencia": { "nombre": "Navegante de la Recta", "icono": "🧭", "imagen": "assets/img/insignias/insignia-usar-decenas-como-referencia.webp" },
+    "reconocer_patron": { "nombre": "Maestro de Patrones", "icono": "👁️", "imagen": "assets/img/insignias/insignia-reconocer-patron.webp" },
+    "comparar_cantidades": { "nombre": "Juez de Cantidad", "icono": "⚖️", "imagen": "assets/img/insignias/insignia-comparar-cantidades.webp" },
+    "usar_dobles": { "nombre": "Rey de los Dobles", "icono": "👯", "imagen": "assets/img/insignias/insignia-usar-dobles.webp" },
     "usar_casi_dobles": { "nombre": "As del Casi-Doble", "icono": "✨", "imagen": null },
-    "multiplicar_grupos": { "nombre": "Capitán de los Grupos", "icono": "✖️", "imagen": "assets/img/insignia-multiplicar-grupos.webp" },
-    "repartir_partes": { "nombre": "Repartidor Justo", "icono": "🍕", "imagen": "assets/img/insignia-repartir-partes.webp" },
-    "redondear": { "nombre": "Maestro del Redondeo", "icono": "🎯", "imagen": "assets/img/insignia-redondear.webp" }
+    "multiplicar_grupos": { "nombre": "Capitán de los Grupos", "icono": "✖️", "imagen": "assets/img/insignias/insignia-multiplicar-grupos.webp" },
+    "repartir_partes": { "nombre": "Repartidor Justo", "icono": "🍕", "imagen": "assets/img/insignias/insignia-repartir-partes.webp" },
+    "redondear": { "nombre": "Maestro del Redondeo", "icono": "🎯", "imagen": "assets/img/insignias/insignia-redondear.webp" }
   }
 }

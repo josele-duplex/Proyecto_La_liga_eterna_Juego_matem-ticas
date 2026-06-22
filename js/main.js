@@ -1,9 +1,9 @@
 // Arranca el juego y conecta las piezas (engine, progression, storage, ui, audio, assessment).
 
 const PERFILES = [
-  { id: 'pepe', nombre: 'Pepe', avatar: 'assets/img/avatar-pepe.webp' },
-  { id: 'bruno', nombre: 'Bruno', avatar: 'assets/img/avatar-bruno.webp' },
-  { id: 'david', nombre: 'David', avatar: 'assets/img/avatar-david.webp' },
+  { id: 'pepe', nombre: 'Pepe', avatar: 'assets/img/avatares/avatar-pepe.webp' },
+  { id: 'bruno', nombre: 'Bruno', avatar: 'assets/img/avatares/avatar-bruno.webp' },
+  { id: 'david', nombre: 'David', avatar: 'assets/img/avatares/avatar-david.webp' },
   { id: 'invitado-1', nombre: 'Invitado 1' },
   { id: 'invitado-2', nombre: 'Invitado 2' },
   { id: 'invitado-3', nombre: 'Invitado 3' }
@@ -15,7 +15,7 @@ const MODOS = [
     id: 'promesas',
     nombre: 'Promesas',
     icono: '🌱',
-    imagen: 'assets/img/emblema-promesas.webp',
+    imagen: 'assets/img/emblemas/emblema-promesas.webp',
     descripcion: 'Da tus primeros toques: reconoce cantidades, compara y completa 10.',
     edad: '6-anios'
   },
@@ -23,7 +23,7 @@ const MODOS = [
     id: 'estrellas',
     nombre: 'Estrellas',
     icono: '⭐',
-    imagen: 'assets/img/emblema-estrellas.webp',
+    imagen: 'assets/img/emblemas/emblema-estrellas.webp',
     descripcion: 'Juega como un crack: descomposición, dobles, casi-dobles y recta numérica.',
     edad: '8-anios'
   },
@@ -31,7 +31,7 @@ const MODOS = [
     id: 'leyendas',
     nombre: 'Leyendas',
     icono: '🏆',
-    imagen: 'assets/img/emblema-leyendas.webp',
+    imagen: 'assets/img/emblemas/emblema-leyendas.webp',
     descripcion: 'El equipo de los más grandes: multiplicación, fracciones y redondeo.',
     edad: '9-anios',
     desbloqueadoPor: 'estrellas'
@@ -279,7 +279,7 @@ async function jugarReto(perfilId, estadio, sesion) {
       // Tras el primer fallo aparece la pista: Capi pasa de concentrado a dudoso, como en el
       // sistema de expresiones de la guía de estilo ("duda" = pistas y decisiones).
       const avatarCapi = document.getElementById('avatar-capi-actual');
-      if (avatarCapi) avatarCapi.src = 'assets/img/avatar-capi-duda.webp';
+      if (avatarCapi) avatarCapi.src = 'assets/img/capi/avatar-capi-duda.webp';
       Sonido.sonidoFallo();
     }
   );
@@ -294,7 +294,7 @@ function mostrarBotonVoz(app, puzzle) {
   const avatarCapi = document.createElement('img');
   avatarCapi.id = 'avatar-capi-actual';
   avatarCapi.className = 'avatar-capi';
-  avatarCapi.src = 'assets/img/avatar-capi-concentracion.webp';
+  avatarCapi.src = 'assets/img/capi/avatar-capi-concentracion.webp';
   avatarCapi.alt = 'Capi';
   fila.appendChild(avatarCapi);
 
@@ -321,6 +321,13 @@ function mostrarPartidoGanado(perfilId, estadio) {
   UI.aplicarTema('recompensa');
   const zona = document.getElementById('siguiente');
   zona.innerHTML = '';
+
+  // Capi celebra con el jugador: refuerza la emoción del logro (sistema de expresiones, estado "victoria").
+  const capi = document.createElement('img');
+  capi.className = 'capi-victoria';
+  capi.src = 'assets/img/capi/avatar-capi-alegria.webp';
+  capi.alt = '¡Capi celebra contigo!';
+  zona.appendChild(capi);
 
   const mensaje = document.createElement('p');
   mensaje.className = 'feedback feedback-correcto';
