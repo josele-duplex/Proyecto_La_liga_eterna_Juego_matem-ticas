@@ -396,6 +396,20 @@ body {
   font-weight: 800;
 }
 
+/* Emblema de modo (Promesas/Estrellas/Leyendas): recortado en círculo aquí, en CSS, para que
+   cualquier imagen (cuadrada, con cintas que sobresalen, o un rectángulo con viñeta) quede
+   uniforme sin tener que recortarla a mano en el archivo. */
+.emblema-modo {
+  width: 4.4rem;
+  height: 4.4rem;
+  border-radius: 50%;
+  margin-bottom: 0.6rem;
+  object-fit: cover;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+}
+
+.estadio-bloqueado .emblema-modo { filter: grayscale(0.5); }
+
 /* ============================================================
    10. Selector de jugador (avatares).
    ============================================================ */

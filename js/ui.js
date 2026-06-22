@@ -21,6 +21,21 @@ const UI = {
     return escudo;
   },
 
+  // Emblema de un modo (Promesas/Estrellas/Leyendas). Si no tiene imagen, usa su icono/emoji.
+  crearEmblemaModo(modo) {
+    if (modo.imagen) {
+      const img = document.createElement('img');
+      img.className = 'emblema-modo';
+      img.src = modo.imagen;
+      img.alt = modo.nombre;
+      return img;
+    }
+    const placeholder = document.createElement('div');
+    placeholder.className = 'emblema-modo escudo-placeholder';
+    placeholder.textContent = modo.icono;
+    return placeholder;
+  },
+
   // Avatar grande (selector de jugador). Si el perfil no tiene "avatar", usa una inicial.
   crearAvatarPerfil(perfil) {
     if (perfil.avatar) {

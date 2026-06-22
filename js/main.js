@@ -15,6 +15,7 @@ const MODOS = [
     id: 'promesas',
     nombre: 'Promesas',
     icono: '🌱',
+    imagen: 'assets/img/emblema-promesas.webp',
     descripcion: 'Da tus primeros toques: reconoce cantidades, compara y completa 10.',
     edad: '6-anios'
   },
@@ -22,6 +23,7 @@ const MODOS = [
     id: 'estrellas',
     nombre: 'Estrellas',
     icono: '⭐',
+    imagen: 'assets/img/emblema-estrellas.webp',
     descripcion: 'Juega como un crack: descomposición, dobles, casi-dobles y recta numérica.',
     edad: '8-anios'
   },
@@ -29,6 +31,7 @@ const MODOS = [
     id: 'leyendas',
     nombre: 'Leyendas',
     icono: '🏆',
+    imagen: 'assets/img/emblema-leyendas.webp',
     descripcion: 'El equipo de los más grandes: multiplicación, fracciones y redondeo.',
     edad: '9-anios',
     desbloqueadoPor: 'estrellas'
@@ -155,6 +158,8 @@ function mostrarSelectorModo(perfilId) {
 
     const desbloqueado = modoDesbloqueado(perfilId, modo);
 
+    tarjeta.appendChild(UI.crearEmblemaModo(modo));
+
     const nombre = document.createElement('h2');
     nombre.textContent = desbloqueado ? `${modo.icono} ${modo.nombre}` : `🔒 ${modo.nombre}`;
     tarjeta.appendChild(nombre);
@@ -270,7 +275,13 @@ async function jugarReto(perfilId, estadio, sesion) {
         mostrarBotonSiguiente(perfilId, estadio, sesion);
       }
     },
-    () => Sonido.sonidoFallo()
+    () => {
+      // Tras el primer fallo aparece la pista: Capi pasa de concentrado a dudoso, como en el
+      // sistema de expresiones de la guía de estilo ("duda" = pistas y decisiones).
+      const avatarCapi = document.getElementById('avatar-capi-actual');
+      if (avatarCapi) avatarCapi.src = 'assets/img/avatar-capi-duda.webp';
+      Sonido.sonidoFallo();
+    }
   );
 
   mostrarBotonVoz(app, puzzle);
@@ -281,8 +292,9 @@ function mostrarBotonVoz(app, puzzle) {
   fila.className = 'fila-voz';
 
   const avatarCapi = document.createElement('img');
+  avatarCapi.id = 'avatar-capi-actual';
   avatarCapi.className = 'avatar-capi';
-  avatarCapi.src = 'assets/img/avatar-capi.webp';
+  avatarCapi.src = 'assets/img/avatar-capi-concentracion.webp';
   avatarCapi.alt = 'Capi';
   fila.appendChild(avatarCapi);
 
