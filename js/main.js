@@ -429,4 +429,12 @@ function limpiarPantalla() {
   document.getElementById('progreso').textContent = '';
 }
 
+// Registra el service worker (T3.4): hace que el juego siga funcionando sin conexión.
+// Ruta relativa para que funcione igual en local y publicado en una subcarpeta de GitHub Pages.
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('service-worker.js');
+  });
+}
+
 arrancar();

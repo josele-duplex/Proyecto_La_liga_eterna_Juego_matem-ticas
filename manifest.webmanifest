@@ -1,9 +1,18 @@
 {
   "name": "Liga Eterna: Los Guardianes del Juego",
   "short_name": "Liga Eterna",
+  "description": "Practica cálculo mental jugando una temporada de fútbol por estadios.",
+  "lang": "es",
   "start_url": "./index.html",
+  "scope": "./",
   "display": "standalone",
-  "background_color": "#ffffff",
+  "orientation": "any",
+  "background_color": "#eaf3ff",
   "theme_color": "#1a7a3c",
-  "icons": []
+  "icons": [
+    { "src": "assets/icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icons/icon-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "assets/icons/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
 }
