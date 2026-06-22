@@ -254,6 +254,28 @@ button:focus-visible {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
 }
 
+/* Racha de días jugados (TG.3), en la barra de perfil. */
+.barra-racha {
+  font-weight: 800;
+  color: #c2561a;
+}
+
+/* Saludo diario de Capi (TG.3), arriba del calendario, solo la primera vez que se entra cada día. */
+.saludo-capi {
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  background: linear-gradient(180deg, #ffffff, #eaf2ff);
+  border: 2px solid rgba(41, 121, 255, 0.18);
+  border-radius: var(--radio-grande);
+  padding: 0.7rem 1rem;
+  margin-bottom: var(--espacio);
+  box-shadow: var(--sombra-suave);
+  animation: aparecer 0.3s ease both;
+}
+.saludo-capi p { margin: 0; font-weight: 700; color: var(--color-texto); }
+.capi-mini { width: 3.4rem; height: 3.4rem; object-fit: contain; flex-shrink: 0; }
+
 /* Marcador inferior: "Reto 1 de 3 · concepto · fase 2". */
 .marcador {
   margin: 0;
@@ -684,6 +706,21 @@ button:focus-visible {
   50% { transform: translateY(-10px) rotate(1deg); }
 }
 
+/* Resultado final del marcador y gancho para el día siguiente (TG.1, TG.3). */
+.resultado-final {
+  text-align: center;
+  font-weight: 800;
+  font-size: 1.15rem;
+  color: var(--color-primario-oscuro);
+  margin: 0.2rem 0;
+}
+.teaser-racha {
+  text-align: center;
+  font-weight: 700;
+  color: var(--color-texto-suave);
+  margin: 0.2rem 0 0.6rem;
+}
+
 /* ============================================================
    12. Celebración (confeti) y movimiento reducido.
    ============================================================ */
@@ -788,6 +825,18 @@ button:focus-visible {
 .banner-estadio .escudo-estadio { width: 2.4rem; height: 2.4rem; margin: 0; }
 .banner-estadio-nombre { font-family: var(--fuente-titulos); font-weight: 600; font-size: 1.05rem; color: var(--color-primario-oscuro); }
 
+/* Marcador del partido (TG.1): "tu equipo - rival", se empuja a la derecha del banner. */
+.marcador-partido {
+  margin-left: auto;
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: #fff;
+  background: linear-gradient(180deg, var(--color-primario), var(--color-primario-oscuro));
+  border-radius: var(--radio-pildora);
+  padding: 0.25rem 0.75rem;
+}
+
 /* Cápsula de misión con mini barra de progreso (P9). */
 .capsula-mision {
   background: rgba(255, 255, 255, 0.96);
@@ -812,6 +861,14 @@ button:focus-visible {
 .segmento-hecho { background: var(--color-primario); }
 .segmento-actual { background: #2979ff; box-shadow: 0 0 0 2px rgba(41, 121, 255, 0.25); }
 
+/* Jugada decisiva (TG.1): el último reto de la serie sube la tensión visual sin cambiar nada
+   de la mecánica — solo el marco dorado y un pulso suave avisan de que es "el penalti". */
+.capsula-decisiva {
+  background: linear-gradient(180deg, #fff8e1, #ffecb3);
+  border-color: #f0b429;
+}
+.capsula-decisiva .capsula-linea strong { color: #8a5a12; }
+
 /* Zona de juego: la tarjeta blanca que contiene pregunta, respuestas y feedback (P3, P12). */
 .zona-juego {
   position: relative;
@@ -820,6 +877,15 @@ button:focus-visible {
   border-radius: 24px;
   box-shadow: var(--sombra-suave);
   padding: 1.5rem 1.2rem 1.4rem;
+}
+
+.zona-juego-decisiva {
+  border-color: #f0b429;
+  animation: pulso-decisivo 1.8s ease-in-out infinite;
+}
+@keyframes pulso-decisivo {
+  0%, 100% { box-shadow: var(--sombra-suave); }
+  50% { box-shadow: 0 0 0 5px rgba(240, 180, 41, 0.3); }
 }
 
 /* Distintivo de "jugada" en la esquina de la tarjeta de la pregunta (P3). */

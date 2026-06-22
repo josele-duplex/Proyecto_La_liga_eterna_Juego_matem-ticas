@@ -1,5 +1,5 @@
 {
-  "nota": "Energia e insignias que se ganan al resolver un puzle. Cada estrategia (campo puzzle.estrategia) tiene su propia insignia, para premiar el COMO se resuelve, no solo el acierto. Anade aqui una entrada cuando crees un puzle con una estrategia nueva. 'imagen' es opcional por insignia: ruta a una ilustracion; mientras sea null se usa el 'icono' (emoji).",
+  "nota": "Energia e insignias que se ganan al resolver un puzle. 'insignias' premia el COMO matematico (estrategia del puzle); 'insigniasProceso' premia el COMO se ha jugado (sin pistas, remontada tras fallar, rapidez en Relampago), igual en cualquier concepto. Anade aqui una entrada cuando crees un puzle con una estrategia nueva. 'imagen' es opcional por insignia: ruta a una ilustracion; mientras sea null se usa el 'icono' (emoji).",
   "energiaPorPuzle": 10,
   "insignias": {
     "completar_diez": { "nombre": "Maestro de la Decena", "icono": "🔟", "imagen": "assets/img/insignias/insignia-completar-diez.webp" },
@@ -17,5 +17,10 @@
     "ordenar_numeros": { "nombre": "Estratega de Alineación", "icono": "📋", "imagen": null },
     "restar_estrategico": { "nombre": "Muro Defensivo", "icono": "🛡️", "imagen": null },
     "usar_valor_posicional": { "nombre": "Arquitecto de Decenas", "icono": "🏛️", "imagen": null }
+  },
+  "insigniasProceso": {
+    "sin_pistas": { "nombre": "Disparo Directo", "icono": "🌟", "imagen": null },
+    "remontada": { "nombre": "Remontada", "icono": "🔄", "imagen": null },
+    "velocista": { "nombre": "Rayo del Relámpago", "icono": "⚡", "imagen": null }
   }
 }

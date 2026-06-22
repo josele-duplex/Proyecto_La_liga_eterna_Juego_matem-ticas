@@ -58,6 +58,10 @@ const NOMBRES_CONCEPTO = {
   decenas: 'decenas y unidades'
 };
 
+// Por debajo de esto, y acertando a la primera, una respuesta de Relámpago cuenta como "veloz"
+// para la insignia de proceso correspondiente (no requiere racha, solo reflejos rápidos).
+const UMBRAL_VELOCISTA_MS = 4000;
+
 let indicesPorEdad = {};
 let calendario = null;
 let recompensas = null;
@@ -232,10 +236,19 @@ function mostrarSelectorModo(perfilId) {
 function mostrarCalendario(perfilId) {
   UI.aplicarTema('mundo');
   limpiarPantalla();
+
+  // Racha de días jugados (TG.3): se cuenta una vez al día. Si es la primera vez que se entra
+  // hoy, Capi saluda con la racha; si ya se había contado, la barra de perfil la sigue mostrando.
+  const racha = Storage.actualizarRacha(perfilId);
   mostrarBarraPerfil(perfilId, { mostrarVolver: false });
 
   const modo = modoDe(perfilId) || MODOS[0];
   const app = document.getElementById('app');
+
+  if (racha.esNuevoDia) {
+    app.appendChild(crearSaludoCapi(perfilId, racha.dias));
+  }
+
   const titulo = document.createElement('p');
   titulo.className = 'enunciado';
   titulo.textContent = `Calendario de la Liga — ${modo.icono} ${modo.nombre}`;
@@ -268,9 +281,31 @@ function mostrarCalendario(perfilId) {
   app.appendChild(lista);
 }
 
+// Saludo de Capi al entrar por primera vez en el día: refuerza el hábito de práctica diaria.
+function crearSaludoCapi(perfilId, dias) {
+  const perfil = PERFILES.find((p) => p.id === perfilId);
+  const saludo = document.createElement('div');
+  saludo.className = 'saludo-capi';
+
+  const img = document.createElement('img');
+  img.className = 'capi-mini';
+  img.src = 'assets/img/capi/avatar-capi-alegria.webp';
+  img.alt = 'Capi te saluda';
+  saludo.appendChild(img);
+
+  const texto = document.createElement('p');
+  const nombre = perfil ? perfil.nombre : 'campeón';
+  texto.textContent = dias > 1
+    ? `¡Hola, ${nombre}! Llevas ${dias} días seguidos entrenando. 🔥 ¡Sigue así!`
+    : `¡Hola, ${nombre}! Hoy empieza tu racha de entrenamiento. 🔥`;
+  saludo.appendChild(texto);
+
+  return saludo;
+}
+
 // --- Pantalla 4: jugar la serie de retos de un estadio ---
 function iniciarEstadio(perfilId, estadio) {
-  const sesion = { hechos: 0, total: estadio.retos };
+  const sesion = { hechos: 0, total: estadio.retos, golesRival: 0 };
   jugarReto(perfilId, estadio, sesion);
 }
 
@@ -285,20 +320,29 @@ async function jugarReto(perfilId, estadio, sesion) {
   const entrada = Progression.siguiente(progreso, indice);
   const puzzle = await (await fetch(entrada.ruta)).json();
 
+  // El último reto de la serie es la "jugada decisiva" (TG.1): más teatro, sin cambiar la
+  // mecánica (sigue siendo un reto normal, solo se presenta con más tensión).
+  const esDecisivo = sesion.hechos === sesion.total - 1;
+
   // Pantalla de reto como "panel de videojuego": el #app deja de ser una sola tarjeta blanca y pasa a
   // apilar paneles flotando sobre el césped (banner de estadio, cápsula de misión, zona de juego, Capi).
   const app = document.getElementById('app');
   app.className = 'pantalla-reto';
 
-  app.appendChild(crearBannerEstadio(estadio));
-  app.appendChild(crearCapsulaMision(puzzle, sesion));
+  const banner = crearBannerEstadio(estadio, sesion);
+  app.appendChild(banner);
+  app.appendChild(crearCapsulaMision(puzzle, sesion, esDecisivo));
 
   const zonaJuego = document.createElement('div');
-  zonaJuego.className = 'zona-juego';
+  zonaJuego.className = esDecisivo ? 'zona-juego zona-juego-decisiva' : 'zona-juego';
   app.appendChild(zonaJuego);
 
-  const tarjetaCapi = crearTarjetaCapi(puzzle);
+  const tarjetaCapi = crearTarjetaCapi(puzzle, esDecisivo);
   app.appendChild(tarjetaCapi);
+
+  // El rival solo "marca" una vez por reto (el primer fallo), aunque el niño falle varias veces
+  // probando opciones: no queremos inflar el marcador por tanteo, solo dar tensión real.
+  let falloContado = false;
 
   Engine.render(
     puzzle,
@@ -311,21 +355,29 @@ async function jugarReto(perfilId, estadio, sesion) {
       const desbloqueado = revisarDesbloqueo(progresoActual);
       if (desbloqueado) modoRecienDesbloqueado = desbloqueado;
       otorgarRecompensa(progresoActual, puzzleResuelto.estrategia);
+      otorgarInsigniasProceso(progresoActual, puzzleResuelto, resultado);
       Storage.guardarProgreso(perfilId, progresoActual);
       Sonido.sonidoAcierto();
       celebrarAcierto(zonaJuego, recompensas.energiaPorPuzle);
-      reaccionarCapi(tarjetaCapi, 'alegria', '¡Sabía que lo conseguirías, campeón!');
+      reaccionarCapi(tarjetaCapi, 'alegria', fraseAcierto(resultado));
       mostrarBarraPerfil(perfilId, { mostrarVolver: true, ocultarCambiarEquipo: true, brilloEnergia: true });
 
       sesion.hechos++;
       if (sesion.hechos >= sesion.total) {
-        mostrarPartidoGanado(perfilId, estadio);
+        mostrarPartidoGanado(perfilId, estadio, sesion);
       } else {
         mostrarBotonSiguiente(perfilId, estadio, sesion);
       }
     },
     () => {
-      // Tras el primer fallo, Capi pasa a "duda" y anima a pedir pista (sistema de expresiones).
+      // Tras el primer fallo, Capi pasa a "duda" y anima a pedir pista (sistema de expresiones);
+      // el marcador refleja la presión del rival (TG.1), pero solo cuenta el primer fallo del reto.
+      if (!falloContado) {
+        falloContado = true;
+        sesion.golesRival++;
+        const marcador = banner.querySelector('.marcador-partido');
+        if (marcador) marcador.textContent = `${sesion.hechos} - ${sesion.golesRival}`;
+      }
       reaccionarCapi(tarjetaCapi, 'duda', 'Casi. Piensa otra vez… ¿quieres una pista?');
       Sonido.sonidoFallo();
     },
@@ -336,8 +388,38 @@ async function jugarReto(perfilId, estadio, sesion) {
   );
 }
 
-// Banner con la identidad del estadio (escudo + nombre), arriba de la pantalla de reto.
-function crearBannerEstadio(estadio) {
+// Frase de Capi al acertar, según CÓMO se ha llegado al acierto (elogio al esfuerzo/estrategia,
+// no a "ser listo" — mentalidad de crecimiento): directo y sin ayuda, remontada tras fallar, o
+// pista bien aprovechada. Las tres son válidas; ninguna es mejor persona, solo distinto camino.
+function fraseAcierto(resultado) {
+  if (resultado.intentosFallidos === 0 && resultado.pistasUsadas === 0) {
+    return '¡Directo y sin pistas! Esa es la jugada de un crack.';
+  }
+  if (resultado.intentosFallidos >= 1) {
+    return '¡Buena remontada! No te has rendido y lo has conseguido.';
+  }
+  return '¡Bien pensado pedir ayuda en el momento justo!';
+}
+
+// Insignias de proceso (TG.4): premian el CÓMO se ha jugado, igual en cualquier concepto
+// (a diferencia de las insignias de estrategia, que son por contenido matemático).
+function otorgarInsigniasProceso(progreso, puzzle, resultado) {
+  progreso.insigniasProceso = progreso.insigniasProceso || {};
+  const sumar = (clave) => {
+    progreso.insigniasProceso[clave] = (progreso.insigniasProceso[clave] || 0) + 1;
+  };
+
+  if (resultado.intentosFallidos === 0 && resultado.pistasUsadas === 0) sumar('sin_pistas');
+  if (resultado.intentosFallidos >= 1) sumar('remontada');
+  if (puzzle.tipo === 'verdadero_falso' && resultado.intentosFallidos === 0 && resultado.tiempoMs <= UMBRAL_VELOCISTA_MS) {
+    sumar('velocista');
+  }
+}
+
+// Banner con la identidad del estadio (escudo + nombre) y el marcador del partido (TG.1), arriba
+// de la pantalla de reto. El marcador empieza en "aciertos - fallos del reto actual" y se va
+// actualizando en vivo (ver jugarReto) para dar tensión real sin cambiar la mecánica de fondo.
+function crearBannerEstadio(estadio, sesion) {
   const banner = document.createElement('div');
   banner.className = 'banner-estadio';
   banner.appendChild(UI.crearEscudo(estadio));
@@ -345,19 +427,29 @@ function crearBannerEstadio(estadio) {
   nombre.className = 'banner-estadio-nombre';
   nombre.textContent = `🏟 ${estadio.nombre}`;
   banner.appendChild(nombre);
+
+  const marcador = document.createElement('span');
+  marcador.className = 'marcador-partido';
+  marcador.title = 'Tu equipo - Rival';
+  marcador.textContent = `${sesion.hechos} - ${sesion.golesRival}`;
+  banner.appendChild(marcador);
+
   return banner;
 }
 
-// Cápsula de misión: en qué reto vas, qué concepto y fase, con una mini barra de progreso del partido.
-function crearCapsulaMision(puzzle, sesion) {
+// Cápsula de misión: en qué reto vas, qué concepto y fase, con una mini barra de progreso del
+// partido. El último reto de la serie se presenta como "jugada decisiva" (TG.1, más teatro).
+function crearCapsulaMision(puzzle, sesion, esDecisivo) {
   const concepto = NOMBRES_CONCEPTO[puzzle.concepto] || puzzle.concepto;
   const capsula = document.createElement('div');
-  capsula.className = 'capsula-mision';
+  capsula.className = esDecisivo ? 'capsula-mision capsula-decisiva' : 'capsula-mision';
 
   const linea = document.createElement('div');
   linea.className = 'capsula-linea';
   const reto = document.createElement('strong');
-  reto.textContent = `Reto ${sesion.hechos + 1} de ${sesion.total}`;
+  reto.textContent = esDecisivo
+    ? '⚡ ¡Penalti! Jugada decisiva'
+    : `Reto ${sesion.hechos + 1} de ${sesion.total}`;
   const cpt = document.createElement('span');
   cpt.className = 'capsula-concepto';
   cpt.textContent = `⚽ ${concepto}`;
@@ -381,7 +473,8 @@ function crearCapsulaMision(puzzle, sesion) {
 }
 
 // Tarjeta del entrenador Capi: retrato grande, bocadillo y botón para escuchar el enunciado.
-function crearTarjetaCapi(puzzle) {
+// En la jugada decisiva (TG.1) el primer mensaje sube la tensión en vez del genérico de siempre.
+function crearTarjetaCapi(puzzle, esDecisivo) {
   const tarjeta = document.createElement('div');
   tarjeta.className = 'tarjeta-capi';
 
@@ -398,7 +491,9 @@ function crearTarjetaCapi(puzzle) {
   const bocadillo = document.createElement('p');
   bocadillo.id = 'capi-bocadillo';
   bocadillo.className = 'bocadillo-capi';
-  bocadillo.textContent = '¡Vamos, campeón! Escucha mi consejo.';
+  bocadillo.textContent = esDecisivo
+    ? '¡Este es el momento, campeón! Concéntrate, sé que puedes.'
+    : '¡Vamos, campeón! Escucha mi consejo.';
   cuerpo.appendChild(bocadillo);
 
   const boton = document.createElement('button');
@@ -451,7 +546,7 @@ function mostrarBotonSiguiente(perfilId, estadio, sesion) {
   zona.appendChild(boton);
 }
 
-function mostrarPartidoGanado(perfilId, estadio) {
+function mostrarPartidoGanado(perfilId, estadio, sesion) {
   UI.aplicarTema('recompensa');
   document.getElementById('app').className = 'lienzo';
   document.getElementById('app').innerHTML = '';
@@ -488,6 +583,25 @@ function mostrarPartidoGanado(perfilId, estadio) {
     ? `¡Buen partido, ${perfil.nombre}! Has ganado en ${estadio.nombre}.`
     : `¡Partido ganado en ${estadio.nombre}!`;
   zona.appendChild(mensaje);
+
+  // Resultado final del marcador (TG.1): "victoria perfecta" si el rival no marcó ninguna.
+  if (sesion) {
+    const resultado = document.createElement('p');
+    resultado.className = 'resultado-final';
+    resultado.textContent = sesion.golesRival === 0
+      ? `🏆 Resultado: ${sesion.hechos} - ${sesion.golesRival} · ¡Victoria perfecta!`
+      : `🏆 Resultado: ${sesion.hechos} - ${sesion.golesRival}`;
+    zona.appendChild(resultado);
+  }
+
+  // Gancho para mañana (TG.3): mantiene viva la racha de entrenamiento.
+  const progresoFinal = Storage.cargarProgreso(perfilId);
+  if (progresoFinal.racha && progresoFinal.racha.dias > 0) {
+    const teaser = document.createElement('p');
+    teaser.className = 'teaser-racha';
+    teaser.textContent = `🔥 Llevas ${progresoFinal.racha.dias} ${progresoFinal.racha.dias === 1 ? 'día seguido' : 'días seguidos'}. ¡Vuelve mañana a por tu próximo partido!`;
+    zona.appendChild(teaser);
+  }
 
   const boton = document.createElement('button');
   boton.className = 'boton-siguiente boton-cta';
@@ -530,6 +644,24 @@ function otorgarRecompensa(progreso, estrategia) {
   }
 }
 
+// Chip de insignia para la barra de perfil (icono o imagen + contador): lo comparten las
+// insignias de estrategia y las de proceso, que solo se diferencian en de dónde sale la definición.
+function crearChipInsignia(insignia, cantidad) {
+  if (!insignia) return null;
+  const span = document.createElement('span');
+  span.title = `${insignia.nombre} (x${cantidad})`;
+  if (insignia.imagen) {
+    const img = document.createElement('img');
+    img.src = insignia.imagen;
+    img.alt = insignia.nombre;
+    img.className = 'icono-insignia';
+    span.appendChild(img);
+  } else {
+    span.textContent = `${insignia.icono} `;
+  }
+  return span;
+}
+
 function mostrarBarraPerfil(perfilId, opciones) {
   const perfil = PERFILES.find((p) => p.id === perfilId);
   const progreso = Storage.cargarProgreso(perfilId);
@@ -549,21 +681,24 @@ function mostrarBarraPerfil(perfilId, opciones) {
   energia.textContent = `⚡ ${progreso.energia || 0}`;
   barra.appendChild(energia);
 
+  // Racha de días jugados (TG.3): solo se muestra si ya hay al menos un día contado.
+  if (progreso.racha && progreso.racha.dias > 0) {
+    const racha = document.createElement('span');
+    racha.className = 'barra-racha';
+    racha.title = `${progreso.racha.dias} ${progreso.racha.dias === 1 ? 'día seguido' : 'días seguidos'} jugando`;
+    racha.textContent = `🔥 ${progreso.racha.dias}`;
+    barra.appendChild(racha);
+  }
+
   Object.keys(progreso.insignias || {}).forEach((estrategia) => {
-    const insignia = recompensas.insignias[estrategia];
-    if (!insignia) return;
-    const span = document.createElement('span');
-    span.title = `${insignia.nombre} (x${progreso.insignias[estrategia]})`;
-    if (insignia.imagen) {
-      const img = document.createElement('img');
-      img.src = insignia.imagen;
-      img.alt = insignia.nombre;
-      img.className = 'icono-insignia';
-      span.appendChild(img);
-    } else {
-      span.textContent = `${insignia.icono} `;
-    }
-    barra.appendChild(span);
+    const chip = crearChipInsignia(recompensas.insignias[estrategia], progreso.insignias[estrategia]);
+    if (chip) barra.appendChild(chip);
+  });
+
+  // Insignias de proceso (TG.4): el CÓMO se ha jugado, no el contenido matemático.
+  Object.keys(progreso.insigniasProceso || {}).forEach((clave) => {
+    const chip = crearChipInsignia(recompensas.insigniasProceso[clave], progreso.insigniasProceso[clave]);
+    if (chip) barra.appendChild(chip);
   });
 
   if (opciones && opciones.mostrarVolver) {

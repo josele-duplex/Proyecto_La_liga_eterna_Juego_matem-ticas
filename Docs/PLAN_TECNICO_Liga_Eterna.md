@@ -192,6 +192,52 @@ Estas tres decisiones son las "vigas maestras". Cambiarlas a mitad de obra oblig
 
 ---
 
+### FASE G — Gamificación, Engagement y Aprendizaje adaptativo
+
+**Meta de la fase:** que el niño sienta que *juega un partido* (no que hace ejercicios) y que quiera volver cada día, sin sacrificar la pedagogía. Nace de una consultoría de gamificación educativa (2026-06-23); detalle completo y razonamiento en el historial de conversación, no repetido aquí.
+
+**TG.1 — Partido con marcador y reto decisivo** ✅ *(hecho)*
+- *Problema que resuelve:* "3 retos = partido ganado" era plano; ahora hay marcador y tensión.
+- *Depende de:* T2.4, rediseño V2 de la pantalla de reto.
+- *Terminado cuando:* el banner de estadio muestra un marcador "tu equipo - rival" que sube con cada acierto y fallo del reto actual; el último reto de la serie se presenta como "jugada decisiva" (⚡ ¡Penalti!, marco dorado pulsante); la pantalla de victoria muestra el resultado final ("Victoria perfecta" si el rival no marcó).
+
+**TG.2 — Dificultad adaptativa afinada al "canal de flujo"** ✅ *(hecho)*
+- *Problema que resuelve:* mantener al niño en ~80% de aciertos, bajando de fase CPA en cuanto se atasca, no tras dos tropiezos.
+- *Depende de:* T2.3, T3.3.
+- *Terminado cuando:* `Progression.leCuesta` baja de fase con **un** fallo o **una** pista (antes hacían falta dos); `esDominio` sigue exigiendo acierto a la primera sin pistas para subir.
+
+**TG.3 — Racha de entrenamiento + gancho diario** ✅ *(hecho)*
+- *Problema que resuelve:* crear el hábito de práctica breve y frecuente.
+- *Depende de:* T1.5, portada.
+- *Terminado cuando:* `Storage.actualizarRacha` cuenta días seguidos jugados; Capi saluda con la racha la primera vez que se entra cada día al calendario; la barra de perfil muestra "🔥 N"; la pantalla de victoria anima a volver mañana.
+
+**TG.4 — Insignias de proceso y elogio al esfuerzo** ✅ *(hecho)*
+- *Problema que resuelve:* premiar el *buen camino* y la persistencia (mentalidad de crecimiento), no solo el acierto.
+- *Depende de:* T2.5, T3.3.
+- *Terminado cuando:* se otorgan insignias de proceso —"Disparo Directo" (sin pistas ni fallos), "Remontada" (acierto tras fallar), "Rayo del Relámpago" (rápido en Relámpago)— y Capi elogia la estrategia/esfuerzo con una frase distinta según el camino seguido.
+
+**TG.5 — Repaso espaciado por error** *(pendiente)*
+- *Problema que resuelve:* convertir los fallos en repaso programado en vez de tropiezos sueltos.
+- *Depende de:* T2.3, T3.3.
+- *Terminado cuando:* un concepto fallado reaparece unos retos después y otra vez en la sesión siguiente, hasta dominarse.
+
+**TG.6 — Rival "Fueras de Juego"** *(pendiente, necesita arte)*
+- *Problema que resuelve:* dar al fallo sentido narrativo (drama deportivo) y un adversario real al partido.
+- *Depende de:* TG.1, ilustraciones de las criaturas del error.
+- *Terminado cuando:* el equipo rival son los Fueras de Juego; fallar = el rival intercepta.
+
+**TG.7 — Power-ups que andamian** *(pendiente)*
+- *Problema que resuelve:* dar destino a la energía ⚡ con ayudas que no saltan el aprendizaje.
+- *Depende de:* T2.1, T2.5.
+- *Terminado cuando:* se puede gastar energía en "Ojo del águila", "Tiempo extra" (Relámpago) y "Consejo del capitán", ninguno revela la respuesta directa.
+
+**TG.8 — Clasificación y temporada** *(pendiente, apuesta grande)*
+**TG.9 — Álbum de cromos** *(pendiente, apuesta grande)*
+**TG.10 — Tienda cosmética** *(pendiente, apuesta grande, necesita arte)*
+**TG.11 — Metacognición ligera ("¿cómo lo hiciste?")** *(pendiente, opcional)*
+
+---
+
 ### FASE 4 — Pruebas con niños
 
 **T4.1 — Sesión de observación con tus hijos** — jugar y anotar dónde se atascan, qué no entienden, qué ritmo cansa.

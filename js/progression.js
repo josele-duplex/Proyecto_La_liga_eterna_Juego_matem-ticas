@@ -8,9 +8,11 @@ const Progression = {
   esDominio(resultado) {
     return resultado.intentosFallidos === 0 && resultado.pistasUsadas === 0;
   },
-  // "Le cuesta": dos o más fallos, o dos o más pistas → baja de fase a reforzar.
+  // "Le cuesta": un fallo o una pista ya bastan → baja de fase a reforzar de inmediato. Así el
+  // juego se mantiene en el "canal de flujo" (ni aburre ni frustra) sin esperar a que se atasque
+  // dos veces; como esDominio exige acertar a la primera, basta UN tropiezo para notarlo.
   leCuesta(resultado) {
-    return resultado.intentosFallidos >= 2 || resultado.pistasUsadas >= 2;
+    return resultado.intentosFallidos >= 1 || resultado.pistasUsadas >= 1;
   },
 
   // Lista de fases disponibles para un concepto (según lo que haya en el índice).
