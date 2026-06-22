@@ -934,3 +934,55 @@ button:focus-visible {
 
 /* Coherencia de tarjetas (P12): mismas esquinas redondeadas en el resto de paneles. */
 .estadio, .boton-perfil { border-radius: 22px; }
+
+/* ============================================================
+   8. Portada (pantalla de título). Imagen a pantalla completa, fuera de ".marco"
+   (sin el límite de 760px) con un único botón real encima: "¡A jugar!". El toque
+   en este botón es también el primer gesto del usuario en iOS, así que de paso
+   desbloquea el audio (Sonido.obtenerContexto() se llama en el mismo clic). */
+#portada:empty { display: none; }
+
+.pantalla-portada {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 7vh;
+  background: url('../assets/img/decoracion/portada.webp') center center / cover no-repeat;
+  animation: aparecer 0.3s ease both;
+}
+
+.portada-boton {
+  font-family: var(--fuente-titulos);
+  font-size: 1.4rem;
+  font-weight: 700;
+  padding: 1.05rem 2.6rem;
+  border: none;
+  border-radius: var(--radio-pildora);
+  background: linear-gradient(180deg, #ffd54a, #ff9100);
+  color: #1c2530;
+  cursor: pointer;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.25), 0 10px 22px rgba(0, 0, 0, 0.4);
+  animation: respirar 2.6s ease-in-out infinite;
+}
+.portada-boton:active { box-shadow: 0 3px 0 rgba(0, 0, 0, 0.25); transform: translateY(3px); }
+
+.portada-sonido {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.35);
+  color: #fff;
+  cursor: pointer;
+}

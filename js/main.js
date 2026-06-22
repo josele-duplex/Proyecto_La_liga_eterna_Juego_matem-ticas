@@ -73,14 +73,43 @@ async function arrancar() {
   calendario = await (await fetch('data/estadios.json')).json();
   recompensas = await (await fetch('data/recompensas.json')).json();
 
-  const perfilActivo = Storage.cargarPerfilActivo();
-  if (perfilActivo && modoDe(perfilActivo)) {
-    mostrarCalendario(perfilActivo);
-  } else if (perfilActivo) {
-    mostrarSelectorModo(perfilActivo);
-  } else {
-    mostrarSelectorPerfil();
-  }
+  mostrarPortada(() => {
+    const perfilActivo = Storage.cargarPerfilActivo();
+    if (perfilActivo && modoDe(perfilActivo)) {
+      mostrarCalendario(perfilActivo);
+    } else if (perfilActivo) {
+      mostrarSelectorModo(perfilActivo);
+    } else {
+      mostrarSelectorPerfil();
+    }
+  });
+}
+
+// --- Pantalla 0: portada (pantalla de título), siempre la primera al abrir la app. Imagen a
+// pantalla completa con un único botón real "¡A jugar!"; ese toque es también el primer gesto
+// del usuario en iOS, así que de paso desbloquea el audio (Web Audio exige un gesto para sonar).
+function mostrarPortada(alContinuar) {
+  const portada = document.getElementById('portada');
+  portada.className = 'pantalla-portada';
+
+  const sonidoBoton = document.createElement('button');
+  sonidoBoton.className = 'portada-sonido';
+  sonidoBoton.textContent = Sonido.activo ? '🔊' : '🔇';
+  sonidoBoton.addEventListener('click', () => {
+    sonidoBoton.textContent = Sonido.alternar() ? '🔊' : '🔇';
+  });
+  portada.appendChild(sonidoBoton);
+
+  const boton = document.createElement('button');
+  boton.className = 'portada-boton';
+  boton.textContent = '⚽ ¡A jugar!';
+  boton.addEventListener('click', () => {
+    Sonido.obtenerContexto();
+    portada.innerHTML = '';
+    portada.className = '';
+    alContinuar();
+  });
+  portada.appendChild(boton);
 }
 
 // Devuelve el modo guardado del jugador (o null si todavía no ha elegido ninguno).
