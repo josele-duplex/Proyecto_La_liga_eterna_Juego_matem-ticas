@@ -3,6 +3,45 @@
    instantánea en tablet, color con función, error en naranja (no rojo). Todo el aspecto se
    controla con los tokens de :root y las clases de tema; el motor y la lógica nunca fijan color. */
 
+/* Tipografía autoalojada (no CDN, para que funcione sin conexión en la PWA). Nunito para el
+   texto general (legible, redondeada); Fredoka para títulos y UI llamativa (P13 del rediseño V2). */
+@font-face {
+  font-family: "Nunito";
+  src: url("../assets/fonts/nunito-regular.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nunito";
+  src: url("../assets/fonts/nunito-semibold.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nunito";
+  src: url("../assets/fonts/nunito-bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Nunito";
+  src: url("../assets/fonts/nunito-extrabold.woff2") format("woff2");
+  font-weight: 800;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Fredoka";
+  src: url("../assets/fonts/fredoka-semibold.woff2") format("woff2");
+  font-weight: 600;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Fredoka";
+  src: url("../assets/fonts/fredoka-bold.woff2") format("woff2");
+  font-weight: 700;
+  font-display: swap;
+}
+
 /* ============================================================
    1. Tokens de diseño — cambiar aquí cambia todo el aspecto.
    ============================================================ */
@@ -34,6 +73,7 @@
 
   /* Forma y profundidad. */
   --fuente-principal: "Nunito", "Baloo 2", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --fuente-titulos: "Fredoka", var(--fuente-principal);
   --radio: 16px;
   --radio-grande: 22px;
   --radio-pildora: 999px;
@@ -246,9 +286,9 @@ button:focus-visible {
    5. Botón primario (jugar, siguiente, elegir...).
    ============================================================ */
 .boton-siguiente {
-  font-family: inherit;
+  font-family: var(--fuente-titulos);
   font-size: 1.15rem;
-  font-weight: 800;
+  font-weight: 700;
   padding: 0.85rem 1.5rem;
   margin-top: var(--espacio);
   background: linear-gradient(180deg, var(--color-primario), var(--color-primario-oscuro));
@@ -698,8 +738,11 @@ button:focus-visible {
   100% { text-shadow: none; transform: none; }
 }
 
-/* La pantalla de reto deja de ser una tarjeta blanca: apila paneles sobre el campo. */
+/* La pantalla de reto deja de ser una tarjeta blanca: apila paneles flotando sobre una foto de
+   estadio desenfocada (gradas y focos de fondo, P8), con un velo oscuro para que las tarjetas
+   blancas sigan leyéndose encima. */
 .pantalla-reto {
+  position: relative;
   background: none;
   border: none;
   box-shadow: none;
@@ -708,6 +751,16 @@ button:focus-visible {
   flex-direction: column;
   gap: 0.85rem;
   animation: aparecer 0.28s ease both;
+}
+
+.pantalla-reto::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(6, 20, 12, 0.55), rgba(6, 20, 12, 0.78)),
+    url('../assets/img/decoracion/fondo-estadio-reto.webp') center 30% / cover no-repeat;
 }
 
 /* Banner de estadio (P10). */
@@ -722,7 +775,7 @@ button:focus-visible {
   box-shadow: var(--sombra-suave);
 }
 .banner-estadio .escudo-estadio { width: 2.4rem; height: 2.4rem; margin: 0; }
-.banner-estadio-nombre { font-weight: 800; font-size: 1.05rem; color: var(--color-primario-oscuro); }
+.banner-estadio-nombre { font-family: var(--fuente-titulos); font-weight: 600; font-size: 1.05rem; color: var(--color-primario-oscuro); }
 
 /* Cápsula de misión con mini barra de progreso (P9). */
 .capsula-mision {
@@ -740,7 +793,7 @@ button:focus-visible {
   font-size: 1.05rem;
   color: var(--color-texto-suave);
 }
-.capsula-linea strong { color: var(--color-texto); }
+.capsula-linea strong { font-family: var(--fuente-titulos); font-weight: 600; color: var(--color-texto); }
 .capsula-concepto { font-weight: 800; color: var(--color-primario-oscuro); }
 .capsula-fase { margin-left: auto; font-weight: 700; }
 .mini-progreso { display: flex; gap: 5px; margin-top: 0.55rem; }
@@ -812,7 +865,7 @@ button:focus-visible {
   margin-top: 0.9rem;
   animation: aparecer-celebracion 0.4s ease both;
 }
-.celebracion-titulo { font-size: 1.5rem; font-weight: 900; color: #c2561a; }
+.celebracion-titulo { font-family: var(--fuente-titulos); font-size: 1.5rem; font-weight: 700; color: #c2561a; }
 .celebracion-sub { font-size: 1.05rem; font-weight: 700; color: #8a5a12; }
 .celebracion-energia { font-size: 1.15rem; font-weight: 900; color: #1e6522; }
 @keyframes aparecer-celebracion {

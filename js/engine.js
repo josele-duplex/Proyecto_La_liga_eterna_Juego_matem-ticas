@@ -7,7 +7,7 @@ const Engine = {
   // resultado = { intentosFallidos, pistasUsadas, tiempoMs } para que otras piezas (progresión,
   // evaluación) sepan cómo le fue. alFallar() es opcional: avisa en cada intento fallido (p. ej.
   // para un sonido). El motor solo mide y notifica: no sabe qué hará nadie con esos avisos.
-  render(puzzle, container, alResolver, alFallar) {
+  render(puzzle, container, alResolver, alFallar, alPedirPista) {
     container.innerHTML = '';
 
     const enunciado = document.createElement('p');
@@ -25,7 +25,7 @@ const Engine = {
     const feedback = document.createElement('p');
     feedback.className = 'feedback';
 
-    const pistas = this.crearControlPistas(puzzle);
+    const pistas = this.crearControlPistas(puzzle, alPedirPista);
     let intentosFallidos = 0;
     const inicio = Date.now();
 
@@ -122,7 +122,9 @@ const Engine = {
   },
 
   // El botón de pista solo aparece tras el primer fallo. Nunca da la respuesta directa.
-  crearControlPistas(puzzle) {
+  // alPedirPista (opcional) avisa la primera vez que se pide una pista, para que la interfaz
+  // pueda reaccionar (p. ej. Capi anima al jugador).
+  crearControlPistas(puzzle, alPedirPista) {
     const zona = document.createElement('div');
     zona.className = 'zona-pistas';
 
@@ -140,6 +142,7 @@ const Engine = {
     let mostradas = 0;
     boton.addEventListener('click', () => {
       if (mostradas >= puzzle.pistas.length) return;
+      if (mostradas === 0 && alPedirPista) alPedirPista();
       const pista = puzzle.pistas[mostradas];
       const texto = document.createElement('p');
       texto.className = 'pista';

@@ -299,6 +299,10 @@ async function jugarReto(perfilId, estadio, sesion) {
       // Tras el primer fallo, Capi pasa a "duda" y anima a pedir pista (sistema de expresiones).
       reaccionarCapi(tarjetaCapi, 'duda', 'Casi. Piensa otra vez… ¿quieres una pista?');
       Sonido.sonidoFallo();
+    },
+    () => {
+      // Al pedir la primera pista, Capi da ánimos en vez de quedarse en la duda.
+      reaccionarCapi(tarjetaCapi, 'animo', '¡Tú puedes! Aquí va una ayuda.');
     }
   );
 }
@@ -380,7 +384,7 @@ function crearTarjetaCapi(puzzle) {
 
 // Cambia la pose y el bocadillo de Capi según lo que pasa, con un pequeño rebote.
 function reaccionarCapi(tarjeta, estado, frase) {
-  const poses = { normal: 'concentracion', duda: 'duda', alegria: 'alegria' };
+  const poses = { normal: 'concentracion', duda: 'duda', alegria: 'alegria', animo: 'animo' };
   const img = tarjeta.querySelector('#avatar-capi-actual');
   const bocadillo = tarjeta.querySelector('#capi-bocadillo');
   if (img) img.src = `assets/img/capi/avatar-capi-${poses[estado] || 'concentracion'}.webp`;
