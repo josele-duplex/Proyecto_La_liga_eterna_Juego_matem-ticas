@@ -55,6 +55,17 @@ El motor no tiene un "if" por cada reto posible. En su lugar, conoce un **puñad
 
 Ejemplo: [`data/puzzles/8-anios/recta-numerica-fase2-pictorica.json`](../data/puzzles/8-anios/recta-numerica-fase2-pictorica.json).
 
+### Forma de `datos` y `respuesta` para `tipo: "verdadero_falso"` (juego "Relámpago")
+
+- `datos`: vacío (la afirmación va en `enunciado.texto`, p. ej. "¿es verdad que 6 + 6 = 12?").
+- `respuesta.correcta`: **`true` o `false`** (booleano). El niño pulsa "✅ Verdadero" o "❌ Falso".
+
+### Forma de `datos` y `respuesta` para `tipo: "ordenar"` (juego "Alineación")
+
+- `datos.numeros`: lista de números **distintos**, en el orden desordenado en que se muestran.
+- `respuesta.orden`: la misma lista **ordenada** (de menor a mayor). El niño toca los números en ese
+  orden; un toque fuera de orden cuenta como fallo y se resuelve al colocarlos todos.
+
 ---
 
 ## 4. Las pistas (3 niveles, andamiaje)
