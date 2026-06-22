@@ -68,6 +68,8 @@ body.tema-recompensa {
    ============================================================ */
 * { box-sizing: border-box; }
 
+html { touch-action: manipulation; }
+
 body {
   font-family: var(--fuente-principal);
   color: var(--color-texto);
@@ -76,7 +78,26 @@ body {
   background: linear-gradient(160deg, var(--color-fondo-a), var(--color-fondo-b));
   background-attachment: fixed;
   -webkit-text-size-adjust: 100%;
+  overscroll-behavior-y: contain;
   transition: background 0.4s ease;
+}
+
+/* Pulido táctil (T3.6): un niño puede mantener pulsado o tocar dos veces sin querer.
+   - touch-action: manipulation evita el zoom por doble toque (refuerza el viewport).
+   - tap-highlight transparente quita el destello gris feo de iOS/Android al tocar.
+   - touch-callout/user-select desactivados en botones para que mantener pulsado no
+     abra el menú de "copiar" ni seleccione texto, solo dispare el botón. */
+button {
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+button:focus-visible {
+  outline: 3px solid var(--color-primario);
+  outline-offset: 2px;
 }
 
 .marco {
@@ -120,12 +141,14 @@ body {
   color: var(--color-texto);
 }
 
-/* Botones secundarios de la barra (cambiar equipo/jugador): píldoras discretas. */
+/* Botones secundarios de la barra (cambiar equipo/jugador): píldoras discretas.
+   min-height 2.75rem (~44px) para que un dedo infantil no falle el toque. */
 .barra-perfil button {
   font-family: inherit;
   font-size: 0.9rem;
   font-weight: 700;
   padding: 0.4rem 0.9rem;
+  min-height: 2.75rem;
   border: 2px solid rgba(20, 40, 70, 0.12);
   background: #fff;
   color: var(--color-primario-oscuro);
@@ -205,6 +228,7 @@ body {
   font-size: 1rem;
   font-weight: 700;
   padding: 0.55rem 1.1rem;
+  min-height: 2.75rem;
   background: #fff;
   border: 2px solid var(--color-primario);
   color: var(--color-primario-oscuro);
@@ -218,7 +242,11 @@ body {
 
 .boton-sonido {
   font-size: 1.2rem;
-  padding: 0.3rem 0.55rem;
+  width: 2.75rem;
+  height: 2.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background: none;
   border: none;
   cursor: pointer;
@@ -284,8 +312,8 @@ body {
   font-size: 1.15rem;
   font-weight: 800;
   padding: 0.55rem 0.7rem;
-  min-width: 2.6rem;
-  min-height: 2.8rem;
+  min-width: 2.75rem;
+  min-height: 2.75rem;
   background: rgba(255, 255, 255, 0.92);
   color: var(--color-texto);
   border: 2px solid rgba(255, 255, 255, 0.6);
@@ -319,6 +347,7 @@ body {
   font-size: 1rem;
   font-weight: 700;
   padding: 0.55rem 1.1rem;
+  min-height: 2.75rem;
   background: var(--color-pista-fondo);
   border: 2px solid var(--color-pista-borde);
   color: #8a6d00;
