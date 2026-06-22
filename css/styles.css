@@ -85,7 +85,8 @@ body {
   min-height: 100vh;
   background:
     radial-gradient(125% 80% at 50% -12%, var(--foco-estadio), transparent 58%),
-    radial-gradient(150% 130% at 50% 45%, transparent 52%, rgba(6, 28, 14, 0.45)),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(0, 0, 0, 0) 32%, rgba(0, 0, 0, 0.26)),
+    radial-gradient(150% 130% at 50% 45%, transparent 50%, rgba(6, 28, 14, 0.52)),
     repeating-linear-gradient(90deg, var(--cesped-a) 0 46px, var(--cesped-b) 46px 92px),
     var(--cesped-a);
   background-attachment: fixed;
@@ -104,6 +105,18 @@ body::before {
   border-radius: 20px;
   pointer-events: none;
   z-index: -1;
+}
+
+/* Marcas del campo: círculo central y línea de medio campo, muy tenues, para dar ambiente de estadio. */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 50% 42%, transparent 70px, rgba(255, 255, 255, 0.12) 72px, rgba(255, 255, 255, 0.12) 74px, transparent 76px),
+    linear-gradient(transparent calc(42% - 1px), rgba(255, 255, 255, 0.12) 42%, transparent calc(42% + 1px));
 }
 
 /* Pulido táctil (T3.6): un niño puede mantener pulsado o tocar dos veces sin querer.
@@ -133,6 +146,10 @@ button:focus-visible {
   flex-direction: column;
   gap: 1rem;
 }
+
+/* Si el lienzo queda vacío (p. ej. la pantalla de victoria pone su contenido en otra zona),
+   no mostramos una tarjeta blanca vacía. */
+.lienzo:empty { display: none; }
 
 /* Lienzo: la tarjeta principal donde vive cada pantalla. */
 .lienzo {
@@ -656,4 +673,211 @@ button:focus-visible {
   .opcion { font-size: 1.3rem; }
   .marco { padding: 0.7rem 0.7rem 2rem; }
   .lienzo { padding: 1.1rem 1rem 1.3rem; }
+  .pantalla-reto .enunciado { font-size: 1.6rem; }
+  .capi-retrato { width: 4.4rem; height: 4.4rem; }
 }
+
+/* ============================================================
+   14. REDISEÑO V2 — pantalla de reto con aspecto de videojuego.
+   Paneles que flotan sobre el césped; Capi como entrenador; pregunta
+   protagonista; respuestas y celebración con más vida. (Brief V2.)
+   ============================================================ */
+
+/* Barra de estado más fina (P1). */
+.barra-perfil { padding: 0.3rem 0.7rem; gap: 0.45rem; }
+.barra-jugando { font-weight: 800; }
+.barra-energia {
+  display: inline-block;
+  font-weight: 900;
+  color: #c2561a;
+}
+.brillo-energia { animation: brillo-energia 0.7s ease; }
+@keyframes brillo-energia {
+  0% { text-shadow: none; }
+  40% { text-shadow: 0 0 10px rgba(255, 193, 7, 0.95); transform: scale(1.18); }
+  100% { text-shadow: none; transform: none; }
+}
+
+/* La pantalla de reto deja de ser una tarjeta blanca: apila paneles sobre el campo. */
+.pantalla-reto {
+  background: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  animation: aparecer 0.28s ease both;
+}
+
+/* Banner de estadio (P10). */
+.banner-estadio {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: linear-gradient(180deg, #ffffff, #eef4fb);
+  border: 2px solid rgba(20, 40, 70, 0.08);
+  border-radius: 24px;
+  padding: 0.4rem 0.9rem;
+  box-shadow: var(--sombra-suave);
+}
+.banner-estadio .escudo-estadio { width: 2.4rem; height: 2.4rem; margin: 0; }
+.banner-estadio-nombre { font-weight: 800; font-size: 1.05rem; color: var(--color-primario-oscuro); }
+
+/* Cápsula de misión con mini barra de progreso (P9). */
+.capsula-mision {
+  background: rgba(255, 255, 255, 0.96);
+  border: 2px solid rgba(20, 40, 70, 0.08);
+  border-radius: 24px;
+  padding: 0.6rem 0.95rem;
+  box-shadow: var(--sombra-suave);
+}
+.capsula-linea {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  font-size: 1.05rem;
+  color: var(--color-texto-suave);
+}
+.capsula-linea strong { color: var(--color-texto); }
+.capsula-concepto { font-weight: 800; color: var(--color-primario-oscuro); }
+.capsula-fase { margin-left: auto; font-weight: 700; }
+.mini-progreso { display: flex; gap: 5px; margin-top: 0.55rem; }
+.segmento { flex: 1; height: 9px; border-radius: 999px; background: rgba(20, 40, 70, 0.12); }
+.segmento-hecho { background: var(--color-primario); }
+.segmento-actual { background: #2979ff; box-shadow: 0 0 0 2px rgba(41, 121, 255, 0.25); }
+
+/* Zona de juego: la tarjeta blanca que contiene pregunta, respuestas y feedback (P3, P12). */
+.zona-juego {
+  position: relative;
+  background: var(--color-superficie);
+  border: 2px solid rgba(20, 40, 70, 0.08);
+  border-radius: 24px;
+  box-shadow: var(--sombra-suave);
+  padding: 1.5rem 1.2rem 1.4rem;
+}
+
+/* Distintivo de "jugada" en la esquina de la tarjeta de la pregunta (P3). */
+.zona-juego::before {
+  content: "⚽";
+  position: absolute;
+  top: -14px;
+  left: 18px;
+  width: 2.2rem;
+  height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  background: #fff;
+  border: 2px solid rgba(20, 40, 70, 0.08);
+  border-radius: 50%;
+  box-shadow: var(--sombra-suave);
+}
+
+/* Pregunta protagonista (P3, P13): más grande dentro de la pantalla de reto. */
+.pantalla-reto .enunciado {
+  font-size: 2rem;
+  line-height: 1.2;
+}
+.pantalla-reto .feedback { font-size: 1.4rem; }
+
+/* Respuestas: esquinas 24px y animaciones de acierto/fallo (P4, P11, P12). */
+.opcion { border-radius: 24px; }
+.pantalla-reto .opcion { font-size: 1.6rem; }
+.opcion-correcta { animation: destello-correcto 0.35s ease; }
+@keyframes destello-correcto {
+  0% { box-shadow: 0 0 0 0 rgba(46, 125, 50, 0); }
+  40% { box-shadow: 0 0 16px 4px rgba(46, 125, 50, 0.5); }
+  100% { box-shadow: 0 0 0 0 rgba(46, 125, 50, 0); }
+}
+.opcion-incorrecta { animation: rebote-error 0.4s ease; }
+@keyframes rebote-error {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}
+
+/* Celebración de acierto (P5): tarjeta dorada con la energía ganada. */
+.feedback.celebracion {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+  background: linear-gradient(180deg, #fff5d6, #ffe6ad);
+  border: 2px solid #f0b429;
+  border-radius: 20px;
+  padding: 0.8rem 1rem;
+  margin-top: 0.9rem;
+  animation: aparecer-celebracion 0.4s ease both;
+}
+.celebracion-titulo { font-size: 1.5rem; font-weight: 900; color: #c2561a; }
+.celebracion-sub { font-size: 1.05rem; font-weight: 700; color: #8a5a12; }
+.celebracion-energia { font-size: 1.15rem; font-weight: 900; color: #1e6522; }
+@keyframes aparecer-celebracion {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: none; }
+}
+
+/* Tarjeta del entrenador Capi (P2, P6): retrato grande, bocadillo y rebote. */
+.tarjeta-capi {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  background: linear-gradient(180deg, #ffffff, #eaf2ff);
+  border: 2px solid rgba(41, 121, 255, 0.18);
+  border-radius: 24px;
+  padding: 0.8rem 1rem;
+  box-shadow: var(--sombra-suave);
+}
+.capi-retrato {
+  width: 5.6rem;
+  height: 5.6rem;
+  object-fit: contain;
+  flex-shrink: 0;
+  filter: drop-shadow(0 3px 5px rgba(0, 0, 0, 0.2));
+}
+.capi-cuerpo { display: flex; flex-direction: column; gap: 0.55rem; align-items: flex-start; }
+.bocadillo-capi {
+  position: relative;
+  margin: 0;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--color-texto);
+  background: #fff;
+  border: 2px solid rgba(20, 40, 70, 0.1);
+  border-radius: 14px;
+  padding: 0.5rem 0.8rem;
+}
+.bocadillo-capi::before {
+  content: "";
+  position: absolute;
+  left: -9px;
+  top: 14px;
+  border: 7px solid transparent;
+  border-right-color: #fff;
+}
+.capi-rebote { animation: capi-rebote 0.5s ease; }
+@keyframes capi-rebote {
+  0%, 100% { transform: translateY(0); }
+  30% { transform: translateY(-8px); }
+  60% { transform: translateY(0); }
+}
+
+/* Botón principal de llamada a la acción (P7, P11): más grande, sombra marcada, respiración lenta. */
+.boton-cta {
+  font-size: 1.3rem;
+  padding: 1rem 1.9rem;
+  border-radius: 24px;
+  box-shadow: 0 6px 0 rgba(0, 0, 0, 0.14);
+  animation: respirar 2.6s ease-in-out infinite;
+}
+.boton-cta:active { box-shadow: 0 3px 0 rgba(0, 0, 0, 0.14); }
+@keyframes respirar {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.03); }
+}
+
+/* Coherencia de tarjetas (P12): mismas esquinas redondeadas en el resto de paneles. */
+.estadio, .boton-perfil { border-radius: 22px; }

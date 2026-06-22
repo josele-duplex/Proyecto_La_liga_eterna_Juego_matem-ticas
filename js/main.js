@@ -248,20 +248,32 @@ function iniciarEstadio(perfilId, estadio) {
 async function jugarReto(perfilId, estadio, sesion) {
   UI.aplicarTema('mate');
   limpiarPantalla();
-  mostrarBarraPerfil(perfilId, { mostrarVolver: true });
+  mostrarBarraPerfil(perfilId, { mostrarVolver: true, ocultarCambiarEquipo: true });
 
   const modo = modoDe(perfilId) || MODOS[0];
   const indice = indicesPorEdad[modo.edad];
   const progreso = Storage.cargarProgreso(perfilId);
   const entrada = Progression.siguiente(progreso, indice);
   const puzzle = await (await fetch(entrada.ruta)).json();
-  const app = document.getElementById('app');
 
-  mostrarRetoActual(puzzle, sesion);
+  // Pantalla de reto como "panel de videojuego": el #app deja de ser una sola tarjeta blanca y pasa a
+  // apilar paneles flotando sobre el césped (banner de estadio, cápsula de misión, zona de juego, Capi).
+  const app = document.getElementById('app');
+  app.className = 'pantalla-reto';
+
+  app.appendChild(crearBannerEstadio(estadio));
+  app.appendChild(crearCapsulaMision(puzzle, sesion));
+
+  const zonaJuego = document.createElement('div');
+  zonaJuego.className = 'zona-juego';
+  app.appendChild(zonaJuego);
+
+  const tarjetaCapi = crearTarjetaCapi(puzzle);
+  app.appendChild(tarjetaCapi);
 
   Engine.render(
     puzzle,
-    app,
+    zonaJuego,
     (puzzleResuelto, resultado) => {
       const progresoActual = Storage.cargarProgreso(perfilId);
       progresoActual.ultimoPuzleId = puzzleResuelto.id;
@@ -272,7 +284,9 @@ async function jugarReto(perfilId, estadio, sesion) {
       otorgarRecompensa(progresoActual, puzzleResuelto.estrategia);
       Storage.guardarProgreso(perfilId, progresoActual);
       Sonido.sonidoAcierto();
-      mostrarBarraPerfil(perfilId, { mostrarVolver: true });
+      celebrarAcierto(zonaJuego, recompensas.energiaPorPuzle);
+      reaccionarCapi(tarjetaCapi, 'alegria', '¡Sabía que lo conseguirías, campeón!');
+      mostrarBarraPerfil(perfilId, { mostrarVolver: true, ocultarCambiarEquipo: true, brilloEnergia: true });
 
       sesion.hechos++;
       if (sesion.hechos >= sesion.total) {
@@ -282,49 +296,132 @@ async function jugarReto(perfilId, estadio, sesion) {
       }
     },
     () => {
-      // Tras el primer fallo aparece la pista: Capi pasa de concentrado a dudoso, como en el
-      // sistema de expresiones de la guía de estilo ("duda" = pistas y decisiones).
-      const avatarCapi = document.getElementById('avatar-capi-actual');
-      if (avatarCapi) avatarCapi.src = 'assets/img/capi/avatar-capi-duda.webp';
+      // Tras el primer fallo, Capi pasa a "duda" y anima a pedir pista (sistema de expresiones).
+      reaccionarCapi(tarjetaCapi, 'duda', 'Casi. Piensa otra vez… ¿quieres una pista?');
       Sonido.sonidoFallo();
     }
   );
-
-  mostrarBotonVoz(app, puzzle);
 }
 
-function mostrarBotonVoz(app, puzzle) {
-  const fila = document.createElement('div');
-  fila.className = 'fila-voz';
+// Banner con la identidad del estadio (escudo + nombre), arriba de la pantalla de reto.
+function crearBannerEstadio(estadio) {
+  const banner = document.createElement('div');
+  banner.className = 'banner-estadio';
+  banner.appendChild(UI.crearEscudo(estadio));
+  const nombre = document.createElement('span');
+  nombre.className = 'banner-estadio-nombre';
+  nombre.textContent = `🏟 ${estadio.nombre}`;
+  banner.appendChild(nombre);
+  return banner;
+}
 
-  const avatarCapi = document.createElement('img');
-  avatarCapi.id = 'avatar-capi-actual';
-  avatarCapi.className = 'avatar-capi';
-  avatarCapi.src = 'assets/img/capi/avatar-capi-concentracion.webp';
-  avatarCapi.alt = 'Capi';
-  fila.appendChild(avatarCapi);
+// Cápsula de misión: en qué reto vas, qué concepto y fase, con una mini barra de progreso del partido.
+function crearCapsulaMision(puzzle, sesion) {
+  const concepto = NOMBRES_CONCEPTO[puzzle.concepto] || puzzle.concepto;
+  const capsula = document.createElement('div');
+  capsula.className = 'capsula-mision';
+
+  const linea = document.createElement('div');
+  linea.className = 'capsula-linea';
+  const reto = document.createElement('strong');
+  reto.textContent = `Reto ${sesion.hechos + 1} de ${sesion.total}`;
+  const cpt = document.createElement('span');
+  cpt.className = 'capsula-concepto';
+  cpt.textContent = `⚽ ${concepto}`;
+  const fase = document.createElement('span');
+  fase.className = 'capsula-fase';
+  fase.textContent = `Fase ${puzzle.fase_cpa}`;
+  linea.append(reto, cpt, fase);
+  capsula.appendChild(linea);
+
+  const barra = document.createElement('div');
+  barra.className = 'mini-progreso';
+  for (let i = 0; i < sesion.total; i++) {
+    const seg = document.createElement('span');
+    seg.className = 'segmento';
+    if (i < sesion.hechos) seg.classList.add('segmento-hecho');
+    else if (i === sesion.hechos) seg.classList.add('segmento-actual');
+    barra.appendChild(seg);
+  }
+  capsula.appendChild(barra);
+  return capsula;
+}
+
+// Tarjeta del entrenador Capi: retrato grande, bocadillo y botón para escuchar el enunciado.
+function crearTarjetaCapi(puzzle) {
+  const tarjeta = document.createElement('div');
+  tarjeta.className = 'tarjeta-capi';
+
+  const img = document.createElement('img');
+  img.id = 'avatar-capi-actual';
+  img.className = 'capi-retrato';
+  img.src = 'assets/img/capi/avatar-capi-concentracion.webp';
+  img.alt = 'Capi, tu entrenador';
+  tarjeta.appendChild(img);
+
+  const cuerpo = document.createElement('div');
+  cuerpo.className = 'capi-cuerpo';
+
+  const bocadillo = document.createElement('p');
+  bocadillo.id = 'capi-bocadillo';
+  bocadillo.className = 'bocadillo-capi';
+  bocadillo.textContent = '¡Vamos, campeón! Escucha mi consejo.';
+  cuerpo.appendChild(bocadillo);
 
   const boton = document.createElement('button');
   boton.className = 'boton-voz';
-  boton.textContent = '🔊 Escuchar al entrenador';
+  boton.textContent = '🔊 Escuchar';
   boton.addEventListener('click', () => Sonido.decirVoz(puzzle.enunciado.voz));
-  fila.appendChild(boton);
+  cuerpo.appendChild(boton);
 
-  app.insertBefore(fila, app.firstChild);
+  tarjeta.appendChild(cuerpo);
+  return tarjeta;
+}
+
+// Cambia la pose y el bocadillo de Capi según lo que pasa, con un pequeño rebote.
+function reaccionarCapi(tarjeta, estado, frase) {
+  const poses = { normal: 'concentracion', duda: 'duda', alegria: 'alegria' };
+  const img = tarjeta.querySelector('#avatar-capi-actual');
+  const bocadillo = tarjeta.querySelector('#capi-bocadillo');
+  if (img) img.src = `assets/img/capi/avatar-capi-${poses[estado] || 'concentracion'}.webp`;
+  if (bocadillo) bocadillo.textContent = frase;
+  tarjeta.classList.remove('capi-rebote');
+  void tarjeta.offsetWidth; // reinicia la animación
+  tarjeta.classList.add('capi-rebote');
+}
+
+// Convierte el feedback de acierto en una tarjeta de celebración con la energía ganada.
+function celebrarAcierto(zonaJuego, energia) {
+  const feedback = zonaJuego.querySelector('.feedback');
+  if (!feedback) return;
+  feedback.className = 'feedback feedback-correcto celebracion';
+  feedback.innerHTML = '';
+  const titulo = document.createElement('span');
+  titulo.className = 'celebracion-titulo';
+  titulo.textContent = '⚽ ¡Golazo!';
+  const sub = document.createElement('span');
+  sub.className = 'celebracion-sub';
+  sub.textContent = '¡Muy bien! Has acertado.';
+  const en = document.createElement('span');
+  en.className = 'celebracion-energia';
+  en.textContent = `+${energia} energía`;
+  feedback.append(titulo, sub, en);
 }
 
 function mostrarBotonSiguiente(perfilId, estadio, sesion) {
   const zona = document.getElementById('siguiente');
   zona.innerHTML = '';
   const boton = document.createElement('button');
-  boton.className = 'boton-siguiente';
-  boton.textContent = 'Siguiente reto →';
+  boton.className = 'boton-siguiente boton-cta';
+  boton.textContent = '⚽ Siguiente reto';
   boton.addEventListener('click', () => jugarReto(perfilId, estadio, sesion));
   zona.appendChild(boton);
 }
 
 function mostrarPartidoGanado(perfilId, estadio) {
   UI.aplicarTema('recompensa');
+  document.getElementById('app').className = 'lienzo';
+  document.getElementById('app').innerHTML = '';
   const zona = document.getElementById('siguiente');
   zona.innerHTML = '';
 
@@ -341,8 +438,8 @@ function mostrarPartidoGanado(perfilId, estadio) {
   zona.appendChild(mensaje);
 
   const boton = document.createElement('button');
-  boton.className = 'boton-siguiente';
-  boton.textContent = 'Volver al calendario';
+  boton.className = 'boton-siguiente boton-cta';
+  boton.textContent = '🏟 Volver al calendario';
   boton.addEventListener('click', () => mostrarCalendario(perfilId));
   zona.appendChild(boton);
 
@@ -372,12 +469,6 @@ function mostrarPartidoGanado(perfilId, estadio) {
   UI.celebrarVictoria(zona);
 }
 
-function mostrarRetoActual(puzzle, sesion) {
-  const concepto = NOMBRES_CONCEPTO[puzzle.concepto] || puzzle.concepto;
-  document.getElementById('progreso').textContent =
-    `Reto ${sesion.hechos + 1} de ${sesion.total} · ${concepto} · fase ${puzzle.fase_cpa}`;
-}
-
 // Da energía y, según la estrategia usada, una insignia distinta. Modifica el progreso recibido.
 function otorgarRecompensa(progreso, estrategia) {
   progreso.energia = (progreso.energia || 0) + recompensas.energiaPorPuzle;
@@ -396,8 +487,15 @@ function mostrarBarraPerfil(perfilId, opciones) {
   barra.appendChild(UI.crearAvatarMini(perfil));
 
   const texto = document.createElement('span');
-  texto.textContent = `Jugando: ${perfil.nombre} — ⚡ ${progreso.energia || 0} — `;
+  texto.className = 'barra-jugando';
+  texto.textContent = `Jugando: ${perfil.nombre}`;
   barra.appendChild(texto);
+
+  const energia = document.createElement('span');
+  energia.className = 'barra-energia';
+  if (opciones && opciones.brilloEnergia) energia.classList.add('brillo-energia');
+  energia.textContent = `⚡ ${progreso.energia || 0}`;
+  barra.appendChild(energia);
 
   Object.keys(progreso.insignias || {}).forEach((estrategia) => {
     const insignia = recompensas.insignias[estrategia];
@@ -423,7 +521,7 @@ function mostrarBarraPerfil(perfilId, opciones) {
     barra.appendChild(volver);
   }
 
-  if (modoDe(perfilId)) {
+  if (modoDe(perfilId) && !(opciones && opciones.ocultarCambiarEquipo)) {
     const cambiarModo = document.createElement('button');
     cambiarModo.textContent = 'Cambiar de equipo';
     cambiarModo.addEventListener('click', () => mostrarSelectorModo(perfilId));
@@ -449,7 +547,9 @@ function mostrarBarraPerfil(perfilId, opciones) {
 }
 
 function limpiarPantalla() {
-  document.getElementById('app').innerHTML = '';
+  const app = document.getElementById('app');
+  app.innerHTML = '';
+  app.className = 'lienzo'; // por defecto, tarjeta blanca; la pantalla de reto lo cambia a 'pantalla-reto'
   document.getElementById('siguiente').innerHTML = '';
   document.getElementById('progreso').textContent = '';
 }
