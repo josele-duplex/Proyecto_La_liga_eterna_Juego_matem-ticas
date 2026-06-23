@@ -3,7 +3,7 @@
 // - CACHE_DATOS: todo lo demás (puzles JSON, imágenes) se cachea solo, la primera vez que se pide,
 //   para no tener que mantener a mano una lista de cada fichero de puzle que se vaya añadiendo.
 // Subir VERSION al cambiar el esqueleto fuerza a los dispositivos a descargar la versión nueva.
-const VERSION = 'v12';
+const VERSION = 'v13';
 const CACHE_APP = `liga-eterna-app-${VERSION}`;
 const CACHE_DATOS = `liga-eterna-datos-${VERSION}`;
 
@@ -24,6 +24,9 @@ const ARCHIVOS_APP = [
   'assets/icons/icon-maskable-192.png',
   'assets/icons/icon-maskable-512.png',
   'assets/icons/apple-touch-icon.png',
+  'assets/icons/favicon.ico',
+  'assets/icons/favicon-32.png',
+  'assets/icons/favicon-16.png',
   'assets/fonts/nunito-regular.woff2',
   'assets/fonts/nunito-semibold.woff2',
   'assets/fonts/nunito-bold.woff2',

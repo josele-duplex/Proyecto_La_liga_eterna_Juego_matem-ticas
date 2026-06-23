@@ -746,19 +746,151 @@ button:focus-visible {
   50% { transform: translateY(-10px) rotate(1deg); }
 }
 
-/* Resultado final del marcador y gancho para el día siguiente (TG.1, TG.3). */
-.resultado-final {
+/* ============================================================
+   Pantalla de partido ganado: un panel recogido sobre el césped, con texto siempre legible
+   (fondo claro propio) y celebración clara. Antes el contenido flotaba sobre el verde y los
+   colores rojo/azul no se distinguían.
+   ============================================================ */
+.panel-victoria {
+  position: relative;
+  overflow: hidden;
+  max-width: 30rem;
+  margin: 0.4rem auto 0;
+  background: linear-gradient(180deg, #ffffff, #f3f8f4);
+  border: 2px solid rgba(20, 40, 70, 0.1);
+  border-radius: 26px;
+  box-shadow: 0 12px 30px rgba(6, 28, 14, 0.35);
+  padding: 0 1.1rem 1.2rem;
   text-align: center;
-  font-weight: 800;
-  font-size: 1.15rem;
-  color: var(--color-primario-oscuro);
-  margin: 0.2rem 0;
+  animation: aparecer-celebracion 0.45s ease both;
 }
-.teaser-racha {
-  text-align: center;
+
+/* Confeti recogido dentro del panel (cae sobre la celebración, no fuera de pantalla). */
+.panel-victoria .confeti { position: absolute; top: 0; left: 0; right: 0; height: 0; z-index: 2; }
+
+/* Cabecera dorada con el titular grande. Sangra hasta los bordes del panel. */
+.victoria-cabecera {
+  margin: 0 -1.1rem 0.8rem;
+  padding: 0.9rem 1rem 0.8rem;
+  background: linear-gradient(180deg, #ffd75e, #f5a623);
+  border-bottom: 3px solid #e0892e;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.1rem;
+}
+.victoria-trofeo {
+  font-size: 2.8rem;
+  line-height: 1;
+  filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.25));
+  animation: capi-brinco 0.9s ease-in-out 3;
+}
+.victoria-titulo {
+  margin: 0;
+  font-family: var(--fuente-titulos);
+  font-size: 1.7rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: #7a3d00;
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+.victoria-sub {
+  margin: 0 0 0.4rem;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--color-texto);
+}
+
+/* Marcador tipo estadio: tablero oscuro, tanteo grande, tú a un lado y el rival al otro. */
+.marcador-final {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  margin: 0.3rem auto 0.5rem;
+  padding: 0.55rem 1rem;
+  max-width: 22rem;
+  background: linear-gradient(180deg, #16263f, #0d1a2e);
+  border-radius: 16px;
+  box-shadow: inset 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+.marcador-lado {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.2rem;
+  flex: 1;
+  min-width: 0;
+}
+.marcador-equipo {
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #cfe0f5;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+}
+.marcador-rival-img { width: 2.1rem; height: 2.1rem; object-fit: contain; }
+.marcador-tanteo {
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  font-size: 2rem;
+  color: #ffd75e;
+  text-shadow: 0 0 10px rgba(255, 193, 7, 0.4);
+  flex-shrink: 0;
+}
+
+.victoria-perfecta {
+  margin: 0.2rem 0;
+  font-weight: 800;
+  color: #c2561a;
+}
+.rival-derrotado {
+  margin: 0.2rem 0 0.4rem;
   font-weight: 700;
   color: var(--color-texto-suave);
-  margin: 0.2rem 0 0.6rem;
+}
+
+/* Fila de premios: energía y racha con cifras grandes. */
+.victoria-premios {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+  margin: 0.5rem 0;
+}
+.premio {
+  background: #eef4fb;
+  border: 2px solid rgba(41, 121, 255, 0.18);
+  border-radius: var(--radio-pildora);
+  padding: 0.35rem 0.9rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--color-texto);
+}
+.premio strong { font-size: 1.15rem; color: var(--color-primario-oscuro); }
+
+/* Bloque de equipo desbloqueado: destacado, no perdido entre el resto. */
+.victoria-desbloqueo {
+  margin: 0.6rem 0;
+  padding: 0.8rem;
+  background: linear-gradient(180deg, #fff5d6, #ffe6ad);
+  border: 2px solid #f0b429;
+  border-radius: 18px;
+}
+.victoria-desbloqueo p { margin: 0 0 0.5rem; font-weight: 800; color: #8a5a12; }
+
+.panel-victoria .boton-cta { margin-top: 0.6rem; }
+
+.teaser-racha {
+  margin: 0.7rem 0 0;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-texto-suave);
 }
 
 /* ============================================================

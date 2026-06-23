@@ -35,9 +35,11 @@ const Progression = {
     return vistos;
   },
 
-  // Actualiza el progreso tras resolver un puzle: sube / mantiene / baja de fase, y cambia de
-  // concepto cuando se domina la fase más alta del concepto actual. Modifica y devuelve el progreso.
-  actualizar(progreso, indice, conceptoJugado, faseJugada, resultado) {
+  // Actualiza el progreso tras resolver un puzle: sube/baja la fase CPA de ese concepto y rota al
+  // siguiente concepto. `fueRepaso` indica si el puzle venía de la cola de repaso (TG.5); en ese
+  // caso NO se mueve el puntero de rotación, para que el repaso no desordene la vuelta normal.
+  // Modifica y devuelve el progreso.
+  actualizar(progreso, indice, conceptoJugado, faseJugada, resultado, fueRepaso) {
     progreso.dominio = progreso.dominio || {};
     if (!progreso.dominio[conceptoJugado]) {
       progreso.dominio[conceptoJugado] = { fase: faseJugada };
@@ -47,6 +49,8 @@ const Progression = {
     const faseMax = Math.max(...fases);
     const faseMin = Math.min(...fases);
 
+    // Progresivo/regresivo: cada concepto recuerda su PROPIA fase CPA. Acertar a la primera y sin
+    // pistas sube de fase; un tropiezo la baja. Esto es independiente de qué concepto toque jugar.
     let nuevaFase = faseJugada;
     if (this.esDominio(resultado)) {
       nuevaFase = Math.min(faseJugada + 1, faseMax);
@@ -55,13 +59,16 @@ const Progression = {
     }
     progreso.dominio[conceptoJugado].fase = nuevaFase;
 
-    // Si ha dominado la fase más alta de este concepto, pasa al siguiente concepto.
+    // Rotación de conceptos (interleaving): tras CADA reto normal se avanza al siguiente concepto
+    // de la lista, en círculo. Así el niño ve variedad y NUNCA se queda atascado repitiendo el
+    // mismo concepto (la causa del bug: antes solo se rotaba al dominar la fase más alta, y un
+    // único fallo dejaba al jugador encerrado). Un reto de repaso no mueve el puntero.
     const conceptos = this.conceptos(indice);
-    if (this.esDominio(resultado) && faseJugada === faseMax) {
+    if (!fueRepaso) {
       const i = conceptos.indexOf(conceptoJugado);
       progreso.conceptoActual = conceptos[(i + 1) % conceptos.length];
-    } else {
-      progreso.conceptoActual = conceptoJugado;
+    } else if (!progreso.conceptoActual || !conceptos.includes(progreso.conceptoActual)) {
+      progreso.conceptoActual = conceptos[0];
     }
 
     // Cola de repaso (TG.5): cada puzle resuelto acerca el turno de los conceptos ya en cola;
