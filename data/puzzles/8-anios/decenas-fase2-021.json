@@ -1,0 +1,53 @@
+{
+  "id": "8-decenas-2-021",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "decenas",
+  "fase_cpa": 2,
+  "edad": "8-anios",
+  "estrategia": "usar_valor_posicional",
+  "enunciado": {
+    "texto": "En el número 47, ¿cuántas decenas hay?",
+    "voz": "Las decenas de 47."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "3"
+      },
+      {
+        "id": "b",
+        "texto": "4"
+      },
+      {
+        "id": "c",
+        "texto": "5"
+      },
+      {
+        "id": "d",
+        "texto": "6"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Separa 47 en decenas y unidades."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "47 = 4 decenas y 7 unidades."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "47 tiene 4 decenas."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

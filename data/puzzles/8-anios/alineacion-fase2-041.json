@@ -1,0 +1,47 @@
+{
+  "id": "8-alineacion-2-041",
+  "version": 1,
+  "tipo": "ordenar",
+  "concepto": "alineacion",
+  "fase_cpa": 2,
+  "edad": "8-anios",
+  "estrategia": "ordenar_numeros",
+  "enunciado": {
+    "texto": "Coloca la alineación de menor a mayor. Toca los números en orden, del más pequeño al más grande.",
+    "voz": "De menor a mayor."
+  },
+  "datos": {
+    "numeros": [
+      25,
+      52,
+      19,
+      38
+    ]
+  },
+  "respuesta": {
+    "orden": [
+      19,
+      25,
+      38,
+      52
+    ]
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Mira las decenas."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Si empatan, mira las unidades."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "Del más pequeño al más grande."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

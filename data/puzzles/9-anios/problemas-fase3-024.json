@@ -1,0 +1,53 @@
+{
+  "id": "9-problemas-3-024",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "problemas",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "razonar_problema",
+  "enunciado": {
+    "texto": "En 3 cajas hay 9 balones cada una. Se pinchan 5. ¿Cuántos balones buenos quedan?",
+    "voz": "Piénsalo en dos pasos."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "18"
+      },
+      {
+        "id": "b",
+        "texto": "22"
+      },
+      {
+        "id": "c",
+        "texto": "24"
+      },
+      {
+        "id": "d",
+        "texto": "27"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Cuántos en total: 3 × 9."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "3 × 9 = 27; quita 5."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "27 - 5 = 22."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

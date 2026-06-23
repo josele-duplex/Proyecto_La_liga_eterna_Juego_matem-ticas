@@ -1,0 +1,53 @@
+{
+  "id": "6-secuencia-2-022",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "secuencia",
+  "fase_cpa": 2,
+  "edad": "6-anios",
+  "estrategia": "contar_secuencia",
+  "enunciado": {
+    "texto": "Sigue la serie: 5, 10, 15, ... ¿Qué número viene ahora?",
+    "voz": "Sigue el patrón."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "15"
+      },
+      {
+        "id": "b",
+        "texto": "20"
+      },
+      {
+        "id": "c",
+        "texto": "21"
+      },
+      {
+        "id": "d",
+        "texto": "25"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Mira cuánto sube de un número al siguiente."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Va de 5 en 5."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "Después de 15 viene 20."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

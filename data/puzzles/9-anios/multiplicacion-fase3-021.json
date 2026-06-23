@@ -1,0 +1,53 @@
+{
+  "id": "9-multiplicacion-3-021",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "multiplicacion",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "multiplicar_grupos",
+  "enunciado": {
+    "texto": "15 × 3 = ?",
+    "voz": "15 por 3."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "42"
+      },
+      {
+        "id": "b",
+        "texto": "45"
+      },
+      {
+        "id": "c",
+        "texto": "47"
+      },
+      {
+        "id": "d",
+        "texto": "48"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Descompón: 15 = 10 + 5."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "10 × 3 = 30 y 5 × 3 = 15; súmalos."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "15 × 3 = 45."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

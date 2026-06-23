@@ -1,0 +1,53 @@
+{
+  "id": "9-problemas-3-023",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "problemas",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "razonar_problema",
+  "enunciado": {
+    "texto": "Una entrada cuesta 7 €. Compras 4 entradas y pagas con 50 €. ¿Cuánto te devuelven?",
+    "voz": "Piénsalo en dos pasos."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "12"
+      },
+      {
+        "id": "b",
+        "texto": "18"
+      },
+      {
+        "id": "c",
+        "texto": "22"
+      },
+      {
+        "id": "d",
+        "texto": "28"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Cuánto cuestan: 4 × 7."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "4 × 7 = 28; resta de 50."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "50 - 28 = 22."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

@@ -1,0 +1,35 @@
+{
+  "id": "6-relampago-2-023",
+  "version": 1,
+  "tipo": "verdadero_falso",
+  "concepto": "relampago",
+  "fase_cpa": 2,
+  "edad": "6-anios",
+  "estrategia": "calcular_rapido",
+  "enunciado": {
+    "texto": "¿Es verdad que 8 - 1 = 6?",
+    "voz": "Rápido: ¿verdadero o falso?"
+  },
+  "datos": {},
+  "respuesta": {
+    "correcta": false
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Cuenta con los dedos si hace falta."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Hazlo en tu cabeza, rápido."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "Comprueba el resultado y decide."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

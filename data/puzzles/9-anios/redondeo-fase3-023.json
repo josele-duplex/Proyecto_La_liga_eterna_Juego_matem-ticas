@@ -1,0 +1,53 @@
+{
+  "id": "9-redondeo-3-023",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "redondeo",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "redondear",
+  "enunciado": {
+    "texto": "Redondea 810 a la centena más cercana.",
+    "voz": "810 a la centena."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "700"
+      },
+      {
+        "id": "b",
+        "texto": "800"
+      },
+      {
+        "id": "c",
+        "texto": "810"
+      },
+      {
+        "id": "d",
+        "texto": "900"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "810 está entre 800 y 900."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Mira las decenas: 5 o más sube de centena."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "810 → 800."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

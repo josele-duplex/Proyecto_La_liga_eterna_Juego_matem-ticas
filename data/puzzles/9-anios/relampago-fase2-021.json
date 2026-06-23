@@ -1,0 +1,35 @@
+{
+  "id": "9-relampago-2-021",
+  "version": 1,
+  "tipo": "verdadero_falso",
+  "concepto": "relampago",
+  "fase_cpa": 2,
+  "edad": "9-anios",
+  "estrategia": "calcular_rapido",
+  "enunciado": {
+    "texto": "¿Es verdad que 56 ÷ 7 = 9?",
+    "voz": "Rápido: ¿verdadero o falso?"
+  },
+  "datos": {},
+  "respuesta": {
+    "correcta": false
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Apóyate en una tabla que sepas."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Calcula con cuidado."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "Decide verdadero o falso."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

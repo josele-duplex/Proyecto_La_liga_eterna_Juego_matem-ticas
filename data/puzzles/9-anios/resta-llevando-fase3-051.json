@@ -1,0 +1,53 @@
+{
+  "id": "9-resta_llevando-3-051",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "resta_llevando",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "restar_llevando",
+  "enunciado": {
+    "texto": "3120 - 1789 = ?",
+    "voz": "3120 menos 1789."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "1231"
+      },
+      {
+        "id": "b",
+        "texto": "1331"
+      },
+      {
+        "id": "c",
+        "texto": "1332"
+      },
+      {
+        "id": "d",
+        "texto": "1341"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Réstalo por columnas."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "O cuenta desde 1789 hasta 3120."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "3120 - 1789 = 1331."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

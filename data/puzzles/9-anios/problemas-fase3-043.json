@@ -1,0 +1,53 @@
+{
+  "id": "9-problemas-3-043",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "problemas",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "razonar_problema",
+  "enunciado": {
+    "texto": "Un balón cuesta 9 €. Compras 3 y pagas con 50 €. ¿Cuánto te sobra?",
+    "voz": "Piénsalo en dos pasos."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "14"
+      },
+      {
+        "id": "b",
+        "texto": "17"
+      },
+      {
+        "id": "c",
+        "texto": "23"
+      },
+      {
+        "id": "d",
+        "texto": "27"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Coste: 3 × 9."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "3 × 9 = 27; resta de 50."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "50 - 27 = 23."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

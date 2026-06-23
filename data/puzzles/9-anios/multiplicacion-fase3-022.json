@@ -1,0 +1,53 @@
+{
+  "id": "9-multiplicacion-3-022",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "multiplicacion",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "multiplicar_grupos",
+  "enunciado": {
+    "texto": "14 × 5 = ?",
+    "voz": "14 por 5."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "65"
+      },
+      {
+        "id": "b",
+        "texto": "70"
+      },
+      {
+        "id": "c",
+        "texto": "72"
+      },
+      {
+        "id": "d",
+        "texto": "75"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Descompón: 14 = 10 + 4."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "10 × 5 = 50 y 4 × 5 = 20; súmalos."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "14 × 5 = 70."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

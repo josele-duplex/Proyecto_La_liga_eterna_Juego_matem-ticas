@@ -1,0 +1,45 @@
+{
+  "id": "6-comparar-3-040",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "comparar",
+  "fase_cpa": 3,
+  "edad": "6-anios",
+  "estrategia": "comparar_cantidades",
+  "enunciado": {
+    "texto": "¿Qué número es mayor: 9 o 6?",
+    "voz": "9 o 6."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "6"
+      },
+      {
+        "id": "b",
+        "texto": "9"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Imagina 9 y 6 en la recta."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "El mayor está más a la derecha."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "El mayor es 9."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

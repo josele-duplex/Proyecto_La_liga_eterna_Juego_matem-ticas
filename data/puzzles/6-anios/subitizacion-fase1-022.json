@@ -1,0 +1,53 @@
+{
+  "id": "6-subitizacion-1-022",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "subitizacion",
+  "fase_cpa": 1,
+  "edad": "6-anios",
+  "estrategia": "reconocer_patron",
+  "enunciado": {
+    "texto": "⚽⚽⚽⚽⚽⚽⚽ ¿Cuántos balones hay? Intenta verlo de un vistazo.",
+    "voz": "Mira el grupo entero."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "6"
+      },
+      {
+        "id": "b",
+        "texto": "7"
+      },
+      {
+        "id": "c",
+        "texto": "8"
+      },
+      {
+        "id": "d",
+        "texto": "9"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "No los señales uno a uno: míralos todos a la vez."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Compáralo con los dedos de una mano."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "Son 7."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

@@ -1,0 +1,53 @@
+{
+  "id": "9-resta_llevando-3-031",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "resta_llevando",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "restar_llevando",
+  "enunciado": {
+    "texto": "2034 - 879 = ?",
+    "voz": "2034 menos 879."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "1055"
+      },
+      {
+        "id": "b",
+        "texto": "1155"
+      },
+      {
+        "id": "c",
+        "texto": "1156"
+      },
+      {
+        "id": "d",
+        "texto": "1165"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Réstalo por columnas con préstamos."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "O cuenta hacia delante desde 879 hasta 2034."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "2034 - 879 = 1155."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

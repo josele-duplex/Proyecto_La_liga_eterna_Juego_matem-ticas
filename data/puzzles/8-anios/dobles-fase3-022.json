@@ -1,0 +1,53 @@
+{
+  "id": "8-dobles-3-022",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "dobles",
+  "fase_cpa": 3,
+  "edad": "8-anios",
+  "estrategia": "usar_dobles",
+  "enunciado": {
+    "texto": "¿Cuánto es el doble de 8? (8 + 8)",
+    "voz": "El doble de 8."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "14"
+      },
+      {
+        "id": "b",
+        "texto": "16"
+      },
+      {
+        "id": "c",
+        "texto": "17"
+      },
+      {
+        "id": "d",
+        "texto": "18"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Doble es 8 y otra vez 8."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "8 + 8."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "El doble de 8 es 16."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

@@ -1,0 +1,53 @@
+{
+  "id": "9-division-3-045",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "division",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "dividir",
+  "enunciado": {
+    "texto": "90 ÷ 6 = ?",
+    "voz": "90 entre 6."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "14"
+      },
+      {
+        "id": "b",
+        "texto": "15"
+      },
+      {
+        "id": "c",
+        "texto": "16"
+      },
+      {
+        "id": "d",
+        "texto": "17"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "La división deshace la multiplicación."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "¿6 por cuánto da 90?"
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "90 ÷ 6 = 15."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

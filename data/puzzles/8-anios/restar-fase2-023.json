@@ -1,0 +1,53 @@
+{
+  "id": "8-restar-2-023",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "restar",
+  "fase_cpa": 2,
+  "edad": "8-anios",
+  "estrategia": "restar_estrategico",
+  "enunciado": {
+    "texto": "13 - 5 = ?",
+    "voz": "13 menos 5."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "7"
+      },
+      {
+        "id": "b",
+        "texto": "8"
+      },
+      {
+        "id": "c",
+        "texto": "9"
+      },
+      {
+        "id": "d",
+        "texto": "10"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Baja primero a 10 desde 13."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Cuenta hacia atrás 5 desde 13."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "13 - 5 = 8."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

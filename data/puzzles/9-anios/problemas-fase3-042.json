@@ -1,0 +1,53 @@
+{
+  "id": "9-problemas-3-042",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "problemas",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "razonar_problema",
+  "enunciado": {
+    "texto": "Hay 48 jugadores en 8 equipos iguales. Si 3 equipos no vienen, ¿cuántos jugadores faltan?",
+    "voz": "Piénsalo en dos pasos."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "6"
+      },
+      {
+        "id": "b",
+        "texto": "18"
+      },
+      {
+        "id": "c",
+        "texto": "24"
+      },
+      {
+        "id": "d",
+        "texto": "30"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Por equipo: 48 ÷ 8."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "48 ÷ 8 = 6; por 3 equipos."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "6 × 3 = 18."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

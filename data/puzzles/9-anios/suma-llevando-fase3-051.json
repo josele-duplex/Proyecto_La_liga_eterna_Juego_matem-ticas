@@ -1,0 +1,53 @@
+{
+  "id": "9-suma_llevando-3-051",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "suma_llevando",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "sumar_llevando",
+  "enunciado": {
+    "texto": "3456 + 789 = ?",
+    "voz": "3456 más 789."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "4145"
+      },
+      {
+        "id": "b",
+        "texto": "4245"
+      },
+      {
+        "id": "c",
+        "texto": "4246"
+      },
+      {
+        "id": "d",
+        "texto": "4255"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Alinea por la derecha y suma columna a columna."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Lleva 1 a la siguiente columna."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "3456 + 789 = 4245."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

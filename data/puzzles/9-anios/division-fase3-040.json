@@ -1,0 +1,53 @@
+{
+  "id": "9-division-3-040",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "division",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "dividir",
+  "enunciado": {
+    "texto": "81 ÷ 9 = ?",
+    "voz": "81 entre 9."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "8"
+      },
+      {
+        "id": "b",
+        "texto": "9"
+      },
+      {
+        "id": "c",
+        "texto": "10"
+      },
+      {
+        "id": "d",
+        "texto": "11"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "La división deshace la multiplicación."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "¿9 por cuánto da 81?"
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "81 ÷ 9 = 9."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

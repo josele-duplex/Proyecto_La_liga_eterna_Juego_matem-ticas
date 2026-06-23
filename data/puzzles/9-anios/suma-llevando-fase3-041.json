@@ -1,0 +1,53 @@
+{
+  "id": "9-suma_llevando-3-041",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "suma_llevando",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "sumar_llevando",
+  "enunciado": {
+    "texto": "639 + 285 = ?",
+    "voz": "639 más 285."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "824"
+      },
+      {
+        "id": "b",
+        "texto": "914"
+      },
+      {
+        "id": "c",
+        "texto": "924"
+      },
+      {
+        "id": "d",
+        "texto": "925"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Suma por columnas."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Lleva 1 cuando pase de 9."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "639 + 285 = 924."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

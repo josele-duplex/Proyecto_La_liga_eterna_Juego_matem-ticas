@@ -1,0 +1,53 @@
+{
+  "id": "8-restar-2-040",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "restar",
+  "fase_cpa": 2,
+  "edad": "8-anios",
+  "estrategia": "restar_estrategico",
+  "enunciado": {
+    "texto": "12 - 5 = ?",
+    "voz": "12 menos 5."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "6"
+      },
+      {
+        "id": "b",
+        "texto": "7"
+      },
+      {
+        "id": "c",
+        "texto": "8"
+      },
+      {
+        "id": "d",
+        "texto": "9"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Baja primero a 10 desde 12."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Cuenta hacia atrás 5."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "12 - 5 = 7."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

@@ -1,0 +1,53 @@
+{
+  "id": "9-problemas-3-020",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "problemas",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "razonar_problema",
+  "enunciado": {
+    "texto": "Un equipo gana 3 puntos por victoria. Gana 6 partidos y pierde 2 (0 puntos). ¿Cuántos puntos tiene?",
+    "voz": "Piénsalo en dos pasos."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "16"
+      },
+      {
+        "id": "b",
+        "texto": "18"
+      },
+      {
+        "id": "c",
+        "texto": "20"
+      },
+      {
+        "id": "d",
+        "texto": "24"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Solo puntúan las victorias."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "6 × 3 puntos."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "6 × 3 = 18."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

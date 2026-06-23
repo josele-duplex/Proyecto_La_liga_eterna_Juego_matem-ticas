@@ -1,0 +1,59 @@
+{
+  "id": "6-completar_diez-1-041",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "completar_diez",
+  "fase_cpa": 1,
+  "edad": "6-anios",
+  "estrategia": "completar_diez",
+  "enunciado": {
+    "texto": "Tienes 5 balones. ¿Cuántos faltan para 10?",
+    "voz": "5 para llegar a 10."
+  },
+  "datos": {
+    "visual": {
+      "tipo": "marco_diez",
+      "llenas": 5,
+      "sueltos": 0
+    }
+  },
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "4"
+      },
+      {
+        "id": "b",
+        "texto": "5"
+      },
+      {
+        "id": "c",
+        "texto": "6"
+      },
+      {
+        "id": "d",
+        "texto": "7"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Cuenta los huecos hasta 10."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "De 5 a 10."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "5 + 5 = 10."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

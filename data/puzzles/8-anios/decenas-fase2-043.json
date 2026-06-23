@@ -1,0 +1,49 @@
+{
+  "id": "8-decenas-2-043",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "decenas",
+  "fase_cpa": 2,
+  "edad": "8-anios",
+  "estrategia": "usar_valor_posicional",
+  "enunciado": {
+    "texto": "En el número 65, ¿cuántas unidades sueltas hay (sin contar las decenas)?",
+    "voz": "Las unidades de 65."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "5"
+      },
+      {
+        "id": "b",
+        "texto": "6"
+      },
+      {
+        "id": "c",
+        "texto": "65"
+      }
+    ],
+    "correcta": "a"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Separa 65 en decenas y unidades."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "65 = 6 decenas y 5 unidades."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "65 tiene 5 unidades."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

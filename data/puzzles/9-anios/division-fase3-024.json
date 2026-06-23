@@ -1,0 +1,53 @@
+{
+  "id": "9-division-3-024",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "division",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "dividir",
+  "enunciado": {
+    "texto": "49 ÷ 7 = ?",
+    "voz": "49 entre 7."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "6"
+      },
+      {
+        "id": "b",
+        "texto": "7"
+      },
+      {
+        "id": "c",
+        "texto": "8"
+      },
+      {
+        "id": "d",
+        "texto": "9"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "La división deshace la multiplicación."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "¿7 por cuánto da 49?"
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "49 ÷ 7 = 7."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

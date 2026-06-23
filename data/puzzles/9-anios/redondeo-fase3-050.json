@@ -1,0 +1,53 @@
+{
+  "id": "9-redondeo-3-050",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "redondeo",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "redondear",
+  "enunciado": {
+    "texto": "Redondea 5400 al millar más cercano.",
+    "voz": "5400 al millar."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "4000"
+      },
+      {
+        "id": "b",
+        "texto": "5000"
+      },
+      {
+        "id": "c",
+        "texto": "5400"
+      },
+      {
+        "id": "d",
+        "texto": "6000"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "5400 está entre 5000 y 6000."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Mira las centenas: 5 o más sube."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "5400 → 5000."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

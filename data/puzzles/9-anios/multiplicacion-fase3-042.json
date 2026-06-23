@@ -1,0 +1,53 @@
+{
+  "id": "9-multiplicacion-3-042",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "multiplicacion",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "multiplicar_grupos",
+  "enunciado": {
+    "texto": "23 × 3 = ?",
+    "voz": "23 por 3."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "66"
+      },
+      {
+        "id": "b",
+        "texto": "69"
+      },
+      {
+        "id": "c",
+        "texto": "70"
+      },
+      {
+        "id": "d",
+        "texto": "72"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Descompón 23 = 20 + 3."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "20 × 3 + 3 × 3."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "23 × 3 = 69."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

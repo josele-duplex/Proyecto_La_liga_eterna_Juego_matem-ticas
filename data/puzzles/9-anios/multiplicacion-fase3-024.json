@@ -1,0 +1,53 @@
+{
+  "id": "9-multiplicacion-3-024",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "multiplicacion",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "multiplicar_grupos",
+  "enunciado": {
+    "texto": "12 × 6 = ?",
+    "voz": "12 por 6."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "66"
+      },
+      {
+        "id": "b",
+        "texto": "72"
+      },
+      {
+        "id": "c",
+        "texto": "74"
+      },
+      {
+        "id": "d",
+        "texto": "78"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Descompón: 12 = 10 + 2."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "10 × 6 = 60 y 2 × 6 = 12; súmalos."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "12 × 6 = 72."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

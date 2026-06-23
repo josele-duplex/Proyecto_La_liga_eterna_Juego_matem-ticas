@@ -1,0 +1,53 @@
+{
+  "id": "9-multiplicacion-3-020",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "multiplicacion",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "multiplicar_grupos",
+  "enunciado": {
+    "texto": "13 × 4 = ?",
+    "voz": "13 por 4."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "48"
+      },
+      {
+        "id": "b",
+        "texto": "52"
+      },
+      {
+        "id": "c",
+        "texto": "54"
+      },
+      {
+        "id": "d",
+        "texto": "56"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Descompón: 13 = 10 + 3."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "10 × 4 = 40 y 3 × 4 = 12; súmalos."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "13 × 4 = 52."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

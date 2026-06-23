@@ -1,0 +1,59 @@
+{
+  "id": "6-completar_diez-1-022",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "completar_diez",
+  "fase_cpa": 1,
+  "edad": "6-anios",
+  "estrategia": "completar_diez",
+  "enunciado": {
+    "texto": "Tienes 8 balones en la caja. ¿Cuántos faltan para tener 10?",
+    "voz": "8 para llegar a 10."
+  },
+  "datos": {
+    "visual": {
+      "tipo": "marco_diez",
+      "llenas": 8,
+      "sueltos": 0
+    }
+  },
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "1"
+      },
+      {
+        "id": "b",
+        "texto": "2"
+      },
+      {
+        "id": "c",
+        "texto": "3"
+      },
+      {
+        "id": "d",
+        "texto": "4"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Cuenta los huecos vacíos hasta 10."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "De 8 a 10."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "8 + 2 = 10."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

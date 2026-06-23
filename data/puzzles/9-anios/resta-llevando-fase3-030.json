@@ -1,0 +1,53 @@
+{
+  "id": "9-resta_llevando-3-030",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "resta_llevando",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "restar_llevando",
+  "enunciado": {
+    "texto": "1500 - 638 = ?",
+    "voz": "1500 menos 638."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "762"
+      },
+      {
+        "id": "b",
+        "texto": "862"
+      },
+      {
+        "id": "c",
+        "texto": "863"
+      },
+      {
+        "id": "d",
+        "texto": "872"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Réstalo por columnas con préstamos."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "O cuenta hacia delante desde 638 hasta 1500."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "1500 - 638 = 862."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

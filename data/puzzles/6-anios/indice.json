@@ -1,6 +1,6 @@
 {
   "edad": "6-anios",
-  "nota": "Catalogo de puzles de esta edad (existentes + banco ampliado). La progresion lo lee para elegir el siguiente puzle por concepto y fase. Regenerable; manten en sync al anadir puzles.",
+  "nota": "Catalogo de puzles de esta edad (existentes + tandas ampliadas). Regenerable; manten en sync.",
   "puzles": [
     {
       "id": "6-subitizacion-1-001",
@@ -25,6 +25,48 @@
       "concepto": "subitizacion",
       "fase_cpa": 1,
       "ruta": "data/puzzles/6-anios/subitizacion-fase1-004.json"
+    },
+    {
+      "id": "6-subitizacion-1-020",
+      "concepto": "subitizacion",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/6-anios/subitizacion-fase1-020.json"
+    },
+    {
+      "id": "6-subitizacion-1-021",
+      "concepto": "subitizacion",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/6-anios/subitizacion-fase1-021.json"
+    },
+    {
+      "id": "6-subitizacion-1-022",
+      "concepto": "subitizacion",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/6-anios/subitizacion-fase1-022.json"
+    },
+    {
+      "id": "6-subitizacion-1-040",
+      "concepto": "subitizacion",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/6-anios/subitizacion-fase1-040.json"
+    },
+    {
+      "id": "6-subitizacion-1-041",
+      "concepto": "subitizacion",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/6-anios/subitizacion-fase1-041.json"
+    },
+    {
+      "id": "6-subitizacion-1-042",
+      "concepto": "subitizacion",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/6-anios/subitizacion-fase1-042.json"
+    },
+    {
+      "id": "6-subitizacion-1-043",
+      "concepto": "subitizacion",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/6-anios/subitizacion-fase1-043.json"
     },
     {
       "id": "6-subitizacion-2-001",
@@ -141,6 +183,54 @@
       "ruta": "data/puzzles/6-anios/comparar-fase3-005.json"
     },
     {
+      "id": "6-comparar-3-020",
+      "concepto": "comparar",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/6-anios/comparar-fase3-020.json"
+    },
+    {
+      "id": "6-comparar-3-021",
+      "concepto": "comparar",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/6-anios/comparar-fase3-021.json"
+    },
+    {
+      "id": "6-comparar-3-022",
+      "concepto": "comparar",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/6-anios/comparar-fase3-022.json"
+    },
+    {
+      "id": "6-comparar-3-023",
+      "concepto": "comparar",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/6-anios/comparar-fase3-023.json"
+    },
+    {
+      "id": "6-comparar-3-040",
+      "concepto": "comparar",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/6-anios/comparar-fase3-040.json"
+    },
+    {
+      "id": "6-comparar-3-041",
+      "concepto": "comparar",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/6-anios/comparar-fase3-041.json"
+    },
+    {
+      "id": "6-comparar-3-042",
+      "concepto": "comparar",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/6-anios/comparar-fase3-042.json"
+    },
+    {
+      "id": "6-comparar-3-043",
+      "concepto": "comparar",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/6-anios/comparar-fase3-043.json"
+    },
+    {
       "id": "6-completar-diez-1-001",
       "concepto": "completar_diez",
       "fase_cpa": 1,
@@ -163,6 +253,60 @@
       "concepto": "completar_diez",
       "fase_cpa": 1,
       "ruta": "data/puzzles/6-anios/completar-diez-fase1-004.json"
+    },
+    {
+      "id": "6-completar_diez-1-020",
+      "concepto": "completar_diez",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/6-anios/completar-diez-fase1-020.json"
+    },
+    {
+      "id": "6-completar_diez-1-021",
+      "concepto": "completar_diez",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/6-anios/completar-diez-fase1-021.json"
+    },
+    {
+      "id": "6-completar_diez-1-022",
+      "concepto": "completar_diez",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/6-anios/completar-diez-fase1-022.json"
+    },
+    {
+      "id": "6-completar_diez-1-023",
+      "concepto": "completar_diez",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/6-anios/completar-diez-fase1-023.json"
+    },
+    {
+      "id": "6-completar_diez-1-024",
+      "concepto": "completar_diez",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/6-anios/completar-diez-fase1-024.json"
+    },
+    {
+      "id": "6-completar_diez-1-040",
+      "concepto": "completar_diez",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/6-anios/completar-diez-fase1-040.json"
+    },
+    {
+      "id": "6-completar_diez-1-041",
+      "concepto": "completar_diez",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/6-anios/completar-diez-fase1-041.json"
+    },
+    {
+      "id": "6-completar_diez-1-042",
+      "concepto": "completar_diez",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/6-anios/completar-diez-fase1-042.json"
+    },
+    {
+      "id": "6-completar_diez-1-043",
+      "concepto": "completar_diez",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/6-anios/completar-diez-fase1-043.json"
     },
     {
       "id": "6-completar-diez-2-001",
@@ -225,6 +369,36 @@
       "ruta": "data/puzzles/6-anios/sumar-fase1-003.json"
     },
     {
+      "id": "6-sumar_hasta_diez-1-040",
+      "concepto": "sumar_hasta_diez",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/6-anios/sumar-hasta-diez-fase1-040.json"
+    },
+    {
+      "id": "6-sumar_hasta_diez-1-041",
+      "concepto": "sumar_hasta_diez",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/6-anios/sumar-hasta-diez-fase1-041.json"
+    },
+    {
+      "id": "6-sumar_hasta_diez-1-042",
+      "concepto": "sumar_hasta_diez",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/6-anios/sumar-hasta-diez-fase1-042.json"
+    },
+    {
+      "id": "6-sumar_hasta_diez-1-043",
+      "concepto": "sumar_hasta_diez",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/6-anios/sumar-hasta-diez-fase1-043.json"
+    },
+    {
+      "id": "6-sumar_hasta_diez-1-044",
+      "concepto": "sumar_hasta_diez",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/6-anios/sumar-hasta-diez-fase1-044.json"
+    },
+    {
       "id": "6-sumar-2-004",
       "concepto": "sumar_hasta_diez",
       "fase_cpa": 2,
@@ -241,6 +415,36 @@
       "concepto": "sumar_hasta_diez",
       "fase_cpa": 2,
       "ruta": "data/puzzles/6-anios/sumar-fase2-006.json"
+    },
+    {
+      "id": "6-sumar_hasta_diez-2-020",
+      "concepto": "sumar_hasta_diez",
+      "fase_cpa": 2,
+      "ruta": "data/puzzles/6-anios/sumar-hasta-diez-fase2-020.json"
+    },
+    {
+      "id": "6-sumar_hasta_diez-2-021",
+      "concepto": "sumar_hasta_diez",
+      "fase_cpa": 2,
+      "ruta": "data/puzzles/6-anios/sumar-hasta-diez-fase2-021.json"
+    },
+    {
+      "id": "6-sumar_hasta_diez-2-022",
+      "concepto": "sumar_hasta_diez",
+      "fase_cpa": 2,
+      "ruta": "data/puzzles/6-anios/sumar-hasta-diez-fase2-022.json"
+    },
+    {
+      "id": "6-sumar_hasta_diez-2-023",
+      "concepto": "sumar_hasta_diez",
+      "fase_cpa": 2,
+      "ruta": "data/puzzles/6-anios/sumar-hasta-diez-fase2-023.json"
+    },
+    {
+      "id": "6-sumar_hasta_diez-2-024",
+      "concepto": "sumar_hasta_diez",
+      "fase_cpa": 2,
+      "ruta": "data/puzzles/6-anios/sumar-hasta-diez-fase2-024.json"
     },
     {
       "id": "6-sumar-3-007",
@@ -285,6 +489,60 @@
       "ruta": "data/puzzles/6-anios/secuencia-fase2-004.json"
     },
     {
+      "id": "6-secuencia-2-020",
+      "concepto": "secuencia",
+      "fase_cpa": 2,
+      "ruta": "data/puzzles/6-anios/secuencia-fase2-020.json"
+    },
+    {
+      "id": "6-secuencia-2-021",
+      "concepto": "secuencia",
+      "fase_cpa": 2,
+      "ruta": "data/puzzles/6-anios/secuencia-fase2-021.json"
+    },
+    {
+      "id": "6-secuencia-2-022",
+      "concepto": "secuencia",
+      "fase_cpa": 2,
+      "ruta": "data/puzzles/6-anios/secuencia-fase2-022.json"
+    },
+    {
+      "id": "6-secuencia-2-023",
+      "concepto": "secuencia",
+      "fase_cpa": 2,
+      "ruta": "data/puzzles/6-anios/secuencia-fase2-023.json"
+    },
+    {
+      "id": "6-secuencia-2-024",
+      "concepto": "secuencia",
+      "fase_cpa": 2,
+      "ruta": "data/puzzles/6-anios/secuencia-fase2-024.json"
+    },
+    {
+      "id": "6-secuencia-2-040",
+      "concepto": "secuencia",
+      "fase_cpa": 2,
+      "ruta": "data/puzzles/6-anios/secuencia-fase2-040.json"
+    },
+    {
+      "id": "6-secuencia-2-041",
+      "concepto": "secuencia",
+      "fase_cpa": 2,
+      "ruta": "data/puzzles/6-anios/secuencia-fase2-041.json"
+    },
+    {
+      "id": "6-secuencia-2-042",
+      "concepto": "secuencia",
+      "fase_cpa": 2,
+      "ruta": "data/puzzles/6-anios/secuencia-fase2-042.json"
+    },
+    {
+      "id": "6-secuencia-2-043",
+      "concepto": "secuencia",
+      "fase_cpa": 2,
+      "ruta": "data/puzzles/6-anios/secuencia-fase2-043.json"
+    },
+    {
       "id": "6-secuencia-3-005",
       "concepto": "secuencia",
       "fase_cpa": 3,
@@ -315,6 +573,30 @@
       "ruta": "data/puzzles/6-anios/relampago-fase1-002.json"
     },
     {
+      "id": "6-relampago-1-020",
+      "concepto": "relampago",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/6-anios/relampago-fase1-020.json"
+    },
+    {
+      "id": "6-relampago-1-021",
+      "concepto": "relampago",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/6-anios/relampago-fase1-021.json"
+    },
+    {
+      "id": "6-relampago-1-040",
+      "concepto": "relampago",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/6-anios/relampago-fase1-040.json"
+    },
+    {
+      "id": "6-relampago-1-041",
+      "concepto": "relampago",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/6-anios/relampago-fase1-041.json"
+    },
+    {
       "id": "6-relampago-2-003",
       "concepto": "relampago",
       "fase_cpa": 2,
@@ -325,6 +607,30 @@
       "concepto": "relampago",
       "fase_cpa": 2,
       "ruta": "data/puzzles/6-anios/relampago-fase2-004.json"
+    },
+    {
+      "id": "6-relampago-2-022",
+      "concepto": "relampago",
+      "fase_cpa": 2,
+      "ruta": "data/puzzles/6-anios/relampago-fase2-022.json"
+    },
+    {
+      "id": "6-relampago-2-023",
+      "concepto": "relampago",
+      "fase_cpa": 2,
+      "ruta": "data/puzzles/6-anios/relampago-fase2-023.json"
+    },
+    {
+      "id": "6-relampago-2-042",
+      "concepto": "relampago",
+      "fase_cpa": 2,
+      "ruta": "data/puzzles/6-anios/relampago-fase2-042.json"
+    },
+    {
+      "id": "6-relampago-2-043",
+      "concepto": "relampago",
+      "fase_cpa": 2,
+      "ruta": "data/puzzles/6-anios/relampago-fase2-043.json"
     },
     {
       "id": "6-relampago-3-005",
@@ -349,6 +655,42 @@
       "concepto": "alineacion",
       "fase_cpa": 1,
       "ruta": "data/puzzles/6-anios/alineacion-fase1-002.json"
+    },
+    {
+      "id": "6-alineacion-1-020",
+      "concepto": "alineacion",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/6-anios/alineacion-fase1-020.json"
+    },
+    {
+      "id": "6-alineacion-1-021",
+      "concepto": "alineacion",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/6-anios/alineacion-fase1-021.json"
+    },
+    {
+      "id": "6-alineacion-1-022",
+      "concepto": "alineacion",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/6-anios/alineacion-fase1-022.json"
+    },
+    {
+      "id": "6-alineacion-1-040",
+      "concepto": "alineacion",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/6-anios/alineacion-fase1-040.json"
+    },
+    {
+      "id": "6-alineacion-1-041",
+      "concepto": "alineacion",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/6-anios/alineacion-fase1-041.json"
+    },
+    {
+      "id": "6-alineacion-1-042",
+      "concepto": "alineacion",
+      "fase_cpa": 1,
+      "ruta": "data/puzzles/6-anios/alineacion-fase1-042.json"
     },
     {
       "id": "6-alineacion-2-003",

@@ -1,0 +1,53 @@
+{
+  "id": "9-problemas-3-021",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "problemas",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "razonar_problema",
+  "enunciado": {
+    "texto": "Compras 5 cajas de 8 cromos y repartes 12 con tus amigos. ¿Cuántos te quedan?",
+    "voz": "Piénsalo en dos pasos."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "20"
+      },
+      {
+        "id": "b",
+        "texto": "28"
+      },
+      {
+        "id": "c",
+        "texto": "30"
+      },
+      {
+        "id": "d",
+        "texto": "40"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Cuántos cromos en total: 5 × 8."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "5 × 8 = 40; quita 12."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "40 - 12 = 28."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

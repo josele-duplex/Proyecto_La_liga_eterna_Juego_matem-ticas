@@ -1,0 +1,53 @@
+{
+  "id": "9-resta_llevando-3-021",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "resta_llevando",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "restar_llevando",
+  "enunciado": {
+    "texto": "640 - 275 = ?",
+    "voz": "640 menos 275."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "355"
+      },
+      {
+        "id": "b",
+        "texto": "365"
+      },
+      {
+        "id": "c",
+        "texto": "366"
+      },
+      {
+        "id": "d",
+        "texto": "465"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Resta por columnas pidiendo prestado si hace falta."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Desde 275, cuenta hacia delante hasta 640."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "640 - 275 = 365."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

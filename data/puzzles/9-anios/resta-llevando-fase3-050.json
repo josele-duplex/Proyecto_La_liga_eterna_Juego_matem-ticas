@@ -1,0 +1,53 @@
+{
+  "id": "9-resta_llevando-3-050",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "resta_llevando",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "restar_llevando",
+  "enunciado": {
+    "texto": "2500 - 1364 = ?",
+    "voz": "2500 menos 1364."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "1036"
+      },
+      {
+        "id": "b",
+        "texto": "1136"
+      },
+      {
+        "id": "c",
+        "texto": "1137"
+      },
+      {
+        "id": "d",
+        "texto": "1146"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Réstalo por columnas."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "O cuenta desde 1364 hasta 2500."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "2500 - 1364 = 1136."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

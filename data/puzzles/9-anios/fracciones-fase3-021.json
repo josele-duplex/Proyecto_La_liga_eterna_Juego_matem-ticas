@@ -1,0 +1,53 @@
+{
+  "id": "9-fracciones-3-021",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "fracciones",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "repartir_partes",
+  "enunciado": {
+    "texto": "¿Cuánto es 3/4 de 16?",
+    "voz": "3 de 4 de 16."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "11"
+      },
+      {
+        "id": "b",
+        "texto": "12"
+      },
+      {
+        "id": "c",
+        "texto": "13"
+      },
+      {
+        "id": "d",
+        "texto": "16"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Una parte es 16 ÷ 4 = 4."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Multiplica esa parte por 3."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "4 × 3 = 12."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

@@ -1,0 +1,53 @@
+{
+  "id": "9-multiplicacion-3-025",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "multiplicacion",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "multiplicar_grupos",
+  "enunciado": {
+    "texto": "17 × 3 = ?",
+    "voz": "17 por 3."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "48"
+      },
+      {
+        "id": "b",
+        "texto": "51"
+      },
+      {
+        "id": "c",
+        "texto": "53"
+      },
+      {
+        "id": "d",
+        "texto": "54"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Descompón: 17 = 10 + 7."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "10 × 3 = 30 y 7 × 3 = 21; súmalos."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "17 × 3 = 51."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

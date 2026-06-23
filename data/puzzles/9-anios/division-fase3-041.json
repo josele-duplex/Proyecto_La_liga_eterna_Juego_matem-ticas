@@ -1,0 +1,53 @@
+{
+  "id": "9-division-3-041",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "division",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "dividir",
+  "enunciado": {
+    "texto": "60 ÷ 5 = ?",
+    "voz": "60 entre 5."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "11"
+      },
+      {
+        "id": "b",
+        "texto": "12"
+      },
+      {
+        "id": "c",
+        "texto": "13"
+      },
+      {
+        "id": "d",
+        "texto": "14"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "La división deshace la multiplicación."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "¿5 por cuánto da 60?"
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "60 ÷ 5 = 12."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

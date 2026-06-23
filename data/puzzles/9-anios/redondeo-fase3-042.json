@@ -1,0 +1,53 @@
+{
+  "id": "9-redondeo-3-042",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "redondeo",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "redondear",
+  "enunciado": {
+    "texto": "Redondea 450 a la centena más cercana.",
+    "voz": "450 a la centena."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "400"
+      },
+      {
+        "id": "b",
+        "texto": "450"
+      },
+      {
+        "id": "c",
+        "texto": "500"
+      },
+      {
+        "id": "d",
+        "texto": "600"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "450 está entre 400 y 500."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Mira las decenas: 5 o más sube."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "450 → 500."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

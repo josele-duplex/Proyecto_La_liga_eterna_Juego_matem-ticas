@@ -1,0 +1,53 @@
+{
+  "id": "8-casi_dobles-3-021",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "casi_dobles",
+  "fase_cpa": 3,
+  "edad": "8-anios",
+  "estrategia": "usar_casi_dobles",
+  "enunciado": {
+    "texto": "7 + 8 = ? (apóyate en un doble)",
+    "voz": "7 más 8, casi un doble."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "14"
+      },
+      {
+        "id": "b",
+        "texto": "15"
+      },
+      {
+        "id": "c",
+        "texto": "16"
+      },
+      {
+        "id": "d",
+        "texto": "17"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Está cerca del doble de 7."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "7 + 7 = 14, y uno más."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "7 + 8 = 15."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

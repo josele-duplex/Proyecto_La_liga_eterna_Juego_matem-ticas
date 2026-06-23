@@ -1,0 +1,53 @@
+{
+  "id": "8-decenas-2-042",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "decenas",
+  "fase_cpa": 2,
+  "edad": "8-anios",
+  "estrategia": "usar_valor_posicional",
+  "enunciado": {
+    "texto": "En el número 53, ¿cuántas unidades sueltas hay (sin contar las decenas)?",
+    "voz": "Las unidades de 53."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "3"
+      },
+      {
+        "id": "b",
+        "texto": "4"
+      },
+      {
+        "id": "c",
+        "texto": "5"
+      },
+      {
+        "id": "d",
+        "texto": "53"
+      }
+    ],
+    "correcta": "a"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Separa 53 en decenas y unidades."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "53 = 5 decenas y 3 unidades."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "53 tiene 3 unidades."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

@@ -1,0 +1,47 @@
+{
+  "id": "6-alineacion-1-021",
+  "version": 1,
+  "tipo": "ordenar",
+  "concepto": "alineacion",
+  "fase_cpa": 1,
+  "edad": "6-anios",
+  "estrategia": "ordenar_numeros",
+  "enunciado": {
+    "texto": "Coloca la alineación de menor a mayor. Toca los números en orden, del más pequeño al más grande.",
+    "voz": "De menor a mayor."
+  },
+  "datos": {
+    "numeros": [
+      9,
+      1,
+      6,
+      3
+    ]
+  },
+  "respuesta": {
+    "orden": [
+      1,
+      3,
+      6,
+      9
+    ]
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Busca el más pequeño de todos."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Ve tocando del menor al mayor."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "Empieza por el más pequeño y sube."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

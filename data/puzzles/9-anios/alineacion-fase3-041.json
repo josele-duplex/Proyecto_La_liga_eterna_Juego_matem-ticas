@@ -1,0 +1,47 @@
+{
+  "id": "9-alineacion-3-041",
+  "version": 1,
+  "tipo": "ordenar",
+  "concepto": "alineacion",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "ordenar_numeros",
+  "enunciado": {
+    "texto": "Coloca la alineación de menor a mayor. Toca los números en orden, del más pequeño al más grande.",
+    "voz": "De menor a mayor."
+  },
+  "datos": {
+    "numeros": [
+      4400,
+      3999,
+      4100,
+      3750
+    ]
+  },
+  "respuesta": {
+    "orden": [
+      3750,
+      3999,
+      4100,
+      4400
+    ]
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Cuenta las cifras."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Más cifras = más grande; si empatan, primera cifra."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "Del más pequeño al más grande."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

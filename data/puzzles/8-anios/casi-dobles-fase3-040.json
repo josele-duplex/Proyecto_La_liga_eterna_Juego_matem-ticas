@@ -1,0 +1,53 @@
+{
+  "id": "8-casi_dobles-3-040",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "casi_dobles",
+  "fase_cpa": 3,
+  "edad": "8-anios",
+  "estrategia": "usar_casi_dobles",
+  "enunciado": {
+    "texto": "9 + 10 = ? (apóyate en un doble)",
+    "voz": "9 más 10."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "18"
+      },
+      {
+        "id": "b",
+        "texto": "19"
+      },
+      {
+        "id": "c",
+        "texto": "20"
+      },
+      {
+        "id": "d",
+        "texto": "21"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Cerca del doble de 9."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "9 + 9 y ajusta."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "9 + 10 = 19."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

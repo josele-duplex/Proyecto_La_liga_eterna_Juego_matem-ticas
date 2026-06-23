@@ -1,0 +1,53 @@
+{
+  "id": "9-suma_llevando-3-020",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "suma_llevando",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "sumar_llevando",
+  "enunciado": {
+    "texto": "347 + 286 = ?",
+    "voz": "347 más 286."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "533"
+      },
+      {
+        "id": "b",
+        "texto": "623"
+      },
+      {
+        "id": "c",
+        "texto": "633"
+      },
+      {
+        "id": "d",
+        "texto": "634"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Suma por columnas: unidades, decenas, centenas."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Cuando una columna pase de 9, llévate 1."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "347 + 286 = 633."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

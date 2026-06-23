@@ -1,0 +1,62 @@
+{
+  "id": "6-sumar_hasta_diez-2-022",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "sumar_hasta_diez",
+  "fase_cpa": 2,
+  "edad": "6-anios",
+  "estrategia": "sumar",
+  "enunciado": {
+    "texto": "6 balones y 3 balones más. ¿Cuántos hay?",
+    "voz": "6 más 3."
+  },
+  "datos": {
+    "visual": {
+      "tipo": "grupos",
+      "grupos": [
+        6,
+        3
+      ],
+      "icono": "⚽"
+    }
+  },
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "8"
+      },
+      {
+        "id": "b",
+        "texto": "9"
+      },
+      {
+        "id": "c",
+        "texto": "10"
+      },
+      {
+        "id": "d",
+        "texto": "11"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Junta los dos grupos."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Parte de 6 y cuenta 3 más."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "6 + 3 = 9."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

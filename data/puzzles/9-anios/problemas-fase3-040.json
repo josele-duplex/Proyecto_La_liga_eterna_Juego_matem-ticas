@@ -1,0 +1,53 @@
+{
+  "id": "9-problemas-3-040",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "problemas",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "razonar_problema",
+  "enunciado": {
+    "texto": "Un equipo marca 4 goles en cada uno de 5 partidos y encaja 7 en total. ¿Cuál es su diferencia de goles?",
+    "voz": "Piénsalo en dos pasos."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "11"
+      },
+      {
+        "id": "b",
+        "texto": "13"
+      },
+      {
+        "id": "c",
+        "texto": "20"
+      },
+      {
+        "id": "d",
+        "texto": "27"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Goles a favor: 4 × 5."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "4 × 5 = 20; resta 7."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "20 - 7 = 13."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

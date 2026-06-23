@@ -1,0 +1,53 @@
+{
+  "id": "9-suma_llevando-3-042",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "suma_llevando",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "sumar_llevando",
+  "enunciado": {
+    "texto": "574 + 248 = ?",
+    "voz": "574 más 248."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "722"
+      },
+      {
+        "id": "b",
+        "texto": "812"
+      },
+      {
+        "id": "c",
+        "texto": "822"
+      },
+      {
+        "id": "d",
+        "texto": "823"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Suma por columnas."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Lleva 1 cuando pase de 9."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "574 + 248 = 822."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

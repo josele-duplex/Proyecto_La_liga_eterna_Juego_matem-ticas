@@ -1,0 +1,35 @@
+{
+  "id": "6-relampago-2-043",
+  "version": 1,
+  "tipo": "verdadero_falso",
+  "concepto": "relampago",
+  "fase_cpa": 2,
+  "edad": "6-anios",
+  "estrategia": "calcular_rapido",
+  "enunciado": {
+    "texto": "¿Es verdad que 9 - 2 = 6?",
+    "voz": "Rápido: ¿verdadero o falso?"
+  },
+  "datos": {},
+  "respuesta": {
+    "correcta": false
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Cuéntalo rápido."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Hazlo en tu cabeza."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "Comprueba y decide."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

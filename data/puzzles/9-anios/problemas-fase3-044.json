@@ -1,0 +1,53 @@
+{
+  "id": "9-problemas-3-044",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "problemas",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "razonar_problema",
+  "enunciado": {
+    "texto": "En 4 cajas hay 7 balones en cada una. Llegan 6 balones más. ¿Cuántos balones hay ahora?",
+    "voz": "Piénsalo en dos pasos."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "28"
+      },
+      {
+        "id": "b",
+        "texto": "32"
+      },
+      {
+        "id": "c",
+        "texto": "34"
+      },
+      {
+        "id": "d",
+        "texto": "42"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "En las cajas: 4 × 7."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "4 × 7 = 28; suma 6."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "28 + 6 = 34."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

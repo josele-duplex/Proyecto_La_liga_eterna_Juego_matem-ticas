@@ -1,0 +1,62 @@
+{
+  "id": "6-sumar_hasta_diez-2-023",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "sumar_hasta_diez",
+  "fase_cpa": 2,
+  "edad": "6-anios",
+  "estrategia": "sumar",
+  "enunciado": {
+    "texto": "4 balones y 4 balones más. ¿Cuántos hay?",
+    "voz": "4 más 4."
+  },
+  "datos": {
+    "visual": {
+      "tipo": "grupos",
+      "grupos": [
+        4,
+        4
+      ],
+      "icono": "⚽"
+    }
+  },
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "7"
+      },
+      {
+        "id": "b",
+        "texto": "8"
+      },
+      {
+        "id": "c",
+        "texto": "9"
+      },
+      {
+        "id": "d",
+        "texto": "10"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Junta los dos grupos."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Parte de 4 y cuenta 4 más."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "4 + 4 = 8."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

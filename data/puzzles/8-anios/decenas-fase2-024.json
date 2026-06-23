@@ -1,0 +1,53 @@
+{
+  "id": "8-decenas-2-024",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "decenas",
+  "fase_cpa": 2,
+  "edad": "8-anios",
+  "estrategia": "usar_valor_posicional",
+  "enunciado": {
+    "texto": "En el número 76, ¿cuántas decenas hay?",
+    "voz": "Las decenas de 76."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "6"
+      },
+      {
+        "id": "b",
+        "texto": "7"
+      },
+      {
+        "id": "c",
+        "texto": "8"
+      },
+      {
+        "id": "d",
+        "texto": "9"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Separa 76 en decenas y unidades."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "76 = 7 decenas y 6 unidades."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "76 tiene 7 decenas."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

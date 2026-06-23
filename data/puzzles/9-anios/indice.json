@@ -1,6 +1,6 @@
 {
   "edad": "9-anios",
-  "nota": "Catalogo de puzles de Leyendas (9). Dificultad alta. Regenerable; manten en sync al anadir puzles.",
+  "nota": "Catalogo de puzles de esta edad (existentes + tandas ampliadas). Regenerable; manten en sync.",
   "puzles": [
     {
       "id": "9-multiplicacion-1-001",
@@ -105,6 +105,78 @@
       "ruta": "data/puzzles/9-anios/multiplicacion-fase3-008.json"
     },
     {
+      "id": "9-multiplicacion-3-020",
+      "concepto": "multiplicacion",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/multiplicacion-fase3-020.json"
+    },
+    {
+      "id": "9-multiplicacion-3-021",
+      "concepto": "multiplicacion",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/multiplicacion-fase3-021.json"
+    },
+    {
+      "id": "9-multiplicacion-3-022",
+      "concepto": "multiplicacion",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/multiplicacion-fase3-022.json"
+    },
+    {
+      "id": "9-multiplicacion-3-023",
+      "concepto": "multiplicacion",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/multiplicacion-fase3-023.json"
+    },
+    {
+      "id": "9-multiplicacion-3-024",
+      "concepto": "multiplicacion",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/multiplicacion-fase3-024.json"
+    },
+    {
+      "id": "9-multiplicacion-3-025",
+      "concepto": "multiplicacion",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/multiplicacion-fase3-025.json"
+    },
+    {
+      "id": "9-multiplicacion-3-040",
+      "concepto": "multiplicacion",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/multiplicacion-fase3-040.json"
+    },
+    {
+      "id": "9-multiplicacion-3-041",
+      "concepto": "multiplicacion",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/multiplicacion-fase3-041.json"
+    },
+    {
+      "id": "9-multiplicacion-3-042",
+      "concepto": "multiplicacion",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/multiplicacion-fase3-042.json"
+    },
+    {
+      "id": "9-multiplicacion-3-043",
+      "concepto": "multiplicacion",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/multiplicacion-fase3-043.json"
+    },
+    {
+      "id": "9-multiplicacion-3-044",
+      "concepto": "multiplicacion",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/multiplicacion-fase3-044.json"
+    },
+    {
+      "id": "9-multiplicacion-3-045",
+      "concepto": "multiplicacion",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/multiplicacion-fase3-045.json"
+    },
+    {
       "id": "9-division-1-001",
       "concepto": "division",
       "fase_cpa": 1,
@@ -181,6 +253,78 @@
       "concepto": "division",
       "fase_cpa": 3,
       "ruta": "data/puzzles/9-anios/division-fase3-006.json"
+    },
+    {
+      "id": "9-division-3-020",
+      "concepto": "division",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/division-fase3-020.json"
+    },
+    {
+      "id": "9-division-3-021",
+      "concepto": "division",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/division-fase3-021.json"
+    },
+    {
+      "id": "9-division-3-022",
+      "concepto": "division",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/division-fase3-022.json"
+    },
+    {
+      "id": "9-division-3-023",
+      "concepto": "division",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/division-fase3-023.json"
+    },
+    {
+      "id": "9-division-3-024",
+      "concepto": "division",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/division-fase3-024.json"
+    },
+    {
+      "id": "9-division-3-025",
+      "concepto": "division",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/division-fase3-025.json"
+    },
+    {
+      "id": "9-division-3-040",
+      "concepto": "division",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/division-fase3-040.json"
+    },
+    {
+      "id": "9-division-3-041",
+      "concepto": "division",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/division-fase3-041.json"
+    },
+    {
+      "id": "9-division-3-042",
+      "concepto": "division",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/division-fase3-042.json"
+    },
+    {
+      "id": "9-division-3-043",
+      "concepto": "division",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/division-fase3-043.json"
+    },
+    {
+      "id": "9-division-3-044",
+      "concepto": "division",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/division-fase3-044.json"
+    },
+    {
+      "id": "9-division-3-045",
+      "concepto": "division",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/division-fase3-045.json"
     },
     {
       "id": "9-fracciones-1-001",
@@ -279,6 +423,66 @@
       "ruta": "data/puzzles/9-anios/fracciones-fase3-006.json"
     },
     {
+      "id": "9-fracciones-3-020",
+      "concepto": "fracciones",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/fracciones-fase3-020.json"
+    },
+    {
+      "id": "9-fracciones-3-021",
+      "concepto": "fracciones",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/fracciones-fase3-021.json"
+    },
+    {
+      "id": "9-fracciones-3-022",
+      "concepto": "fracciones",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/fracciones-fase3-022.json"
+    },
+    {
+      "id": "9-fracciones-3-023",
+      "concepto": "fracciones",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/fracciones-fase3-023.json"
+    },
+    {
+      "id": "9-fracciones-3-024",
+      "concepto": "fracciones",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/fracciones-fase3-024.json"
+    },
+    {
+      "id": "9-fracciones-3-040",
+      "concepto": "fracciones",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/fracciones-fase3-040.json"
+    },
+    {
+      "id": "9-fracciones-3-041",
+      "concepto": "fracciones",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/fracciones-fase3-041.json"
+    },
+    {
+      "id": "9-fracciones-3-042",
+      "concepto": "fracciones",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/fracciones-fase3-042.json"
+    },
+    {
+      "id": "9-fracciones-3-043",
+      "concepto": "fracciones",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/fracciones-fase3-043.json"
+    },
+    {
+      "id": "9-fracciones-3-044",
+      "concepto": "fracciones",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/fracciones-fase3-044.json"
+    },
+    {
       "id": "9-redondeo-1-001",
       "concepto": "redondeo",
       "fase_cpa": 1,
@@ -336,12 +540,6 @@
       "id": "9-redondeo-3-001",
       "concepto": "redondeo",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/9-anios/redondeo-fase3-001.json"
-    },
-    {
-      "id": "9-redondeo-3-001",
-      "concepto": "redondeo",
-      "fase_cpa": 3,
       "ruta": "data/puzzles/9-anios/redondeo-fase3-abstracta.json"
     },
     {
@@ -367,6 +565,120 @@
       "concepto": "redondeo",
       "fase_cpa": 3,
       "ruta": "data/puzzles/9-anios/redondeo-fase3-005.json"
+    },
+    {
+      "id": "9-redondeo-3-020",
+      "concepto": "redondeo",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/redondeo-fase3-020.json"
+    },
+    {
+      "id": "9-redondeo-3-021",
+      "concepto": "redondeo",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/redondeo-fase3-021.json"
+    },
+    {
+      "id": "9-redondeo-3-022",
+      "concepto": "redondeo",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/redondeo-fase3-022.json"
+    },
+    {
+      "id": "9-redondeo-3-023",
+      "concepto": "redondeo",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/redondeo-fase3-023.json"
+    },
+    {
+      "id": "9-redondeo-3-024",
+      "concepto": "redondeo",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/redondeo-fase3-024.json"
+    },
+    {
+      "id": "9-redondeo-3-030",
+      "concepto": "redondeo",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/redondeo-fase3-030.json"
+    },
+    {
+      "id": "9-redondeo-3-031",
+      "concepto": "redondeo",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/redondeo-fase3-031.json"
+    },
+    {
+      "id": "9-redondeo-3-032",
+      "concepto": "redondeo",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/redondeo-fase3-032.json"
+    },
+    {
+      "id": "9-redondeo-3-033",
+      "concepto": "redondeo",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/redondeo-fase3-033.json"
+    },
+    {
+      "id": "9-redondeo-3-040",
+      "concepto": "redondeo",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/redondeo-fase3-040.json"
+    },
+    {
+      "id": "9-redondeo-3-041",
+      "concepto": "redondeo",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/redondeo-fase3-041.json"
+    },
+    {
+      "id": "9-redondeo-3-042",
+      "concepto": "redondeo",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/redondeo-fase3-042.json"
+    },
+    {
+      "id": "9-redondeo-3-043",
+      "concepto": "redondeo",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/redondeo-fase3-043.json"
+    },
+    {
+      "id": "9-redondeo-3-044",
+      "concepto": "redondeo",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/redondeo-fase3-044.json"
+    },
+    {
+      "id": "9-redondeo-3-050",
+      "concepto": "redondeo",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/redondeo-fase3-050.json"
+    },
+    {
+      "id": "9-redondeo-3-051",
+      "concepto": "redondeo",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/redondeo-fase3-051.json"
+    },
+    {
+      "id": "9-redondeo-3-052",
+      "concepto": "redondeo",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/redondeo-fase3-052.json"
+    },
+    {
+      "id": "9-redondeo-3-053",
+      "concepto": "redondeo",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/redondeo-fase3-053.json"
+    },
+    {
+      "id": "9-redondeo-3-201",
+      "concepto": "redondeo",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/redondeo-fase3-001.json"
     },
     {
       "id": "9-suma_llevando-1-001",
@@ -429,6 +741,66 @@
       "ruta": "data/puzzles/9-anios/suma-llevando-fase3-004.json"
     },
     {
+      "id": "9-suma_llevando-3-020",
+      "concepto": "suma_llevando",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/suma-llevando-fase3-020.json"
+    },
+    {
+      "id": "9-suma_llevando-3-021",
+      "concepto": "suma_llevando",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/suma-llevando-fase3-021.json"
+    },
+    {
+      "id": "9-suma_llevando-3-022",
+      "concepto": "suma_llevando",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/suma-llevando-fase3-022.json"
+    },
+    {
+      "id": "9-suma_llevando-3-030",
+      "concepto": "suma_llevando",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/suma-llevando-fase3-030.json"
+    },
+    {
+      "id": "9-suma_llevando-3-031",
+      "concepto": "suma_llevando",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/suma-llevando-fase3-031.json"
+    },
+    {
+      "id": "9-suma_llevando-3-040",
+      "concepto": "suma_llevando",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/suma-llevando-fase3-040.json"
+    },
+    {
+      "id": "9-suma_llevando-3-041",
+      "concepto": "suma_llevando",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/suma-llevando-fase3-041.json"
+    },
+    {
+      "id": "9-suma_llevando-3-042",
+      "concepto": "suma_llevando",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/suma-llevando-fase3-042.json"
+    },
+    {
+      "id": "9-suma_llevando-3-050",
+      "concepto": "suma_llevando",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/suma-llevando-fase3-050.json"
+    },
+    {
+      "id": "9-suma_llevando-3-051",
+      "concepto": "suma_llevando",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/suma-llevando-fase3-051.json"
+    },
+    {
       "id": "9-resta_llevando-1-001",
       "concepto": "resta_llevando",
       "fase_cpa": 1,
@@ -489,6 +861,66 @@
       "ruta": "data/puzzles/9-anios/resta-llevando-fase3-004.json"
     },
     {
+      "id": "9-resta_llevando-3-020",
+      "concepto": "resta_llevando",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/resta-llevando-fase3-020.json"
+    },
+    {
+      "id": "9-resta_llevando-3-021",
+      "concepto": "resta_llevando",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/resta-llevando-fase3-021.json"
+    },
+    {
+      "id": "9-resta_llevando-3-022",
+      "concepto": "resta_llevando",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/resta-llevando-fase3-022.json"
+    },
+    {
+      "id": "9-resta_llevando-3-030",
+      "concepto": "resta_llevando",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/resta-llevando-fase3-030.json"
+    },
+    {
+      "id": "9-resta_llevando-3-031",
+      "concepto": "resta_llevando",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/resta-llevando-fase3-031.json"
+    },
+    {
+      "id": "9-resta_llevando-3-040",
+      "concepto": "resta_llevando",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/resta-llevando-fase3-040.json"
+    },
+    {
+      "id": "9-resta_llevando-3-041",
+      "concepto": "resta_llevando",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/resta-llevando-fase3-041.json"
+    },
+    {
+      "id": "9-resta_llevando-3-042",
+      "concepto": "resta_llevando",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/resta-llevando-fase3-042.json"
+    },
+    {
+      "id": "9-resta_llevando-3-050",
+      "concepto": "resta_llevando",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/resta-llevando-fase3-050.json"
+    },
+    {
+      "id": "9-resta_llevando-3-051",
+      "concepto": "resta_llevando",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/resta-llevando-fase3-051.json"
+    },
+    {
       "id": "9-problemas-1-001",
       "concepto": "problemas",
       "fase_cpa": 1,
@@ -531,6 +963,66 @@
       "ruta": "data/puzzles/9-anios/problemas-fase3-007.json"
     },
     {
+      "id": "9-problemas-3-020",
+      "concepto": "problemas",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/problemas-fase3-020.json"
+    },
+    {
+      "id": "9-problemas-3-021",
+      "concepto": "problemas",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/problemas-fase3-021.json"
+    },
+    {
+      "id": "9-problemas-3-022",
+      "concepto": "problemas",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/problemas-fase3-022.json"
+    },
+    {
+      "id": "9-problemas-3-023",
+      "concepto": "problemas",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/problemas-fase3-023.json"
+    },
+    {
+      "id": "9-problemas-3-024",
+      "concepto": "problemas",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/problemas-fase3-024.json"
+    },
+    {
+      "id": "9-problemas-3-040",
+      "concepto": "problemas",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/problemas-fase3-040.json"
+    },
+    {
+      "id": "9-problemas-3-041",
+      "concepto": "problemas",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/problemas-fase3-041.json"
+    },
+    {
+      "id": "9-problemas-3-042",
+      "concepto": "problemas",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/problemas-fase3-042.json"
+    },
+    {
+      "id": "9-problemas-3-043",
+      "concepto": "problemas",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/problemas-fase3-043.json"
+    },
+    {
+      "id": "9-problemas-3-044",
+      "concepto": "problemas",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/problemas-fase3-044.json"
+    },
+    {
       "id": "9-relampago-1-001",
       "concepto": "relampago",
       "fase_cpa": 1,
@@ -555,6 +1047,30 @@
       "ruta": "data/puzzles/9-anios/relampago-fase2-004.json"
     },
     {
+      "id": "9-relampago-2-020",
+      "concepto": "relampago",
+      "fase_cpa": 2,
+      "ruta": "data/puzzles/9-anios/relampago-fase2-020.json"
+    },
+    {
+      "id": "9-relampago-2-021",
+      "concepto": "relampago",
+      "fase_cpa": 2,
+      "ruta": "data/puzzles/9-anios/relampago-fase2-021.json"
+    },
+    {
+      "id": "9-relampago-2-040",
+      "concepto": "relampago",
+      "fase_cpa": 2,
+      "ruta": "data/puzzles/9-anios/relampago-fase2-040.json"
+    },
+    {
+      "id": "9-relampago-2-041",
+      "concepto": "relampago",
+      "fase_cpa": 2,
+      "ruta": "data/puzzles/9-anios/relampago-fase2-041.json"
+    },
+    {
       "id": "9-relampago-3-005",
       "concepto": "relampago",
       "fase_cpa": 3,
@@ -565,6 +1081,42 @@
       "concepto": "relampago",
       "fase_cpa": 3,
       "ruta": "data/puzzles/9-anios/relampago-fase3-006.json"
+    },
+    {
+      "id": "9-relampago-3-022",
+      "concepto": "relampago",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/relampago-fase3-022.json"
+    },
+    {
+      "id": "9-relampago-3-023",
+      "concepto": "relampago",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/relampago-fase3-023.json"
+    },
+    {
+      "id": "9-relampago-3-024",
+      "concepto": "relampago",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/relampago-fase3-024.json"
+    },
+    {
+      "id": "9-relampago-3-042",
+      "concepto": "relampago",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/relampago-fase3-042.json"
+    },
+    {
+      "id": "9-relampago-3-043",
+      "concepto": "relampago",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/relampago-fase3-043.json"
+    },
+    {
+      "id": "9-relampago-3-044",
+      "concepto": "relampago",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/relampago-fase3-044.json"
     },
     {
       "id": "9-alineacion-1-001",
@@ -601,6 +1153,42 @@
       "concepto": "alineacion",
       "fase_cpa": 3,
       "ruta": "data/puzzles/9-anios/alineacion-fase3-006.json"
+    },
+    {
+      "id": "9-alineacion-3-020",
+      "concepto": "alineacion",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/alineacion-fase3-020.json"
+    },
+    {
+      "id": "9-alineacion-3-021",
+      "concepto": "alineacion",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/alineacion-fase3-021.json"
+    },
+    {
+      "id": "9-alineacion-3-022",
+      "concepto": "alineacion",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/alineacion-fase3-022.json"
+    },
+    {
+      "id": "9-alineacion-3-040",
+      "concepto": "alineacion",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/alineacion-fase3-040.json"
+    },
+    {
+      "id": "9-alineacion-3-041",
+      "concepto": "alineacion",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/alineacion-fase3-041.json"
+    },
+    {
+      "id": "9-alineacion-3-042",
+      "concepto": "alineacion",
+      "fase_cpa": 3,
+      "ruta": "data/puzzles/9-anios/alineacion-fase3-042.json"
     }
   ]
 }

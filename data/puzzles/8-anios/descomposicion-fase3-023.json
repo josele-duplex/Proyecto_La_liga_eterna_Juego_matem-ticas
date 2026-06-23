@@ -1,0 +1,53 @@
+{
+  "id": "8-descomposicion-3-023",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "descomposicion",
+  "fase_cpa": 3,
+  "edad": "8-anios",
+  "estrategia": "completar_diez",
+  "enunciado": {
+    "texto": "8 + 7 = ? (pasa primero por el 10)",
+    "voz": "8 más 7 cruzando el diez."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "14"
+      },
+      {
+        "id": "b",
+        "texto": "15"
+      },
+      {
+        "id": "c",
+        "texto": "16"
+      },
+      {
+        "id": "d",
+        "texto": "17"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Completa la decena desde 8."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "De 8 a 10 hay 2; reparte el 7."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "8 + 7 = 15."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

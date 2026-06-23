@@ -1,0 +1,49 @@
+{
+  "id": "6-secuencia-2-042",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "secuencia",
+  "fase_cpa": 2,
+  "edad": "6-anios",
+  "estrategia": "contar_secuencia",
+  "enunciado": {
+    "texto": "Sigue la serie: 10, 9, 8, 7, ... ¿Qué número viene?",
+    "voz": "Sigue el patrón."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "5"
+      },
+      {
+        "id": "b",
+        "texto": "6"
+      },
+      {
+        "id": "c",
+        "texto": "7"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Mira cuánto cambia de un número al siguiente."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Baja de 1 en 1."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "Después de 7 viene 6."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

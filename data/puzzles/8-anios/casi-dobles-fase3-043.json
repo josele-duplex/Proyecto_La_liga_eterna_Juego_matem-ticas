@@ -1,0 +1,53 @@
+{
+  "id": "8-casi_dobles-3-043",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "casi_dobles",
+  "fase_cpa": 3,
+  "edad": "8-anios",
+  "estrategia": "usar_casi_dobles",
+  "enunciado": {
+    "texto": "12 + 13 = ? (apóyate en un doble)",
+    "voz": "12 más 13."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "24"
+      },
+      {
+        "id": "b",
+        "texto": "25"
+      },
+      {
+        "id": "c",
+        "texto": "26"
+      },
+      {
+        "id": "d",
+        "texto": "27"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Cerca del doble de 12."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "12 + 12 y ajusta."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "12 + 13 = 25."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

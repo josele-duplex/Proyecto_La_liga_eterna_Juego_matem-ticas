@@ -1,0 +1,41 @@
+{
+  "id": "8-recta-numerica-2-023",
+  "version": 1,
+  "tipo": "recta_numerica",
+  "concepto": "recta_numerica",
+  "fase_cpa": 2,
+  "edad": "8-anios",
+  "estrategia": "usar_decenas_como_referencia",
+  "enunciado": {
+    "texto": "Toca el punto donde está el 25 en la recta numérica.",
+    "voz": "Señala el 25."
+  },
+  "datos": {
+    "recta": {
+      "desde": 0,
+      "hasta": 30,
+      "paso": 5
+    }
+  },
+  "respuesta": {
+    "valor_correcto": 25
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Localiza primero el 10 como referencia."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "El 25 está después del 10."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "Cuenta de 5 en 5 hasta 25."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

@@ -169,7 +169,9 @@ for i, (n, r) in enumerate([(47, 50), (23, 20), (55, 60)], start=2):
         [f"{n} está entre {n // 10 * 10} y {n // 10 * 10 + 10}.",
          "La unidad manda: 5 o más sube, menos de 5 baja.",
          f"{n} → {r}."], N))
-for i, (n, r) in enumerate([(340, 300), (470, 500), (650, 700), (180, 200), (120, 100)], start=1):
+# start=11 para que estos ids (centena) NO choquen con redondeo-fase3-abstracta.json, que es el
+# 9-redondeo-3-001 hecho a mano.
+for i, (n, r) in enumerate([(340, 300), (470, 500), (650, 700), (180, 200), (120, 100)], start=11):
     fichas.append(mc(f"9-redondeo-3-{i:03d}", "redondeo", 3, "redondear",
         f"Redondea {n} a la centena más cercana.", f"{n} a la centena.",
         r, [r - 100, r + 100, n],

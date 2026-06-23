@@ -1,0 +1,47 @@
+{
+  "id": "9-alineacion-3-040",
+  "version": 1,
+  "tipo": "ordenar",
+  "concepto": "alineacion",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "ordenar_numeros",
+  "enunciado": {
+    "texto": "Coloca la alineación de menor a mayor. Toca los números en orden, del más pequeño al más grande.",
+    "voz": "De menor a mayor."
+  },
+  "datos": {
+    "numeros": [
+      2300,
+      1990,
+      2050,
+      1875
+    ]
+  },
+  "respuesta": {
+    "orden": [
+      1875,
+      1990,
+      2050,
+      2300
+    ]
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Cuenta las cifras."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Más cifras = más grande; si empatan, primera cifra."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "Del más pequeño al más grande."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

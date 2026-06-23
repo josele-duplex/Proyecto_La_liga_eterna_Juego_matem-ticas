@@ -1,0 +1,53 @@
+{
+  "id": "9-multiplicacion-3-040",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "multiplicacion",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "multiplicar_grupos",
+  "enunciado": {
+    "texto": "18 × 4 = ?",
+    "voz": "18 por 4."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "68"
+      },
+      {
+        "id": "b",
+        "texto": "72"
+      },
+      {
+        "id": "c",
+        "texto": "73"
+      },
+      {
+        "id": "d",
+        "texto": "76"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Descompón 18 = 10 + 8."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "10 × 4 + 8 × 4."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "18 × 4 = 72."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

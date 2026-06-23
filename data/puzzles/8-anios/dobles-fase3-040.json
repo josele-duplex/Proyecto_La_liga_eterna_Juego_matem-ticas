@@ -1,0 +1,53 @@
+{
+  "id": "8-dobles-3-040",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "dobles",
+  "fase_cpa": 3,
+  "edad": "8-anios",
+  "estrategia": "usar_dobles",
+  "enunciado": {
+    "texto": "¿Cuánto es el doble de 11?",
+    "voz": "El doble de 11."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "20"
+      },
+      {
+        "id": "b",
+        "texto": "22"
+      },
+      {
+        "id": "c",
+        "texto": "23"
+      },
+      {
+        "id": "d",
+        "texto": "24"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Doble es 11 y otra vez 11."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "11 + 11."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "El doble de 11 es 22."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

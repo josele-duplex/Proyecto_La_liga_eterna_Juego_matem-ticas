@@ -1,0 +1,53 @@
+{
+  "id": "9-resta_llevando-3-020",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "resta_llevando",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "restar_llevando",
+  "enunciado": {
+    "texto": "523 - 187 = ?",
+    "voz": "523 menos 187."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "326"
+      },
+      {
+        "id": "b",
+        "texto": "336"
+      },
+      {
+        "id": "c",
+        "texto": "337"
+      },
+      {
+        "id": "d",
+        "texto": "436"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Resta por columnas pidiendo prestado si hace falta."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Desde 187, cuenta hacia delante hasta 523."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "523 - 187 = 336."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

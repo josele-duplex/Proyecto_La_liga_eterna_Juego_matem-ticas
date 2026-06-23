@@ -1,0 +1,35 @@
+{
+  "id": "8-relampago-3-042",
+  "version": 1,
+  "tipo": "verdadero_falso",
+  "concepto": "relampago",
+  "fase_cpa": 3,
+  "edad": "8-anios",
+  "estrategia": "calcular_rapido",
+  "enunciado": {
+    "texto": "¿Es verdad que el doble de 8 es 16?",
+    "voz": "Rápido: ¿verdadero o falso?"
+  },
+  "datos": {},
+  "respuesta": {
+    "correcta": true
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Hazlo mentalmente."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Comprueba el cálculo."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "Decide verdadero o falso."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

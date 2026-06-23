@@ -1,0 +1,45 @@
+{
+  "id": "6-comparar-3-041",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "comparar",
+  "fase_cpa": 3,
+  "edad": "6-anios",
+  "estrategia": "comparar_cantidades",
+  "enunciado": {
+    "texto": "¿Qué número es mayor: 3 o 8?",
+    "voz": "3 o 8."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "3"
+      },
+      {
+        "id": "b",
+        "texto": "8"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Imagina 3 y 8 en la recta."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "El mayor está más a la derecha."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "El mayor es 8."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

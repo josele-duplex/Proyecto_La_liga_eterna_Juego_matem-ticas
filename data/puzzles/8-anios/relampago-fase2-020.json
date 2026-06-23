@@ -1,0 +1,35 @@
+{
+  "id": "8-relampago-2-020",
+  "version": 1,
+  "tipo": "verdadero_falso",
+  "concepto": "relampago",
+  "fase_cpa": 2,
+  "edad": "8-anios",
+  "estrategia": "calcular_rapido",
+  "enunciado": {
+    "texto": "¿Es verdad que 8 + 8 = 16?",
+    "voz": "Rápido: ¿verdadero o falso?"
+  },
+  "datos": {},
+  "respuesta": {
+    "correcta": true
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Hazlo mentalmente."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Comprueba el cálculo con cuidado."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "Decide verdadero o falso."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

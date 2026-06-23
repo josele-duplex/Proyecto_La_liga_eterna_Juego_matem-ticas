@@ -1,0 +1,53 @@
+{
+  "id": "9-problemas-3-041",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "problemas",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "razonar_problema",
+  "enunciado": {
+    "texto": "Compras 6 sobres de 5 cromos y regalas la mitad de todos. ¿Cuántos cromos te quedas?",
+    "voz": "Piénsalo en dos pasos."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "10"
+      },
+      {
+        "id": "b",
+        "texto": "15"
+      },
+      {
+        "id": "c",
+        "texto": "20"
+      },
+      {
+        "id": "d",
+        "texto": "30"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Total: 6 × 5."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "6 × 5 = 30; la mitad."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "30 ÷ 2 = 15."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

@@ -1,0 +1,53 @@
+{
+  "id": "8-dobles-3-020",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "dobles",
+  "fase_cpa": 3,
+  "edad": "8-anios",
+  "estrategia": "usar_dobles",
+  "enunciado": {
+    "texto": "¿Cuánto es el doble de 6? (6 + 6)",
+    "voz": "El doble de 6."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "10"
+      },
+      {
+        "id": "b",
+        "texto": "12"
+      },
+      {
+        "id": "c",
+        "texto": "13"
+      },
+      {
+        "id": "d",
+        "texto": "14"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Doble es 6 y otra vez 6."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "6 + 6."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "El doble de 6 es 12."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

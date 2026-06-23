@@ -1,0 +1,53 @@
+{
+  "id": "8-descomposicion-3-044",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "descomposicion",
+  "fase_cpa": 3,
+  "edad": "8-anios",
+  "estrategia": "completar_diez",
+  "enunciado": {
+    "texto": "7 + 9 = ? (pasa por el 10)",
+    "voz": "7 más 9."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "15"
+      },
+      {
+        "id": "b",
+        "texto": "16"
+      },
+      {
+        "id": "c",
+        "texto": "17"
+      },
+      {
+        "id": "d",
+        "texto": "18"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Completa la decena desde 7."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "De 7 a 10 hay 3."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "7 + 9 = 16."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

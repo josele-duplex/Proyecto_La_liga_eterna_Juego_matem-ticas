@@ -1,0 +1,53 @@
+{
+  "id": "9-resta_llevando-3-042",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "resta_llevando",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "restar_llevando",
+  "enunciado": {
+    "texto": "834 - 567 = ?",
+    "voz": "834 menos 567."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "257"
+      },
+      {
+        "id": "b",
+        "texto": "267"
+      },
+      {
+        "id": "c",
+        "texto": "268"
+      },
+      {
+        "id": "d",
+        "texto": "367"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Resta por columnas con préstamos."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Cuenta hacia delante desde 567 hasta 834."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "834 - 567 = 267."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

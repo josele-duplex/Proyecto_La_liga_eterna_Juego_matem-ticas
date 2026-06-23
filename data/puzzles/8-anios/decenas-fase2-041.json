@@ -1,0 +1,53 @@
+{
+  "id": "8-decenas-2-041",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "decenas",
+  "fase_cpa": 2,
+  "edad": "8-anios",
+  "estrategia": "usar_valor_posicional",
+  "enunciado": {
+    "texto": "En el número 41, ¿cuántas unidades sueltas hay (sin contar las decenas)?",
+    "voz": "Las unidades de 41."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "1"
+      },
+      {
+        "id": "b",
+        "texto": "2"
+      },
+      {
+        "id": "c",
+        "texto": "4"
+      },
+      {
+        "id": "d",
+        "texto": "41"
+      }
+    ],
+    "correcta": "a"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Separa 41 en decenas y unidades."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "41 = 4 decenas y 1 unidades."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "41 tiene 1 unidades."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

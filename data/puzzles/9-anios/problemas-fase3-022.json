@@ -1,0 +1,53 @@
+{
+  "id": "9-problemas-3-022",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "problemas",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "razonar_problema",
+  "enunciado": {
+    "texto": "Hay 36 jugadores en 6 equipos iguales. Si juntas 2 equipos, ¿cuántos jugadores hay en ese grupo?",
+    "voz": "Piénsalo en dos pasos."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "6"
+      },
+      {
+        "id": "b",
+        "texto": "9"
+      },
+      {
+        "id": "c",
+        "texto": "12"
+      },
+      {
+        "id": "d",
+        "texto": "18"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Cuántos por equipo: 36 ÷ 6."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "36 ÷ 6 = 6; junta 2 equipos."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "6 × 2 = 12."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

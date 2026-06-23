@@ -1,0 +1,53 @@
+{
+  "id": "9-redondeo-3-031",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "redondeo",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "redondear",
+  "enunciado": {
+    "texto": "Redondea 2700 al millar más cercano.",
+    "voz": "2700 al millar."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "2000"
+      },
+      {
+        "id": "b",
+        "texto": "2700"
+      },
+      {
+        "id": "c",
+        "texto": "3000"
+      },
+      {
+        "id": "d",
+        "texto": "4000"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "2700 está entre 2000 y 3000."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Mira las centenas: 5 o más sube de millar."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "2700 → 3000."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

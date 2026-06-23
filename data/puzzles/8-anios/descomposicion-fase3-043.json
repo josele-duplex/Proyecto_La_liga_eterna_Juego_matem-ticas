@@ -1,0 +1,53 @@
+{
+  "id": "8-descomposicion-3-043",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "descomposicion",
+  "fase_cpa": 3,
+  "edad": "8-anios",
+  "estrategia": "completar_diez",
+  "enunciado": {
+    "texto": "8 + 6 = ? (pasa por el 10)",
+    "voz": "8 más 6."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "13"
+      },
+      {
+        "id": "b",
+        "texto": "14"
+      },
+      {
+        "id": "c",
+        "texto": "15"
+      },
+      {
+        "id": "d",
+        "texto": "16"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Completa la decena desde 8."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "De 8 a 10 hay 2."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "8 + 6 = 14."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}

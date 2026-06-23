@@ -1,0 +1,53 @@
+{
+  "id": "8-casi_dobles-3-023",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "casi_dobles",
+  "fase_cpa": 3,
+  "edad": "8-anios",
+  "estrategia": "usar_casi_dobles",
+  "enunciado": {
+    "texto": "5 + 6 = ? (apóyate en un doble)",
+    "voz": "5 más 6, casi un doble."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "10"
+      },
+      {
+        "id": "b",
+        "texto": "11"
+      },
+      {
+        "id": "c",
+        "texto": "12"
+      },
+      {
+        "id": "d",
+        "texto": "13"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Está cerca del doble de 5."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "5 + 5 = 10, y uno más."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "5 + 6 = 11."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

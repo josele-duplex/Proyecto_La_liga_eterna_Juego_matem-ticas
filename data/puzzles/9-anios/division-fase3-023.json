@@ -1,0 +1,53 @@
+{
+  "id": "9-division-3-023",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "division",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "dividir",
+  "enunciado": {
+    "texto": "40 ÷ 8 = ?",
+    "voz": "40 entre 8."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "4"
+      },
+      {
+        "id": "b",
+        "texto": "5"
+      },
+      {
+        "id": "c",
+        "texto": "6"
+      },
+      {
+        "id": "d",
+        "texto": "7"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "La división deshace la multiplicación."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "¿8 por cuánto da 40?"
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "40 ÷ 8 = 5."
+    }
+  ],
+  "nota": "Tanda extra de ejercicios (mas variedad)."
+}

@@ -1,0 +1,53 @@
+{
+  "id": "9-division-3-042",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "division",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "dividir",
+  "enunciado": {
+    "texto": "77 ÷ 7 = ?",
+    "voz": "77 entre 7."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "10"
+      },
+      {
+        "id": "b",
+        "texto": "11"
+      },
+      {
+        "id": "c",
+        "texto": "12"
+      },
+      {
+        "id": "d",
+        "texto": "13"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "La división deshace la multiplicación."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "¿7 por cuánto da 77?"
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "77 ÷ 7 = 11."
+    }
+  ],
+  "nota": "Segunda tanda extra de ejercicios (mas variedad)."
+}
