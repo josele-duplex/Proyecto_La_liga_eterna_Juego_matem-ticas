@@ -216,20 +216,20 @@ Estas tres decisiones son las "vigas maestras". Cambiarlas a mitad de obra oblig
 - *Depende de:* T2.5, T3.3.
 - *Terminado cuando:* se otorgan insignias de proceso —"Disparo Directo" (sin pistas ni fallos), "Remontada" (acierto tras fallar), "Rayo del Relámpago" (rápido en Relámpago)— y Capi elogia la estrategia/esfuerzo con una frase distinta según el camino seguido.
 
-**TG.5 — Repaso espaciado por error** *(pendiente)*
+**TG.5 — Repaso espaciado por error** ✅ *(hecho)*
 - *Problema que resuelve:* convertir los fallos en repaso programado en vez de tropiezos sueltos.
 - *Depende de:* T2.3, T3.3.
-- *Terminado cuando:* un concepto fallado reaparece unos retos después y otra vez en la sesión siguiente, hasta dominarse.
+- *Terminado cuando:* `progreso.colaRepaso` encola un concepto que "le cuesta" (`Progression.actualizar`) con una cuenta atrás de 3 retos; `Progression.siguiente` lo sirve como repaso (`esRepaso: true`) en cuanto llega su turno, saltándose la rotación normal; Capi avisa ("Te traigo un repaso de algo que se nos resistió") y la cápsula de misión muestra "🔁 Repaso". Si vuelve a costar, se reencola; si se domina, sale solo.
 
-**TG.6 — Rival "Fueras de Juego"** *(pendiente, necesita arte)*
+**TG.6 — Rival "Fueras de Juego"** ✅ *(hecho)*
 - *Problema que resuelve:* dar al fallo sentido narrativo (drama deportivo) y un adversario real al partido.
-- *Depende de:* TG.1, ilustraciones de las criaturas del error.
-- *Terminado cuando:* el equipo rival son los Fueras de Juego; fallar = el rival intercepta.
+- *Depende de:* TG.1, ilustraciones de las criaturas del error (3 ya integradas: energía/asustado/malvado).
+- *Terminado cuando:* `iniciarEstadio` elige un rival al azar (`RIVALES`) que se muestra en el banner de estadio; al fallar, el rival se anima ("¡X te ha robado el balón!") en vez del genérico "casi"; la victoria cierra con "Has dejado fuera de juego a X".
 
-**TG.7 — Power-ups que andamian** *(pendiente)*
+**TG.7 — Power-ups que andamian** ✅ *(hecho)*
 - *Problema que resuelve:* dar destino a la energía ⚡ con ayudas que no saltan el aprendizaje.
 - *Depende de:* T2.1, T2.5.
-- *Terminado cuando:* se puede gastar energía en "Ojo del águila", "Tiempo extra" (Relámpago) y "Consejo del capitán", ninguno revela la respuesta directa.
+- *Terminado cuando:* se puede gastar energía en "Ojo del Águila" (-15⚡, tacha una opción incorrecta, solo opción múltiple, solo tras el primer fallo), "Consejo del Capitán" (-10⚡, adelanta la pista de procedimiento, cualquier tipo) y "Tiempo Extra" (-10⚡, +5s, solo Relámpago — que de paso ganó un cronómetro visible de 8s, ausente hasta ahora a pesar del nombre). Ninguno revela la respuesta directa; cada uno solo cobra energía si tuvo efecto real.
 
 **TG.8 — Clasificación y temporada** *(pendiente, apuesta grande)*
 **TG.9 — Álbum de cromos** *(pendiente, apuesta grande)*

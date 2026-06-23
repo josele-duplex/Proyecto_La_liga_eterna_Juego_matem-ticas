@@ -456,9 +456,23 @@ button:focus-visible {
   line-height: 1.1;
 }
 
-/* Juego "Relámpago" (verdadero/falso): dos botones grandes a izquierda y derecha. */
+/* Juego "Relámpago" (verdadero/falso): dos botones grandes a izquierda y derecha, con un
+   cronómetro encima (TG.7) que le da a "Relámpago" la prisa real que su nombre promete. */
+.vf-envoltura { display: flex; flex-direction: column; gap: 0.5rem; }
+.vf-tiempo {
+  align-self: center;
+  margin: 0;
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--color-primario-oscuro);
+}
 .opciones-vf { grid-template-columns: 1fr 1fr; }
 .opcion-vf { font-size: 1.3rem; min-height: 4.6rem; }
+
+/* Opción tachada por el poder "Ojo del Águila" (TG.7): se ve que ya no cuenta, sin marcarla
+   como un fallo del niño (no lleva el rojo/naranja de error, solo queda apagada). */
+.opcion-eliminada { opacity: 0.35; text-decoration: line-through; }
 
 /* Juego "Alineación" (ordenar): los números se colocan en fila para tocarlos en orden. */
 .opciones-ordenar { grid-template-columns: repeat(auto-fit, minmax(4.5rem, 1fr)); }
@@ -527,6 +541,32 @@ button:focus-visible {
 }
 
 .boton-pista:disabled { opacity: 0.6; cursor: default; }
+
+/* Panel de poderes (TG.7): gastar energía en ayudas, nunca en la respuesta directa. */
+.zona-poderes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: var(--espacio);
+}
+
+.boton-poder {
+  font-family: inherit;
+  font-size: 0.95rem;
+  font-weight: 700;
+  padding: 0.55rem 1rem;
+  min-height: 2.75rem;
+  background: #eef4fb;
+  border: 2px solid rgba(41, 121, 255, 0.25);
+  color: var(--color-primario-oscuro);
+  border-radius: var(--radio-pildora);
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.06s ease;
+}
+.boton-poder:hover:not(:disabled) { background: #dde9fb; }
+.boton-poder:active:not(:disabled) { transform: scale(0.96); }
+.boton-poder:disabled { opacity: 0.55; cursor: default; }
+.boton-poder-usado { background: var(--color-exito-fondo); border-color: var(--color-exito-borde); color: var(--color-exito-texto); }
 
 .pista {
   font-size: 1.1rem;
@@ -825,9 +865,24 @@ button:focus-visible {
 .banner-estadio .escudo-estadio { width: 2.4rem; height: 2.4rem; margin: 0; }
 .banner-estadio-nombre { font-family: var(--fuente-titulos); font-weight: 600; font-size: 1.05rem; color: var(--color-primario-oscuro); }
 
-/* Marcador del partido (TG.1): "tu equipo - rival", se empuja a la derecha del banner. */
-.marcador-partido {
+/* Rival "Fueras de Juego" del partido (TG.6): retrato pequeño que se "abalanza" al fallar.
+   margin-left:auto lo empuja junto al marcador hacia la derecha del banner. */
+.rival-mini {
   margin-left: auto;
+  width: 2.6rem;
+  height: 2.6rem;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.25));
+}
+.rival-ataca { animation: rival-ataca 0.5s ease; }
+@keyframes rival-ataca {
+  0%, 100% { transform: translateX(0) scale(1); }
+  30% { transform: translateX(-4px) scale(1.15); }
+  60% { transform: translateX(2px) scale(1.05); }
+}
+
+/* Marcador del partido (TG.1): "tu equipo - rival". */
+.marcador-partido {
   font-family: var(--fuente-titulos);
   font-weight: 700;
   font-size: 1.1rem;
@@ -835,6 +890,14 @@ button:focus-visible {
   background: linear-gradient(180deg, var(--color-primario), var(--color-primario-oscuro));
   border-radius: var(--radio-pildora);
   padding: 0.25rem 0.75rem;
+}
+
+/* Nota de cierre narrativo del rival en la victoria (TG.6). */
+.rival-derrotado {
+  text-align: center;
+  font-weight: 700;
+  color: var(--color-texto-suave);
+  margin: 0;
 }
 
 /* Cápsula de misión con mini barra de progreso (P9). */
@@ -856,6 +919,15 @@ button:focus-visible {
 .capsula-linea strong { font-family: var(--fuente-titulos); font-weight: 600; color: var(--color-texto); }
 .capsula-concepto { font-weight: 800; color: var(--color-primario-oscuro); }
 .capsula-fase { margin-left: auto; font-weight: 700; }
+
+/* Etiqueta de repaso espaciado (TG.5): un concepto que volvió de la cola. */
+.capsula-repaso {
+  font-weight: 700;
+  color: #6a3fb5;
+  background: rgba(106, 63, 181, 0.12);
+  border-radius: var(--radio-pildora);
+  padding: 0.1rem 0.55rem;
+}
 .mini-progreso { display: flex; gap: 5px; margin-top: 0.55rem; }
 .segmento { flex: 1; height: 9px; border-radius: 999px; background: rgba(20, 40, 70, 0.12); }
 .segmento-hecho { background: var(--color-primario); }

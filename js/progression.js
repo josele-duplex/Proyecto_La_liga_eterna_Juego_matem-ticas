@@ -15,6 +15,12 @@ const Progression = {
     return resultado.intentosFallidos >= 1 || resultado.pistasUsadas >= 1;
   },
 
+  // Repaso espaciado (TG.5, Leitner ligero): un concepto que "le cuesta" reaparece RETOS_PARA_REPASO
+  // retos después, no en el siguiente inmediato (sería repetir sobre la herida) ni nunca (se
+  // olvidaría). Si al repasarlo vuelve a costarle, se reencola con el mismo plazo; si lo domina,
+  // sale de la cola sola (siguiente() ya la quita al servirlo).
+  RETOS_PARA_REPASO: 3,
+
   // Lista de fases disponibles para un concepto (según lo que haya en el índice).
   fasesDe(indice, concepto) {
     return indice.puzles.filter((p) => p.concepto === concepto).map((p) => p.fase_cpa);
@@ -58,17 +64,42 @@ const Progression = {
       progreso.conceptoActual = conceptoJugado;
     }
 
+    // Cola de repaso (TG.5): cada puzle resuelto acerca el turno de los conceptos ya en cola;
+    // si este concepto le ha costado, entra (o vuelve a entrar) con el plazo completo.
+    progreso.colaRepaso = (progreso.colaRepaso || []).map((item) => ({ ...item, enFaltan: item.enFaltan - 1 }));
+    if (this.leCuesta(resultado)) {
+      const existente = progreso.colaRepaso.find((item) => item.concepto === conceptoJugado);
+      if (existente) existente.enFaltan = this.RETOS_PARA_REPASO;
+      else progreso.colaRepaso.push({ concepto: conceptoJugado, enFaltan: this.RETOS_PARA_REPASO });
+    }
+
     return progreso;
   },
 
   // Elige el siguiente puzle: del concepto actual, el de fase más cercana a la fase objetivo
   // del jugador. Si hay varios igual de adecuados (misma fase), elige al azar y evita repetir
-  // el último, para dar variedad. Devuelve la entrada del índice { id, concepto, fase_cpa, ruta }.
+  // el último, para dar variedad. Devuelve la entrada del índice { id, concepto, fase_cpa, ruta,
+  // esRepaso } — esRepaso es true cuando este reto viene de la cola de repaso (TG.5), para que
+  // la interfaz pueda avisar ("Capi te trae un repaso de…") en vez del mensaje normal.
   siguiente(progreso, indice) {
     const conceptos = this.conceptos(indice);
-    const concepto = (progreso.conceptoActual && conceptos.includes(progreso.conceptoActual))
-      ? progreso.conceptoActual
-      : conceptos[0];
+
+    progreso.colaRepaso = progreso.colaRepaso || [];
+    const repasoListo = progreso.colaRepaso.find(
+      (item) => item.enFaltan <= 0 && conceptos.includes(item.concepto)
+    );
+
+    let concepto;
+    let esRepaso = false;
+    if (repasoListo) {
+      concepto = repasoListo.concepto;
+      esRepaso = true;
+      progreso.colaRepaso = progreso.colaRepaso.filter((item) => item !== repasoListo);
+    } else {
+      concepto = (progreso.conceptoActual && conceptos.includes(progreso.conceptoActual))
+        ? progreso.conceptoActual
+        : conceptos[0];
+    }
 
     progreso.dominio = progreso.dominio || {};
     const faseObjetivo = progreso.dominio[concepto]
@@ -85,6 +116,7 @@ const Progression = {
       if (sinRepetir.length > 0) mejores = sinRepetir;
     }
 
-    return mejores[Math.floor(Math.random() * mejores.length)];
+    const elegido = mejores[Math.floor(Math.random() * mejores.length)];
+    return esRepaso ? { ...elegido, esRepaso: true } : elegido;
   }
 };

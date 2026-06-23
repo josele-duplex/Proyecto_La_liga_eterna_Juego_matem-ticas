@@ -38,6 +38,24 @@ const MODOS = [
   }
 ];
 
+// Rivales del partido (TG.6): los "Fueras de Juego", criaturas del error numérico. Se elige uno
+// al azar por partido (sesion.rival) y da sentido narrativo al fallo: no "te has equivocado",
+// sino "el rival te ha robado el balón" — mismo dato (un fallo), distinto envoltorio emocional.
+const RIVALES = [
+  { id: 'energia', nombre: 'Energía', imagen: 'assets/img/decoracion/fuera-de-juego-energia.webp' },
+  { id: 'asustado', nombre: 'Asustado', imagen: 'assets/img/decoracion/fuera-de-juego-asustado.webp' },
+  { id: 'malvado', nombre: 'Malvado', imagen: 'assets/img/decoracion/fuera-de-juego-malvado.webp' }
+];
+
+// Poderes (TG.7): formas concretas de gastar la energía que AYUDAN sin saltarse el aprendizaje
+// (ninguno revela la respuesta directa). El motor (engine.js) expone cómo ejecutarlos; aquí solo
+// se decide el coste y cuándo mostrarlos.
+const PODERES = {
+  ojo_aguila: { nombre: 'Ojo del Águila', icono: '👁️', costo: 15 },
+  consejo_capitan: { nombre: 'Consejo del Capitán', icono: '🧠', costo: 10 },
+  tiempo_extra: { nombre: 'Tiempo Extra', icono: '⏱️', costo: 10, segundos: 5 }
+};
+
 // Nombres bonitos para mostrar el concepto en pantalla.
 const NOMBRES_CONCEPTO = {
   descomposicion: 'descomposición',
@@ -305,7 +323,8 @@ function crearSaludoCapi(perfilId, dias) {
 
 // --- Pantalla 4: jugar la serie de retos de un estadio ---
 function iniciarEstadio(perfilId, estadio) {
-  const sesion = { hechos: 0, total: estadio.retos, golesRival: 0 };
+  const rival = RIVALES[Math.floor(Math.random() * RIVALES.length)];
+  const sesion = { hechos: 0, total: estadio.retos, golesRival: 0, rival };
   jugarReto(perfilId, estadio, sesion);
 }
 
@@ -331,20 +350,20 @@ async function jugarReto(perfilId, estadio, sesion) {
 
   const banner = crearBannerEstadio(estadio, sesion);
   app.appendChild(banner);
-  app.appendChild(crearCapsulaMision(puzzle, sesion, esDecisivo));
+  app.appendChild(crearCapsulaMision(puzzle, sesion, esDecisivo, entrada.esRepaso));
 
   const zonaJuego = document.createElement('div');
   zonaJuego.className = esDecisivo ? 'zona-juego zona-juego-decisiva' : 'zona-juego';
   app.appendChild(zonaJuego);
 
-  const tarjetaCapi = crearTarjetaCapi(puzzle, esDecisivo);
+  const tarjetaCapi = crearTarjetaCapi(puzzle, esDecisivo, entrada.esRepaso);
   app.appendChild(tarjetaCapi);
 
   // El rival solo "marca" una vez por reto (el primer fallo), aunque el niño falle varias veces
   // probando opciones: no queremos inflar el marcador por tanteo, solo dar tensión real.
   let falloContado = false;
 
-  Engine.render(
+  const capacidades = Engine.render(
     puzzle,
     zonaJuego,
     (puzzleResuelto, resultado) => {
@@ -361,6 +380,9 @@ async function jugarReto(perfilId, estadio, sesion) {
       celebrarAcierto(zonaJuego, recompensas.energiaPorPuzle);
       reaccionarCapi(tarjetaCapi, 'alegria', fraseAcierto(resultado));
       mostrarBarraPerfil(perfilId, { mostrarVolver: true, ocultarCambiarEquipo: true, brilloEnergia: true });
+      // El reto ya está resuelto: los poderes dejan de poder usarse (no tiene sentido gastar
+      // energía en una pregunta que ya se acertó, mientras el niño ve la celebración).
+      zonaJuego.querySelectorAll('.boton-poder').forEach((b) => { b.disabled = true; });
 
       sesion.hechos++;
       if (sesion.hechos >= sesion.total) {
@@ -372,13 +394,28 @@ async function jugarReto(perfilId, estadio, sesion) {
     () => {
       // Tras el primer fallo, Capi pasa a "duda" y anima a pedir pista (sistema de expresiones);
       // el marcador refleja la presión del rival (TG.1), pero solo cuenta el primer fallo del reto.
+      // El rival "Fueras de Juego" (TG.6) da sentido narrativo al fallo: no "te equivocaste",
+      // sino "te ha robado el balón" — el dato es el mismo, el envoltorio emocional es mejor.
+      let fraseFallo = 'Casi. Piensa otra vez… ¿quieres una pista?';
       if (!falloContado) {
         falloContado = true;
         sesion.golesRival++;
         const marcador = banner.querySelector('.marcador-partido');
         if (marcador) marcador.textContent = `${sesion.hechos} - ${sesion.golesRival}`;
+        if (sesion.rival) {
+          fraseFallo = `¡${sesion.rival.nombre} te ha robado el balón! Recupéralo: piensa otra vez.`;
+          const rivalImg = banner.querySelector('#rival-mini-actual');
+          if (rivalImg) {
+            rivalImg.classList.remove('rival-ataca');
+            void rivalImg.offsetWidth; // reinicia la animación
+            rivalImg.classList.add('rival-ataca');
+          }
+        }
+        // "Ojo del Águila" solo aparece tras el primer fallo, igual que el botón de pista.
+        const ojoAguila = document.getElementById('poder-ojo-aguila');
+        if (ojoAguila) ojoAguila.hidden = false;
       }
-      reaccionarCapi(tarjetaCapi, 'duda', 'Casi. Piensa otra vez… ¿quieres una pista?');
+      reaccionarCapi(tarjetaCapi, 'duda', fraseFallo);
       Sonido.sonidoFallo();
     },
     () => {
@@ -386,6 +423,60 @@ async function jugarReto(perfilId, estadio, sesion) {
       reaccionarCapi(tarjetaCapi, 'animo', '¡Tú puedes! Aquí va una ayuda.');
     }
   );
+
+  zonaJuego.appendChild(crearZonaPoderes(perfilId, capacidades));
+}
+
+// Panel de poderes (TG.7): gastar energía en ayudas que nunca revelan la respuesta directa.
+// "Ojo del Águila" solo existe para opción múltiple (lo añade engine.js) y empieza oculto hasta
+// el primer fallo; "Consejo del Capitán" está siempre disponible; "Tiempo Extra" solo existe en
+// Relámpago (cronómetro de renderVerdaderoFalso). Cada poder se paga solo si tuvo efecto real.
+function crearZonaPoderes(perfilId, capacidades) {
+  const zona = document.createElement('div');
+  zona.className = 'zona-poderes';
+
+  const crearBoton = (poder, id, alUsar) => {
+    const boton = document.createElement('button');
+    boton.id = id;
+    boton.className = 'boton-poder';
+    const textoNormal = `${poder.icono} ${poder.nombre} (-${poder.costo}⚡)`;
+    boton.textContent = textoNormal;
+
+    boton.addEventListener('click', () => {
+      const progreso = Storage.cargarProgreso(perfilId);
+      if ((progreso.energia || 0) < poder.costo) {
+        boton.textContent = 'Te falta energía ⚡';
+        setTimeout(() => { boton.textContent = textoNormal; }, 1400);
+        return;
+      }
+      if (alUsar() === false) {
+        boton.textContent = 'No hace falta aquí';
+        setTimeout(() => { boton.textContent = textoNormal; }, 1400);
+        return;
+      }
+      progreso.energia -= poder.costo;
+      Storage.guardarProgreso(perfilId, progreso);
+      mostrarBarraPerfil(perfilId, { mostrarVolver: true, ocultarCambiarEquipo: true });
+      boton.disabled = true;
+      boton.classList.add('boton-poder-usado');
+    });
+
+    zona.appendChild(boton);
+    return boton;
+  };
+
+  if (capacidades.usarOjoAguila) {
+    const boton = crearBoton(PODERES.ojo_aguila, 'poder-ojo-aguila', capacidades.usarOjoAguila);
+    boton.hidden = true;
+  }
+
+  crearBoton(PODERES.consejo_capitan, 'poder-consejo-capitan', capacidades.usarConsejoCapitan);
+
+  if (capacidades.usarTiempoExtra) {
+    crearBoton(PODERES.tiempo_extra, 'poder-tiempo-extra', () => capacidades.usarTiempoExtra(PODERES.tiempo_extra.segundos));
+  }
+
+  return zona;
 }
 
 // Frase de Capi al acertar, según CÓMO se ha llegado al acierto (elogio al esfuerzo/estrategia,
@@ -428,6 +519,17 @@ function crearBannerEstadio(estadio, sesion) {
   nombre.textContent = `🏟 ${estadio.nombre}`;
   banner.appendChild(nombre);
 
+  // El rival "Fueras de Juego" de este partido (TG.6): se anima al fallar (ver jugarReto).
+  if (sesion.rival) {
+    const rivalImg = document.createElement('img');
+    rivalImg.className = 'rival-mini';
+    rivalImg.id = 'rival-mini-actual';
+    rivalImg.src = sesion.rival.imagen;
+    rivalImg.alt = `Fuera de Juego: ${sesion.rival.nombre}`;
+    rivalImg.title = `Tu rival hoy: ${sesion.rival.nombre}`;
+    banner.appendChild(rivalImg);
+  }
+
   const marcador = document.createElement('span');
   marcador.className = 'marcador-partido';
   marcador.title = 'Tu equipo - Rival';
@@ -438,8 +540,9 @@ function crearBannerEstadio(estadio, sesion) {
 }
 
 // Cápsula de misión: en qué reto vas, qué concepto y fase, con una mini barra de progreso del
-// partido. El último reto de la serie se presenta como "jugada decisiva" (TG.1, más teatro).
-function crearCapsulaMision(puzzle, sesion, esDecisivo) {
+// partido. El último reto de la serie se presenta como "jugada decisiva" (TG.1, más teatro); un
+// reto que vuelve de la cola de repaso (TG.5) lleva una pequeña etiqueta "🔁 Repaso".
+function crearCapsulaMision(puzzle, sesion, esDecisivo, esRepaso) {
   const concepto = NOMBRES_CONCEPTO[puzzle.concepto] || puzzle.concepto;
   const capsula = document.createElement('div');
   capsula.className = esDecisivo ? 'capsula-mision capsula-decisiva' : 'capsula-mision';
@@ -453,10 +556,18 @@ function crearCapsulaMision(puzzle, sesion, esDecisivo) {
   const cpt = document.createElement('span');
   cpt.className = 'capsula-concepto';
   cpt.textContent = `⚽ ${concepto}`;
+  linea.appendChild(reto);
+  linea.appendChild(cpt);
+  if (esRepaso && !esDecisivo) {
+    const repaso = document.createElement('span');
+    repaso.className = 'capsula-repaso';
+    repaso.textContent = '🔁 Repaso';
+    linea.appendChild(repaso);
+  }
   const fase = document.createElement('span');
   fase.className = 'capsula-fase';
   fase.textContent = `Fase ${puzzle.fase_cpa}`;
-  linea.append(reto, cpt, fase);
+  linea.appendChild(fase);
   capsula.appendChild(linea);
 
   const barra = document.createElement('div');
@@ -473,8 +584,9 @@ function crearCapsulaMision(puzzle, sesion, esDecisivo) {
 }
 
 // Tarjeta del entrenador Capi: retrato grande, bocadillo y botón para escuchar el enunciado.
-// En la jugada decisiva (TG.1) el primer mensaje sube la tensión en vez del genérico de siempre.
-function crearTarjetaCapi(puzzle, esDecisivo) {
+// En la jugada decisiva (TG.1) el primer mensaje sube la tensión; en un repaso (TG.5) avisa de
+// que es un refuerzo, no un reto nuevo (la decisiva manda si coinciden, es más rara y más teatral).
+function crearTarjetaCapi(puzzle, esDecisivo, esRepaso) {
   const tarjeta = document.createElement('div');
   tarjeta.className = 'tarjeta-capi';
 
@@ -491,9 +603,13 @@ function crearTarjetaCapi(puzzle, esDecisivo) {
   const bocadillo = document.createElement('p');
   bocadillo.id = 'capi-bocadillo';
   bocadillo.className = 'bocadillo-capi';
-  bocadillo.textContent = esDecisivo
-    ? '¡Este es el momento, campeón! Concéntrate, sé que puedes.'
-    : '¡Vamos, campeón! Escucha mi consejo.';
+  if (esDecisivo) {
+    bocadillo.textContent = '¡Este es el momento, campeón! Concéntrate, sé que puedes.';
+  } else if (esRepaso) {
+    bocadillo.textContent = 'Te traigo un repaso de algo que se nos resistió. ¡Vamos a dominarlo!';
+  } else {
+    bocadillo.textContent = '¡Vamos, campeón! Escucha mi consejo.';
+  }
   cuerpo.appendChild(bocadillo);
 
   const boton = document.createElement('button');
@@ -592,6 +708,14 @@ function mostrarPartidoGanado(perfilId, estadio, sesion) {
       ? `🏆 Resultado: ${sesion.hechos} - ${sesion.golesRival} · ¡Victoria perfecta!`
       : `🏆 Resultado: ${sesion.hechos} - ${sesion.golesRival}`;
     zona.appendChild(resultado);
+
+    // Cierre narrativo del rival (TG.6): el equipo de los Fueras de Juego, derrotado.
+    if (sesion.rival) {
+      const rivalNota = document.createElement('p');
+      rivalNota.className = 'rival-derrotado';
+      rivalNota.textContent = `Has dejado fuera de juego a ${sesion.rival.nombre}. 🎉`;
+      zona.appendChild(rivalNota);
+    }
   }
 
   // Gancho para mañana (TG.3): mantiene viva la racha de entrenamiento.
