@@ -21,7 +21,7 @@
   "pistas": [
     { "nivel": 1, "tipo": "visual", "texto": "Compara los dos grupos. ¿Cuál parece más pequeño?" },
     { "nivel": 2, "tipo": "procedimiento", "texto": "Cuenta cada equipo: Azul y Rojo." },
-    { "nivel": 3, "tipo": "guiada", "texto": "El Azul tiene 4. El Rojo tiene 3. ¿Cuál número es más pequeño?" }
+    { "nivel": 3, "tipo": "guiada", "texto": "El Azul tiene 4. El Rojo tiene 3. ¿Qué número es más pequeño?" }
   ],
   "nota": "T3.1: comparar fase pictorica. Ahora se pregunta por el menor, y la diferencia es mas ajustada (4 vs 3)."
 }

@@ -71,9 +71,20 @@ const Progression = {
       progreso.conceptoActual = conceptos[0];
     }
 
-    // Cola de repaso (TG.5): cada puzle resuelto acerca el turno de los conceptos ya en cola;
-    // si este concepto le ha costado, entra (o vuelve a entrar) con el plazo completo.
-    progreso.colaRepaso = (progreso.colaRepaso || []).map((item) => ({ ...item, enFaltan: item.enFaltan - 1 }));
+    // Cola de repaso (TG.5). CLAVE: quitar/añadir conceptos de la cola se hace AQUÍ y no en
+    // siguiente(), porque el objeto que se guarda en disco es este. La app recarga el progreso
+    // entre siguiente() y actualizar(), así que cualquier cambio que hiciera siguiente() a la cola
+    // se perdería — y un repaso ya servido nunca se eliminaba: se repetía sin fin (era el bug del
+    // bucle que reportó el usuario: "¿Cuál es la mitad de 8?" / "qué número es mayor").
+    progreso.colaRepaso = progreso.colaRepaso || [];
+    // 1) Si este reto venía de la cola de repaso, ya está servido: quítalo de la cola.
+    if (fueRepaso) {
+      const i = progreso.colaRepaso.findIndex((item) => item.concepto === conceptoJugado);
+      if (i >= 0) progreso.colaRepaso.splice(i, 1);
+    }
+    // 2) Acerca el turno de los conceptos que siguen en cola.
+    progreso.colaRepaso = progreso.colaRepaso.map((item) => ({ ...item, enFaltan: item.enFaltan - 1 }));
+    // 3) Si este concepto le ha costado, entra (o vuelve a entrar) con el plazo completo.
     if (this.leCuesta(resultado)) {
       const existente = progreso.colaRepaso.find((item) => item.concepto === conceptoJugado);
       if (existente) existente.enFaltan = this.RETOS_PARA_REPASO;
@@ -96,12 +107,14 @@ const Progression = {
       (item) => item.enFaltan <= 0 && conceptos.includes(item.concepto)
     );
 
+    // siguiente() NO toca la cola: solo elige. Quien la modifica y guarda es actualizar() (ver
+    // arriba). Esto evita el bug del bucle: el item servido se elimina en el progreso que SÍ se
+    // persiste, no en este (que se descarta).
     let concepto;
     let esRepaso = false;
     if (repasoListo) {
       concepto = repasoListo.concepto;
       esRepaso = true;
-      progreso.colaRepaso = progreso.colaRepaso.filter((item) => item !== repasoListo);
     } else {
       concepto = (progreso.conceptoActual && conceptos.includes(progreso.conceptoActual))
         ? progreso.conceptoActual

@@ -21,7 +21,7 @@
   "pistas": [
     { "nivel": 1, "tipo": "visual", "texto": "Compara los dos grupos de jugadores. ¿Cuál parece más grande?" },
     { "nivel": 2, "tipo": "procedimiento", "texto": "Cuenta los jugadores del Equipo Azul y los del Equipo Rojo." },
-    { "nivel": 3, "tipo": "guiada", "texto": "El Azul tiene 3. El Rojo tiene 5. ¿Cuál número es más grande?" }
+    { "nivel": 3, "tipo": "guiada", "texto": "El Azul tiene 3. El Rojo tiene 5. ¿Qué número es más grande?" }
   ],
   "nota": "T3.1: comparar fase concreta. Grupos con diferencia grande y facil de ver."
 }

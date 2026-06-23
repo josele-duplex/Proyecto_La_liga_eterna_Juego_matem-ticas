@@ -930,6 +930,17 @@ if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('service-worker.js');
   });
+
+  // Cuando una versión nueva toma el control (gracias a skipWaiting en el service worker), la
+  // página recarga UNA vez para empezar a usar el código nuevo de inmediato. El flag evita un
+  // bucle de recargas. Así los arreglos llegan al dispositivo en el siguiente arranque con red,
+  // sin tener que reinstalar la app ni borrar la caché a mano.
+  let recargandoPorSW = false;
+  navigator.serviceWorker.addEventListener('controllerchange', () => {
+    if (recargandoPorSW) return;
+    recargandoPorSW = true;
+    window.location.reload();
+  });
 }
 
 arrancar();

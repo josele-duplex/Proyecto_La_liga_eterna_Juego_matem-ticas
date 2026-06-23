@@ -3,7 +3,7 @@
 // - CACHE_DATOS: todo lo demás (puzles JSON, imágenes) se cachea solo, la primera vez que se pide,
 //   para no tener que mantener a mano una lista de cada fichero de puzle que se vaya añadiendo.
 // Subir VERSION al cambiar el esqueleto fuerza a los dispositivos a descargar la versión nueva.
-const VERSION = 'v13';
+const VERSION = 'v14';
 const CACHE_APP = `liga-eterna-app-${VERSION}`;
 const CACHE_DATOS = `liga-eterna-datos-${VERSION}`;
 
@@ -37,6 +37,13 @@ const ARCHIVOS_APP = [
 ];
 
 self.addEventListener('install', (evento) => {
+  // skipWaiting(): la versión nueva se activa en cuanto termina de instalarse, sin esperar a que
+  // se cierren TODAS las pestañas/instancias. Sin esto, en una app ya instalada (PWA) la versión
+  // vieja podía seguir mandando durante días y el usuario nunca veía los arreglos (fue justo lo que
+  // pasó: el bug del bucle ya estaba corregido en el servidor pero el dispositivo servía el código
+  // viejo desde la caché). Junto con clients.claim() y el recargado de main.js, las actualizaciones
+  // llegan solas en el siguiente arranque con conexión.
+  self.skipWaiting();
   evento.waitUntil(
     caches.open(CACHE_APP).then((cache) => cache.addAll(ARCHIVOS_APP))
   );
