@@ -1,0 +1,35 @@
+{
+  "id": "9-relampago-1-001",
+  "version": 1,
+  "tipo": "verdadero_falso",
+  "concepto": "relampago",
+  "fase_cpa": 1,
+  "edad": "9-anios",
+  "estrategia": "calcular_rapido",
+  "enunciado": {
+    "texto": "¿Es verdad que 6 × 7 = 42?",
+    "voz": "Seis por siete, ¿cuarenta y dos?"
+  },
+  "datos": {},
+  "respuesta": {
+    "correcta": true
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "6 × 7 son 6 grupos de 7."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Cuenta de 7 en 7 seis veces."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "6 × 7 = 42, es verdad."
+    }
+  ],
+  "nota": "Banco Leyendas (dificultad alta para 9 años)."
+}

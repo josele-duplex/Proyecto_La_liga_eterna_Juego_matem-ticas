@@ -1,0 +1,49 @@
+{
+  "id": "9-alineacion-3-006",
+  "version": 1,
+  "tipo": "ordenar",
+  "concepto": "alineacion",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "ordenar_numeros",
+  "enunciado": {
+    "texto": "Coloca la alineación de menor a mayor. Toca los números en orden, del más pequeño al más grande.",
+    "voz": "De menor a mayor."
+  },
+  "datos": {
+    "numeros": [
+      500,
+      350,
+      405,
+      299,
+      450
+    ]
+  },
+  "respuesta": {
+    "orden": [
+      299,
+      350,
+      405,
+      450,
+      500
+    ]
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Fíjate primero en cuántas cifras tiene cada número."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Más cifras = más grande; con las mismas cifras, mira la primera."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "Empieza por el más pequeño y ve subiendo."
+    }
+  ],
+  "nota": "Banco Leyendas (dificultad alta para 9 años)."
+}

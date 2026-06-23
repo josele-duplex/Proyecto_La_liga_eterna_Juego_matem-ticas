@@ -1,0 +1,53 @@
+{
+  "id": "9-problemas-3-006",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "problemas",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "razonar_problema",
+  "enunciado": {
+    "texto": "Compras 4 paquetes de 5 pegatinas y usas 8. ¿Cuántas pegatinas te quedan?",
+    "voz": "Cuatro por cinco, menos ocho."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "9"
+      },
+      {
+        "id": "b",
+        "texto": "12"
+      },
+      {
+        "id": "c",
+        "texto": "13"
+      },
+      {
+        "id": "d",
+        "texto": "20"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Cuántas pegatinas en total: 4 × 5."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "4 × 5 = 20; ahora quita 8."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "20 - 8 = 12."
+    }
+  ],
+  "nota": "Banco Leyendas (dificultad alta para 9 años)."
+}

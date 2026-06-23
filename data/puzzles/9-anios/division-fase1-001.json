@@ -1,0 +1,53 @@
+{
+  "id": "9-division-1-001",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "division",
+  "fase_cpa": 1,
+  "edad": "9-anios",
+  "estrategia": "dividir",
+  "enunciado": {
+    "texto": "Reparte 12 balones en 3 cajas iguales. ¿Cuántos balones van en cada caja?",
+    "voz": "12 entre 3."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "3"
+      },
+      {
+        "id": "b",
+        "texto": "4"
+      },
+      {
+        "id": "c",
+        "texto": "5"
+      },
+      {
+        "id": "d",
+        "texto": "6"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Reparte 12 en 3 montones iguales, uno a uno."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Busca el número que, 3 veces, da 12."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "3 × 4 = 12, así que 12 ÷ 3 = 4."
+    }
+  ],
+  "nota": "Banco Leyendas (dificultad alta para 9 años)."
+}

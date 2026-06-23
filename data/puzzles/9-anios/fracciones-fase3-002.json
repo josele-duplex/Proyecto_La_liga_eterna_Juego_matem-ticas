@@ -1,0 +1,49 @@
+{
+  "id": "9-fracciones-3-002",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "fracciones",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "repartir_partes",
+  "enunciado": {
+    "texto": "¿Cuánto es 2/3 de 9?",
+    "voz": "2 de 3 de 9."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "5"
+      },
+      {
+        "id": "b",
+        "texto": "6"
+      },
+      {
+        "id": "c",
+        "texto": "7"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Una parte es 9 ÷ 3 = 3."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Multiplica esa parte por 2."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "3 × 2 = 6."
+    }
+  ],
+  "nota": "Banco Leyendas (dificultad alta para 9 años)."
+}

@@ -32,7 +32,7 @@ const MODOS = [
     nombre: 'Leyendas',
     icono: '🏆',
     imagen: 'assets/img/emblemas/emblema-leyendas.webp',
-    descripcion: 'El equipo de los más grandes: multiplicación, fracciones y redondeo.',
+    descripcion: 'El equipo de los más grandes: multiplicar, dividir, fracciones, redondeo, sumas y restas grandes y problemas.',
     edad: '9-anios',
     desbloqueadoPor: 'estrellas'
   }
@@ -73,7 +73,11 @@ const NOMBRES_CONCEPTO = {
   relampago: 'relámpago',
   alineacion: 'alineación',
   restar: 'restar',
-  decenas: 'decenas y unidades'
+  decenas: 'decenas y unidades',
+  division: 'división',
+  suma_llevando: 'sumas con llevadas',
+  resta_llevando: 'restas con llevadas',
+  problemas: 'problemas'
 };
 
 // Por debajo de esto, y acertando a la primera, una respuesta de Relámpago cuenta como "veloz"

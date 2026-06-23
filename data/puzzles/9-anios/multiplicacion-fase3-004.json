@@ -1,0 +1,49 @@
+{
+  "id": "9-multiplicacion-3-004",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "multiplicacion",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "multiplicar_grupos",
+  "enunciado": {
+    "texto": "9 × 9 = ?",
+    "voz": "9 por 9."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "72"
+      },
+      {
+        "id": "b",
+        "texto": "81"
+      },
+      {
+        "id": "c",
+        "texto": "90"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "9 × 9 son 9 grupos de 9."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Apóyate en una tabla que sepas (p. ej. 9 × 10 = 90) y ajusta."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "9 × 9 = 81."
+    }
+  ],
+  "nota": "Banco Leyendas (dificultad alta para 9 años)."
+}

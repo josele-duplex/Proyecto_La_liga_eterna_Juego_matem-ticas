@@ -1,0 +1,53 @@
+{
+  "id": "9-division-2-001",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "division",
+  "fase_cpa": 2,
+  "edad": "9-anios",
+  "estrategia": "dividir",
+  "enunciado": {
+    "texto": "20 jugadores se colocan en 4 filas iguales. ¿Cuántos jugadores hay en cada fila?",
+    "voz": "20 en 4 filas."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "4"
+      },
+      {
+        "id": "b",
+        "texto": "5"
+      },
+      {
+        "id": "c",
+        "texto": "6"
+      },
+      {
+        "id": "d",
+        "texto": "7"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Divide 20 en 4 partes iguales."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "¿Qué número multiplicado por 4 da 20?"
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "20 ÷ 4 = 5."
+    }
+  ],
+  "nota": "Banco Leyendas (dificultad alta para 9 años)."
+}

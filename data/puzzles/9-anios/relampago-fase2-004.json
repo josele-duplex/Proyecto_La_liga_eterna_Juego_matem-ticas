@@ -1,0 +1,35 @@
+{
+  "id": "9-relampago-2-004",
+  "version": 1,
+  "tipo": "verdadero_falso",
+  "concepto": "relampago",
+  "fase_cpa": 2,
+  "edad": "9-anios",
+  "estrategia": "calcular_rapido",
+  "enunciado": {
+    "texto": "¿Es verdad que 9 × 9 = 81?",
+    "voz": "Nueve por nueve."
+  },
+  "datos": {},
+  "respuesta": {
+    "correcta": true
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "9 × 9, el último de la tabla del 9."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "9 × 10 = 90; quita un 9."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "90 - 9 = 81, es verdad."
+    }
+  ],
+  "nota": "Banco Leyendas (dificultad alta para 9 años)."
+}

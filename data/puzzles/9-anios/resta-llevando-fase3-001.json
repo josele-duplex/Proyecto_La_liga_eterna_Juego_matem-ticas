@@ -1,0 +1,53 @@
+{
+  "id": "9-resta_llevando-3-001",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "resta_llevando",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "restar_llevando",
+  "enunciado": {
+    "texto": "100 - 37 = ?",
+    "voz": "100 menos 37."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "53"
+      },
+      {
+        "id": "b",
+        "texto": "63"
+      },
+      {
+        "id": "c",
+        "texto": "64"
+      },
+      {
+        "id": "d",
+        "texto": "163"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Réstalo por partes o cuenta hacia delante desde el número pequeño."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Desde 37, ¿cuánto falta para llegar a 100?"
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "100 - 37 = 63."
+    }
+  ],
+  "nota": "Banco Leyendas (dificultad alta para 9 años)."
+}

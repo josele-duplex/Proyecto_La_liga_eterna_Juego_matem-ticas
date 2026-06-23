@@ -1,0 +1,53 @@
+{
+  "id": "9-division-1-003",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "division",
+  "fase_cpa": 1,
+  "edad": "9-anios",
+  "estrategia": "dividir",
+  "enunciado": {
+    "texto": "Reparte 10 balones en 2 cajas iguales. ¿Cuántos balones van en cada caja?",
+    "voz": "10 entre 2."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "4"
+      },
+      {
+        "id": "b",
+        "texto": "5"
+      },
+      {
+        "id": "c",
+        "texto": "6"
+      },
+      {
+        "id": "d",
+        "texto": "7"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Reparte 10 en 2 montones iguales, uno a uno."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Busca el número que, 2 veces, da 10."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "2 × 5 = 10, así que 10 ÷ 2 = 5."
+    }
+  ],
+  "nota": "Banco Leyendas (dificultad alta para 9 años)."
+}

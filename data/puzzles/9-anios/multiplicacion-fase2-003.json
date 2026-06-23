@@ -1,0 +1,65 @@
+{
+  "id": "9-multiplicacion-2-003",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "multiplicacion",
+  "fase_cpa": 2,
+  "edad": "9-anios",
+  "estrategia": "multiplicar_grupos",
+  "enunciado": {
+    "texto": "Una caja tiene 5 filas de 4 balones. ¿Cuántos balones hay?",
+    "voz": "5 filas de 4."
+  },
+  "datos": {
+    "visual": {
+      "tipo": "grupos",
+      "grupos": [
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "icono": "⚽"
+    }
+  },
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "16"
+      },
+      {
+        "id": "b",
+        "texto": "18"
+      },
+      {
+        "id": "c",
+        "texto": "20"
+      },
+      {
+        "id": "d",
+        "texto": "24"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Cuenta una fila (4) y mira cuántas filas hay (5)."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Es 4 repetido 5 veces."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "5 × 4 = 20."
+    }
+  ],
+  "nota": "Banco Leyendas (dificultad alta para 9 años)."
+}

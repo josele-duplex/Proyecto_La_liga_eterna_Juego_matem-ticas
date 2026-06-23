@@ -1,0 +1,53 @@
+{
+  "id": "9-redondeo-3-004",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "redondeo",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "redondear",
+  "enunciado": {
+    "texto": "Redondea 180 a la centena más cercana.",
+    "voz": "180 a la centena."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "100"
+      },
+      {
+        "id": "b",
+        "texto": "180"
+      },
+      {
+        "id": "c",
+        "texto": "200"
+      },
+      {
+        "id": "d",
+        "texto": "300"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "180 está entre 100 y 200."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Mira la cifra de las decenas: 5 o más sube de centena."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "180 se redondea a 200."
+    }
+  ],
+  "nota": "Banco Leyendas (dificultad alta para 9 años)."
+}

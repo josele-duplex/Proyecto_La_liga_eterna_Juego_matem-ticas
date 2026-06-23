@@ -1,0 +1,63 @@
+{
+  "id": "9-multiplicacion-2-004",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "multiplicacion",
+  "fase_cpa": 2,
+  "edad": "9-anios",
+  "estrategia": "multiplicar_grupos",
+  "enunciado": {
+    "texto": "Una caja tiene 3 filas de 8 balones. ¿Cuántos balones hay?",
+    "voz": "3 filas de 8."
+  },
+  "datos": {
+    "visual": {
+      "tipo": "grupos",
+      "grupos": [
+        8,
+        8,
+        8
+      ],
+      "icono": "⚽"
+    }
+  },
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "16"
+      },
+      {
+        "id": "b",
+        "texto": "22"
+      },
+      {
+        "id": "c",
+        "texto": "24"
+      },
+      {
+        "id": "d",
+        "texto": "32"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Cuenta una fila (8) y mira cuántas filas hay (3)."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Es 8 repetido 3 veces."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "3 × 8 = 24."
+    }
+  ],
+  "nota": "Banco Leyendas (dificultad alta para 9 años)."
+}

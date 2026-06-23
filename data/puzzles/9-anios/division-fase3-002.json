@@ -1,0 +1,53 @@
+{
+  "id": "9-division-3-002",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "division",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "dividir",
+  "enunciado": {
+    "texto": "36 ÷ 6 = ?",
+    "voz": "36 entre 6."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "5"
+      },
+      {
+        "id": "b",
+        "texto": "6"
+      },
+      {
+        "id": "c",
+        "texto": "7"
+      },
+      {
+        "id": "d",
+        "texto": "8"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "La división es lo contrario de multiplicar."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "¿6 por cuánto es 36?"
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "6 × 6 = 36, luego 36 ÷ 6 = 6."
+    }
+  ],
+  "nota": "Banco Leyendas (dificultad alta para 9 años)."
+}

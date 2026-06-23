@@ -1,0 +1,53 @@
+{
+  "id": "9-redondeo-1-005",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "redondeo",
+  "fase_cpa": 1,
+  "edad": "9-anios",
+  "estrategia": "redondear",
+  "enunciado": {
+    "texto": "Redondea 85 a la decena más cercana.",
+    "voz": "85 a la decena."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "80"
+      },
+      {
+        "id": "b",
+        "texto": "85"
+      },
+      {
+        "id": "c",
+        "texto": "90"
+      },
+      {
+        "id": "d",
+        "texto": "100"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "85 está entre 80 y 90."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Mira la unidad: si es 5 o más, sube; si no, baja."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "85 se redondea a 90."
+    }
+  ],
+  "nota": "Banco Leyendas (dificultad alta para 9 años)."
+}

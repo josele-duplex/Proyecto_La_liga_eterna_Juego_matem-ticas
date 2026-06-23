@@ -1,0 +1,53 @@
+{
+  "id": "9-division-3-006",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "division",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "dividir",
+  "enunciado": {
+    "texto": "63 ÷ 9 = ?",
+    "voz": "63 entre 9."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "6"
+      },
+      {
+        "id": "b",
+        "texto": "7"
+      },
+      {
+        "id": "c",
+        "texto": "8"
+      },
+      {
+        "id": "d",
+        "texto": "9"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "La división es lo contrario de multiplicar."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "¿9 por cuánto es 63?"
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "9 × 7 = 63, luego 63 ÷ 9 = 7."
+    }
+  ],
+  "nota": "Banco Leyendas (dificultad alta para 9 años)."
+}

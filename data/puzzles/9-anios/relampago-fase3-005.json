@@ -1,0 +1,35 @@
+{
+  "id": "9-relampago-3-005",
+  "version": 1,
+  "tipo": "verdadero_falso",
+  "concepto": "relampago",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "calcular_rapido",
+  "enunciado": {
+    "texto": "¿Es verdad que 7 × 8 = 54?",
+    "voz": "Siete por ocho."
+  },
+  "datos": {},
+  "respuesta": {
+    "correcta": false
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "7 × 8 está cerca de 7 × 10 = 70."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "7 × 8 = 56."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "Es 56, no 54: falso."
+    }
+  ],
+  "nota": "Banco Leyendas (dificultad alta para 9 años)."
+}

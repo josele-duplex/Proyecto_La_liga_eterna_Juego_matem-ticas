@@ -1,0 +1,53 @@
+{
+  "id": "9-fracciones-3-003",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "fracciones",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "repartir_partes",
+  "enunciado": {
+    "texto": "¿Cuánto es 3/4 de 12?",
+    "voz": "3 de 4 de 12."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "7"
+      },
+      {
+        "id": "b",
+        "texto": "8"
+      },
+      {
+        "id": "c",
+        "texto": "9"
+      },
+      {
+        "id": "d",
+        "texto": "10"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Una parte es 12 ÷ 4 = 3."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Multiplica esa parte por 3."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "3 × 3 = 9."
+    }
+  ],
+  "nota": "Banco Leyendas (dificultad alta para 9 años)."
+}

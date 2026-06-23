@@ -1,0 +1,35 @@
+{
+  "id": "9-relampago-3-006",
+  "version": 1,
+  "tipo": "verdadero_falso",
+  "concepto": "relampago",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "calcular_rapido",
+  "enunciado": {
+    "texto": "¿Es verdad que 100 - 45 = 55?",
+    "voz": "Cien menos cuarenta y cinco."
+  },
+  "datos": {},
+  "respuesta": {
+    "correcta": true
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "De 45 a 100, ¿cuánto falta?"
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "45 + 55 = 100."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "100 - 45 = 55, es verdad."
+    }
+  ],
+  "nota": "Banco Leyendas (dificultad alta para 9 años)."
+}

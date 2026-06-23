@@ -1,0 +1,64 @@
+{
+  "id": "9-multiplicacion-1-003",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "multiplicacion",
+  "fase_cpa": 1,
+  "edad": "9-anios",
+  "estrategia": "multiplicar_grupos",
+  "enunciado": {
+    "texto": "4 equipos con 5 jugadores cada uno. ¿Cuántos jugadores hay en total?",
+    "voz": "4 grupos de 5."
+  },
+  "datos": {
+    "visual": {
+      "tipo": "grupos",
+      "grupos": [
+        5,
+        5,
+        5,
+        5
+      ],
+      "icono": "⚽"
+    }
+  },
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "15"
+      },
+      {
+        "id": "b",
+        "texto": "20"
+      },
+      {
+        "id": "c",
+        "texto": "21"
+      },
+      {
+        "id": "d",
+        "texto": "25"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Son 4 filas de 5."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Suma 5 un total de 4 veces."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "5 × 4 = 20."
+    }
+  ],
+  "nota": "Banco Leyendas (dificultad alta para 9 años)."
+}

@@ -1,0 +1,53 @@
+{
+  "id": "9-problemas-3-005",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "problemas",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "razonar_problema",
+  "enunciado": {
+    "texto": "Un equipo marca 2 goles en cada uno de 5 partidos y encaja 3 en total. ¿Cuál es su diferencia de goles?",
+    "voz": "Dos por cinco, menos tres."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "6"
+      },
+      {
+        "id": "b",
+        "texto": "7"
+      },
+      {
+        "id": "c",
+        "texto": "10"
+      },
+      {
+        "id": "d",
+        "texto": "13"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Primero los goles a favor: 2 × 5."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "2 × 5 = 10; resta los 3 encajados."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "10 - 3 = 7."
+    }
+  ],
+  "nota": "Banco Leyendas (dificultad alta para 9 años)."
+}

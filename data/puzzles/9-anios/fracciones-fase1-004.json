@@ -1,0 +1,61 @@
+{
+  "id": "9-fracciones-1-004",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "fracciones",
+  "fase_cpa": 1,
+  "edad": "9-anios",
+  "estrategia": "repartir_partes",
+  "enunciado": {
+    "texto": "¿Cuánto es 1/3 de 6 balones?",
+    "voz": "1 de 3 partes de 6."
+  },
+  "datos": {
+    "visual": {
+      "tipo": "grupos",
+      "grupos": [
+        6
+      ],
+      "icono": "⚽"
+    }
+  },
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "1"
+      },
+      {
+        "id": "b",
+        "texto": "2"
+      },
+      {
+        "id": "c",
+        "texto": "3"
+      },
+      {
+        "id": "d",
+        "texto": "4"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Reparte 6 en 3 partes iguales."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Cada parte vale 2; coge 1."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "1/3 de 6 = 2."
+    }
+  ],
+  "nota": "Banco Leyendas (dificultad alta para 9 años)."
+}

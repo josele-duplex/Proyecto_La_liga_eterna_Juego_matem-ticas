@@ -1,0 +1,53 @@
+{
+  "id": "9-multiplicacion-3-006",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "multiplicacion",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "multiplicar_grupos",
+  "enunciado": {
+    "texto": "8 × 6 = ?",
+    "voz": "8 por 6."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "40"
+      },
+      {
+        "id": "b",
+        "texto": "42"
+      },
+      {
+        "id": "c",
+        "texto": "48"
+      },
+      {
+        "id": "d",
+        "texto": "56"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "8 × 6 son 8 grupos de 6."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Apóyate en una tabla que sepas (p. ej. 8 × 10 = 80) y ajusta."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "8 × 6 = 48."
+    }
+  ],
+  "nota": "Banco Leyendas (dificultad alta para 9 años)."
+}

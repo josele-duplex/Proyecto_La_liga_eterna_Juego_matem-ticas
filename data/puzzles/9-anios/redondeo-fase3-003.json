@@ -1,0 +1,53 @@
+{
+  "id": "9-redondeo-3-003",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "redondeo",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "redondear",
+  "enunciado": {
+    "texto": "Redondea 650 a la centena más cercana.",
+    "voz": "650 a la centena."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "600"
+      },
+      {
+        "id": "b",
+        "texto": "650"
+      },
+      {
+        "id": "c",
+        "texto": "700"
+      },
+      {
+        "id": "d",
+        "texto": "800"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "650 está entre 600 y 700."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Mira la cifra de las decenas: 5 o más sube de centena."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "650 se redondea a 700."
+    }
+  ],
+  "nota": "Banco Leyendas (dificultad alta para 9 años)."
+}

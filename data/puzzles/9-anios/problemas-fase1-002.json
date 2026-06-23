@@ -1,0 +1,53 @@
+{
+  "id": "9-problemas-1-002",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "problemas",
+  "fase_cpa": 1,
+  "edad": "9-anios",
+  "estrategia": "razonar_problema",
+  "enunciado": {
+    "texto": "Hay 20 cromos y los repartes en 4 montones iguales. ¿Cuántos cromos hay en cada montón?",
+    "voz": "Veinte entre cuatro."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "4"
+      },
+      {
+        "id": "b",
+        "texto": "5"
+      },
+      {
+        "id": "c",
+        "texto": "6"
+      },
+      {
+        "id": "d",
+        "texto": "8"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Reparte 20 en 4 partes iguales."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "20 ÷ 4."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "20 ÷ 4 = 5."
+    }
+  ],
+  "nota": "Banco Leyendas (dificultad alta para 9 años)."
+}

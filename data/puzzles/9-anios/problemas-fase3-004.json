@@ -1,0 +1,53 @@
+{
+  "id": "9-problemas-3-004",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "problemas",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "razonar_problema",
+  "enunciado": {
+    "texto": "Tienes 24 cromos. Repartes la mitad y luego ganas 5. ¿Cuántos tienes ahora?",
+    "voz": "La mitad de veinticuatro, más cinco."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "7"
+      },
+      {
+        "id": "b",
+        "texto": "12"
+      },
+      {
+        "id": "c",
+        "texto": "17"
+      },
+      {
+        "id": "d",
+        "texto": "19"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "La mitad de 24 primero."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "24 ÷ 2 = 12; ahora suma 5."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "12 + 5 = 17."
+    }
+  ],
+  "nota": "Banco Leyendas (dificultad alta para 9 años)."
+}

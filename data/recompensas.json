@@ -16,7 +16,11 @@
     "calcular_rapido": { "nombre": "Reflejos de Portero", "icono": "🧤", "imagen": null },
     "ordenar_numeros": { "nombre": "Estratega de Alineación", "icono": "📋", "imagen": null },
     "restar_estrategico": { "nombre": "Muro Defensivo", "icono": "🛡️", "imagen": null },
-    "usar_valor_posicional": { "nombre": "Arquitecto de Decenas", "icono": "🏛️", "imagen": null }
+    "usar_valor_posicional": { "nombre": "Arquitecto de Decenas", "icono": "🏛️", "imagen": null },
+    "dividir": { "nombre": "As de la División", "icono": "➗", "imagen": null },
+    "sumar_llevando": { "nombre": "Sumador de Élite", "icono": "🧮", "imagen": null },
+    "restar_llevando": { "nombre": "Restador de Élite", "icono": "✂️", "imagen": null },
+    "razonar_problema": { "nombre": "Cerebro del Equipo", "icono": "🧠", "imagen": null }
   },
   "insigniasProceso": {
     "sin_pistas": { "nombre": "Disparo Directo", "icono": "🌟", "imagen": null },

@@ -1,0 +1,53 @@
+{
+  "id": "9-redondeo-2-004",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "redondeo",
+  "fase_cpa": 2,
+  "edad": "9-anios",
+  "estrategia": "redondear",
+  "enunciado": {
+    "texto": "Redondea 55 a la decena más cercana.",
+    "voz": "55 a la decena."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "50"
+      },
+      {
+        "id": "b",
+        "texto": "55"
+      },
+      {
+        "id": "c",
+        "texto": "60"
+      },
+      {
+        "id": "d",
+        "texto": "70"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "55 está entre 50 y 60."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "La unidad manda: 5 o más sube, menos de 5 baja."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "55 → 60."
+    }
+  ],
+  "nota": "Banco Leyendas (dificultad alta para 9 años)."
+}

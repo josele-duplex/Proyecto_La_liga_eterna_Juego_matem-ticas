@@ -1,0 +1,53 @@
+{
+  "id": "9-suma_llevando-2-002",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "suma_llevando",
+  "fase_cpa": 2,
+  "edad": "9-anios",
+  "estrategia": "sumar_llevando",
+  "enunciado": {
+    "texto": "56 + 27 = ?",
+    "voz": "56 más 27."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "73"
+      },
+      {
+        "id": "b",
+        "texto": "82"
+      },
+      {
+        "id": "c",
+        "texto": "83"
+      },
+      {
+        "id": "d",
+        "texto": "93"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Suma primero las decenas y luego las unidades."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "50 + 20 = 70; añade 6 + 7."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "56 + 27 = 83."
+    }
+  ],
+  "nota": "Banco Leyendas (dificultad alta para 9 años)."
+}

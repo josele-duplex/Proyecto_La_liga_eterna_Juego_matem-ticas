@@ -1,0 +1,53 @@
+{
+  "id": "9-resta_llevando-3-004",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "resta_llevando",
+  "fase_cpa": 3,
+  "edad": "9-anios",
+  "estrategia": "restar_llevando",
+  "enunciado": {
+    "texto": "200 - 86 = ?",
+    "voz": "200 menos 86."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "104"
+      },
+      {
+        "id": "b",
+        "texto": "114"
+      },
+      {
+        "id": "c",
+        "texto": "115"
+      },
+      {
+        "id": "d",
+        "texto": "214"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Réstalo por partes o cuenta hacia delante desde el número pequeño."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Desde 86, ¿cuánto falta para llegar a 200?"
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "200 - 86 = 114."
+    }
+  ],
+  "nota": "Banco Leyendas (dificultad alta para 9 años)."
+}

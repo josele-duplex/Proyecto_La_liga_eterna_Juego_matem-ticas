@@ -1,0 +1,53 @@
+{
+  "id": "9-suma_llevando-1-001",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "suma_llevando",
+  "fase_cpa": 1,
+  "edad": "9-anios",
+  "estrategia": "sumar_llevando",
+  "enunciado": {
+    "texto": "28 + 5 = ?",
+    "voz": "28 más 5."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "23"
+      },
+      {
+        "id": "b",
+        "texto": "32"
+      },
+      {
+        "id": "c",
+        "texto": "33"
+      },
+      {
+        "id": "d",
+        "texto": "34"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Completa primero la decena desde 28."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "De 28 a 30 hay 2; reparte el 5."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "28 + 5 = 33."
+    }
+  ],
+  "nota": "Banco Leyendas (dificultad alta para 9 años)."
+}
