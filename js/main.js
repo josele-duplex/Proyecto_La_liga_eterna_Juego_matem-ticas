@@ -100,12 +100,22 @@ async function arrancar() {
   recompensas = await (await fetch('data/recompensas.json')).json();
 
   mostrarPortada(() => {
-    const perfilActivo = Storage.cargarPerfilActivo();
-    if (perfilActivo && modoDe(perfilActivo)) {
-      mostrarCalendario(perfilActivo);
-    } else if (perfilActivo) {
-      mostrarSelectorModo(perfilActivo);
-    } else {
+    // Red de seguridad: si al retomar el último perfil algo falla (p. ej. un progreso guardado
+    // corrupto de una versión vieja), NO dejamos la app en blanco. Caemos al selector de jugador,
+    // que siempre funciona, para que el niño pueda elegir y seguir jugando. Así un perfil con datos
+    // dañados nunca "no abre" la aplicación entera.
+    try {
+      const perfilActivo = Storage.cargarPerfilActivo();
+      if (perfilActivo && modoDe(perfilActivo)) {
+        mostrarCalendario(perfilActivo);
+      } else if (perfilActivo) {
+        mostrarSelectorModo(perfilActivo);
+      } else {
+        mostrarSelectorPerfil();
+      }
+    } catch (e) {
+      console.error('No se pudo retomar el último perfil; volviendo al selector.', e);
+      Storage.borrarPerfilActivo();
       mostrarSelectorPerfil();
     }
   });
@@ -192,7 +202,16 @@ function mostrarSelectorPerfil() {
     boton.appendChild(nombre);
     boton.addEventListener('click', () => {
       Storage.guardarPerfilActivo(perfil.id);
-      mostrarSelectorModo(perfil.id);
+      try {
+        mostrarSelectorModo(perfil.id);
+      } catch (e) {
+        // Si el progreso guardado de este jugador estuviera dañado y reventara al entrar, en vez de
+        // dejarlo bloqueado para siempre lo reiniciamos (datos corruptos, de todas formas inservibles)
+        // y volvemos a entrar limpio. Solo salta si algo va mal; en uso normal nunca se ejecuta.
+        console.error(`Progreso de ${perfil.id} dañado; reiniciándolo.`, e);
+        Storage.guardarProgreso(perfil.id, {});
+        mostrarSelectorModo(perfil.id);
+      }
     });
     lista.appendChild(boton);
   });
