@@ -1016,18 +1016,6 @@ button:focus-visible {
 }
 
 /* ============================================================
-   13. Ajustes para pantallas pequeñas (móvil).
-   ============================================================ */
-@media (max-width: 480px) {
-  .enunciado { font-size: 1.35rem; }
-  .opcion { font-size: 1.3rem; }
-  .marco { padding: 0.7rem 0.7rem 2rem; }
-  .lienzo { padding: 1.1rem 1rem 1.3rem; }
-  .pantalla-reto .enunciado { font-size: 1.6rem; }
-  .capi-retrato { width: 4.4rem; height: 4.4rem; }
-}
-
-/* ============================================================
    14. REDISEÑO V2 — pantalla de reto con aspecto de videojuego.
    Paneles que flotan sobre el césped; Capi como entrenador; pregunta
    protagonista; respuestas y celebración con más vida. (Brief V2.)
@@ -1359,4 +1347,22 @@ button:focus-visible {
   background: rgba(0, 0, 0, 0.35);
   color: #fff;
   cursor: pointer;
+}
+
+/* ============================================================
+   15. Ajustes para pantallas pequeñas (móvil).
+   Este bloque vive A PROPÓSITO al final del archivo: en CSS, cuando dos reglas tienen la misma
+   especificidad, gana la que aparece DESPUÉS en el código — no importa el ancho de pantalla. Antes
+   este bloque vivía en la sección 13 (antes del Rediseño V2), así que ".pantalla-reto .enunciado"
+   y ".capi-retrato" de más abajo lo pisaban siempre, en cualquier móvil: el bug real era que ningún
+   teléfono veía jamás estas reducciones. Verificado con getComputedStyle en un viewport de 375px:
+   antes .capi-retrato medía 90px pase lo que pase; ahora sí baja a 70px como pretendía el diseño.
+   ============================================================ */
+@media (max-width: 480px) {
+  .enunciado { font-size: 1.35rem; }
+  .opcion { font-size: 1.3rem; }
+  .marco { padding: 0.7rem 0.7rem 2rem; }
+  .lienzo { padding: 1.1rem 1rem 1.3rem; }
+  .pantalla-reto .enunciado { font-size: 1.6rem; }
+  .capi-retrato { width: 4.4rem; height: 4.4rem; }
 }
