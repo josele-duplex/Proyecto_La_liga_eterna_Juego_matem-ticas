@@ -57,6 +57,15 @@ const PODERES = {
   tiempo_extra: { nombre: 'Tiempo Extra', icono: '⏱️', costo: 10, segundos: 5 }
 };
 
+// Niveles de Dominio (FASE M1, U1): icono y nombre a mostrar para cada nivel de la escala única
+// 🥉🥈🥇. El nivel en sí lo calcula Progression.nivelDominioConcepto/nivelDominioEstrategia;
+// esto es solo cómo se pinta cada uno.
+const NIVELES_DOMINIO = {
+  aprendiz: { icono: '🥉', nombre: 'Aprendiz' },
+  titular: { icono: '🥈', nombre: 'Titular' },
+  crack: { icono: '🥇', nombre: 'Crack' }
+};
+
 // Nombres bonitos para mostrar el concepto en pantalla.
 const NOMBRES_CONCEPTO = {
   descomposicion: 'descomposición',

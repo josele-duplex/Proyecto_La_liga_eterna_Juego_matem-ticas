@@ -20,6 +20,12 @@ function mostrarCalendario(perfilId) {
   titulo.textContent = `Calendario de la Liga — ${modo.icono} ${modo.nombre}`;
   app.appendChild(titulo);
 
+  // Niveles de Dominio (FASE M1, U1): un vistazo rápido a 🥉🥈🥇 por concepto del equipo actual.
+  const indiceModo = indicesPorEdad[modo.edad];
+  if (indiceModo) {
+    app.appendChild(crearFranjaNiveles(Storage.cargarProgreso(perfilId), indiceModo));
+  }
+
   const lista = document.createElement('div');
   lista.className = 'calendario';
   calendario.estadios.forEach((estadio) => {
@@ -45,6 +51,33 @@ function mostrarCalendario(perfilId) {
     lista.appendChild(tarjeta);
   });
   app.appendChild(lista);
+}
+
+// Franja de Niveles de Dominio (FASE M1, U1): un chip por concepto del equipo actual, con su
+// icono 🥉🥈🥇 (o ⚪ si el jugador aún no lo ha empezado). Da un vistazo del progreso global sin
+// tener que entrar a jugar; la misma escala se ve en el brillo de los cromos de la barra superior.
+function crearFranjaNiveles(progreso, indice) {
+  const franja = document.createElement('div');
+  franja.className = 'franja-niveles';
+  Progression.conceptos(indice).forEach((concepto) => {
+    const nivel = Progression.nivelDominioConcepto(progreso, concepto);
+    const nombreConcepto = NOMBRES_CONCEPTO[concepto] || concepto;
+
+    const chip = document.createElement('span');
+    chip.className = nivel ? `chip-nivel cromo-nivel-${nivel}` : 'chip-nivel chip-nivel-vacio';
+    chip.title = nivel
+      ? `${nombreConcepto}: ${NIVELES_DOMINIO[nivel].nombre}`
+      : `${nombreConcepto}: todavía sin empezar`;
+
+    const icono = document.createElement('span');
+    icono.textContent = nivel ? NIVELES_DOMINIO[nivel].icono : '⚪';
+    const nombre = document.createElement('span');
+    nombre.textContent = nombreConcepto;
+
+    chip.append(icono, nombre);
+    franja.appendChild(chip);
+  });
+  return franja;
 }
 
 // Saludo de Capi al entrar por primera vez en el día: refuerza el hábito de práctica diaria.

@@ -314,7 +314,7 @@ for edad, orden_c in ORDEN.items():
         with open(ruta, encoding="utf-8") as f:
             p = json.load(f)
         entradas.append({"id": p["id"], "concepto": p["concepto"], "fase_cpa": p["fase_cpa"],
-                         "ruta": f"data/puzzles/{edad}/{base}"})
+                         "ruta": f"data/puzzles/{edad}/{base}", "estrategia": p.get("estrategia")})
     entradas.sort(key=lambda e: (orden_c.index(e["concepto"]) if e["concepto"] in orden_c else 99,
                                  e["fase_cpa"], e["id"]))
     with open(os.path.join(carpeta, "indice.json"), "w", encoding="utf-8") as f:

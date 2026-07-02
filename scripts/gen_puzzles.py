@@ -462,7 +462,7 @@ for edad in ["6-anios", "8-anios"]:
         with open(ruta, encoding="utf-8") as f:
             p = json.load(f)
         entradas.append({"id": p["id"], "concepto": p["concepto"], "fase_cpa": p["fase_cpa"],
-                         "ruta": f"data/puzzles/{edad}/{base}"})
+                         "ruta": f"data/puzzles/{edad}/{base}", "estrategia": p.get("estrategia")})
     orden = ORDEN_CONCEPTO[edad]
     entradas.sort(key=lambda e: (orden.index(e["concepto"]) if e["concepto"] in orden else 99,
                                  e["fase_cpa"], e["id"]))

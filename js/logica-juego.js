@@ -46,19 +46,36 @@ function otorgarRecompensa(progreso, estrategia) {
   }
 }
 
-// Insignias de proceso (TG.4): premian el CÓMO se ha jugado, igual en cualquier concepto
-// (a diferencia de las insignias de estrategia, que son por contenido matemático).
+// Nombre técnico real de una estrategia (FASE M1, A.5): lo que el niño ve al acertar ("Has usado
+// DESCOMPOSICIÓN"). Distinto de insignia.nombre, que es el nombre gamificado del cromo ("Maestro
+// de la Decena") — construye vocabulario matemático transferible, el cromo es la recompensa.
+function vocabularioDe(estrategia) {
+  const insignia = recompensas.insignias[estrategia];
+  return insignia ? insignia.vocabulario : null;
+}
+
+// Insignias de proceso (TG.4, ampliadas en FASE M1/A.4): premian el CÓMO se ha jugado, igual en
+// cualquier concepto (a diferencia de las insignias de estrategia, que son por contenido
+// matemático). "Estratega" y "Pensador" premian específicamente creatividad/solidez de
+// razonamiento, pensadas para el alumnado de alta capacidad al que apunta el GDD.
 function otorgarInsigniasProceso(progreso, puzzle, resultado) {
   progreso.insigniasProceso = progreso.insigniasProceso || {};
   const sumar = (clave) => {
     progreso.insigniasProceso[clave] = (progreso.insigniasProceso[clave] || 0) + 1;
   };
 
-  if (resultado.intentosFallidos === 0 && resultado.pistasUsadas === 0) sumar('sin_pistas');
+  const limpio = resultado.intentosFallidos === 0 && resultado.pistasUsadas === 0;
+  if (limpio) sumar('sin_pistas');
   if (resultado.intentosFallidos >= 1) sumar('remontada');
   if (puzzle.tipo === 'verdadero_falso' && resultado.intentosFallidos === 0 && resultado.tiempoMs <= UMBRAL_VELOCISTA_MS) {
     sumar('velocista');
   }
+  // Estratega: aplicó la estrategia limpiamente en fase abstracta (sin apoyos concretos ni
+  // pictóricos) — ya no cuenta, la ha interiorizado como herramienta propia.
+  if (limpio && puzzle.fase_cpa === 3) sumar('estratega');
+  // Pensador: acertó a la primera un problema de dos pasos (concepto "problemas"), el reto que
+  // más exige combinar varias operaciones con criterio.
+  if (puzzle.concepto === 'problemas' && resultado.intentosFallidos === 0) sumar('pensador');
 }
 
 // Frase de Capi al acertar, según CÓMO se ha llegado al acierto (elogio al esfuerzo/estrategia,

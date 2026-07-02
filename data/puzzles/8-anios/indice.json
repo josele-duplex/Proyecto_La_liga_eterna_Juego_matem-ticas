@@ -6,847 +6,988 @@
       "id": "8-descomposicion-1-001",
       "concepto": "descomposicion",
       "fase_cpa": 1,
-      "ruta": "data/puzzles/8-anios/descomposicion-fase1-concreta.json"
+      "ruta": "data/puzzles/8-anios/descomposicion-fase1-concreta.json",
+      "estrategia": "completar_diez"
     },
     {
       "id": "8-descomposicion-1-002",
       "concepto": "descomposicion",
       "fase_cpa": 1,
-      "ruta": "data/puzzles/8-anios/descomposicion-fase1-002.json"
+      "ruta": "data/puzzles/8-anios/descomposicion-fase1-002.json",
+      "estrategia": "completar_diez"
     },
     {
       "id": "8-descomposicion-1-003",
       "concepto": "descomposicion",
       "fase_cpa": 1,
-      "ruta": "data/puzzles/8-anios/descomposicion-fase1-003.json"
+      "ruta": "data/puzzles/8-anios/descomposicion-fase1-003.json",
+      "estrategia": "completar_diez"
     },
     {
       "id": "8-descomposicion-2-001",
       "concepto": "descomposicion",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/descomposicion-fase2-pictorica.json"
+      "ruta": "data/puzzles/8-anios/descomposicion-fase2-pictorica.json",
+      "estrategia": "completar_diez"
     },
     {
       "id": "8-descomposicion-2-002",
       "concepto": "descomposicion",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/descomposicion-fase2-pictorica-b.json"
+      "ruta": "data/puzzles/8-anios/descomposicion-fase2-pictorica-b.json",
+      "estrategia": "completar_diez"
     },
     {
       "id": "8-descomposicion-2-004",
       "concepto": "descomposicion",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/descomposicion-fase2-004.json"
+      "ruta": "data/puzzles/8-anios/descomposicion-fase2-004.json",
+      "estrategia": "completar_diez"
     },
     {
       "id": "8-descomposicion-2-005",
       "concepto": "descomposicion",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/descomposicion-fase2-005.json"
+      "ruta": "data/puzzles/8-anios/descomposicion-fase2-005.json",
+      "estrategia": "completar_diez"
     },
     {
       "id": "8-descomposicion-3-001",
       "concepto": "descomposicion",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/descomposicion-fase3-abstracta.json"
+      "ruta": "data/puzzles/8-anios/descomposicion-fase3-abstracta.json",
+      "estrategia": "completar_diez"
     },
     {
       "id": "8-descomposicion-3-006",
       "concepto": "descomposicion",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/descomposicion-fase3-006.json"
+      "ruta": "data/puzzles/8-anios/descomposicion-fase3-006.json",
+      "estrategia": "completar_diez"
     },
     {
       "id": "8-descomposicion-3-007",
       "concepto": "descomposicion",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/descomposicion-fase3-007.json"
+      "ruta": "data/puzzles/8-anios/descomposicion-fase3-007.json",
+      "estrategia": "completar_diez"
     },
     {
       "id": "8-descomposicion-3-008",
       "concepto": "descomposicion",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/descomposicion-fase3-008.json"
+      "ruta": "data/puzzles/8-anios/descomposicion-fase3-008.json",
+      "estrategia": "completar_diez"
     },
     {
       "id": "8-descomposicion-3-020",
       "concepto": "descomposicion",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/descomposicion-fase3-020.json"
+      "ruta": "data/puzzles/8-anios/descomposicion-fase3-020.json",
+      "estrategia": "completar_diez"
     },
     {
       "id": "8-descomposicion-3-021",
       "concepto": "descomposicion",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/descomposicion-fase3-021.json"
+      "ruta": "data/puzzles/8-anios/descomposicion-fase3-021.json",
+      "estrategia": "completar_diez"
     },
     {
       "id": "8-descomposicion-3-022",
       "concepto": "descomposicion",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/descomposicion-fase3-022.json"
+      "ruta": "data/puzzles/8-anios/descomposicion-fase3-022.json",
+      "estrategia": "completar_diez"
     },
     {
       "id": "8-descomposicion-3-023",
       "concepto": "descomposicion",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/descomposicion-fase3-023.json"
+      "ruta": "data/puzzles/8-anios/descomposicion-fase3-023.json",
+      "estrategia": "completar_diez"
     },
     {
       "id": "8-descomposicion-3-024",
       "concepto": "descomposicion",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/descomposicion-fase3-024.json"
+      "ruta": "data/puzzles/8-anios/descomposicion-fase3-024.json",
+      "estrategia": "completar_diez"
     },
     {
       "id": "8-descomposicion-3-040",
       "concepto": "descomposicion",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/descomposicion-fase3-040.json"
+      "ruta": "data/puzzles/8-anios/descomposicion-fase3-040.json",
+      "estrategia": "completar_diez"
     },
     {
       "id": "8-descomposicion-3-041",
       "concepto": "descomposicion",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/descomposicion-fase3-041.json"
+      "ruta": "data/puzzles/8-anios/descomposicion-fase3-041.json",
+      "estrategia": "completar_diez"
     },
     {
       "id": "8-descomposicion-3-042",
       "concepto": "descomposicion",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/descomposicion-fase3-042.json"
+      "ruta": "data/puzzles/8-anios/descomposicion-fase3-042.json",
+      "estrategia": "completar_diez"
     },
     {
       "id": "8-descomposicion-3-043",
       "concepto": "descomposicion",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/descomposicion-fase3-043.json"
+      "ruta": "data/puzzles/8-anios/descomposicion-fase3-043.json",
+      "estrategia": "completar_diez"
     },
     {
       "id": "8-descomposicion-3-044",
       "concepto": "descomposicion",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/descomposicion-fase3-044.json"
+      "ruta": "data/puzzles/8-anios/descomposicion-fase3-044.json",
+      "estrategia": "completar_diez"
     },
     {
       "id": "8-dobles-1-001",
       "concepto": "dobles",
       "fase_cpa": 1,
-      "ruta": "data/puzzles/8-anios/dobles-fase1-concreta.json"
+      "ruta": "data/puzzles/8-anios/dobles-fase1-concreta.json",
+      "estrategia": "usar_dobles"
     },
     {
       "id": "8-dobles-1-002",
       "concepto": "dobles",
       "fase_cpa": 1,
-      "ruta": "data/puzzles/8-anios/dobles-fase1-002.json"
+      "ruta": "data/puzzles/8-anios/dobles-fase1-002.json",
+      "estrategia": "usar_dobles"
     },
     {
       "id": "8-dobles-1-003",
       "concepto": "dobles",
       "fase_cpa": 1,
-      "ruta": "data/puzzles/8-anios/dobles-fase1-003.json"
+      "ruta": "data/puzzles/8-anios/dobles-fase1-003.json",
+      "estrategia": "usar_dobles"
     },
     {
       "id": "8-dobles-2-001",
       "concepto": "dobles",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/dobles-fase2-pictorica.json"
+      "ruta": "data/puzzles/8-anios/dobles-fase2-pictorica.json",
+      "estrategia": "usar_dobles"
     },
     {
       "id": "8-dobles-2-004",
       "concepto": "dobles",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/dobles-fase2-004.json"
+      "ruta": "data/puzzles/8-anios/dobles-fase2-004.json",
+      "estrategia": "usar_dobles"
     },
     {
       "id": "8-dobles-2-005",
       "concepto": "dobles",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/dobles-fase2-005.json"
+      "ruta": "data/puzzles/8-anios/dobles-fase2-005.json",
+      "estrategia": "usar_dobles"
     },
     {
       "id": "8-dobles-3-001",
       "concepto": "dobles",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/dobles-fase3-abstracta.json"
+      "ruta": "data/puzzles/8-anios/dobles-fase3-abstracta.json",
+      "estrategia": "usar_dobles"
     },
     {
       "id": "8-dobles-3-006",
       "concepto": "dobles",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/dobles-fase3-006.json"
+      "ruta": "data/puzzles/8-anios/dobles-fase3-006.json",
+      "estrategia": "usar_dobles"
     },
     {
       "id": "8-dobles-3-007",
       "concepto": "dobles",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/dobles-fase3-007.json"
+      "ruta": "data/puzzles/8-anios/dobles-fase3-007.json",
+      "estrategia": "usar_dobles"
     },
     {
       "id": "8-dobles-3-008",
       "concepto": "dobles",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/dobles-fase3-008.json"
+      "ruta": "data/puzzles/8-anios/dobles-fase3-008.json",
+      "estrategia": "usar_dobles"
     },
     {
       "id": "8-dobles-3-020",
       "concepto": "dobles",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/dobles-fase3-020.json"
+      "ruta": "data/puzzles/8-anios/dobles-fase3-020.json",
+      "estrategia": "usar_dobles"
     },
     {
       "id": "8-dobles-3-021",
       "concepto": "dobles",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/dobles-fase3-021.json"
+      "ruta": "data/puzzles/8-anios/dobles-fase3-021.json",
+      "estrategia": "usar_dobles"
     },
     {
       "id": "8-dobles-3-022",
       "concepto": "dobles",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/dobles-fase3-022.json"
+      "ruta": "data/puzzles/8-anios/dobles-fase3-022.json",
+      "estrategia": "usar_dobles"
     },
     {
       "id": "8-dobles-3-023",
       "concepto": "dobles",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/dobles-fase3-023.json"
+      "ruta": "data/puzzles/8-anios/dobles-fase3-023.json",
+      "estrategia": "usar_dobles"
     },
     {
       "id": "8-dobles-3-024",
       "concepto": "dobles",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/dobles-fase3-024.json"
+      "ruta": "data/puzzles/8-anios/dobles-fase3-024.json",
+      "estrategia": "usar_dobles"
     },
     {
       "id": "8-dobles-3-040",
       "concepto": "dobles",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/dobles-fase3-040.json"
+      "ruta": "data/puzzles/8-anios/dobles-fase3-040.json",
+      "estrategia": "usar_dobles"
     },
     {
       "id": "8-dobles-3-041",
       "concepto": "dobles",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/dobles-fase3-041.json"
+      "ruta": "data/puzzles/8-anios/dobles-fase3-041.json",
+      "estrategia": "usar_dobles"
     },
     {
       "id": "8-dobles-3-042",
       "concepto": "dobles",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/dobles-fase3-042.json"
+      "ruta": "data/puzzles/8-anios/dobles-fase3-042.json",
+      "estrategia": "usar_dobles"
     },
     {
       "id": "8-dobles-3-043",
       "concepto": "dobles",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/dobles-fase3-043.json"
+      "ruta": "data/puzzles/8-anios/dobles-fase3-043.json",
+      "estrategia": "usar_dobles"
     },
     {
       "id": "8-dobles-3-044",
       "concepto": "dobles",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/dobles-fase3-044.json"
+      "ruta": "data/puzzles/8-anios/dobles-fase3-044.json",
+      "estrategia": "usar_dobles"
     },
     {
       "id": "8-casi-dobles-1-001",
       "concepto": "casi_dobles",
       "fase_cpa": 1,
-      "ruta": "data/puzzles/8-anios/casi-dobles-fase1-concreta.json"
+      "ruta": "data/puzzles/8-anios/casi-dobles-fase1-concreta.json",
+      "estrategia": "usar_casi_dobles"
     },
     {
       "id": "8-casi-dobles-1-002",
       "concepto": "casi_dobles",
       "fase_cpa": 1,
-      "ruta": "data/puzzles/8-anios/casi-dobles-fase1-002.json"
+      "ruta": "data/puzzles/8-anios/casi-dobles-fase1-002.json",
+      "estrategia": "usar_casi_dobles"
     },
     {
       "id": "8-casi-dobles-1-003",
       "concepto": "casi_dobles",
       "fase_cpa": 1,
-      "ruta": "data/puzzles/8-anios/casi-dobles-fase1-003.json"
+      "ruta": "data/puzzles/8-anios/casi-dobles-fase1-003.json",
+      "estrategia": "usar_casi_dobles"
     },
     {
       "id": "8-casi-dobles-2-001",
       "concepto": "casi_dobles",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/casi-dobles-fase2-pictorica.json"
+      "ruta": "data/puzzles/8-anios/casi-dobles-fase2-pictorica.json",
+      "estrategia": "usar_casi_dobles"
     },
     {
       "id": "8-casi-dobles-2-004",
       "concepto": "casi_dobles",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/casi-dobles-fase2-004.json"
+      "ruta": "data/puzzles/8-anios/casi-dobles-fase2-004.json",
+      "estrategia": "usar_casi_dobles"
     },
     {
       "id": "8-casi-dobles-2-005",
       "concepto": "casi_dobles",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/casi-dobles-fase2-005.json"
+      "ruta": "data/puzzles/8-anios/casi-dobles-fase2-005.json",
+      "estrategia": "usar_casi_dobles"
     },
     {
       "id": "8-casi-dobles-3-001",
       "concepto": "casi_dobles",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/casi-dobles-fase3-abstracta.json"
+      "ruta": "data/puzzles/8-anios/casi-dobles-fase3-abstracta.json",
+      "estrategia": "usar_casi_dobles"
     },
     {
       "id": "8-casi-dobles-3-006",
       "concepto": "casi_dobles",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/casi-dobles-fase3-006.json"
+      "ruta": "data/puzzles/8-anios/casi-dobles-fase3-006.json",
+      "estrategia": "usar_casi_dobles"
     },
     {
       "id": "8-casi-dobles-3-007",
       "concepto": "casi_dobles",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/casi-dobles-fase3-007.json"
+      "ruta": "data/puzzles/8-anios/casi-dobles-fase3-007.json",
+      "estrategia": "usar_casi_dobles"
     },
     {
       "id": "8-casi-dobles-3-008",
       "concepto": "casi_dobles",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/casi-dobles-fase3-008.json"
+      "ruta": "data/puzzles/8-anios/casi-dobles-fase3-008.json",
+      "estrategia": "usar_casi_dobles"
     },
     {
       "id": "8-casi_dobles-3-020",
       "concepto": "casi_dobles",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/casi-dobles-fase3-020.json"
+      "ruta": "data/puzzles/8-anios/casi-dobles-fase3-020.json",
+      "estrategia": "usar_casi_dobles"
     },
     {
       "id": "8-casi_dobles-3-021",
       "concepto": "casi_dobles",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/casi-dobles-fase3-021.json"
+      "ruta": "data/puzzles/8-anios/casi-dobles-fase3-021.json",
+      "estrategia": "usar_casi_dobles"
     },
     {
       "id": "8-casi_dobles-3-022",
       "concepto": "casi_dobles",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/casi-dobles-fase3-022.json"
+      "ruta": "data/puzzles/8-anios/casi-dobles-fase3-022.json",
+      "estrategia": "usar_casi_dobles"
     },
     {
       "id": "8-casi_dobles-3-023",
       "concepto": "casi_dobles",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/casi-dobles-fase3-023.json"
+      "ruta": "data/puzzles/8-anios/casi-dobles-fase3-023.json",
+      "estrategia": "usar_casi_dobles"
     },
     {
       "id": "8-casi_dobles-3-024",
       "concepto": "casi_dobles",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/casi-dobles-fase3-024.json"
+      "ruta": "data/puzzles/8-anios/casi-dobles-fase3-024.json",
+      "estrategia": "usar_casi_dobles"
     },
     {
       "id": "8-casi_dobles-3-040",
       "concepto": "casi_dobles",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/casi-dobles-fase3-040.json"
+      "ruta": "data/puzzles/8-anios/casi-dobles-fase3-040.json",
+      "estrategia": "usar_casi_dobles"
     },
     {
       "id": "8-casi_dobles-3-041",
       "concepto": "casi_dobles",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/casi-dobles-fase3-041.json"
+      "ruta": "data/puzzles/8-anios/casi-dobles-fase3-041.json",
+      "estrategia": "usar_casi_dobles"
     },
     {
       "id": "8-casi_dobles-3-042",
       "concepto": "casi_dobles",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/casi-dobles-fase3-042.json"
+      "ruta": "data/puzzles/8-anios/casi-dobles-fase3-042.json",
+      "estrategia": "usar_casi_dobles"
     },
     {
       "id": "8-casi_dobles-3-043",
       "concepto": "casi_dobles",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/casi-dobles-fase3-043.json"
+      "ruta": "data/puzzles/8-anios/casi-dobles-fase3-043.json",
+      "estrategia": "usar_casi_dobles"
     },
     {
       "id": "8-casi_dobles-3-044",
       "concepto": "casi_dobles",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/casi-dobles-fase3-044.json"
+      "ruta": "data/puzzles/8-anios/casi-dobles-fase3-044.json",
+      "estrategia": "usar_casi_dobles"
     },
     {
       "id": "8-recta-numerica-1-001",
       "concepto": "recta_numerica",
       "fase_cpa": 1,
-      "ruta": "data/puzzles/8-anios/recta-numerica-fase1-concreta.json"
+      "ruta": "data/puzzles/8-anios/recta-numerica-fase1-concreta.json",
+      "estrategia": "usar_decenas_como_referencia"
     },
     {
       "id": "8-recta-numerica-1-002",
       "concepto": "recta_numerica",
       "fase_cpa": 1,
-      "ruta": "data/puzzles/8-anios/recta-numerica-fase1-002.json"
+      "ruta": "data/puzzles/8-anios/recta-numerica-fase1-002.json",
+      "estrategia": "usar_decenas_como_referencia"
     },
     {
       "id": "8-recta-numerica-1-003",
       "concepto": "recta_numerica",
       "fase_cpa": 1,
-      "ruta": "data/puzzles/8-anios/recta-numerica-fase1-003.json"
+      "ruta": "data/puzzles/8-anios/recta-numerica-fase1-003.json",
+      "estrategia": "usar_decenas_como_referencia"
     },
     {
       "id": "8-recta-numerica-2-001",
       "concepto": "recta_numerica",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/recta-numerica-fase2-pictorica.json"
+      "ruta": "data/puzzles/8-anios/recta-numerica-fase2-pictorica.json",
+      "estrategia": "usar_decenas_como_referencia"
     },
     {
       "id": "8-recta-numerica-2-004",
       "concepto": "recta_numerica",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/recta-numerica-fase2-004.json"
+      "ruta": "data/puzzles/8-anios/recta-numerica-fase2-004.json",
+      "estrategia": "usar_decenas_como_referencia"
     },
     {
       "id": "8-recta-numerica-2-005",
       "concepto": "recta_numerica",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/recta-numerica-fase2-005.json"
+      "ruta": "data/puzzles/8-anios/recta-numerica-fase2-005.json",
+      "estrategia": "usar_decenas_como_referencia"
     },
     {
       "id": "8-recta-numerica-2-020",
       "concepto": "recta_numerica",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/recta-numerica-fase2-020.json"
+      "ruta": "data/puzzles/8-anios/recta-numerica-fase2-020.json",
+      "estrategia": "usar_decenas_como_referencia"
     },
     {
       "id": "8-recta-numerica-2-021",
       "concepto": "recta_numerica",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/recta-numerica-fase2-021.json"
+      "ruta": "data/puzzles/8-anios/recta-numerica-fase2-021.json",
+      "estrategia": "usar_decenas_como_referencia"
     },
     {
       "id": "8-recta-numerica-2-022",
       "concepto": "recta_numerica",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/recta-numerica-fase2-022.json"
+      "ruta": "data/puzzles/8-anios/recta-numerica-fase2-022.json",
+      "estrategia": "usar_decenas_como_referencia"
     },
     {
       "id": "8-recta-numerica-2-023",
       "concepto": "recta_numerica",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/recta-numerica-fase2-023.json"
+      "ruta": "data/puzzles/8-anios/recta-numerica-fase2-023.json",
+      "estrategia": "usar_decenas_como_referencia"
     },
     {
       "id": "8-recta-numerica-2-024",
       "concepto": "recta_numerica",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/recta-numerica-fase2-024.json"
+      "ruta": "data/puzzles/8-anios/recta-numerica-fase2-024.json",
+      "estrategia": "usar_decenas_como_referencia"
     },
     {
       "id": "8-recta-numerica-2-040",
       "concepto": "recta_numerica",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/recta-numerica-fase2-040.json"
+      "ruta": "data/puzzles/8-anios/recta-numerica-fase2-040.json",
+      "estrategia": "usar_decenas_como_referencia"
     },
     {
       "id": "8-recta-numerica-2-041",
       "concepto": "recta_numerica",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/recta-numerica-fase2-041.json"
+      "ruta": "data/puzzles/8-anios/recta-numerica-fase2-041.json",
+      "estrategia": "usar_decenas_como_referencia"
     },
     {
       "id": "8-recta-numerica-2-042",
       "concepto": "recta_numerica",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/recta-numerica-fase2-042.json"
+      "ruta": "data/puzzles/8-anios/recta-numerica-fase2-042.json",
+      "estrategia": "usar_decenas_como_referencia"
     },
     {
       "id": "8-recta-numerica-2-043",
       "concepto": "recta_numerica",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/recta-numerica-fase2-043.json"
+      "ruta": "data/puzzles/8-anios/recta-numerica-fase2-043.json",
+      "estrategia": "usar_decenas_como_referencia"
     },
     {
       "id": "8-recta-numerica-2-044",
       "concepto": "recta_numerica",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/recta-numerica-fase2-044.json"
+      "ruta": "data/puzzles/8-anios/recta-numerica-fase2-044.json",
+      "estrategia": "usar_decenas_como_referencia"
     },
     {
       "id": "8-recta-numerica-3-001",
       "concepto": "recta_numerica",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/recta-numerica-fase3-abstracta.json"
+      "ruta": "data/puzzles/8-anios/recta-numerica-fase3-abstracta.json",
+      "estrategia": "usar_decenas_como_referencia"
     },
     {
       "id": "8-recta-numerica-3-006",
       "concepto": "recta_numerica",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/recta-numerica-fase3-006.json"
+      "ruta": "data/puzzles/8-anios/recta-numerica-fase3-006.json",
+      "estrategia": "usar_decenas_como_referencia"
     },
     {
       "id": "8-recta-numerica-3-007",
       "concepto": "recta_numerica",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/recta-numerica-fase3-007.json"
+      "ruta": "data/puzzles/8-anios/recta-numerica-fase3-007.json",
+      "estrategia": "usar_decenas_como_referencia"
     },
     {
       "id": "8-recta-numerica-3-008",
       "concepto": "recta_numerica",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/recta-numerica-fase3-008.json"
+      "ruta": "data/puzzles/8-anios/recta-numerica-fase3-008.json",
+      "estrategia": "usar_decenas_como_referencia"
     },
     {
       "id": "8-restar-1-001",
       "concepto": "restar",
       "fase_cpa": 1,
-      "ruta": "data/puzzles/8-anios/restar-fase1-001.json"
+      "ruta": "data/puzzles/8-anios/restar-fase1-001.json",
+      "estrategia": "restar_estrategico"
     },
     {
       "id": "8-restar-1-002",
       "concepto": "restar",
       "fase_cpa": 1,
-      "ruta": "data/puzzles/8-anios/restar-fase1-002.json"
+      "ruta": "data/puzzles/8-anios/restar-fase1-002.json",
+      "estrategia": "restar_estrategico"
     },
     {
       "id": "8-restar-2-003",
       "concepto": "restar",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/restar-fase2-003.json"
+      "ruta": "data/puzzles/8-anios/restar-fase2-003.json",
+      "estrategia": "restar_estrategico"
     },
     {
       "id": "8-restar-2-004",
       "concepto": "restar",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/restar-fase2-004.json"
+      "ruta": "data/puzzles/8-anios/restar-fase2-004.json",
+      "estrategia": "restar_estrategico"
     },
     {
       "id": "8-restar-2-020",
       "concepto": "restar",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/restar-fase2-020.json"
+      "ruta": "data/puzzles/8-anios/restar-fase2-020.json",
+      "estrategia": "restar_estrategico"
     },
     {
       "id": "8-restar-2-021",
       "concepto": "restar",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/restar-fase2-021.json"
+      "ruta": "data/puzzles/8-anios/restar-fase2-021.json",
+      "estrategia": "restar_estrategico"
     },
     {
       "id": "8-restar-2-022",
       "concepto": "restar",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/restar-fase2-022.json"
+      "ruta": "data/puzzles/8-anios/restar-fase2-022.json",
+      "estrategia": "restar_estrategico"
     },
     {
       "id": "8-restar-2-023",
       "concepto": "restar",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/restar-fase2-023.json"
+      "ruta": "data/puzzles/8-anios/restar-fase2-023.json",
+      "estrategia": "restar_estrategico"
     },
     {
       "id": "8-restar-2-024",
       "concepto": "restar",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/restar-fase2-024.json"
+      "ruta": "data/puzzles/8-anios/restar-fase2-024.json",
+      "estrategia": "restar_estrategico"
     },
     {
       "id": "8-restar-2-040",
       "concepto": "restar",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/restar-fase2-040.json"
+      "ruta": "data/puzzles/8-anios/restar-fase2-040.json",
+      "estrategia": "restar_estrategico"
     },
     {
       "id": "8-restar-2-041",
       "concepto": "restar",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/restar-fase2-041.json"
+      "ruta": "data/puzzles/8-anios/restar-fase2-041.json",
+      "estrategia": "restar_estrategico"
     },
     {
       "id": "8-restar-2-042",
       "concepto": "restar",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/restar-fase2-042.json"
+      "ruta": "data/puzzles/8-anios/restar-fase2-042.json",
+      "estrategia": "restar_estrategico"
     },
     {
       "id": "8-restar-2-043",
       "concepto": "restar",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/restar-fase2-043.json"
+      "ruta": "data/puzzles/8-anios/restar-fase2-043.json",
+      "estrategia": "restar_estrategico"
     },
     {
       "id": "8-restar-2-044",
       "concepto": "restar",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/restar-fase2-044.json"
+      "ruta": "data/puzzles/8-anios/restar-fase2-044.json",
+      "estrategia": "restar_estrategico"
     },
     {
       "id": "8-restar-3-005",
       "concepto": "restar",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/restar-fase3-005.json"
+      "ruta": "data/puzzles/8-anios/restar-fase3-005.json",
+      "estrategia": "restar_estrategico"
     },
     {
       "id": "8-restar-3-006",
       "concepto": "restar",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/restar-fase3-006.json"
+      "ruta": "data/puzzles/8-anios/restar-fase3-006.json",
+      "estrategia": "restar_estrategico"
     },
     {
       "id": "8-restar-3-007",
       "concepto": "restar",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/restar-fase3-007.json"
+      "ruta": "data/puzzles/8-anios/restar-fase3-007.json",
+      "estrategia": "restar_estrategico"
     },
     {
       "id": "8-decenas-1-001",
       "concepto": "decenas",
       "fase_cpa": 1,
-      "ruta": "data/puzzles/8-anios/decenas-fase1-001.json"
+      "ruta": "data/puzzles/8-anios/decenas-fase1-001.json",
+      "estrategia": "usar_valor_posicional"
     },
     {
       "id": "8-decenas-1-002",
       "concepto": "decenas",
       "fase_cpa": 1,
-      "ruta": "data/puzzles/8-anios/decenas-fase1-002.json"
+      "ruta": "data/puzzles/8-anios/decenas-fase1-002.json",
+      "estrategia": "usar_valor_posicional"
     },
     {
       "id": "8-decenas-2-003",
       "concepto": "decenas",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/decenas-fase2-003.json"
+      "ruta": "data/puzzles/8-anios/decenas-fase2-003.json",
+      "estrategia": "usar_valor_posicional"
     },
     {
       "id": "8-decenas-2-004",
       "concepto": "decenas",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/decenas-fase2-004.json"
+      "ruta": "data/puzzles/8-anios/decenas-fase2-004.json",
+      "estrategia": "usar_valor_posicional"
     },
     {
       "id": "8-decenas-2-020",
       "concepto": "decenas",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/decenas-fase2-020.json"
+      "ruta": "data/puzzles/8-anios/decenas-fase2-020.json",
+      "estrategia": "usar_valor_posicional"
     },
     {
       "id": "8-decenas-2-021",
       "concepto": "decenas",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/decenas-fase2-021.json"
+      "ruta": "data/puzzles/8-anios/decenas-fase2-021.json",
+      "estrategia": "usar_valor_posicional"
     },
     {
       "id": "8-decenas-2-022",
       "concepto": "decenas",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/decenas-fase2-022.json"
+      "ruta": "data/puzzles/8-anios/decenas-fase2-022.json",
+      "estrategia": "usar_valor_posicional"
     },
     {
       "id": "8-decenas-2-023",
       "concepto": "decenas",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/decenas-fase2-023.json"
+      "ruta": "data/puzzles/8-anios/decenas-fase2-023.json",
+      "estrategia": "usar_valor_posicional"
     },
     {
       "id": "8-decenas-2-024",
       "concepto": "decenas",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/decenas-fase2-024.json"
+      "ruta": "data/puzzles/8-anios/decenas-fase2-024.json",
+      "estrategia": "usar_valor_posicional"
     },
     {
       "id": "8-decenas-2-040",
       "concepto": "decenas",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/decenas-fase2-040.json"
+      "ruta": "data/puzzles/8-anios/decenas-fase2-040.json",
+      "estrategia": "usar_valor_posicional"
     },
     {
       "id": "8-decenas-2-041",
       "concepto": "decenas",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/decenas-fase2-041.json"
+      "ruta": "data/puzzles/8-anios/decenas-fase2-041.json",
+      "estrategia": "usar_valor_posicional"
     },
     {
       "id": "8-decenas-2-042",
       "concepto": "decenas",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/decenas-fase2-042.json"
+      "ruta": "data/puzzles/8-anios/decenas-fase2-042.json",
+      "estrategia": "usar_valor_posicional"
     },
     {
       "id": "8-decenas-2-043",
       "concepto": "decenas",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/decenas-fase2-043.json"
+      "ruta": "data/puzzles/8-anios/decenas-fase2-043.json",
+      "estrategia": "usar_valor_posicional"
     },
     {
       "id": "8-decenas-2-044",
       "concepto": "decenas",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/decenas-fase2-044.json"
+      "ruta": "data/puzzles/8-anios/decenas-fase2-044.json",
+      "estrategia": "usar_valor_posicional"
     },
     {
       "id": "8-decenas-3-005",
       "concepto": "decenas",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/decenas-fase3-005.json"
+      "ruta": "data/puzzles/8-anios/decenas-fase3-005.json",
+      "estrategia": "usar_valor_posicional"
     },
     {
       "id": "8-decenas-3-006",
       "concepto": "decenas",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/decenas-fase3-006.json"
+      "ruta": "data/puzzles/8-anios/decenas-fase3-006.json",
+      "estrategia": "usar_valor_posicional"
     },
     {
       "id": "8-decenas-3-007",
       "concepto": "decenas",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/decenas-fase3-007.json"
+      "ruta": "data/puzzles/8-anios/decenas-fase3-007.json",
+      "estrategia": "usar_valor_posicional"
     },
     {
       "id": "8-relampago-1-001",
       "concepto": "relampago",
       "fase_cpa": 1,
-      "ruta": "data/puzzles/8-anios/relampago-fase1-001.json"
+      "ruta": "data/puzzles/8-anios/relampago-fase1-001.json",
+      "estrategia": "calcular_rapido"
     },
     {
       "id": "8-relampago-1-002",
       "concepto": "relampago",
       "fase_cpa": 1,
-      "ruta": "data/puzzles/8-anios/relampago-fase1-002.json"
+      "ruta": "data/puzzles/8-anios/relampago-fase1-002.json",
+      "estrategia": "calcular_rapido"
     },
     {
       "id": "8-relampago-2-003",
       "concepto": "relampago",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/relampago-fase2-003.json"
+      "ruta": "data/puzzles/8-anios/relampago-fase2-003.json",
+      "estrategia": "calcular_rapido"
     },
     {
       "id": "8-relampago-2-004",
       "concepto": "relampago",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/relampago-fase2-004.json"
+      "ruta": "data/puzzles/8-anios/relampago-fase2-004.json",
+      "estrategia": "calcular_rapido"
     },
     {
       "id": "8-relampago-2-020",
       "concepto": "relampago",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/relampago-fase2-020.json"
+      "ruta": "data/puzzles/8-anios/relampago-fase2-020.json",
+      "estrategia": "calcular_rapido"
     },
     {
       "id": "8-relampago-2-021",
       "concepto": "relampago",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/relampago-fase2-021.json"
+      "ruta": "data/puzzles/8-anios/relampago-fase2-021.json",
+      "estrategia": "calcular_rapido"
     },
     {
       "id": "8-relampago-2-040",
       "concepto": "relampago",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/relampago-fase2-040.json"
+      "ruta": "data/puzzles/8-anios/relampago-fase2-040.json",
+      "estrategia": "calcular_rapido"
     },
     {
       "id": "8-relampago-2-041",
       "concepto": "relampago",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/relampago-fase2-041.json"
+      "ruta": "data/puzzles/8-anios/relampago-fase2-041.json",
+      "estrategia": "calcular_rapido"
     },
     {
       "id": "8-relampago-3-005",
       "concepto": "relampago",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/relampago-fase3-005.json"
+      "ruta": "data/puzzles/8-anios/relampago-fase3-005.json",
+      "estrategia": "calcular_rapido"
     },
     {
       "id": "8-relampago-3-006",
       "concepto": "relampago",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/relampago-fase3-006.json"
+      "ruta": "data/puzzles/8-anios/relampago-fase3-006.json",
+      "estrategia": "calcular_rapido"
     },
     {
       "id": "8-relampago-3-022",
       "concepto": "relampago",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/relampago-fase3-022.json"
+      "ruta": "data/puzzles/8-anios/relampago-fase3-022.json",
+      "estrategia": "calcular_rapido"
     },
     {
       "id": "8-relampago-3-023",
       "concepto": "relampago",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/relampago-fase3-023.json"
+      "ruta": "data/puzzles/8-anios/relampago-fase3-023.json",
+      "estrategia": "calcular_rapido"
     },
     {
       "id": "8-relampago-3-042",
       "concepto": "relampago",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/relampago-fase3-042.json"
+      "ruta": "data/puzzles/8-anios/relampago-fase3-042.json",
+      "estrategia": "calcular_rapido"
     },
     {
       "id": "8-relampago-3-043",
       "concepto": "relampago",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/relampago-fase3-043.json"
+      "ruta": "data/puzzles/8-anios/relampago-fase3-043.json",
+      "estrategia": "calcular_rapido"
     },
     {
       "id": "8-alineacion-1-001",
       "concepto": "alineacion",
       "fase_cpa": 1,
-      "ruta": "data/puzzles/8-anios/alineacion-fase1-001.json"
+      "ruta": "data/puzzles/8-anios/alineacion-fase1-001.json",
+      "estrategia": "ordenar_numeros"
     },
     {
       "id": "8-alineacion-1-002",
       "concepto": "alineacion",
       "fase_cpa": 1,
-      "ruta": "data/puzzles/8-anios/alineacion-fase1-002.json"
+      "ruta": "data/puzzles/8-anios/alineacion-fase1-002.json",
+      "estrategia": "ordenar_numeros"
     },
     {
       "id": "8-alineacion-2-003",
       "concepto": "alineacion",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/alineacion-fase2-003.json"
+      "ruta": "data/puzzles/8-anios/alineacion-fase2-003.json",
+      "estrategia": "ordenar_numeros"
     },
     {
       "id": "8-alineacion-2-004",
       "concepto": "alineacion",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/alineacion-fase2-004.json"
+      "ruta": "data/puzzles/8-anios/alineacion-fase2-004.json",
+      "estrategia": "ordenar_numeros"
     },
     {
       "id": "8-alineacion-2-020",
       "concepto": "alineacion",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/alineacion-fase2-020.json"
+      "ruta": "data/puzzles/8-anios/alineacion-fase2-020.json",
+      "estrategia": "ordenar_numeros"
     },
     {
       "id": "8-alineacion-2-021",
       "concepto": "alineacion",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/alineacion-fase2-021.json"
+      "ruta": "data/puzzles/8-anios/alineacion-fase2-021.json",
+      "estrategia": "ordenar_numeros"
     },
     {
       "id": "8-alineacion-2-022",
       "concepto": "alineacion",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/alineacion-fase2-022.json"
+      "ruta": "data/puzzles/8-anios/alineacion-fase2-022.json",
+      "estrategia": "ordenar_numeros"
     },
     {
       "id": "8-alineacion-2-040",
       "concepto": "alineacion",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/alineacion-fase2-040.json"
+      "ruta": "data/puzzles/8-anios/alineacion-fase2-040.json",
+      "estrategia": "ordenar_numeros"
     },
     {
       "id": "8-alineacion-2-041",
       "concepto": "alineacion",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/alineacion-fase2-041.json"
+      "ruta": "data/puzzles/8-anios/alineacion-fase2-041.json",
+      "estrategia": "ordenar_numeros"
     },
     {
       "id": "8-alineacion-2-042",
       "concepto": "alineacion",
       "fase_cpa": 2,
-      "ruta": "data/puzzles/8-anios/alineacion-fase2-042.json"
+      "ruta": "data/puzzles/8-anios/alineacion-fase2-042.json",
+      "estrategia": "ordenar_numeros"
     },
     {
       "id": "8-alineacion-3-005",
       "concepto": "alineacion",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/alineacion-fase3-005.json"
+      "ruta": "data/puzzles/8-anios/alineacion-fase3-005.json",
+      "estrategia": "ordenar_numeros"
     },
     {
       "id": "8-alineacion-3-006",
       "concepto": "alineacion",
       "fase_cpa": 3,
-      "ruta": "data/puzzles/8-anios/alineacion-fase3-006.json"
+      "ruta": "data/puzzles/8-anios/alineacion-fase3-006.json",
+      "estrategia": "ordenar_numeros"
     }
   ]
 }

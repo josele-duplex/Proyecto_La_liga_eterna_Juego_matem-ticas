@@ -314,7 +314,7 @@ for ruta in glob.glob(os.path.join(carpeta, "*.json")):
     with open(ruta, encoding="utf-8") as f:
         p = json.load(f)
     entradas.append({"id": p["id"], "concepto": p["concepto"], "fase_cpa": p["fase_cpa"],
-                     "ruta": f"data/puzzles/{EDAD}/{base}"})
+                     "ruta": f"data/puzzles/{EDAD}/{base}", "estrategia": p.get("estrategia")})
 entradas.sort(key=lambda e: (ORDEN.index(e["concepto"]) if e["concepto"] in ORDEN else 99,
                              e["fase_cpa"], e["id"]))
 indice = {"edad": EDAD,

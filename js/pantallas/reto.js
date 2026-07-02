@@ -54,7 +54,7 @@ async function jugarReto(perfilId, estadio, sesion) {
       otorgarInsigniasProceso(progresoActual, puzzleResuelto, resultado);
       Storage.guardarProgreso(perfilId, progresoActual);
       Sonido.sonidoAcierto();
-      celebrarAcierto(zonaJuego, recompensas.energiaPorPuzle);
+      celebrarAcierto(zonaJuego, recompensas.energiaPorPuzle, vocabularioDe(puzzleResuelto.estrategia));
       reaccionarCapi(tarjetaCapi, 'alegria', fraseAcierto(resultado));
       mostrarBarraPerfil(perfilId, { mostrarVolver: true, ocultarCambiarEquipo: true, brilloEnergia: true });
       // El reto ya está resuelto: los poderes dejan de poder usarse (no tiene sentido gastar
@@ -283,8 +283,10 @@ function reaccionarCapi(tarjeta, estado, frase) {
   tarjeta.classList.add('capi-rebote');
 }
 
-// Convierte el feedback de acierto en una tarjeta de celebración con la energía ganada.
-function celebrarAcierto(zonaJuego, energia) {
+// Convierte el feedback de acierto en una tarjeta de celebración con la energía ganada. Nombra la
+// estrategia con su vocabulario técnico real (FASE M1, A.5: "Has usado DESCOMPOSICIÓN") en vez de
+// un genérico "¡Muy bien!" — construye lenguaje matemático transferible fuera del juego.
+function celebrarAcierto(zonaJuego, energia, vocabulario) {
   const feedback = zonaJuego.querySelector('.feedback');
   if (!feedback) return;
   feedback.className = 'feedback feedback-correcto celebracion';
@@ -294,7 +296,7 @@ function celebrarAcierto(zonaJuego, energia) {
   titulo.textContent = '⚽ ¡Golazo!';
   const sub = document.createElement('span');
   sub.className = 'celebracion-sub';
-  sub.textContent = '¡Muy bien! Has acertado.';
+  sub.textContent = vocabulario ? `Has usado ${vocabulario}` : '¡Muy bien! Has acertado.';
   const en = document.createElement('span');
   en.className = 'celebracion-energia';
   en.textContent = `+${energia} energía`;

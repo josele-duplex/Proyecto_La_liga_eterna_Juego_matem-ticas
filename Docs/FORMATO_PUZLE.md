@@ -91,6 +91,10 @@ Cada pista puede llevar `accion_visual`: una pista opcional para la capa visual 
 
 ---
 
+## 4.5. El índice también lleva `estrategia` (desde FASE M1)
+
+Cada `indice.json` (uno por edad) es el catálogo que lee la progresión: `{ id, concepto, fase_cpa, ruta, estrategia }`. El campo `estrategia` se copió aquí (además de vivir en la ficha del puzle) porque los Niveles de Dominio (🥉🥈🥇) necesitan saber, sin abrir cada fichero, qué conceptos premian una estrategia — para el brillo del cromo en la barra de perfil. **Si generas puzles con un script, el índice debe reconstruirse incluyendo `estrategia`** (los generadores en `scripts/` ya lo hacen); si añades una ficha a mano, añade también su `estrategia` en el índice.
+
 ## 5. Cómo se añade un puzle nuevo
 
 1. Copia una ficha de ejemplo de la misma fase.

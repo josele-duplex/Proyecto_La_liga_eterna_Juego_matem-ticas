@@ -21,6 +21,13 @@ const Progression = {
   // sale de la cola sola (siguiente() ya la quita al servirlo).
   RETOS_PARA_REPASO: 3,
 
+  // Niveles de Dominio (FASE M1, U1): escala única 🥉🥈🥇 por concepto, para no tener dos
+  // taxonomías paralelas (una del calendario, otra de los cromos). Se calcula siempre a partir de
+  // dominio[concepto], nunca se guarda como campo aparte, así no puede desincronizarse.
+  NIVELES_DOMINIO: ['aprendiz', 'titular', 'crack'],
+  UMBRAL_TITULAR: 1, // dominó la fase más alta al menos una vez.
+  UMBRAL_CRACK: 3,   // la dominó varias veces (dominio sostenido, no un golpe de suerte).
+
   // Lista de fases disponibles para un concepto (según lo que haya en el índice).
   fasesDe(indice, concepto) {
     return indice.puzles.filter((p) => p.concepto === concepto).map((p) => p.fase_cpa);
@@ -58,6 +65,14 @@ const Progression = {
       nuevaFase = Math.max(faseJugada - 1, faseMin);
     }
     progreso.dominio[conceptoJugado].fase = nuevaFase;
+
+    // Niveles de Dominio (FASE M1, U1): cuenta cuántas veces se ha resuelto LIMPIO (sin fallos ni
+    // pistas) en la fase más alta del concepto. No se resetea al bajar de fase circunstancialmente
+    // (eso ya lo refleja "fase"): este contador mide "lo bien dominado que está en general".
+    if (this.esDominio(resultado) && faseJugada === faseMax) {
+      progreso.dominio[conceptoJugado].aciertosLimpiosFaseMax =
+        (progreso.dominio[conceptoJugado].aciertosLimpiosFaseMax || 0) + 1;
+    }
 
     // Rotación de conceptos (interleaving): tras CADA reto normal se avanza al siguiente concepto
     // de la lista, en círculo. Así el niño ve variedad y NUNCA se queda atascado repitiendo el
@@ -138,5 +153,43 @@ const Progression = {
 
     const elegido = mejores[Math.floor(Math.random() * mejores.length)];
     return esRepaso ? { ...elegido, esRepaso: true } : elegido;
+  },
+
+  // La fase más alta disponible para un concepto (según el índice), o null si el concepto no
+  // existe en él. La usan tanto actualizar() como el cálculo de nivel de dominio.
+  faseMaxDe(indice, concepto) {
+    const fases = this.fasesDe(indice, concepto);
+    return fases.length ? Math.max(...fases) : null;
+  },
+
+  // Nivel de Dominio (FASE M1, U1) de UN concepto: null si el jugador todavía no lo ha empezado
+  // (ni siquiera aparece en dominio); si no, 'aprendiz' | 'titular' | 'crack' según cuántas veces
+  // lo ha resuelto limpio en su fase más alta (aciertosLimpiosFaseMax, ver actualizar()).
+  nivelDominioConcepto(progreso, concepto) {
+    const entrada = (progreso.dominio || {})[concepto];
+    if (!entrada) return null;
+    const limpios = entrada.aciertosLimpiosFaseMax || 0;
+    if (limpios >= this.UMBRAL_CRACK) return 'crack';
+    if (limpios >= this.UMBRAL_TITULAR) return 'titular';
+    return 'aprendiz';
+  },
+
+  // Nivel de Dominio asociado a una ESTRATEGIA (para el brillo del cromo en la barra de perfil,
+  // que se agrupa por estrategia, no por concepto): el mejor nivel entre los conceptos que premian
+  // esa estrategia. Casi siempre hay un único concepto por estrategia; "completar_diez" es la
+  // excepción (la comparten Promesas y Estrellas), así que se coge el más alto de los dos.
+  nivelDominioEstrategia(progreso, indice, estrategia) {
+    const conceptos = [...new Set(
+      indice.puzles.filter((p) => p.estrategia === estrategia).map((p) => p.concepto)
+    )];
+    let mejor = null;
+    conceptos.forEach((concepto) => {
+      const nivel = this.nivelDominioConcepto(progreso, concepto);
+      if (!nivel) return;
+      if (!mejor || this.NIVELES_DOMINIO.indexOf(nivel) > this.NIVELES_DOMINIO.indexOf(mejor)) {
+        mejor = nivel;
+      }
+    });
+    return mejor;
   }
 };

@@ -11,10 +11,16 @@ function limpiarPantalla() {
 
 // Chip de insignia para la barra de perfil (icono o imagen + contador): lo comparten las
 // insignias de estrategia y las de proceso, que solo se diferencian en de dónde sale la definición.
-function crearChipInsignia(insignia, cantidad) {
+// `nivel` (FASE M1, U1, opcional: solo insignias de estrategia lo llevan) añade el brillo del
+// cromo según su Nivel de Dominio — la MISMA escala 🥉🥈🥇 que se ve en el calendario, no una
+// segunda taxonomía de "cromo dorado" aparte.
+function crearChipInsignia(insignia, cantidad, nivel) {
   if (!insignia) return null;
   const span = document.createElement('span');
-  span.title = `${insignia.nombre} (x${cantidad})`;
+  span.title = nivel
+    ? `${insignia.nombre} (x${cantidad}) · ${NIVELES_DOMINIO[nivel].nombre}`
+    : `${insignia.nombre} (x${cantidad})`;
+  if (nivel) span.classList.add(`cromo-nivel-${nivel}`);
   if (insignia.imagen) {
     const img = document.createElement('img');
     img.src = insignia.imagen;
@@ -55,8 +61,14 @@ function mostrarBarraPerfil(perfilId, opciones) {
     barra.appendChild(racha);
   }
 
+  // El nivel de dominio (para el brillo) necesita el índice de puzles del equipo actual; si el
+  // jugador todavía no ha elegido equipo (p. ej. en la propia pantalla de selección), se omite.
+  const modoParaNivel = modoDe(perfilId);
+  const indiceParaNivel = modoParaNivel ? indicesPorEdad[modoParaNivel.edad] : null;
+
   Object.keys(progreso.insignias || {}).forEach((estrategia) => {
-    const chip = crearChipInsignia(recompensas.insignias[estrategia], progreso.insignias[estrategia]);
+    const nivel = indiceParaNivel ? Progression.nivelDominioEstrategia(progreso, indiceParaNivel, estrategia) : null;
+    const chip = crearChipInsignia(recompensas.insignias[estrategia], progreso.insignias[estrategia], nivel);
     if (chip) barra.appendChild(chip);
   });
 

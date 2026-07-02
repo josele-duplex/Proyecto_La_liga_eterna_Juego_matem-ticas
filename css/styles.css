@@ -579,6 +579,53 @@ button:focus-visible {
 }
 
 /* ============================================================
+   8.5. Niveles de Dominio (FASE M1, U1): escala única 🥉🥈🥇, tanto en la franja del
+   calendario como en el brillo de los cromos de la barra superior (misma clase cromo-nivel-*
+   en los dos sitios, para no crear dos taxonomías paralelas).
+   ============================================================ */
+.franja-niveles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0.2rem 0 0.3rem;
+}
+
+.chip-nivel {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  background: #fff;
+  border: 2px solid rgba(20, 40, 70, 0.1);
+  border-radius: var(--radio-pildora);
+  padding: 0.25rem 0.7rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-texto-suave);
+}
+
+.chip-nivel-vacio { opacity: 0.55; }
+
+/* Titular: plata discreta. Crack: dorado con brillo suave y animado (mismo lenguaje visual que
+   la cabecera de victoria). Se aplican tanto al chip del calendario como al span del cromo en la
+   barra superior (que puede contener texto o una <img>, por eso drop-shadow y no box-shadow). */
+.chip-nivel.cromo-nivel-titular { border-color: #9aa4b0; color: var(--color-texto); }
+.chip-nivel.cromo-nivel-crack {
+  border-color: #f0b429;
+  color: #8a5a12;
+  background: linear-gradient(180deg, #fff8e1, #fff3cc);
+}
+
+.cromo-nivel-titular { filter: drop-shadow(0 0 2px rgba(120, 130, 140, 0.85)); }
+.cromo-nivel-crack {
+  filter: drop-shadow(0 0 4px rgba(240, 180, 41, 0.9));
+  animation: brillo-cromo 2.4s ease-in-out infinite;
+}
+@keyframes brillo-cromo {
+  0%, 100% { filter: drop-shadow(0 0 4px rgba(240, 180, 41, 0.9)); }
+  50% { filter: drop-shadow(0 0 9px rgba(240, 180, 41, 1)); }
+}
+
+/* ============================================================
    9. Tarjetas: calendario, estadios, modos.
    ============================================================ */
 .calendario {

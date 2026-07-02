@@ -1,30 +1,32 @@
 {
-  "nota": "Energia e insignias que se ganan al resolver un puzle. 'insignias' premia el COMO matematico (estrategia del puzle); 'insigniasProceso' premia el COMO se ha jugado (sin pistas, remontada tras fallar, rapidez en Relampago), igual en cualquier concepto. Anade aqui una entrada cuando crees un puzle con una estrategia nueva. 'imagen' es opcional por insignia: ruta a una ilustracion; mientras sea null se usa el 'icono' (emoji).",
+  "nota": "Energia e insignias que se ganan al resolver un puzle. 'insignias' premia el COMO matematico (estrategia del puzle); 'insigniasProceso' premia el COMO se ha jugado (sin pistas, remontada tras fallar, rapidez en Relampago), igual en cualquier concepto. Anade aqui una entrada cuando crees un puzle con una estrategia nueva. 'imagen' es opcional por insignia: ruta a una ilustracion; mientras sea null se usa el 'icono' (emoji). 'vocabulario' (solo en 'insignias', FASE M1/A.5) es el nombre tecnico real que ve el nino al acertar ('Has usado DESCOMPOSICION'); es DISTINTO de 'nombre', que es el nombre gamificado del cromo ('Maestro de la Decena').",
   "energiaPorPuzle": 10,
   "insignias": {
-    "completar_diez": { "nombre": "Maestro de la Decena", "icono": "🔟", "imagen": "assets/img/insignias/insignia-completar-diez.webp" },
-    "usar_decenas_como_referencia": { "nombre": "Navegante de la Recta", "icono": "🧭", "imagen": "assets/img/insignias/insignia-usar-decenas-como-referencia.webp" },
-    "reconocer_patron": { "nombre": "Maestro de Patrones", "icono": "👁️", "imagen": "assets/img/insignias/insignia-reconocer-patron.webp" },
-    "comparar_cantidades": { "nombre": "Juez de Cantidad", "icono": "⚖️", "imagen": "assets/img/insignias/insignia-comparar-cantidades.webp" },
-    "usar_dobles": { "nombre": "Rey de los Dobles", "icono": "👯", "imagen": "assets/img/insignias/insignia-usar-dobles.webp" },
-    "usar_casi_dobles": { "nombre": "As del Casi-Doble", "icono": "✨", "imagen": null },
-    "multiplicar_grupos": { "nombre": "Capitán de los Grupos", "icono": "✖️", "imagen": "assets/img/insignias/insignia-multiplicar-grupos.webp" },
-    "repartir_partes": { "nombre": "Repartidor Justo", "icono": "🍕", "imagen": "assets/img/insignias/insignia-repartir-partes.webp" },
-    "redondear": { "nombre": "Maestro del Redondeo", "icono": "🎯", "imagen": "assets/img/insignias/insignia-redondear.webp" },
-    "sumar": { "nombre": "Goleador", "icono": "⚽", "imagen": null },
-    "contar_secuencia": { "nombre": "Cuentapasos", "icono": "👣", "imagen": null },
-    "calcular_rapido": { "nombre": "Reflejos de Portero", "icono": "🧤", "imagen": null },
-    "ordenar_numeros": { "nombre": "Estratega de Alineación", "icono": "📋", "imagen": null },
-    "restar_estrategico": { "nombre": "Muro Defensivo", "icono": "🛡️", "imagen": null },
-    "usar_valor_posicional": { "nombre": "Arquitecto de Decenas", "icono": "🏛️", "imagen": null },
-    "dividir": { "nombre": "As de la División", "icono": "➗", "imagen": null },
-    "sumar_llevando": { "nombre": "Sumador de Élite", "icono": "🧮", "imagen": null },
-    "restar_llevando": { "nombre": "Restador de Élite", "icono": "✂️", "imagen": null },
-    "razonar_problema": { "nombre": "Cerebro del Equipo", "icono": "🧠", "imagen": null }
+    "completar_diez": { "nombre": "Maestro de la Decena", "vocabulario": "COMPLETAR LA DECENA", "icono": "🔟", "imagen": "assets/img/insignias/insignia-completar-diez.webp" },
+    "usar_decenas_como_referencia": { "nombre": "Navegante de la Recta", "vocabulario": "DECENAS DE REFERENCIA", "icono": "🧭", "imagen": "assets/img/insignias/insignia-usar-decenas-como-referencia.webp" },
+    "reconocer_patron": { "nombre": "Maestro de Patrones", "vocabulario": "RECONOCER EL PATRÓN", "icono": "👁️", "imagen": "assets/img/insignias/insignia-reconocer-patron.webp" },
+    "comparar_cantidades": { "nombre": "Juez de Cantidad", "vocabulario": "COMPARAR CANTIDADES", "icono": "⚖️", "imagen": "assets/img/insignias/insignia-comparar-cantidades.webp" },
+    "usar_dobles": { "nombre": "Rey de los Dobles", "vocabulario": "DOBLES", "icono": "👯", "imagen": "assets/img/insignias/insignia-usar-dobles.webp" },
+    "usar_casi_dobles": { "nombre": "As del Casi-Doble", "vocabulario": "CASI-DOBLES", "icono": "✨", "imagen": null },
+    "multiplicar_grupos": { "nombre": "Capitán de los Grupos", "vocabulario": "MULTIPLICAR POR GRUPOS", "icono": "✖️", "imagen": "assets/img/insignias/insignia-multiplicar-grupos.webp" },
+    "repartir_partes": { "nombre": "Repartidor Justo", "vocabulario": "REPARTO EN PARTES IGUALES", "icono": "🍕", "imagen": "assets/img/insignias/insignia-repartir-partes.webp" },
+    "redondear": { "nombre": "Maestro del Redondeo", "vocabulario": "REDONDEO", "icono": "🎯", "imagen": "assets/img/insignias/insignia-redondear.webp" },
+    "sumar": { "nombre": "Goleador", "vocabulario": "SUMA", "icono": "⚽", "imagen": null },
+    "contar_secuencia": { "nombre": "Cuentapasos", "vocabulario": "CONTEO EN SECUENCIA", "icono": "👣", "imagen": null },
+    "calcular_rapido": { "nombre": "Reflejos de Portero", "vocabulario": "CÁLCULO RÁPIDO", "icono": "🧤", "imagen": null },
+    "ordenar_numeros": { "nombre": "Estratega de Alineación", "vocabulario": "ORDENACIÓN DE NÚMEROS", "icono": "📋", "imagen": null },
+    "restar_estrategico": { "nombre": "Muro Defensivo", "vocabulario": "RESTA ESTRATÉGICA", "icono": "🛡️", "imagen": null },
+    "usar_valor_posicional": { "nombre": "Arquitecto de Decenas", "vocabulario": "VALOR POSICIONAL", "icono": "🏛️", "imagen": null },
+    "dividir": { "nombre": "As de la División", "vocabulario": "DIVISIÓN", "icono": "➗", "imagen": null },
+    "sumar_llevando": { "nombre": "Sumador de Élite", "vocabulario": "SUMA CON LLEVADAS", "icono": "🧮", "imagen": null },
+    "restar_llevando": { "nombre": "Restador de Élite", "vocabulario": "RESTA CON LLEVADAS", "icono": "✂️", "imagen": null },
+    "razonar_problema": { "nombre": "Cerebro del Equipo", "vocabulario": "RAZONAMIENTO LÓGICO", "icono": "🧠", "imagen": null }
   },
   "insigniasProceso": {
     "sin_pistas": { "nombre": "Disparo Directo", "icono": "🌟", "imagen": null },
     "remontada": { "nombre": "Remontada", "icono": "🔄", "imagen": null },
-    "velocista": { "nombre": "Rayo del Relámpago", "icono": "⚡", "imagen": null }
+    "velocista": { "nombre": "Rayo del Relámpago", "icono": "⚡", "imagen": null },
+    "estratega": { "nombre": "Estratega", "icono": "🧩", "imagen": null },
+    "pensador": { "nombre": "Pensador", "icono": "💡", "imagen": null }
   }
 }
