@@ -3,6 +3,7 @@
 
 const Storage = {
   CLAVE_PERFIL_ACTIVO: 'liga-eterna:perfil-activo',
+  VERSION_PROGRESO: 2,
 
   claveProgreso(perfilId) {
     return `liga-eterna:progreso:${perfilId}`;
@@ -22,11 +23,22 @@ const Storage = {
 
   cargarProgreso(perfilId) {
     const guardado = localStorage.getItem(this.claveProgreso(perfilId));
-    return guardado ? JSON.parse(guardado) : {};
+    return this.migrar(guardado ? JSON.parse(guardado) : {});
   },
 
   guardarProgreso(perfilId, progreso) {
     localStorage.setItem(this.claveProgreso(perfilId), JSON.stringify(progreso));
+  },
+
+  // Trae cualquier progreso guardado (de esta versión o de una anterior, incluida la que no tenía
+  // ni campo "version") a la forma actual, sin tocar ni renombrar nada que ya existiera — solo
+  // añade lo que falte con un valor por defecto inofensivo. Así un progreso de hace meses sigue
+  // cargando entero. Regla para el futuro: cuando una fase nueva necesite un campo nuevo en el
+  // progreso, se añade AQUÍ con su valor por defecto; nunca se renombra ni se borra un campo viejo.
+  migrar(progreso) {
+    if (progreso.version === this.VERSION_PROGRESO) return progreso;
+    progreso.version = this.VERSION_PROGRESO;
+    return progreso;
   },
 
   // Racha de días jugados seguidos (hábito de práctica breve y frecuente). Se llama una vez al
