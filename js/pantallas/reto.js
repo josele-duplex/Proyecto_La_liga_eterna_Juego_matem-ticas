@@ -52,10 +52,16 @@ async function jugarReto(perfilId, estadio, sesion) {
       if (desbloqueado) modoRecienDesbloqueado = desbloqueado;
       otorgarRecompensa(progresoActual, puzzleResuelto.estrategia);
       otorgarInsigniasProceso(progresoActual, puzzleResuelto, resultado);
+      // Contrato del Día (FASE M2, U2): si este acierto lo cumple, Capi lo celebra en vez del
+      // elogio normal — es el "propósito inmediato" de la sesión, merece su propio mensaje.
+      const contratoCumplidoAhora = avanzarContratoDelDia(progresoActual, puzzleResuelto);
       Storage.guardarProgreso(perfilId, progresoActual);
       Sonido.sonidoAcierto();
       celebrarAcierto(zonaJuego, recompensas.energiaPorPuzle, vocabularioDe(puzzleResuelto.estrategia));
-      reaccionarCapi(tarjetaCapi, 'alegria', fraseAcierto(resultado));
+      const mensajeCapi = contratoCumplidoAhora
+        ? `¡Contrato cumplido! Aquí tienes tu bono de +${progresoActual.contratoDia.bonus}⚡.`
+        : fraseAcierto(resultado);
+      reaccionarCapi(tarjetaCapi, 'alegria', mensajeCapi);
       mostrarBarraPerfil(perfilId, { mostrarVolver: true, ocultarCambiarEquipo: true, brilloEnergia: true });
       // El reto ya está resuelto: los poderes dejan de poder usarse (no tiene sentido gastar
       // energía en una pregunta que ya se acertó, mientras el niño ve la celebración).

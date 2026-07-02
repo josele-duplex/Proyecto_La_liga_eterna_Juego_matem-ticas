@@ -78,6 +78,65 @@ function otorgarInsigniasProceso(progreso, puzzle, resultado) {
   if (puzzle.concepto === 'problemas' && resultado.intentosFallidos === 0) sumar('pensador');
 }
 
+// Contrato del Día (FASE M2, U2): funde el "reto del día" del GDD original con los contratos de
+// C.5 en un único sistema. Si ya hay uno asignado hoy, lo devuelve tal cual (idempotente: se puede
+// llamar cada vez que se entra al calendario sin reasignar). Si no, elige uno determinista: si el
+// jugador ya tiene alguna insignia de estrategia dentro del banco de su equipo actual, le pide
+// practicarla unas veces más; si es nuevo y no tiene ninguna, le pide un número de jugadas
+// cualquiera (siempre cumplible, para que el primer día también tenga contrato). Modifica y
+// devuelve progreso.contratoDia.
+function asegurarContratoDelDia(progreso, indice, datosContratos) {
+  const hoy = new Date().toISOString().slice(0, 10);
+  if (progreso.contratoDia && progreso.contratoDia.fecha === hoy) return progreso.contratoDia;
+
+  const estrategiasDelBanco = [...new Set(indice.puzles.map((p) => p.estrategia).filter(Boolean))];
+  const estrategiasConocidas = Object.keys(progreso.insignias || {}).filter((e) => estrategiasDelBanco.includes(e));
+
+  const rango = datosContratos.objetivoMaximo - datosContratos.objetivoMinimo + 1;
+  const objetivo = datosContratos.objetivoMinimo + Math.floor(Math.random() * rango);
+
+  let contrato;
+  if (estrategiasConocidas.length > 0) {
+    const estrategia = estrategiasConocidas[Math.floor(Math.random() * estrategiasConocidas.length)];
+    contrato = { fecha: hoy, tipo: 'insignia', estrategia, objetivo, avance: 0, bonus: datosContratos.energiaBonus, cumplido: false };
+  } else {
+    contrato = { fecha: hoy, tipo: 'retos', objetivo, avance: 0, bonus: datosContratos.energiaBonus, cumplido: false };
+  }
+
+  progreso.contratoDia = contrato;
+  return contrato;
+}
+
+// Texto de Capi para el contrato del día, relleno desde las plantillas de contratos.json.
+function textoContrato(contrato, datosContratos) {
+  if (contrato.tipo === 'insignia') {
+    const vocab = vocabularioDe(contrato.estrategia) || NOMBRES_CONCEPTO[contrato.estrategia] || contrato.estrategia;
+    return datosContratos.plantillaEstrategia
+      .replace('{objetivo}', contrato.objetivo)
+      .replace('{vocabulario}', vocab);
+  }
+  return datosContratos.plantillaGenerica.replace('{objetivo}', contrato.objetivo);
+}
+
+// Tras resolver un puzle, avanza el contrato del día si aplica y cobra el bono la primera vez que
+// se cumple (nunca más de una vez). Modifica progreso.contratoDia y, si cobra, progreso.energia.
+// Devuelve true solo en el instante en que se acaba de cumplir (para poder celebrarlo en pantalla).
+function avanzarContratoDelDia(progreso, puzzle) {
+  const contrato = progreso.contratoDia;
+  if (!contrato || contrato.cumplido) return false;
+
+  const aplica = contrato.tipo === 'retos' || puzzle.estrategia === contrato.estrategia;
+  if (!aplica) return false;
+
+  contrato.avance = Math.min(contrato.avance + 1, contrato.objetivo);
+  if (contrato.avance >= contrato.objetivo) {
+    contrato.cumplido = true;
+    progreso.energia = (progreso.energia || 0) + contrato.bonus;
+    return true;
+  }
+  return false;
+}
+
 // Frase de Capi al acertar, según CÓMO se ha llegado al acierto (elogio al esfuerzo/estrategia,
 // no a "ser listo" — mentalidad de crecimiento): directo y sin ayuda, remontada tras fallar, o
 // pista bien aprovechada. Las tres son válidas; ninguna es mejor persona, solo distinto camino.

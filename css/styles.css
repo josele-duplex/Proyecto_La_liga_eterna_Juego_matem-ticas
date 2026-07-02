@@ -579,6 +579,49 @@ button:focus-visible {
 }
 
 /* ============================================================
+   8.4. Contrato del Día (FASE M2, U2): meta diaria concreta con barra de progreso.
+   Mismo lenguaje dorado que la celebración de acierto (misma familia visual de "recompensa").
+   ============================================================ */
+.tarjeta-contrato {
+  background: linear-gradient(180deg, #ffffff, #fff8e8);
+  border: 2px solid rgba(240, 180, 41, 0.35);
+  border-radius: var(--radio-grande);
+  padding: 0.7rem 1rem;
+  margin-bottom: var(--espacio);
+  box-shadow: var(--sombra-suave);
+}
+
+.contrato-texto { margin: 0 0 0.5rem; font-weight: 700; color: var(--color-texto); }
+
+.contrato-barra {
+  height: 10px;
+  border-radius: 999px;
+  background: rgba(20, 40, 70, 0.1);
+  overflow: hidden;
+}
+
+.contrato-relleno {
+  height: 100%;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ffc94a, #ff9100);
+  transition: width 0.4s ease;
+}
+
+.contrato-estado {
+  margin: 0.4rem 0 0;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #8a5a12;
+}
+
+.contrato-cumplido {
+  border-color: #2e7d32;
+  background: linear-gradient(180deg, #ffffff, #eaf8ec);
+}
+.contrato-cumplido .contrato-estado { color: var(--color-exito-texto); }
+.contrato-cumplido .contrato-relleno { background: linear-gradient(90deg, #66bb6a, #2e7d32); }
+
+/* ============================================================
    8.5. Niveles de Dominio (FASE M1, U1): escala única 🥉🥈🥇, tanto en la franja del
    calendario como en el brillo de los cromos de la barra superior (misma clase cromo-nivel-*
    en los dos sitios, para no crear dos taxonomías paralelas).

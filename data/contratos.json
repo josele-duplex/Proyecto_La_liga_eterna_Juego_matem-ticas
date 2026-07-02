@@ -1,0 +1,8 @@
+{
+  "nota": "Contrato del Dia (FASE M2, U2): funde el 'reto del dia' del GDD original con los contratos de C.5 en un unico sistema. Capi asigna un contrato al entrar al calendario, elegido por reglas deterministas (sin IA, ver logica-juego.js: asegurarContratoDelDia): si el jugador ya tiene alguna insignia de estrategia en el banco de su equipo actual, le pide practicarla unas cuantas veces mas hoy; si es un jugador nuevo sin ninguna insignia todavia, le pide un numero de jugadas cualquiera (contrato generico, siempre cumplible). Cumplirlo da un bono de energia UNA sola vez. No cumplirlo no tiene ninguna consecuencia: manana hay uno nuevo.",
+  "energiaBonus": 15,
+  "objetivoMinimo": 2,
+  "objetivoMaximo": 4,
+  "plantillaEstrategia": "Hoy necesito {objetivo} jugadas de {vocabulario}.",
+  "plantillaGenerica": "Hoy necesito que resuelvas {objetivo} jugadas, ¡las que sean!"
+}

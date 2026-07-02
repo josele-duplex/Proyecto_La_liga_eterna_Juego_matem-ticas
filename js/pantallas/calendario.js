@@ -20,8 +20,17 @@ function mostrarCalendario(perfilId) {
   titulo.textContent = `Calendario de la Liga — ${modo.icono} ${modo.nombre}`;
   app.appendChild(titulo);
 
-  // Niveles de Dominio (FASE M1, U1): un vistazo rápido a 🥉🥈🥇 por concepto del equipo actual.
+  // Contrato del Día (FASE M2, U2): se asegura (asigna si no había uno hoy) y se muestra siempre
+  // que se entra al calendario, no solo la primera vez, para que el niño pueda ver su progreso.
   const indiceModo = indicesPorEdad[modo.edad];
+  if (indiceModo) {
+    const progresoParaContrato = Storage.cargarProgreso(perfilId);
+    const contrato = asegurarContratoDelDia(progresoParaContrato, indiceModo, contratos);
+    Storage.guardarProgreso(perfilId, progresoParaContrato);
+    app.appendChild(crearTarjetaContrato(contrato));
+  }
+
+  // Niveles de Dominio (FASE M1, U1): un vistazo rápido a 🥉🥈🥇 por concepto del equipo actual.
   if (indiceModo) {
     app.appendChild(crearFranjaNiveles(Storage.cargarProgreso(perfilId), indiceModo));
   }
@@ -51,6 +60,35 @@ function mostrarCalendario(perfilId) {
     lista.appendChild(tarjeta);
   });
   app.appendChild(lista);
+}
+
+// Tarjeta del Contrato del Día (FASE M2, U2): el texto de Capi, una barra de progreso y el estado
+// (en curso o ya cumplido). Se ve cada vez que se entra al calendario, no solo la primera del día.
+function crearTarjetaContrato(contrato) {
+  const tarjeta = document.createElement('div');
+  tarjeta.className = contrato.cumplido ? 'tarjeta-contrato contrato-cumplido' : 'tarjeta-contrato';
+
+  const texto = document.createElement('p');
+  texto.className = 'contrato-texto';
+  texto.textContent = `📋 ${textoContrato(contrato, contratos)}`;
+  tarjeta.appendChild(texto);
+
+  const barra = document.createElement('div');
+  barra.className = 'contrato-barra';
+  const relleno = document.createElement('div');
+  relleno.className = 'contrato-relleno';
+  relleno.style.width = `${Math.min(100, Math.round((contrato.avance / contrato.objetivo) * 100))}%`;
+  barra.appendChild(relleno);
+  tarjeta.appendChild(barra);
+
+  const estado = document.createElement('p');
+  estado.className = 'contrato-estado';
+  estado.textContent = contrato.cumplido
+    ? `✅ ¡Contrato cumplido! +${contrato.bonus}⚡`
+    : `${contrato.avance} de ${contrato.objetivo} · recompensa ⚡${contrato.bonus}`;
+  tarjeta.appendChild(estado);
+
+  return tarjeta;
 }
 
 // Franja de Niveles de Dominio (FASE M1, U1): un chip por concepto del equipo actual, con su
