@@ -1182,9 +1182,12 @@ button:focus-visible {
   50% { box-shadow: 0 0 0 5px rgba(240, 180, 41, 0.3); }
 }
 
-/* Distintivo de "jugada" en la esquina de la tarjeta de la pregunta (P3). */
+/* Distintivo de "jugada" en la esquina de la tarjeta de la pregunta (P3). Icono de banderín de
+   córner, NO de balón: en los puzles de subitización/conteo el enunciado ya dibuja balones para
+   contar (p. ej. "⚽⚽⚽⚽ ¿Cuántos hay?"), y un balón decorativo extra flotando justo encima
+   generaba dudas reales de varios niños sobre si también había que contarlo. */
 .zona-juego::before {
-  content: "⚽";
+  content: "🚩";
   position: absolute;
   top: -14px;
   left: 18px;
