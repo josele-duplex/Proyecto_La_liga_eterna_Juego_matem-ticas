@@ -1363,6 +1363,25 @@ button:focus-visible {
   .opcion { font-size: 1.3rem; }
   .marco { padding: 0.7rem 0.7rem 2rem; }
   .lienzo { padding: 1.1rem 1rem 1.3rem; }
-  .pantalla-reto .enunciado { font-size: 1.6rem; }
-  .capi-retrato { width: 4.4rem; height: 4.4rem; }
+  .pantalla-reto .enunciado { font-size: 1.4rem; }
+  .capi-retrato { width: 3.6rem; height: 3.6rem; }
+
+  /* Compactación del reto en pantallas bajas (mejora móvil, parte 2 tras arreglar la cascada
+     muerta de arriba): menos aire entre paneles y menos relleno interno, para que la pregunta y
+     las respuestas quepan sin scroll y la pista quede a un scroll corto, no a media pantalla.
+     NINGÚN botón baja de 2.75rem (44px) de alto: el mínimo táctil de T3.6 no se toca aquí, solo
+     se reduce relleno/tipografía alrededor. */
+  .pantalla-reto { gap: 0.5rem; }
+  .banner-estadio { padding: 0.3rem 0.7rem; }
+  .capsula-mision { padding: 0.4rem 0.7rem; }
+  .mini-progreso { margin-top: 0.35rem; }
+  .zona-juego { padding: 1rem 0.9rem 1rem; }
+  .pantalla-reto .opcion { font-size: 1.35rem; min-height: 3.4rem; padding: 0.7rem; }
+  .opciones { gap: 0.5rem; margin-top: 0.6rem; }
+  .zona-poderes { margin-top: 0.5rem; gap: 0.4rem; }
+  .boton-poder { padding: 0.4rem 0.7rem; font-size: 0.85rem; }
+  .tarjeta-capi { padding: 0.5rem 0.7rem; gap: 0.6rem; }
+  .capi-cuerpo { gap: 0.35rem; }
+  .bocadillo-capi { font-size: 0.9rem; padding: 0.4rem 0.6rem; }
+  .boton-voz { padding: 0.4rem 0.8rem; font-size: 0.85rem; }
 }
