@@ -25,9 +25,11 @@ async function jugarReto(perfilId, estadio, sesion) {
   const app = document.getElementById('app');
   app.className = 'pantalla-reto';
 
-  const banner = crearBannerEstadio(estadio, sesion);
-  app.appendChild(banner);
-  app.appendChild(crearCapsulaMision(puzzle, sesion, esDecisivo, entrada.esRepaso));
+  // FASE V2 (Plan V2): banner de estadio y cápsula de misión fusionados en UNA sola tarjeta
+  // (antes eran dos tarjetas independientes, cada una con su propio padding/sombra/margen —
+  // en móvil eso sobraba espacio vertical que hacía falta para que la pista cupiera sin scroll).
+  const panelMision = crearPanelMision(estadio, sesion, puzzle, esDecisivo, entrada.esRepaso);
+  app.appendChild(panelMision);
 
   const zonaJuego = document.createElement('div');
   zonaJuego.className = esDecisivo ? 'zona-juego zona-juego-decisiva' : 'zona-juego';
@@ -83,11 +85,11 @@ async function jugarReto(perfilId, estadio, sesion) {
       if (!falloContado) {
         falloContado = true;
         sesion.golesRival++;
-        const marcador = banner.querySelector('.marcador-partido');
+        const marcador = panelMision.querySelector('.marcador-partido');
         if (marcador) marcador.textContent = `${sesion.hechos} - ${sesion.golesRival}`;
         if (sesion.rival) {
           fraseFallo = `¡${sesion.rival.nombre} te ha robado el balón! Recupéralo: piensa otra vez.`;
-          const rivalImg = banner.querySelector('#rival-mini-actual');
+          const rivalImg = panelMision.querySelector('#rival-mini-actual');
           if (rivalImg) {
             rivalImg.classList.remove('rival-ataca');
             void rivalImg.offsetWidth; // reinicia la animación
@@ -162,17 +164,27 @@ function crearZonaPoderes(perfilId, capacidades) {
   return zona;
 }
 
-// Banner con la identidad del estadio (escudo + nombre) y el marcador del partido (TG.1), arriba
-// de la pantalla de reto. El marcador empieza en "aciertos - fallos del reto actual" y se va
-// actualizando en vivo (ver jugarReto) para dar tensión real sin cambiar la mecánica de fondo.
-function crearBannerEstadio(estadio, sesion) {
-  const banner = document.createElement('div');
-  banner.className = 'banner-estadio';
-  banner.appendChild(UI.crearEscudo(estadio));
-  const nombre = document.createElement('span');
-  nombre.className = 'banner-estadio-nombre';
-  nombre.textContent = `🏟 ${estadio.nombre}`;
-  banner.appendChild(nombre);
+// Panel de misión (FASE V2, Plan V2): fusiona lo que antes eran dos tarjetas — el banner de
+// estadio (escudo, nombre, rival, marcador — TG.1/TG.6) y la cápsula de misión (en qué reto vas,
+// concepto, fase, mini barra de progreso) — en una sola, con dos filas internas. Menos padding y
+// sombra duplicados, un gap menos entre paneles: exactamente el ahorro de espacio vertical que
+// hacía falta en móvil sin sacrificar ninguno de los dos contenidos. El último reto de la serie se
+// presenta como "jugada decisiva" (TG.1, más teatro); un reto que vuelve de la cola de repaso
+// (TG.5) lleva la etiqueta "🔁 Repaso".
+function crearPanelMision(estadio, sesion, puzzle, esDecisivo, esRepaso) {
+  const concepto = NOMBRES_CONCEPTO[puzzle.concepto] || puzzle.concepto;
+  const panel = document.createElement('div');
+  panel.className = esDecisivo ? 'capsula-mision capsula-decisiva' : 'capsula-mision';
+
+  // Fila 1: identidad del estadio + marcador (antes "banner-estadio", ahora una fila, no una
+  // tarjeta propia).
+  const fila1 = document.createElement('div');
+  fila1.className = 'banner-estadio';
+  fila1.appendChild(UI.crearEscudo(estadio));
+  const nombreEstadio = document.createElement('span');
+  nombreEstadio.className = 'banner-estadio-nombre';
+  nombreEstadio.textContent = `🏟 ${estadio.nombre}`;
+  fila1.appendChild(nombreEstadio);
 
   // El rival "Fueras de Juego" de este partido (TG.6): se anima al fallar (ver jugarReto).
   if (sesion.rival) {
@@ -182,28 +194,19 @@ function crearBannerEstadio(estadio, sesion) {
     rivalImg.src = sesion.rival.imagen;
     rivalImg.alt = `Fuera de Juego: ${sesion.rival.nombre}`;
     rivalImg.title = `Tu rival hoy: ${sesion.rival.nombre}`;
-    banner.appendChild(rivalImg);
+    fila1.appendChild(rivalImg);
   }
 
   const marcador = document.createElement('span');
   marcador.className = 'marcador-partido';
   marcador.title = 'Tu equipo - Rival';
   marcador.textContent = `${sesion.hechos} - ${sesion.golesRival}`;
-  banner.appendChild(marcador);
+  fila1.appendChild(marcador);
+  panel.appendChild(fila1);
 
-  return banner;
-}
-
-// Cápsula de misión: en qué reto vas, qué concepto y fase, con una mini barra de progreso del
-// partido. El último reto de la serie se presenta como "jugada decisiva" (TG.1, más teatro); un
-// reto que vuelve de la cola de repaso (TG.5) lleva una pequeña etiqueta "🔁 Repaso".
-function crearCapsulaMision(puzzle, sesion, esDecisivo, esRepaso) {
-  const concepto = NOMBRES_CONCEPTO[puzzle.concepto] || puzzle.concepto;
-  const capsula = document.createElement('div');
-  capsula.className = esDecisivo ? 'capsula-mision capsula-decisiva' : 'capsula-mision';
-
-  const linea = document.createElement('div');
-  linea.className = 'capsula-linea';
+  // Fila 2: reto actual, concepto, fase y repaso (antes "cápsula de misión").
+  const fila2 = document.createElement('div');
+  fila2.className = 'capsula-linea';
   const reto = document.createElement('strong');
   reto.textContent = esDecisivo
     ? '⚡ ¡Penalti! Jugada decisiva'
@@ -211,19 +214,19 @@ function crearCapsulaMision(puzzle, sesion, esDecisivo, esRepaso) {
   const cpt = document.createElement('span');
   cpt.className = 'capsula-concepto';
   cpt.textContent = `⚽ ${concepto}`;
-  linea.appendChild(reto);
-  linea.appendChild(cpt);
+  fila2.appendChild(reto);
+  fila2.appendChild(cpt);
   if (esRepaso && !esDecisivo) {
     const repaso = document.createElement('span');
     repaso.className = 'capsula-repaso';
     repaso.textContent = '🔁 Repaso';
-    linea.appendChild(repaso);
+    fila2.appendChild(repaso);
   }
   const fase = document.createElement('span');
   fase.className = 'capsula-fase';
   fase.textContent = `Fase ${puzzle.fase_cpa}`;
-  linea.appendChild(fase);
-  capsula.appendChild(linea);
+  fila2.appendChild(fase);
+  panel.appendChild(fila2);
 
   const barra = document.createElement('div');
   barra.className = 'mini-progreso';
@@ -234,8 +237,9 @@ function crearCapsulaMision(puzzle, sesion, esDecisivo, esRepaso) {
     else if (i === sesion.hechos) seg.classList.add('segmento-actual');
     barra.appendChild(seg);
   }
-  capsula.appendChild(barra);
-  return capsula;
+  panel.appendChild(barra);
+
+  return panel;
 }
 
 // Tarjeta del entrenador Capi: retrato grande, bocadillo y botón para escuchar el enunciado.

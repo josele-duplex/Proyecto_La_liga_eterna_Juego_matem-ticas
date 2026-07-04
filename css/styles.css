@@ -1072,16 +1072,17 @@ button:focus-visible {
     url('../assets/img/decoracion/fondo-estadio-reto.webp') center 30% / cover no-repeat;
 }
 
-/* Banner de estadio (P10). */
+/* Fila 1 del panel de misión: identidad del estadio + marcador (P10). FASE V2 (Plan V2): antes
+   era su propia tarjeta separada de la cápsula de abajo; fusionadas en una sola (menos padding y
+   sombra duplicados, un gap menos entre paneles — el ahorro real de espacio que faltaba en móvil).
+   Ahora es solo una fila con un separador fino hacia la fila de abajo. */
 .banner-estadio {
   display: flex;
   align-items: center;
   gap: 0.6rem;
-  background: linear-gradient(180deg, #ffffff, #eef4fb);
-  border: 2px solid rgba(20, 40, 70, 0.08);
-  border-radius: 24px;
-  padding: 0.4rem 0.9rem;
-  box-shadow: var(--sombra-suave);
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.5rem;
+  border-bottom: 1px solid rgba(20, 40, 70, 0.08);
 }
 .banner-estadio .escudo-estadio { width: 2.4rem; height: 2.4rem; margin: 0; }
 .banner-estadio-nombre { font-family: var(--fuente-titulos); font-weight: 600; font-size: 1.05rem; color: var(--color-primario-oscuro); }
@@ -1121,7 +1122,9 @@ button:focus-visible {
   margin: 0;
 }
 
-/* Cápsula de misión con mini barra de progreso (P9). */
+/* Panel de misión (P9): tarjeta única que agrupa la fila del estadio (.banner-estadio, arriba)
+   y la fila de la misión con su mini barra de progreso (FASE V2, Plan V2 — antes eran dos
+   tarjetas). */
 .capsula-mision {
   background: rgba(255, 255, 255, 0.96);
   border: 2px solid rgba(20, 40, 70, 0.08);
@@ -1161,6 +1164,7 @@ button:focus-visible {
   border-color: #f0b429;
 }
 .capsula-decisiva .capsula-linea strong { color: #8a5a12; }
+.capsula-decisiva .banner-estadio { border-bottom-color: rgba(138, 90, 18, 0.25); }
 
 /* Zona de juego: la tarjeta blanca que contiene pregunta, respuestas y feedback (P3, P12). */
 .zona-juego {
@@ -1387,7 +1391,7 @@ button:focus-visible {
      NINGÚN botón baja de 2.75rem (44px) de alto: el mínimo táctil de T3.6 no se toca aquí, solo
      se reduce relleno/tipografía alrededor. */
   .pantalla-reto { gap: 0.5rem; }
-  .banner-estadio { padding: 0.3rem 0.7rem; }
+  .banner-estadio { padding-bottom: 0.35rem; margin-bottom: 0.35rem; }
   .capsula-mision { padding: 0.4rem 0.7rem; }
   .mini-progreso { margin-top: 0.35rem; }
   .zona-juego { padding: 1rem 0.9rem 1rem; }
