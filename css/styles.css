@@ -680,6 +680,76 @@ button:focus-visible {
 }
 
 /* ============================================================
+   8.6. Museo de la Liga (FASE M3, Plan V2): Sala de Leyendas + Enciclopedia del Entrenador.
+   ============================================================ */
+.museo-pestanas { display: flex; gap: 0.5rem; margin-top: var(--espacio); flex-wrap: wrap; }
+.boton-museo-pestana {
+  font-family: inherit;
+  font-weight: 700;
+  font-size: 0.95rem;
+  padding: 0.6rem 1.1rem;
+  min-height: 2.75rem;
+  background: #fff;
+  border: 2px solid rgba(20, 40, 70, 0.14);
+  color: var(--color-texto-suave);
+  border-radius: var(--radio-pildora);
+  cursor: pointer;
+}
+.boton-museo-pestana.activa {
+  background: linear-gradient(180deg, var(--color-primario), var(--color-primario-oscuro));
+  border-color: transparent;
+  color: #fff;
+}
+
+.museo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1rem;
+  margin-top: var(--espacio);
+}
+
+.tarjeta-leyenda, .tarjeta-enciclopedia {
+  background: #fff;
+  border: var(--borde-sutil);
+  border-radius: var(--radio);
+  padding: 1.1rem 1.2rem;
+  box-shadow: var(--sombra-suave);
+}
+
+.leyenda-cabecera { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.5rem; }
+.leyenda-icono-imagen { width: 3rem; height: 3rem; border-radius: 50%; object-fit: cover; }
+.leyenda-icono-emoji { font-size: 2.2rem; line-height: 1; }
+.leyenda-cabecera h3 { margin: 0; font-size: 1.2rem; color: var(--color-primario-oscuro); }
+.leyenda-historia, .leyenda-curiosidad, .leyenda-habilidad { margin: 0 0 0.6rem; line-height: 1.4; color: var(--color-texto); }
+.leyenda-gloria {
+  margin: 0 0 0.6rem;
+  padding: 0.6rem 0.8rem;
+  background: linear-gradient(180deg, #fff8e1, #fff3cc);
+  border-left: 4px solid #f0b429;
+  border-radius: 8px;
+  font-weight: 700;
+  color: #8a5a12;
+}
+
+.tarjeta-leyenda-bloqueada { text-align: center; opacity: 0.85; }
+.leyenda-candado { width: 2.4rem; height: 2.4rem; margin-bottom: 0.4rem; }
+.tarjeta-leyenda-bloqueada h3 { margin: 0 0 0.4rem; color: #6b7280; }
+.leyenda-pista-bloqueo { margin: 0; font-style: italic; color: #6b7280; }
+
+.leyenda-micropregunta {
+  margin-top: 0.7rem;
+  padding: 0.6rem 0.8rem;
+  background: #f3eefc;
+  border-radius: 10px;
+}
+.leyenda-micropregunta p { margin: 0 0 0.5rem; font-weight: 700; color: #6a3fb5; }
+.leyenda-micropregunta-botones { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+
+.enciclopedia-pasos { margin: 0 0 0.6rem; padding-left: 1.3rem; color: var(--color-texto); }
+.enciclopedia-pasos li { margin-bottom: 0.3rem; }
+.enciclopedia-mundo-real { margin: 0 0 0.6rem; color: var(--color-texto-suave); }
+
+/* ============================================================
    9. Tarjetas: calendario, estadios, modos.
    ============================================================ */
 .calendario {

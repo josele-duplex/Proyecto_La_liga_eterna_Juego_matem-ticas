@@ -3,7 +3,7 @@
 // - CACHE_DATOS: todo lo demás (puzles JSON, imágenes) se cachea solo, la primera vez que se pide,
 //   para no tener que mantener a mano una lista de cada fichero de puzle que se vaya añadiendo.
 // Subir VERSION al cambiar el esqueleto fuerza a los dispositivos a descargar la versión nueva.
-const VERSION = 'v28';
+const VERSION = 'v29';
 const CACHE_APP = `liga-eterna-app-${VERSION}`;
 const CACHE_DATOS = `liga-eterna-datos-${VERSION}`;
 
@@ -27,6 +27,7 @@ const ARCHIVOS_APP = [
   'js/pantallas/calendario.js',
   'js/pantallas/reto.js',
   'js/pantallas/victoria.js',
+  'js/pantallas/museo.js',
   'js/main.js',
   'assets/icons/icon-192.png',
   'assets/icons/icon-512.png',

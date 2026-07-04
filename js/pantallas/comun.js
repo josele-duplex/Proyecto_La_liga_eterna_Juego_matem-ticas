@@ -95,6 +95,15 @@ function mostrarBarraPerfil(perfilId, opciones) {
     barra.appendChild(cambiarModo);
   }
 
+  // Museo de la Liga (FASE M3): consultable desde cualquier pantalla salvo durante el reto (donde
+  // distraería a mitad de una pregunta) — mismo criterio que "Cambiar de equipo".
+  if (!(opciones && opciones.ocultarMuseo)) {
+    const museo = document.createElement('button');
+    museo.textContent = '🏛 Museo';
+    museo.addEventListener('click', () => mostrarMuseo(perfilId));
+    barra.appendChild(museo);
+  }
+
   const sonidoBoton = document.createElement('button');
   sonidoBoton.className = 'boton-sonido';
   sonidoBoton.title = 'Activar o desactivar el sonido';

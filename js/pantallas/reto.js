@@ -23,7 +23,7 @@ function iniciarEstadio(perfilId, estadio) {
 async function jugarReto(perfilId, estadio, sesion) {
   UI.aplicarTema('mate');
   limpiarPantalla();
-  mostrarBarraPerfil(perfilId, { mostrarVolver: true, ocultarCambiarEquipo: true });
+  mostrarBarraPerfil(perfilId, { mostrarVolver: true, ocultarCambiarEquipo: true, ocultarMuseo: true });
 
   const modo = modoDe(perfilId) || MODOS[0];
   const indice = indicesPorEdad[modo.edad];
@@ -73,6 +73,10 @@ async function jugarReto(perfilId, estadio, sesion) {
       Evaluacion.registrar(progresoActual, puzzleResuelto, resultado);
       const desbloqueado = revisarDesbloqueo(progresoActual);
       if (desbloqueado) modoRecienDesbloqueado = desbloqueado;
+      // Museo de la Liga (FASE M3): puede desbloquear como mucho 1-2 leyendas de golpe (raro);
+      // solo guardamos la primera para no saturar la pantalla de victoria con una lista larga.
+      const leyendasNuevas = revisarLeyendasNuevas(progresoActual, leyendas);
+      if (leyendasNuevas.length > 0) leyendaRecienDesbloqueada = leyendasNuevas[0];
       otorgarRecompensa(progresoActual, puzzleResuelto.estrategia);
       otorgarInsigniasProceso(progresoActual, puzzleResuelto, resultado);
       // Contrato del Día (FASE M2, U2): si este acierto lo cumple, Capi lo celebra en vez del
@@ -85,7 +89,7 @@ async function jugarReto(perfilId, estadio, sesion) {
         ? fraseCapi('contrato_cumplido', { bono: progresoActual.contratoDia.bonus })
         : fraseAcierto(resultado);
       reaccionarCapi(tarjetaCapi, 'alegria', mensajeCapi);
-      mostrarBarraPerfil(perfilId, { mostrarVolver: true, ocultarCambiarEquipo: true, brilloEnergia: true });
+      mostrarBarraPerfil(perfilId, { mostrarVolver: true, ocultarCambiarEquipo: true, ocultarMuseo: true, brilloEnergia: true });
       // El reto ya está resuelto: los poderes dejan de poder usarse (no tiene sentido gastar
       // energía en una pregunta que ya se acertó, mientras el niño ve la celebración).
       zonaJuego.querySelectorAll('.boton-poder').forEach((b) => { b.disabled = true; });
@@ -170,7 +174,7 @@ function crearZonaPoderes(perfilId, capacidades) {
       }
       progreso.energia -= poder.costo;
       Storage.guardarProgreso(perfilId, progreso);
-      mostrarBarraPerfil(perfilId, { mostrarVolver: true, ocultarCambiarEquipo: true });
+      mostrarBarraPerfil(perfilId, { mostrarVolver: true, ocultarCambiarEquipo: true, ocultarMuseo: true });
       boton.disabled = true;
       boton.classList.add('boton-poder-usado');
     });

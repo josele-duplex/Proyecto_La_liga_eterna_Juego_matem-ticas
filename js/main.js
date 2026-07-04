@@ -8,9 +8,13 @@ let calendario = null;
 let recompensas = null;
 let contratos = null;
 let frasesCapi = null;
+let leyendas = null;
+let enciclopedia = null;
 // Si el jugador acaba de desbloquear un equipo superior por ir sobrado, lo guardamos aquí para
 // sugerírselo al terminar el partido (un buen momento de pausa, no a mitad de un reto).
 let modoRecienDesbloqueado = null;
+// Igual que el anterior, pero para una Leyenda del Orden nueva (FASE M3, Museo).
+let leyendaRecienDesbloqueada = null;
 
 async function arrancar() {
   Sonido.cargarPreferencia();
@@ -22,6 +26,8 @@ async function arrancar() {
   recompensas = await (await fetch('data/recompensas.json')).json();
   contratos = await (await fetch('data/contratos.json')).json();
   frasesCapi = await (await fetch('data/frases-capi.json')).json();
+  leyendas = await (await fetch('data/leyendas.json')).json();
+  enciclopedia = await (await fetch('data/enciclopedia.json')).json();
 
   mostrarPortada(() => {
     // Red de seguridad: si al retomar el último perfil algo falla (p. ej. un progreso guardado

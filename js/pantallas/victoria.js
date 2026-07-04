@@ -136,6 +136,25 @@ function mostrarPartidoGanado(perfilId, estadio, sesion) {
     panel.appendChild(desbloqueo);
   }
 
+  // Si este partido desbloqueó una Leyenda del Orden nueva (FASE M3), se celebra igual que un
+  // equipo nuevo: aviso destacado con acceso directo al Museo para leer su historia completa.
+  if (leyendaRecienDesbloqueada) {
+    const leyenda = leyendaRecienDesbloqueada;
+    leyendaRecienDesbloqueada = null;
+
+    const desbloqueoLeyenda = document.createElement('div');
+    desbloqueoLeyenda.className = 'victoria-desbloqueo';
+    const aviso = document.createElement('p');
+    aviso.textContent = `🏛 ¡Has desbloqueado una Leyenda del Orden: ${leyenda.icono} ${leyenda.nombre}!`;
+    desbloqueoLeyenda.appendChild(aviso);
+    const verMuseo = document.createElement('button');
+    verMuseo.className = 'boton-siguiente';
+    verMuseo.textContent = 'Ver en el Museo';
+    verMuseo.addEventListener('click', () => mostrarMuseo(perfilId));
+    desbloqueoLeyenda.appendChild(verMuseo);
+    panel.appendChild(desbloqueoLeyenda);
+  }
+
   const boton = document.createElement('button');
   boton.className = 'boton-siguiente boton-cta';
   boton.textContent = '🏟 Volver al calendario';

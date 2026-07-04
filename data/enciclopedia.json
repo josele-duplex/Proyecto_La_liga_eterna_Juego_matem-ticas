@@ -1,0 +1,138 @@
+{
+  "nota": "Enciclopedia del Entrenador (FASE M3, U5: absorbe A.6+A.7). Una entrada por cada estrategia que ya existe en recompensas.json. Estructura fija: queEs / ejemploPasos / quienLaUsa (aplicacion en el mundo real) / conceptosRelacionados. Consultable desde el Museo en cualquier momento, no solo tras completar una mision.",
+  "entradas": {
+    "completar_diez": {
+      "vocabulario": "COMPLETAR LA DECENA",
+      "queEs": "Llevar un número hasta la decena más cercana antes de seguir sumando, para que el cálculo sea más fácil.",
+      "ejemploPasos": ["Tienes 7 y quieres sumar 5.", "Primero llevas el 7 hasta 10 (le faltan 3).", "Te quedan 2 de los 5 por sumar: 10 + 2 = 12."],
+      "quienLaUsa": "Los cajeros y cajeras usan este truco al dar el cambio: primero completan hasta el billete redondo más cercano.",
+      "conceptosRelacionados": ["descomposicion", "sumar_veinte"]
+    },
+    "usar_decenas_como_referencia": {
+      "vocabulario": "DECENAS DE REFERENCIA",
+      "queEs": "Usar un número redondo conocido (como el 10 o el 20) como punto de apoyo para encontrar otros números.",
+      "ejemploPasos": ["Buscas el 6 en una recta del 0 al 20.", "Localizas primero el 10, que está en el centro.", "Cuentas hacia atrás desde el 10 hasta llegar al 6."],
+      "quienLaUsa": "Quien planifica un viaje usa las horas en punto como referencia para calcular cuánto falta o cuánto ha pasado.",
+      "conceptosRelacionados": ["recta_numerica", "decenas"]
+    },
+    "reconocer_patron": {
+      "vocabulario": "RECONOCER EL PATRÓN",
+      "queEs": "Ver de un vistazo cómo están organizadas unas cantidades, sin necesidad de contarlas una a una.",
+      "ejemploPasos": ["Ves un grupo de balones en dos filas iguales.", "Reconoces la forma sin contar cada balón.", "Sabes el total porque reconoces el patrón de las filas."],
+      "quienLaUsa": "Los programadores reconocen patrones repetidos en el código para escribirlo de forma más corta y ordenada.",
+      "conceptosRelacionados": ["subitizacion"]
+    },
+    "comparar_cantidades": {
+      "vocabulario": "COMPARAR CANTIDADES",
+      "queEs": "Decidir cuál de dos cantidades es mayor, menor o igual, sin necesidad de operar.",
+      "ejemploPasos": ["Tienes dos números: 8 y 5.", "Los imaginas en la recta numérica.", "El que está más a la derecha es el mayor: 8."],
+      "quienLaUsa": "Un árbitro compara marcadores para saber quién va ganando en cada momento del partido.",
+      "conceptosRelacionados": ["comparar"]
+    },
+    "usar_dobles": {
+      "vocabulario": "DOBLES",
+      "queEs": "Sumar un número consigo mismo (el doble), una de las operaciones que se memorizan más rápido.",
+      "ejemploPasos": ["Quieres saber cuánto es 6 + 6.", "Reconoces que son dos grupos iguales.", "Recuerdas el doble de 6: 12."],
+      "quienLaUsa": "En una tienda, doblar el precio de una unidad es la forma más rápida de calcular el precio de dos iguales.",
+      "conceptosRelacionados": ["dobles"]
+    },
+    "usar_casi_dobles": {
+      "vocabulario": "CASI-DOBLES",
+      "queEs": "Aprovechar un doble conocido para calcular una suma de dos números casi iguales (como 6 y 7).",
+      "ejemploPasos": ["Quieres saber cuánto es 6 + 7.", "Reconoces que 6 y 7 son casi iguales.", "Calculas el doble de 6 (12) y sumas 1 más: 13."],
+      "quienLaUsa": "Al repartir dos raciones casi iguales, es más rápido partir de una ración conocida y ajustar un poco.",
+      "conceptosRelacionados": ["casi_dobles"]
+    },
+    "multiplicar_grupos": {
+      "vocabulario": "MULTIPLICAR POR GRUPOS",
+      "queEs": "Contar el total de varios grupos iguales multiplicando en vez de sumar uno a uno.",
+      "ejemploPasos": ["Tienes 4 cajas con 3 balones cada una.", "En vez de sumar 3+3+3+3, multiplicas 4 x 3.", "El resultado es 12."],
+      "quienLaUsa": "Quien organiza sillas en filas iguales para un evento multiplica filas por columnas para saber el total sin contar una a una.",
+      "conceptosRelacionados": ["multiplicacion"]
+    },
+    "repartir_partes": {
+      "vocabulario": "REPARTO EN PARTES IGUALES",
+      "queEs": "Dividir una cantidad en partes exactamente iguales entre varios.",
+      "ejemploPasos": ["Tienes 12 balones para 4 jugadores.", "Repartes uno a uno, por turnos, hasta acabar.", "Cada jugador recibe 3 balones."],
+      "quienLaUsa": "Repartir una pizza entre amigos a partes iguales es exactamente esta misma idea.",
+      "conceptosRelacionados": ["fracciones"]
+    },
+    "redondear": {
+      "vocabulario": "REDONDEO",
+      "queEs": "Cambiar un número por el número redondo más cercano, para calcular más rápido de forma aproximada.",
+      "ejemploPasos": ["Tienes el número 47.", "Ves que está muy cerca de 50.", "Lo redondeas a 50 para calcular más fácil."],
+      "quienLaUsa": "En el supermercado, redondear los precios ayuda a calcular rápido cuánto vas a pagar en total.",
+      "conceptosRelacionados": ["redondeo"]
+    },
+    "sumar": {
+      "vocabulario": "SUMA",
+      "queEs": "Juntar dos o más cantidades para saber cuántas hay en total.",
+      "ejemploPasos": ["Tienes 3 balones.", "Llegan 4 balones más.", "Los juntas: 3 + 4 = 7."],
+      "quienLaUsa": "Un tendero suma los precios de varios productos para saber el total de la compra.",
+      "conceptosRelacionados": ["sumar_hasta_diez", "sumar_veinte"]
+    },
+    "contar_secuencia": {
+      "vocabulario": "CONTEO EN SECUENCIA",
+      "queEs": "Descubrir la regla que sigue una serie de números para saber cuál viene después.",
+      "ejemploPasos": ["Ves la serie 2, 4, 6.", "Descubres que cada número sube de 2 en 2.", "Sabes que el siguiente es el 8."],
+      "quienLaUsa": "Un calendario sigue una secuencia de números (los días del mes) que se puede predecir sin mirarlo entero.",
+      "conceptosRelacionados": ["secuencia"]
+    },
+    "calcular_rapido": {
+      "vocabulario": "CÁLCULO RÁPIDO",
+      "queEs": "Resolver una cuenta sencilla de memoria, sin necesidad de pensarla paso a paso.",
+      "ejemploPasos": ["Ves la operación 5 + 5.", "La reconoces al instante, sin contar.", "Respondes 10 de memoria."],
+      "quienLaUsa": "Un portero de fútbol calcula de un vistazo, sin pensar, el ángulo para detener un balón.",
+      "conceptosRelacionados": ["relampago"]
+    },
+    "ordenar_numeros": {
+      "vocabulario": "ORDENACIÓN DE NÚMEROS",
+      "queEs": "Colocar varios números de menor a mayor (o al revés), comparándolos entre sí.",
+      "ejemploPasos": ["Tienes los números 5, 2 y 8 desordenados.", "Buscas el más pequeño de todos: el 2.", "Sigues así hasta ordenarlos: 2, 5, 8."],
+      "quienLaUsa": "Un entrenador ordena a los jugadores por dorsal antes de salir al campo, de menor a mayor número.",
+      "conceptosRelacionados": ["alineacion"]
+    },
+    "restar_estrategico": {
+      "vocabulario": "RESTA ESTRATÉGICA",
+      "queEs": "Quitar una cantidad de otra eligiendo el camino más fácil, no solo contando hacia atrás.",
+      "ejemploPasos": ["Tienes 15 y quieres restar 6.", "Bajas primero hasta el 10 (restas 5).", "Restas el 1 que queda: 10 - 1 = 9."],
+      "quienLaUsa": "Al calcular el cambio en una tienda, se suele restar bajando primero hasta la cifra redonda más cercana.",
+      "conceptosRelacionados": ["restar", "restar_veinte"]
+    },
+    "usar_valor_posicional": {
+      "vocabulario": "VALOR POSICIONAL",
+      "queEs": "Entender que cada cifra de un número vale distinto según el lugar que ocupa (decenas, unidades...).",
+      "ejemploPasos": ["Tienes el número 23.", "El 2 vale 2 decenas (20).", "El 3 vale 3 unidades (3): junto, 20 + 3 = 23."],
+      "quienLaUsa": "El dinero funciona con valor posicional: un billete de 10 vale mucho más que una moneda de 1, aunque ambos sean 'un solo objeto'.",
+      "conceptosRelacionados": ["decenas"]
+    },
+    "dividir": {
+      "vocabulario": "DIVISIÓN",
+      "queEs": "Repartir una cantidad en partes iguales para saber cuánto le toca a cada una, o cuántos grupos se pueden hacer.",
+      "ejemploPasos": ["Tienes 20 balones para repartir en grupos de 5.", "Vas formando grupos de 5 en 5.", "Formas 4 grupos: 20 ÷ 5 = 4."],
+      "quienLaUsa": "Repartir el trabajo de un equipo a partes iguales entre sus miembros es una división real.",
+      "conceptosRelacionados": ["division"]
+    },
+    "sumar_llevando": {
+      "vocabulario": "SUMA CON LLEVADAS",
+      "queEs": "Sumar números grandes cuando una columna supera el 10, 'llevando' esa decena a la siguiente columna.",
+      "ejemploPasos": ["Sumas 27 + 15.", "Unidades: 7+5=12, escribes 2 y 'llevas' 1 decena.", "Decenas: 2+1+1(la que llevas)=4: el resultado es 42."],
+      "quienLaUsa": "Sumar cuentas largas a mano (como una factura con varias líneas) usa exactamente este método.",
+      "conceptosRelacionados": ["suma_llevando"]
+    },
+    "restar_llevando": {
+      "vocabulario": "RESTA CON LLEVADAS",
+      "queEs": "Restar números grandes cuando una cifra de arriba es menor que la de abajo, 'pidiendo prestado' a la siguiente columna.",
+      "ejemploPasos": ["Restas 42 - 15.", "Unidades: como 2 es menor que 5, pides prestada 1 decena: 12-5=7.", "Decenas: 3 (ya que prestaste una) - 1 = 2: el resultado es 27."],
+      "quienLaUsa": "Calcular cuánto tiempo queda hasta un evento, cuando los minutos no encajan a la primera, usa esta misma idea.",
+      "conceptosRelacionados": ["resta_llevando"]
+    },
+    "razonar_problema": {
+      "vocabulario": "RAZONAMIENTO LÓGICO",
+      "queEs": "Descomponer un problema con varios datos en pasos pequeños, resolviéndolos uno detrás de otro.",
+      "ejemploPasos": ["El problema tiene dos partes: comprar y luego regalar.", "Primero resuelves la compra (un paso).", "Con ese resultado, resuelves el regalo (el paso final)."],
+      "quienLaUsa": "Planificar una receta de cocina con varios pasos (comprar, preparar, cocinar) exige el mismo tipo de razonamiento por pasos.",
+      "conceptosRelacionados": ["problemas"]
+    }
+  }
+}

@@ -1,0 +1,89 @@
+{
+  "nota": "Museo de la Liga, Sala de Leyendas (FASE M3, U5: funde A.1+A.2+C.4). Cada Leyenda del Orden es un matematico/a real ficcionado con una habilidad jugable asociada a UN concepto ya existente en el juego. Se desbloquea al alcanzar nivel Titular o Crack en ese concepto (Progression.nivelDominioConcepto). 'imagen' es opcional: si no existe, el Museo pinta un placeholder con 'icono' (emoji) + nombre, igual que un estadio sin escudo. 'pregunta' (A.8) es opcional, un toque, sin bloquear nada. DESVIACION SENALADA: Euclides (geometria) y Pascal (probabilidad/combinatoria) no tienen concepto equivalente en el juego actual, asi que se reasignaron a la habilidad jugable mas cercana ya existente (recta_numerica y multiplicacion respectivamente) en vez de crear conceptos nuevos fuera de alcance de esta fase.",
+  "leyendas": [
+    {
+      "id": "gauss",
+      "nombre": "El Arquitecto Gauss",
+      "icono": "🧮",
+      "imagen": null,
+      "concepto": "descomposicion",
+      "miniHistoria": "De pequeño, a Gauss le mandaron sumar todos los números del 1 al 100 para tenerlo ocupado. Encontró un atajo tan rápido que sorprendió a su maestro.",
+      "curiosidad": "En vez de sumar uno a uno, agrupó los números en parejas que sumaban siempre lo mismo. ¡Descomponer un problema en trozos más fáciles es justo lo que tú haces al completar la decena!",
+      "pregunta": "¿Verdad o mentira? Gauss resolvió la suma agrupando los números en parejas.",
+      "respuestaPregunta": true,
+      "habilidad": "Pase Relámpago",
+      "habilidadDescripcion": "Descompón la cuenta en un paso más fácil, como 8+7 = 8+2+5.",
+      "relatoGloria": "¡Has dominado la descomposición como un auténtico arquitecto de números! Gauss estaría orgulloso: encontraste tu propio atajo para llegar más rápido a la respuesta."
+    },
+    {
+      "id": "noether",
+      "nombre": "La Maga Noether",
+      "icono": "🔮",
+      "imagen": null,
+      "concepto": "casi_dobles",
+      "miniHistoria": "Emmy Noether descubrió reglas ocultas que explican por qué ciertas cosas en el universo nunca cambian, aunque todo a su alrededor se mueva.",
+      "curiosidad": "Se le daba especial bien encontrar cuándo dos cosas eran CASI iguales, aunque no lo parecieran a simple vista — igual que tú al usar un doble cercano para calcular más rápido.",
+      "pregunta": "¿Verdad o mentira? Noether estudiaba patrones que se repiten sin cambiar.",
+      "respuestaPregunta": true,
+      "habilidad": "Ojo Simétrico",
+      "habilidadDescripcion": "Detecta cuándo dos números están casi emparejados para usar un doble cercano.",
+      "relatoGloria": "¡Tu ojo para lo casi-simétrico ya es de maga! Noether veía patrones donde otros solo veían números sueltos, igual que tú ahora."
+    },
+    {
+      "id": "euclides",
+      "nombre": "El Míster Euclides",
+      "icono": "📐",
+      "imagen": null,
+      "concepto": "recta_numerica",
+      "miniHistoria": "Euclides escribió uno de los libros más influyentes de la historia solo para explicar cómo se ordenan los puntos, las líneas y los espacios.",
+      "curiosidad": "Su truco favorito era usar un punto de referencia claro (como el centro del campo) para encontrar cualquier otro punto sin perderse — igual que tú usas el 10 en la recta numérica.",
+      "pregunta": "¿Verdad o mentira? Euclides estudiaba cómo se organizan los puntos y espacios.",
+      "respuestaPregunta": true,
+      "habilidad": "Brújula del Campo",
+      "habilidadDescripcion": "Usa un punto de referencia conocido (el 10) para encontrar cualquier otro número en la recta.",
+      "relatoGloria": "¡Ya lees el campo como Euclides leía el espacio! Ubicar cualquier número a partir de una referencia clara es una habilidad de guardián de verdad."
+    },
+    {
+      "id": "fibonacci",
+      "nombre": "El Mago Fibonacci",
+      "icono": "🌀",
+      "imagen": null,
+      "concepto": "secuencia",
+      "miniHistoria": "Fibonacci trajo a Europa una forma de contar que cambió el comercio para siempre, y de paso descubrió una serie de números que aparece una y otra vez en la naturaleza.",
+      "curiosidad": "Sus series de números seguían siempre una regla escondida — encontrar esa regla es exactamente lo que haces cuando adivinas qué número viene después en una serie.",
+      "pregunta": "¿Verdad o mentira? Fibonacci es famoso por una serie de números con un patrón escondido.",
+      "respuestaPregunta": true,
+      "habilidad": "Visión de Series",
+      "habilidadDescripcion": "Descubre la regla escondida de una serie para predecir qué número viene después.",
+      "relatoGloria": "¡Ya predices series como un auténtico mago de los números! Encontrar el patrón escondido es el primer paso hacia el álgebra."
+    },
+    {
+      "id": "hypatia",
+      "nombre": "La Guardiana Hypatia",
+      "icono": "🦉",
+      "imagen": null,
+      "concepto": "problemas",
+      "miniHistoria": "Hypatia enseñaba matemáticas y astronomía en una de las bibliotecas más grandes de la Antigüedad, guiando a sus alumnos paso a paso hasta la solución.",
+      "curiosidad": "Su método era descartar lo que NO podía ser cierto hasta quedarse solo con la respuesta correcta — igual que haces tú al resolver un problema de varios pasos.",
+      "pregunta": "¿Verdad o mentira? Hypatia enseñaba en una gran biblioteca de la Antigüedad.",
+      "respuestaPregunta": true,
+      "habilidad": "Descarte Certero",
+      "habilidadDescripcion": "Resuelve un problema paso a paso, descartando lo que no encaja hasta llegar a la respuesta.",
+      "relatoGloria": "¡Razonas como una auténtica guardiana del saber! Los problemas de varios pasos ya no te asustan: sabes ir descartando hasta llegar a la respuesta."
+    },
+    {
+      "id": "pascal",
+      "nombre": "El Profesor Pascal",
+      "icono": "🎲",
+      "imagen": null,
+      "concepto": "multiplicacion",
+      "miniHistoria": "Pascal inventó una de las primeras máquinas de calcular de la historia para ayudar a su padre con las cuentas, y más tarde estudió cómo contar todas las posibilidades de un juego.",
+      "curiosidad": "Le encantaba construir 'árboles' de posibilidades para contar combinaciones — la misma idea que usas al multiplicar grupos iguales para saber cuántos hay en total.",
+      "pregunta": "¿Verdad o mentira? Pascal construyó una de las primeras máquinas de calcular.",
+      "respuestaPregunta": true,
+      "habilidad": "Árbol de Jugadas",
+      "habilidadDescripcion": "Cuenta combinaciones multiplicando grupos iguales, como ramas de un mismo árbol.",
+      "relatoGloria": "¡Ya multiplicas como un auténtico profesor de posibilidades! Contar grupos iguales es la puerta de entrada a la combinatoria."
+    }
+  ]
+}

@@ -37,6 +37,25 @@ function revisarDesbloqueo(progreso) {
   return superior;
 }
 
+// Museo de la Liga (FASE M3, U5): revisa si alguna Leyenda del Orden nueva se desbloquea con el
+// dominio actual (nivel Titular o Crack en su concepto asociado — Progression.nivelDominioConcepto
+// no necesita saber de qué banco/edad es el concepto, lee directamente progreso.dominio). Modifica
+// progreso.museo.leyendasDesbloqueadas y devuelve las leyendas NUEVAS de esta pasada (normalmente
+// ninguna o una sola), para poder celebrarlas en la pantalla de victoria.
+function revisarLeyendasNuevas(progreso, datosLeyendas) {
+  progreso.museo = progreso.museo || { leyendasDesbloqueadas: [], entradasVistas: [] };
+  const nuevas = [];
+  datosLeyendas.leyendas.forEach((leyenda) => {
+    if (progreso.museo.leyendasDesbloqueadas.includes(leyenda.id)) return;
+    const nivel = Progression.nivelDominioConcepto(progreso, leyenda.concepto);
+    if (nivel === 'titular' || nivel === 'crack') {
+      progreso.museo.leyendasDesbloqueadas.push(leyenda.id);
+      nuevas.push(leyenda);
+    }
+  });
+  return nuevas;
+}
+
 // Da energía y, según la estrategia usada, una insignia distinta. Modifica el progreso recibido.
 function otorgarRecompensa(progreso, estrategia) {
   progreso.energia = (progreso.energia || 0) + recompensas.energiaPorPuzle;
