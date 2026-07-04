@@ -21,6 +21,12 @@ const Progression = {
   // sale de la cola sola (siguiente() ya la quita al servirlo).
   RETOS_PARA_REPASO: 3,
 
+  // Repaso de mantenimiento (FASE M4, U4/D.1): cuando un concepto llega a Crack se programa una
+  // revisión a estos intervalos crecientes (en DÍAS naturales, no en retos como el refuerzo de
+  // arriba). Si sale limpia, el siguiente intervalo es el próximo de esta lista (se queda en el
+  // último, 30, indefinidamente); si sale costosa, el nivel baja a Titular.
+  INTERVALOS_MANTENIMIENTO: [3, 10, 30],
+
   // Niveles de Dominio (FASE M1, U1): escala única 🥉🥈🥇 por concepto, para no tener dos
   // taxonomías paralelas (una del calendario, otra de los cromos). Se calcula siempre a partir de
   // dominio[concepto], nunca se guarda como campo aparte, así no puede desincronizarse.
@@ -43,10 +49,12 @@ const Progression = {
   },
 
   // Actualiza el progreso tras resolver un puzle: sube/baja la fase CPA de ese concepto y rota al
-  // siguiente concepto. `fueRepaso` indica si el puzle venía de la cola de repaso (TG.5); en ese
-  // caso NO se mueve el puntero de rotación, para que el repaso no desordene la vuelta normal.
-  // Modifica y devuelve el progreso.
-  actualizar(progreso, indice, conceptoJugado, faseJugada, resultado, fueRepaso) {
+  // siguiente concepto. `fueRepaso` indica si el puzle venía de la cola de repaso (cualquier tipo);
+  // en ese caso NO se mueve el puntero de rotación, para que el repaso no desordene la vuelta
+  // normal. `tipoRepaso` ('refuerzo' | 'mantenimiento' | undefined, FASE M4) distingue de cuál de
+  // las dos colas venía, para aplicar la lógica de intervalos de mantenimiento. Modifica y
+  // devuelve el progreso.
+  actualizar(progreso, indice, conceptoJugado, faseJugada, resultado, fueRepaso, tipoRepaso) {
     progreso.dominio = progreso.dominio || {};
     if (!progreso.dominio[conceptoJugado]) {
       progreso.dominio[conceptoJugado] = { fase: faseJugada };
@@ -69,9 +77,14 @@ const Progression = {
     // Niveles de Dominio (FASE M1, U1): cuenta cuántas veces se ha resuelto LIMPIO (sin fallos ni
     // pistas) en la fase más alta del concepto. No se resetea al bajar de fase circunstancialmente
     // (eso ya lo refleja "fase"): este contador mide "lo bien dominado que está en general".
+    // Se guarda si ESTE acierto es justo el que cruza el umbral de Crack, para programar la
+    // primera revisión de mantenimiento (FASE M4) más abajo.
+    let justoAhoraCrack = false;
     if (this.esDominio(resultado) && faseJugada === faseMax) {
-      progreso.dominio[conceptoJugado].aciertosLimpiosFaseMax =
-        (progreso.dominio[conceptoJugado].aciertosLimpiosFaseMax || 0) + 1;
+      const anterior = progreso.dominio[conceptoJugado].aciertosLimpiosFaseMax || 0;
+      const nuevoValor = anterior + 1;
+      progreso.dominio[conceptoJugado].aciertosLimpiosFaseMax = nuevoValor;
+      justoAhoraCrack = anterior < this.UMBRAL_CRACK && nuevoValor >= this.UMBRAL_CRACK;
     }
 
     // Rotación de conceptos (interleaving): tras CADA reto normal se avanza al siguiente concepto
@@ -86,50 +99,117 @@ const Progression = {
       progreso.conceptoActual = conceptos[0];
     }
 
-    // Cola de repaso (TG.5). CLAVE: quitar/añadir conceptos de la cola se hace AQUÍ y no en
-    // siguiente(), porque el objeto que se guarda en disco es este. La app recarga el progreso
-    // entre siguiente() y actualizar(), así que cualquier cambio que hiciera siguiente() a la cola
-    // se perdería — y un repaso ya servido nunca se eliminaba: se repetía sin fin (era el bug del
-    // bucle que reportó el usuario: "¿Cuál es la mitad de 8?" / "qué número es mayor").
+    // Cola de repaso (TG.5 refuerzo + FASE M4 mantenimiento, U4). CLAVE: quitar/añadir entradas de
+    // la cola se hace AQUÍ y no en siguiente(), porque el objeto que se guarda en disco es este. La
+    // app recarga el progreso entre siguiente() y actualizar(), así que cualquier cambio que
+    // hiciera siguiente() a la cola se perdería — y un repaso ya servido nunca se eliminaba: se
+    // repetía sin fin (era el bug del bucle que reportó el usuario).
     progreso.colaRepaso = progreso.colaRepaso || [];
-    // 1) Si este reto venía de la cola de repaso, ya está servido: quítalo de la cola.
+    let entradaMantenimientoServida = null;
+
+    // 1) Si este reto venía de la cola de repaso, ya está servido: quítalo (del tipo que sea).
     if (fueRepaso) {
-      const i = progreso.colaRepaso.findIndex((item) => item.concepto === conceptoJugado);
-      if (i >= 0) progreso.colaRepaso.splice(i, 1);
+      const i = progreso.colaRepaso.findIndex(
+        (item) => item.concepto === conceptoJugado && (item.tipo || 'refuerzo') === (tipoRepaso || 'refuerzo')
+      );
+      if (i >= 0) entradaMantenimientoServida = progreso.colaRepaso.splice(i, 1)[0];
     }
-    // 2) Acerca el turno de los conceptos que siguen en cola.
-    progreso.colaRepaso = progreso.colaRepaso.map((item) => ({ ...item, enFaltan: item.enFaltan - 1 }));
-    // 3) Si este concepto le ha costado, entra (o vuelve a entrar) con el plazo completo.
-    if (this.leCuesta(resultado)) {
-      const existente = progreso.colaRepaso.find((item) => item.concepto === conceptoJugado);
+
+    // 2) Acerca el turno de los refuerzos que siguen en cola (el mantenimiento cuenta por fecha,
+    // no por retos, así que no se toca aquí).
+    progreso.colaRepaso = progreso.colaRepaso.map((item) =>
+      item.tipo === 'mantenimiento' ? item : { ...item, enFaltan: item.enFaltan - 1 }
+    );
+
+    // 3) Refuerzo (TG.5): si este concepto ha costado, entra (o vuelve a entrar) con el plazo
+    // completo. No aplica si el reto que acaba de resolverse era ya una revisión de mantenimiento
+    // (ese caso lo gestiona el bloque 4 de abajo, con su propia consecuencia).
+    if (this.leCuesta(resultado) && tipoRepaso !== 'mantenimiento') {
+      const existente = progreso.colaRepaso.find((item) => item.concepto === conceptoJugado && (item.tipo || 'refuerzo') === 'refuerzo');
       if (existente) existente.enFaltan = this.RETOS_PARA_REPASO;
-      else progreso.colaRepaso.push({ concepto: conceptoJugado, enFaltan: this.RETOS_PARA_REPASO });
+      else progreso.colaRepaso.push({ concepto: conceptoJugado, enFaltan: this.RETOS_PARA_REPASO, tipo: 'refuerzo' });
+    }
+
+    // 4) Mantenimiento (FASE M4, U4/D.1). Dos entradas posibles:
+    //    a) Este reto ERA una revisión de mantenimiento: si salió limpia, se reprograma al
+    //       siguiente intervalo (3→10→30, se queda en 30); si costó, el nivel baja a Titular
+    //       (nunca se dice "has olvidado", solo "necesita entrenar de nuevo" — eso lo muestra
+    //       quien llama, comparando el nivel antes/después).
+    //    b) El concepto acaba de cruzar el umbral de Crack en ESTE acierto: se programa su
+    //       primera revisión, salvo que ya hubiera una pendiente (no debería, pero por si acaso).
+    if (tipoRepaso === 'mantenimiento') {
+      if (this.esDominio(resultado)) {
+        const intervaloAnterior = entradaMantenimientoServida ? entradaMantenimientoServida.intervaloDias : this.INTERVALOS_MANTENIMIENTO[0];
+        const siguienteIntervalo = this.avanzarIntervalo(intervaloAnterior);
+        progreso.colaRepaso.push({
+          concepto: conceptoJugado,
+          tipo: 'mantenimiento',
+          intervaloDias: siguienteIntervalo,
+          fechaRevision: this.fechaMasDias(siguienteIntervalo)
+        });
+      } else if (this.leCuesta(resultado)) {
+        progreso.dominio[conceptoJugado].aciertosLimpiosFaseMax = this.UMBRAL_TITULAR;
+      }
+    } else if (justoAhoraCrack) {
+      const yaProgramado = progreso.colaRepaso.some((item) => item.tipo === 'mantenimiento' && item.concepto === conceptoJugado);
+      if (!yaProgramado) {
+        progreso.colaRepaso.push({
+          concepto: conceptoJugado,
+          tipo: 'mantenimiento',
+          intervaloDias: this.INTERVALOS_MANTENIMIENTO[0],
+          fechaRevision: this.fechaMasDias(this.INTERVALOS_MANTENIMIENTO[0])
+        });
+      }
     }
 
     return progreso;
   },
 
+  // Siguiente intervalo de mantenimiento tras una revisión limpia: el próximo de la lista, o se
+  // queda en el último (30) si ya estaba en él o el valor no se reconoce.
+  avanzarIntervalo(intervaloActual) {
+    const i = this.INTERVALOS_MANTENIMIENTO.indexOf(intervaloActual);
+    if (i === -1 || i === this.INTERVALOS_MANTENIMIENTO.length - 1) {
+      return this.INTERVALOS_MANTENIMIENTO[this.INTERVALOS_MANTENIMIENTO.length - 1];
+    }
+    return this.INTERVALOS_MANTENIMIENTO[i + 1];
+  },
+
+  // Fecha (YYYY-MM-DD) dentro de `dias` días naturales desde hoy.
+  fechaMasDias(dias) {
+    const fecha = new Date();
+    fecha.setDate(fecha.getDate() + dias);
+    return fecha.toISOString().slice(0, 10);
+  },
+
   // Elige el siguiente puzle: del concepto actual, el de fase más cercana a la fase objetivo
   // del jugador. Si hay varios igual de adecuados (misma fase), elige al azar y evita repetir
   // el último, para dar variedad. Devuelve la entrada del índice { id, concepto, fase_cpa, ruta,
-  // esRepaso } — esRepaso es true cuando este reto viene de la cola de repaso (TG.5), para que
-  // la interfaz pueda avisar ("Capi te trae un repaso de…") en vez del mensaje normal.
+  // esRepaso, tipoRepaso } — esRepaso es true cuando este reto viene de la cola de repaso (TG.5
+  // refuerzo o FASE M4 mantenimiento), para que la interfaz pueda avisar ("Capi te trae un
+  // repaso de…") en vez del mensaje normal. Entre los dos tipos, el REFUERZO tiene prioridad
+  // (U4 lo pide explícitamente): si ambos están listos a la vez, se sirve antes el refuerzo.
   siguiente(progreso, indice) {
     const conceptos = this.conceptos(indice);
 
     progreso.colaRepaso = progreso.colaRepaso || [];
-    const repasoListo = progreso.colaRepaso.find(
-      (item) => item.enFaltan <= 0 && conceptos.includes(item.concepto)
-    );
+    const hoy = new Date().toISOString().slice(0, 10);
+    const listos = progreso.colaRepaso.filter((item) => {
+      if (!conceptos.includes(item.concepto)) return false;
+      return item.tipo === 'mantenimiento' ? item.fechaRevision <= hoy : item.enFaltan <= 0;
+    });
+    const repasoListo = listos.find((item) => item.tipo !== 'mantenimiento') || listos[0];
 
     // siguiente() NO toca la cola: solo elige. Quien la modifica y guarda es actualizar() (ver
     // arriba). Esto evita el bug del bucle: el item servido se elimina en el progreso que SÍ se
     // persiste, no en este (que se descarta).
     let concepto;
     let esRepaso = false;
+    let tipoRepaso = null;
     if (repasoListo) {
       concepto = repasoListo.concepto;
       esRepaso = true;
+      tipoRepaso = repasoListo.tipo || 'refuerzo';
     } else {
       concepto = (progreso.conceptoActual && conceptos.includes(progreso.conceptoActual))
         ? progreso.conceptoActual
@@ -152,7 +232,7 @@ const Progression = {
     }
 
     const elegido = mejores[Math.floor(Math.random() * mejores.length)];
-    return esRepaso ? { ...elegido, esRepaso: true } : elegido;
+    return esRepaso ? { ...elegido, esRepaso: true, tipoRepaso } : elegido;
   },
 
   // La fase más alta disponible para un concepto (según el índice), o null si el concepto no

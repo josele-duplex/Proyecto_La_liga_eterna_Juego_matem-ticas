@@ -69,7 +69,14 @@ async function jugarReto(perfilId, estadio, sesion) {
     (puzzleResuelto, resultado) => {
       const progresoActual = Storage.cargarProgreso(perfilId);
       progresoActual.ultimoPuzleId = puzzleResuelto.id;
-      Progression.actualizar(progresoActual, indice, puzzleResuelto.concepto, puzzleResuelto.fase_cpa, resultado, entrada.esRepaso);
+      // FASE M4 (U4/D.1): si esta jugada era una revisión de mantenimiento que salió costosa, el
+      // nivel del concepto baja de Crack a Titular dentro de actualizar() — lo detectamos
+      // comparando el nivel antes/después para poder avisarlo con el copy literal correcto,
+      // nunca "has olvidado".
+      const nivelAntes = Progression.nivelDominioConcepto(progresoActual, puzzleResuelto.concepto);
+      Progression.actualizar(progresoActual, indice, puzzleResuelto.concepto, puzzleResuelto.fase_cpa, resultado, entrada.esRepaso, entrada.tipoRepaso);
+      const cromoNecesitaEntrenar = nivelAntes === 'crack'
+        && Progression.nivelDominioConcepto(progresoActual, puzzleResuelto.concepto) !== 'crack';
       Evaluacion.registrar(progresoActual, puzzleResuelto, resultado);
       const desbloqueado = revisarDesbloqueo(progresoActual);
       if (desbloqueado) modoRecienDesbloqueado = desbloqueado;
@@ -85,9 +92,14 @@ async function jugarReto(perfilId, estadio, sesion) {
       Storage.guardarProgreso(perfilId, progresoActual);
       Sonido.sonidoAcierto();
       celebrarAcierto(zonaJuego, recompensas.energiaPorPuzle, vocabularioDe(puzzleResuelto.estrategia));
+      // El copy de "necesita entrenar de nuevo" es LITERAL (regla del plan, sección 8): no se
+      // parafrasea ni se pasa por el banco de variantes de fraseCapi.
+      const nombreConceptoNecesitaEntrenar = NOMBRES_CONCEPTO[puzzleResuelto.concepto] || puzzleResuelto.concepto;
       const mensajeCapi = contratoCumplidoAhora
         ? fraseCapi('contrato_cumplido', { bono: progresoActual.contratoDia.bonus })
-        : fraseAcierto(resultado);
+        : cromoNecesitaEntrenar
+          ? `Este cromo de ${nombreConceptoNecesitaEntrenar} necesita entrenar de nuevo. ¡Vamos a por ello!`
+          : fraseAcierto(resultado);
       reaccionarCapi(tarjetaCapi, 'alegria', mensajeCapi);
       mostrarBarraPerfil(perfilId, { mostrarVolver: true, ocultarCambiarEquipo: true, ocultarMuseo: true, brilloEnergia: true });
       // El reto ya está resuelto: los poderes dejan de poder usarse (no tiene sentido gastar
