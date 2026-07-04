@@ -1,0 +1,53 @@
+{
+  "id": "7-restar_veinte-3-002",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "restar_veinte",
+  "fase_cpa": 3,
+  "edad": "7-anios",
+  "estrategia": "restar_estrategico",
+  "enunciado": {
+    "texto": "¿Cuánto es 20 - 8?",
+    "voz": "20 menos 8."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "10"
+      },
+      {
+        "id": "b",
+        "texto": "11"
+      },
+      {
+        "id": "c",
+        "texto": "12"
+      },
+      {
+        "id": "d",
+        "texto": "13"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Parte de 20."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Cuenta hacia atrás 8."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "20 - 8 = 12."
+    }
+  ],
+  "nota": "Banco Aspirantes: restar hasta veinte (abstracta)."
+}

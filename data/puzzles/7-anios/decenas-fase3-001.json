@@ -1,0 +1,53 @@
+{
+  "id": "7-decenas-3-001",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "decenas",
+  "fase_cpa": 3,
+  "edad": "7-anios",
+  "estrategia": "usar_valor_posicional",
+  "enunciado": {
+    "texto": "¿Cuánto es 3 decenas?",
+    "voz": "Tres decenas."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "13"
+      },
+      {
+        "id": "b",
+        "texto": "20"
+      },
+      {
+        "id": "c",
+        "texto": "30"
+      },
+      {
+        "id": "d",
+        "texto": "40"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Una decena son 10."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "3 decenas son 3 veces 10."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "10 + 10 + 10 = 30."
+    }
+  ],
+  "nota": "Banco Aspirantes: decenas completas (abstracta)."
+}

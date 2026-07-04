@@ -1,0 +1,53 @@
+{
+  "id": "7-secuencia-2-004",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "secuencia",
+  "fase_cpa": 2,
+  "edad": "7-anios",
+  "estrategia": "contar_secuencia",
+  "enunciado": {
+    "texto": "Serie: 15, 16, 17, ?  ¿Qué número viene ahora?",
+    "voz": "¿Qué número sigue en la serie?"
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "17"
+      },
+      {
+        "id": "b",
+        "texto": "18"
+      },
+      {
+        "id": "c",
+        "texto": "19"
+      },
+      {
+        "id": "d",
+        "texto": "20"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Mira cómo suben los números."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Cada paso cambia de 1 en 1."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "Después de 17 viene 18."
+    }
+  ],
+  "nota": "Banco Aspirantes: series hasta 20-30."
+}

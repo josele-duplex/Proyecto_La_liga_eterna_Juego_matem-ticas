@@ -1,0 +1,47 @@
+{
+  "id": "7-alineacion-3-005",
+  "version": 1,
+  "tipo": "ordenar",
+  "concepto": "alineacion",
+  "fase_cpa": 3,
+  "edad": "7-anios",
+  "estrategia": "ordenar_numeros",
+  "enunciado": {
+    "texto": "Alineación: toca los números de menor a mayor para colocar al equipo.",
+    "voz": "Ordena del más pequeño al más grande."
+  },
+  "datos": {
+    "numeros": [
+      22,
+      15,
+      30,
+      9
+    ]
+  },
+  "respuesta": {
+    "orden": [
+      9,
+      15,
+      22,
+      30
+    ]
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Empieza por el número más pequeño."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Cada vez busca el menor de los que quedan."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "El más pequeño es 9."
+    }
+  ],
+  "nota": "Banco Aspirantes: ordenar hasta 20-30."
+}

@@ -1,0 +1,62 @@
+{
+  "id": "7-sumar_veinte-2-002",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "sumar_veinte",
+  "fase_cpa": 2,
+  "edad": "7-anios",
+  "estrategia": "sumar",
+  "enunciado": {
+    "texto": "Un grupo de 11 balones y otro de 5. ¿Cuántos son en total?",
+    "voz": "11 más 5."
+  },
+  "datos": {
+    "visual": {
+      "tipo": "grupos",
+      "grupos": [
+        11,
+        5
+      ],
+      "icono": "⚽"
+    }
+  },
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "15"
+      },
+      {
+        "id": "b",
+        "texto": "16"
+      },
+      {
+        "id": "c",
+        "texto": "17"
+      },
+      {
+        "id": "d",
+        "texto": "18"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Mira los dos grupos juntos."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Empieza en 11 y cuenta 5 más."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "11 + 5 = 16."
+    }
+  ],
+  "nota": "Banco Aspirantes: sumar hasta veinte (pictorica)."
+}

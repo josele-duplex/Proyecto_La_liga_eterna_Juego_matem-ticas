@@ -1,0 +1,45 @@
+{
+  "id": "7-comparar-1-002",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "comparar",
+  "fase_cpa": 1,
+  "edad": "7-anios",
+  "estrategia": "comparar_cantidades",
+  "enunciado": {
+    "texto": "Equipo Azul: 🔵🔵🔵🔵  Equipo Rojo: 🔴🔴🔴🔴🔴🔴🔴🔴🔴  ¿Qué equipo tiene menos jugadores?",
+    "voz": "Busca el equipo con menos jugadores."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "Equipo Azul"
+      },
+      {
+        "id": "b",
+        "texto": "Equipo Rojo"
+      }
+    ],
+    "correcta": "a"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Mira los dos grupos: ¿cuál ocupa más sitio?"
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Cuenta cada equipo: Azul 4 y Rojo 9."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "Azul tiene 4 y Rojo 9: el que tiene menos es Azul."
+    }
+  ],
+  "nota": "Banco Aspirantes: comparar (concreta)."
+}

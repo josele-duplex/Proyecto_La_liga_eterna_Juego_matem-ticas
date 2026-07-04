@@ -1,0 +1,53 @@
+{
+  "id": "7-decenas-3-002",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "decenas",
+  "fase_cpa": 3,
+  "edad": "7-anios",
+  "estrategia": "usar_valor_posicional",
+  "enunciado": {
+    "texto": "¿Cuántas decenas hay en 40?",
+    "voz": "Decenas de cuarenta."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "3"
+      },
+      {
+        "id": "b",
+        "texto": "4"
+      },
+      {
+        "id": "c",
+        "texto": "5"
+      },
+      {
+        "id": "d",
+        "texto": "40"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Piensa en cuántos grupos de 10 caben en 40."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "40 = 10+10+10+10."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "Hay 4 decenas."
+    }
+  ],
+  "nota": "Banco Aspirantes: decenas completas (abstracta)."
+}

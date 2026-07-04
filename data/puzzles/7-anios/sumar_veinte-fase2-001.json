@@ -1,0 +1,62 @@
+{
+  "id": "7-sumar_veinte-2-001",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "sumar_veinte",
+  "fase_cpa": 2,
+  "edad": "7-anios",
+  "estrategia": "sumar",
+  "enunciado": {
+    "texto": "Un grupo de 8 balones y otro de 9. ¿Cuántos son en total?",
+    "voz": "8 más 9."
+  },
+  "datos": {
+    "visual": {
+      "tipo": "grupos",
+      "grupos": [
+        8,
+        9
+      ],
+      "icono": "⚽"
+    }
+  },
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "16"
+      },
+      {
+        "id": "b",
+        "texto": "17"
+      },
+      {
+        "id": "c",
+        "texto": "18"
+      },
+      {
+        "id": "d",
+        "texto": "19"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Mira los dos grupos juntos."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Empieza en 8 y cuenta 9 más."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "8 + 9 = 17."
+    }
+  ],
+  "nota": "Banco Aspirantes: sumar hasta veinte (pictorica)."
+}

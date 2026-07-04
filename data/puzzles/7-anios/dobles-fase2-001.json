@@ -1,0 +1,62 @@
+{
+  "id": "7-dobles-2-001",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "dobles",
+  "fase_cpa": 2,
+  "edad": "7-anios",
+  "estrategia": "usar_dobles",
+  "enunciado": {
+    "texto": "Dos grupos iguales de 3. ¿Cuál es el doble de 3?",
+    "voz": "El doble de 3."
+  },
+  "datos": {
+    "visual": {
+      "tipo": "grupos",
+      "grupos": [
+        3,
+        3
+      ],
+      "icono": "⚽"
+    }
+  },
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "4"
+      },
+      {
+        "id": "b",
+        "texto": "5"
+      },
+      {
+        "id": "c",
+        "texto": "6"
+      },
+      {
+        "id": "d",
+        "texto": "7"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Son dos grupos iguales."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "El doble de 3 es 3 + 3."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "3 + 3 = 6."
+    }
+  ],
+  "nota": "Banco Aspirantes: dobles pequeños (pictorica)."
+}

@@ -1,0 +1,62 @@
+{
+  "id": "7-sumar_veinte-1-002",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "sumar_veinte",
+  "fase_cpa": 1,
+  "edad": "7-anios",
+  "estrategia": "sumar",
+  "enunciado": {
+    "texto": "Tienes 10 balones y llegan 7 más. ¿Cuántos hay en total?",
+    "voz": "10 más 7."
+  },
+  "datos": {
+    "visual": {
+      "tipo": "grupos",
+      "grupos": [
+        10,
+        7
+      ],
+      "icono": "⚽"
+    }
+  },
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "16"
+      },
+      {
+        "id": "b",
+        "texto": "17"
+      },
+      {
+        "id": "c",
+        "texto": "18"
+      },
+      {
+        "id": "d",
+        "texto": "19"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Junta los dos grupos: 10 y 7."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Empieza en 10 y cuenta 7 más."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "10 + 7 = 17."
+    }
+  ],
+  "nota": "Banco Aspirantes: sumar hasta veinte (concreta)."
+}

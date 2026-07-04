@@ -1,0 +1,53 @@
+{
+  "id": "7-dobles-1-001",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "dobles",
+  "fase_cpa": 1,
+  "edad": "7-anios",
+  "estrategia": "usar_dobles",
+  "enunciado": {
+    "texto": "Dos equipos con 2 balones cada uno. ¿Cuántos hay en total? (⚽⚽ y ⚽⚽)",
+    "voz": "El doble de 2."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "2"
+      },
+      {
+        "id": "b",
+        "texto": "3"
+      },
+      {
+        "id": "c",
+        "texto": "4"
+      },
+      {
+        "id": "d",
+        "texto": "5"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Son dos grupos iguales de 2."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "El doble de 2 es 2 + 2."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "2 + 2 = 4."
+    }
+  ],
+  "nota": "Banco Aspirantes: dobles pequeños (concreta)."
+}

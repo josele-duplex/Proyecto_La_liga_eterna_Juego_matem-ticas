@@ -1,0 +1,53 @@
+{
+  "id": "7-dobles-3-002",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "dobles",
+  "fase_cpa": 3,
+  "edad": "7-anios",
+  "estrategia": "usar_dobles",
+  "enunciado": {
+    "texto": "¿Cuánto es el doble de 4?",
+    "voz": "El doble de 4."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "6"
+      },
+      {
+        "id": "b",
+        "texto": "7"
+      },
+      {
+        "id": "c",
+        "texto": "8"
+      },
+      {
+        "id": "d",
+        "texto": "9"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "El doble de 4 es 4 + 4."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Súmalo contigo mismo."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "4 + 4 = 8."
+    }
+  ],
+  "nota": "Banco Aspirantes: dobles pequeños (abstracta)."
+}

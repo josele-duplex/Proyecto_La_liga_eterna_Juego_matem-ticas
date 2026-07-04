@@ -1,0 +1,45 @@
+{
+  "id": "7-comparar-3-001",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "comparar",
+  "fase_cpa": 3,
+  "edad": "7-anios",
+  "estrategia": "comparar_cantidades",
+  "enunciado": {
+    "texto": "¿Qué número es mayor: 16 o 12?",
+    "voz": "Decide cuál es mayor."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "12"
+      },
+      {
+        "id": "b",
+        "texto": "16"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Piensa en los dos números sin dibujarlos."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "El mayor está más a la derecha en la recta."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "Entre 16 y 12, el mayor es 16."
+    }
+  ],
+  "nota": "Banco Aspirantes: comparar hasta 20 (abstracta)."
+}

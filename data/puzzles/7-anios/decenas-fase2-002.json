@@ -1,0 +1,64 @@
+{
+  "id": "7-decenas-2-002",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "decenas",
+  "fase_cpa": 2,
+  "edad": "7-anios",
+  "estrategia": "usar_valor_posicional",
+  "enunciado": {
+    "texto": "4 grupos de 10 balones. ¿Cuántos balones hay en total?",
+    "voz": "Cuatro decenas completas."
+  },
+  "datos": {
+    "visual": {
+      "tipo": "grupos",
+      "grupos": [
+        10,
+        10,
+        10,
+        10
+      ],
+      "icono": "⚽"
+    }
+  },
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "30"
+      },
+      {
+        "id": "b",
+        "texto": "39"
+      },
+      {
+        "id": "c",
+        "texto": "40"
+      },
+      {
+        "id": "d",
+        "texto": "41"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Cada grupo es una decena."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "4 decenas son 10+10+10+10."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "Son 40 en total."
+    }
+  ],
+  "nota": "Banco Aspirantes: decenas completas (pictorica)."
+}

@@ -1,0 +1,62 @@
+{
+  "id": "7-decenas-1-002",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "decenas",
+  "fase_cpa": 1,
+  "edad": "7-anios",
+  "estrategia": "usar_valor_posicional",
+  "enunciado": {
+    "texto": "2 cajas llenas de 10 balones cada una. ¿Cuántos balones hay en total?",
+    "voz": "Dos decenas completas."
+  },
+  "datos": {
+    "visual": {
+      "tipo": "grupos",
+      "grupos": [
+        10,
+        10
+      ],
+      "icono": "⚽"
+    }
+  },
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "10"
+      },
+      {
+        "id": "b",
+        "texto": "12"
+      },
+      {
+        "id": "c",
+        "texto": "20"
+      },
+      {
+        "id": "d",
+        "texto": "21"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Cada caja tiene 10: son 2 decenas."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "2 decenas son 10 + 10."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "10 + 10 = 20."
+    }
+  ],
+  "nota": "Banco Aspirantes: decenas completas (concreta)."
+}

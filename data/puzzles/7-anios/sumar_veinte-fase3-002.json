@@ -1,0 +1,53 @@
+{
+  "id": "7-sumar_veinte-3-002",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "sumar_veinte",
+  "fase_cpa": 3,
+  "edad": "7-anios",
+  "estrategia": "sumar",
+  "enunciado": {
+    "texto": "¿Cuánto es 14 + 3?",
+    "voz": "14 más 3."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "16"
+      },
+      {
+        "id": "b",
+        "texto": "17"
+      },
+      {
+        "id": "c",
+        "texto": "18"
+      },
+      {
+        "id": "d",
+        "texto": "19"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Empieza en 14."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Cuenta 3 más desde 14."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "14 + 3 = 17."
+    }
+  ],
+  "nota": "Banco Aspirantes: sumar hasta veinte (abstracta)."
+}

@@ -1,0 +1,53 @@
+{
+  "id": "7-completar_diez-3-003",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "completar_diez",
+  "fase_cpa": 3,
+  "edad": "7-anios",
+  "estrategia": "completar_diez",
+  "enunciado": {
+    "texto": "9 + ? = 10. ¿Qué número falta?",
+    "voz": "9 para llegar a 10."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "0"
+      },
+      {
+        "id": "b",
+        "texto": "1"
+      },
+      {
+        "id": "c",
+        "texto": "2"
+      },
+      {
+        "id": "d",
+        "texto": "3"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Piensa en 9 y en 10."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Cuenta desde ahí hasta 10."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "9 + 1 = 10."
+    }
+  ],
+  "nota": "Banco Aspirantes: completar diez (abstracta)."
+}

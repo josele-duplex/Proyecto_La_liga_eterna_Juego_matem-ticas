@@ -1,0 +1,59 @@
+{
+  "id": "7-completar_diez-2-001",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "completar_diez",
+  "fase_cpa": 2,
+  "edad": "7-anios",
+  "estrategia": "completar_diez",
+  "enunciado": {
+    "texto": "Marco de diez con 3 casillas llenas. ¿Cuántas faltan para completar 10?",
+    "voz": "3 para llegar a 10."
+  },
+  "datos": {
+    "visual": {
+      "tipo": "marco_diez",
+      "llenas": 3,
+      "sueltos": 0
+    }
+  },
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "6"
+      },
+      {
+        "id": "b",
+        "texto": "7"
+      },
+      {
+        "id": "c",
+        "texto": "8"
+      },
+      {
+        "id": "d",
+        "texto": "9"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Cuenta las casillas llenas del marco."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Cuenta los huecos que quedan."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "3 + 7 = 10."
+    }
+  ],
+  "nota": "Banco Aspirantes: completar diez (pictorica)."
+}

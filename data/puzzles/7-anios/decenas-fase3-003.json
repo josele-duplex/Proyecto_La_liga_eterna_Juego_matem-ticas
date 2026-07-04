@@ -1,0 +1,53 @@
+{
+  "id": "7-decenas-3-003",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "decenas",
+  "fase_cpa": 3,
+  "edad": "7-anios",
+  "estrategia": "usar_valor_posicional",
+  "enunciado": {
+    "texto": "2 decenas + 1 decena = ?",
+    "voz": "Dos decenas más una decena."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "10"
+      },
+      {
+        "id": "b",
+        "texto": "20"
+      },
+      {
+        "id": "c",
+        "texto": "21"
+      },
+      {
+        "id": "d",
+        "texto": "30"
+      }
+    ],
+    "correcta": "d"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "2 decenas son 20."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Súmale 1 decena más (10)."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "20 + 10 = 30."
+    }
+  ],
+  "nota": "Banco Aspirantes: decenas completas (abstracta)."
+}

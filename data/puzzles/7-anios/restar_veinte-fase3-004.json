@@ -1,0 +1,53 @@
+{
+  "id": "7-restar_veinte-3-004",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "restar_veinte",
+  "fase_cpa": 3,
+  "edad": "7-anios",
+  "estrategia": "restar_estrategico",
+  "enunciado": {
+    "texto": "¿Cuánto es 13 - 5?",
+    "voz": "13 menos 5."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "6"
+      },
+      {
+        "id": "b",
+        "texto": "7"
+      },
+      {
+        "id": "c",
+        "texto": "8"
+      },
+      {
+        "id": "d",
+        "texto": "9"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Parte de 13."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Cuenta hacia atrás 5."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "13 - 5 = 8."
+    }
+  ],
+  "nota": "Banco Aspirantes: restar hasta veinte (abstracta)."
+}

@@ -1,0 +1,45 @@
+{
+  "id": "7-comparar-3-002",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "comparar",
+  "fase_cpa": 3,
+  "edad": "7-anios",
+  "estrategia": "comparar_cantidades",
+  "enunciado": {
+    "texto": "¿Qué número es menor: 11 o 19?",
+    "voz": "Decide cuál es menor."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "11"
+      },
+      {
+        "id": "b",
+        "texto": "19"
+      }
+    ],
+    "correcta": "a"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Piensa en los dos números sin dibujarlos."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "El menor está más a la izquierda en la recta."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "Entre 11 y 19, el menor es 11."
+    }
+  ],
+  "nota": "Banco Aspirantes: comparar hasta 20 (abstracta)."
+}

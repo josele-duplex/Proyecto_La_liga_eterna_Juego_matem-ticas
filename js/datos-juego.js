@@ -21,6 +21,15 @@ const MODOS = [
     edad: '6-anios'
   },
   {
+    id: 'aspirantes',
+    nombre: 'Aspirantes',
+    icono: '🎯',
+    // Sin 'imagen' a propósito (FASE C1, Plan V2: sin arte nuevo): UI.crearEmblemaModo() usa el
+    // icono como placeholder cuando no hay imagen, igual que hace con estadios sin escudo.
+    descripcion: 'El paso antes de ser estrella: sumas y restas hasta 20, dobles pequeños y decenas completas.',
+    edad: '7-anios'
+  },
+  {
     id: 'estrellas',
     nombre: 'Estrellas',
     icono: '⭐',
@@ -87,5 +96,7 @@ const NOMBRES_CONCEPTO = {
   division: 'división',
   suma_llevando: 'sumas con llevadas',
   resta_llevando: 'restas con llevadas',
-  problemas: 'problemas'
+  problemas: 'problemas',
+  sumar_veinte: 'sumar hasta 20',
+  restar_veinte: 'restar hasta 20'
 };

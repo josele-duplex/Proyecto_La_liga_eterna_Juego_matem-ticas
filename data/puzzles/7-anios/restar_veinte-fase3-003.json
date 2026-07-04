@@ -1,0 +1,53 @@
+{
+  "id": "7-restar_veinte-3-003",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "restar_veinte",
+  "fase_cpa": 3,
+  "edad": "7-anios",
+  "estrategia": "restar_estrategico",
+  "enunciado": {
+    "texto": "¿Cuánto es 18 - 9?",
+    "voz": "18 menos 9."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "7"
+      },
+      {
+        "id": "b",
+        "texto": "8"
+      },
+      {
+        "id": "c",
+        "texto": "9"
+      },
+      {
+        "id": "d",
+        "texto": "10"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Parte de 18."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Cuenta hacia atrás 9."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "18 - 9 = 9."
+    }
+  ],
+  "nota": "Banco Aspirantes: restar hasta veinte (abstracta)."
+}

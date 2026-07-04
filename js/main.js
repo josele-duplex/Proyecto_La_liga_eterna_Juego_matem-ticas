@@ -14,6 +14,7 @@ let modoRecienDesbloqueado = null;
 async function arrancar() {
   Sonido.cargarPreferencia();
   indicesPorEdad['6-anios'] = await (await fetch('data/puzzles/6-anios/indice.json')).json();
+  indicesPorEdad['7-anios'] = await (await fetch('data/puzzles/7-anios/indice.json')).json();
   indicesPorEdad['8-anios'] = await (await fetch('data/puzzles/8-anios/indice.json')).json();
   indicesPorEdad['9-anios'] = await (await fetch('data/puzzles/9-anios/indice.json')).json();
   calendario = await (await fetch('data/estadios.json')).json();

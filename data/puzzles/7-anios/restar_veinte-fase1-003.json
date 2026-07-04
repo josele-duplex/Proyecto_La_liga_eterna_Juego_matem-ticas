@@ -1,0 +1,53 @@
+{
+  "id": "7-restar_veinte-1-003",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "restar_veinte",
+  "fase_cpa": 1,
+  "edad": "7-anios",
+  "estrategia": "restar_estrategico",
+  "enunciado": {
+    "texto": "Tenías 12 balones y se escapan 3. ¿Cuántos te quedan?",
+    "voz": "12 menos 3."
+  },
+  "datos": {},
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "7"
+      },
+      {
+        "id": "b",
+        "texto": "8"
+      },
+      {
+        "id": "c",
+        "texto": "9"
+      },
+      {
+        "id": "d",
+        "texto": "10"
+      }
+    ],
+    "correcta": "c"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Parte de 12 y quita 3."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Cuenta hacia atrás 3 desde 12."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "12 - 3 = 9."
+    }
+  ],
+  "nota": "Banco Aspirantes: restar hasta veinte (concreta)."
+}

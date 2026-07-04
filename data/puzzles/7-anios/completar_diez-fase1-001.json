@@ -1,0 +1,59 @@
+{
+  "id": "7-completar_diez-1-001",
+  "version": 1,
+  "tipo": "opcion_multiple",
+  "concepto": "completar_diez",
+  "fase_cpa": 1,
+  "edad": "7-anios",
+  "estrategia": "completar_diez",
+  "enunciado": {
+    "texto": "Tienes 2 balones en la caja. ¿Cuántas faltan para completar 10?",
+    "voz": "2 para llegar a 10."
+  },
+  "datos": {
+    "visual": {
+      "tipo": "marco_diez",
+      "llenas": 2,
+      "sueltos": 0
+    }
+  },
+  "respuesta": {
+    "opciones": [
+      {
+        "id": "a",
+        "texto": "7"
+      },
+      {
+        "id": "b",
+        "texto": "8"
+      },
+      {
+        "id": "c",
+        "texto": "9"
+      },
+      {
+        "id": "d",
+        "texto": "10"
+      }
+    ],
+    "correcta": "b"
+  },
+  "pistas": [
+    {
+      "nivel": 1,
+      "tipo": "visual",
+      "texto": "Piensa en el marco de diez con 2 llenas."
+    },
+    {
+      "nivel": 2,
+      "tipo": "procedimiento",
+      "texto": "Cuenta los huecos que quedan hasta 10."
+    },
+    {
+      "nivel": 3,
+      "tipo": "guiada",
+      "texto": "2 + 8 = 10."
+    }
+  ],
+  "nota": "Banco Aspirantes: completar diez (concreta)."
+}
