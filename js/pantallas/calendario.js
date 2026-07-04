@@ -107,8 +107,19 @@ function crearFranjaNiveles(progreso, indice) {
       ? `${nombreConcepto}: ${NIVELES_DOMINIO[nivel].nombre}`
       : `${nombreConcepto}: todavía sin empezar`;
 
-    const icono = document.createElement('span');
-    icono.textContent = nivel ? NIVELES_DOMINIO[nivel].icono : '⚪';
+    // Medalla SVG propia para los niveles ya alcanzados (FASE V1, Plan V2): mismo trazo en
+    // cualquier plataforma. Sin nivel (aún sin empezar) se deja el círculo hueco, que no forma
+    // parte del alcance de los 5-6 iconos de interfaz a sustituir.
+    let icono;
+    if (nivel) {
+      icono = document.createElement('img');
+      icono.src = NIVELES_DOMINIO[nivel].imagenSvg;
+      icono.alt = NIVELES_DOMINIO[nivel].nombre;
+      icono.className = 'icono-medalla';
+    } else {
+      icono = document.createElement('span');
+      icono.textContent = '⚪';
+    }
     const nombre = document.createElement('span');
     nombre.textContent = nombreConcepto;
 

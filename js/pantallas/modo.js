@@ -20,8 +20,13 @@ function mostrarSelectorModo(perfilId) {
 
     tarjeta.appendChild(UI.crearEmblemaModo(modo));
 
+    // Candado en SVG propio (FASE V1, Plan V2) en vez de emoji cuando el equipo está bloqueado.
+    // modo.nombre es siempre un dato fijo de datos-juego.js, nunca texto del usuario: innerHTML
+    // aquí es seguro.
     const nombre = document.createElement('h2');
-    nombre.textContent = desbloqueado ? `${modo.icono} ${modo.nombre}` : `🔒 ${modo.nombre}`;
+    nombre.innerHTML = desbloqueado
+      ? `${modo.icono} ${modo.nombre}`
+      : `<img src="assets/icons-svg/candado.svg" alt="Bloqueado" class="icono-svg-inline"> ${modo.nombre}`;
     tarjeta.appendChild(nombre);
 
     const desc = document.createElement('p');

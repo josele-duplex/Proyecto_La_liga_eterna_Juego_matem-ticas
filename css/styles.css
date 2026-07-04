@@ -260,6 +260,14 @@ button:focus-visible {
   color: #c2561a;
 }
 
+/* Icono SVG puesto en línea con texto (energía, racha...): mismo tamaño en cualquier
+   plataforma, a diferencia del emoji equivalente (FASE V1, Plan V2). */
+.icono-svg-inline {
+  width: 1.1em;
+  height: 1.1em;
+  vertical-align: -0.15em;
+}
+
 /* Saludo diario de Capi (TG.3), arriba del calendario, solo la primera vez que se entra cada día. */
 .saludo-capi {
   display: flex;
@@ -647,6 +655,9 @@ button:focus-visible {
 }
 
 .chip-nivel-vacio { opacity: 0.55; }
+
+/* Medalla SVG del nivel de dominio (FASE V1, Plan V2): mismo tamaño que el emoji que sustituye. */
+.icono-medalla { width: 1.2em; height: 1.2em; }
 
 /* Titular: plata discreta. Crack: dorado con brillo suave y animado (mismo lenguaje visual que
    la cabecera de victoria). Se aplican tanto al chip del calendario como al span del cromo en la
@@ -1173,19 +1184,17 @@ button:focus-visible {
 /* Distintivo de "jugada" en la esquina de la tarjeta de la pregunta (P3). Icono de banderín de
    córner, NO de balón: en los puzles de subitización/conteo el enunciado ya dibuja balones para
    contar (p. ej. "⚽⚽⚽⚽ ¿Cuántos hay?"), y un balón decorativo extra flotando justo encima
-   generaba dudas reales de varios niños sobre si también había que contarlo. */
+   generaba dudas reales de varios niños sobre si también había que contarlo.
+   FASE V1 (Plan V2): SVG propio en vez de emoji — el emoji se dibuja distinto en cada
+   plataforma (Apple/Google/Samsung/Windows tienen su propio trazo), un SVG se ve igual en todas. */
 .zona-juego::before {
-  content: "🚩";
+  content: "";
   position: absolute;
   top: -14px;
   left: 18px;
   width: 2.2rem;
   height: 2.2rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.3rem;
-  background: #fff;
+  background: #fff url("../assets/icons-svg/banderin.svg") center/60% no-repeat;
   border: 2px solid rgba(20, 40, 70, 0.08);
   border-radius: 50%;
   box-shadow: var(--sombra-suave);
@@ -1357,6 +1366,12 @@ button:focus-visible {
    y ".capi-retrato" de más abajo lo pisaban siempre, en cualquier móvil: el bug real era que ningún
    teléfono veía jamás estas reducciones. Verificado con getComputedStyle en un viewport de 375px:
    antes .capi-retrato medía 90px pase lo que pase; ahora sí baja a 70px como pretendía el diseño.
+
+   Referencia de rangos (FASE V1, Plan V2 — documentación, no genera CSS nuevo por sí sola):
+     - móvil pequeño:  ≤ 380px  (iPhone SE y similares — el que más se compacta aquí abajo)
+     - móvil:          381–599px
+     - tablet:         600–1024px (plataforma prioritaria del proyecto; sin cambios de este bloque)
+     - escritorio:      > 1024px
    ============================================================ */
 @media (max-width: 480px) {
   .enunciado { font-size: 1.35rem; }

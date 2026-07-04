@@ -3,7 +3,7 @@
 // - CACHE_DATOS: todo lo demás (puzles JSON, imágenes) se cachea solo, la primera vez que se pide,
 //   para no tener que mantener a mano una lista de cada fichero de puzle que se vaya añadiendo.
 // Subir VERSION al cambiar el esqueleto fuerza a los dispositivos a descargar la versión nueva.
-const VERSION = 'v25';
+const VERSION = 'v26';
 const CACHE_APP = `liga-eterna-app-${VERSION}`;
 const CACHE_DATOS = `liga-eterna-datos-${VERSION}`;
 
@@ -42,7 +42,14 @@ const ARCHIVOS_APP = [
   'assets/fonts/nunito-extrabold.woff2',
   'assets/fonts/fredoka-semibold.woff2',
   'assets/fonts/fredoka-bold.woff2',
-  'assets/img/decoracion/portada.webp'
+  'assets/img/decoracion/portada.webp',
+  'assets/icons-svg/banderin.svg',
+  'assets/icons-svg/rayo.svg',
+  'assets/icons-svg/llama.svg',
+  'assets/icons-svg/medalla-aprendiz.svg',
+  'assets/icons-svg/medalla-titular.svg',
+  'assets/icons-svg/medalla-crack.svg',
+  'assets/icons-svg/candado.svg'
 ];
 
 self.addEventListener('install', (evento) => {

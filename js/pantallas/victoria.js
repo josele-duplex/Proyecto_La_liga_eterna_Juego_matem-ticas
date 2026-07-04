@@ -103,12 +103,12 @@ function mostrarPartidoGanado(perfilId, estadio, sesion) {
   const energiaGanada = (sesion ? sesion.hechos : 0) * recompensas.energiaPorPuzle;
   const premioEnergia = document.createElement('span');
   premioEnergia.className = 'premio';
-  premioEnergia.innerHTML = `<strong>⚡ +${energiaGanada}</strong> energía`;
+  premioEnergia.innerHTML = `<strong><img src="assets/icons-svg/rayo.svg" alt="" class="icono-svg-inline"> +${energiaGanada}</strong> energía`;
   premios.appendChild(premioEnergia);
   if (progresoFinal.racha && progresoFinal.racha.dias > 0) {
     const premioRacha = document.createElement('span');
     premioRacha.className = 'premio';
-    premioRacha.innerHTML = `<strong>🔥 ${progresoFinal.racha.dias}</strong> ${progresoFinal.racha.dias === 1 ? 'día' : 'días'} de racha`;
+    premioRacha.innerHTML = `<strong><img src="assets/icons-svg/llama.svg" alt="" class="icono-svg-inline"> ${progresoFinal.racha.dias}</strong> ${progresoFinal.racha.dias === 1 ? 'día' : 'días'} de racha`;
     premios.appendChild(premioRacha);
   }
   panel.appendChild(premios);

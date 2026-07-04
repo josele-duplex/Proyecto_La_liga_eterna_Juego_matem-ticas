@@ -70,9 +70,9 @@ const PODERES = {
 // 🥉🥈🥇. El nivel en sí lo calcula Progression.nivelDominioConcepto/nivelDominioEstrategia;
 // esto es solo cómo se pinta cada uno.
 const NIVELES_DOMINIO = {
-  aprendiz: { icono: '🥉', nombre: 'Aprendiz' },
-  titular: { icono: '🥈', nombre: 'Titular' },
-  crack: { icono: '🥇', nombre: 'Crack' }
+  aprendiz: { icono: '🥉', imagenSvg: 'assets/icons-svg/medalla-aprendiz.svg', nombre: 'Aprendiz' },
+  titular: { icono: '🥈', imagenSvg: 'assets/icons-svg/medalla-titular.svg', nombre: 'Titular' },
+  crack: { icono: '🥇', imagenSvg: 'assets/icons-svg/medalla-crack.svg', nombre: 'Crack' }
 };
 
 // Nombres bonitos para mostrar el concepto en pantalla.

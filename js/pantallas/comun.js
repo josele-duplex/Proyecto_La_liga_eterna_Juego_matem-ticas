@@ -46,10 +46,13 @@ function mostrarBarraPerfil(perfilId, opciones) {
   texto.textContent = `Jugando: ${perfil.nombre}`;
   barra.appendChild(texto);
 
+  // Iconos SVG propios (FASE V1, Plan V2) en vez de emoji: se ven igual en cualquier
+  // plataforma. progreso.energia/racha.dias son siempre números (nunca texto del usuario),
+  // así que construir con innerHTML aquí es seguro.
   const energia = document.createElement('span');
   energia.className = 'barra-energia';
   if (opciones && opciones.brilloEnergia) energia.classList.add('brillo-energia');
-  energia.textContent = `⚡ ${progreso.energia || 0}`;
+  energia.innerHTML = `<img src="assets/icons-svg/rayo.svg" alt="" class="icono-svg-inline"> ${progreso.energia || 0}`;
   barra.appendChild(energia);
 
   // Racha de días jugados (TG.3): solo se muestra si ya hay al menos un día contado.
@@ -57,7 +60,7 @@ function mostrarBarraPerfil(perfilId, opciones) {
     const racha = document.createElement('span');
     racha.className = 'barra-racha';
     racha.title = `${progreso.racha.dias} ${progreso.racha.dias === 1 ? 'día seguido' : 'días seguidos'} jugando`;
-    racha.textContent = `🔥 ${progreso.racha.dias}`;
+    racha.innerHTML = `<img src="assets/icons-svg/llama.svg" alt="" class="icono-svg-inline"> ${progreso.racha.dias}`;
     barra.appendChild(racha);
   }
 
