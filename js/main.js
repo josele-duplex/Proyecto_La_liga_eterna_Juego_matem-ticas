@@ -7,6 +7,7 @@ let indicesPorEdad = {};
 let calendario = null;
 let recompensas = null;
 let contratos = null;
+let frasesCapi = null;
 // Si el jugador acaba de desbloquear un equipo superior por ir sobrado, lo guardamos aquí para
 // sugerírselo al terminar el partido (un buen momento de pausa, no a mitad de un reto).
 let modoRecienDesbloqueado = null;
@@ -20,6 +21,7 @@ async function arrancar() {
   calendario = await (await fetch('data/estadios.json')).json();
   recompensas = await (await fetch('data/recompensas.json')).json();
   contratos = await (await fetch('data/contratos.json')).json();
+  frasesCapi = await (await fetch('data/frases-capi.json')).json();
 
   mostrarPortada(() => {
     // Red de seguridad: si al retomar el último perfil algo falla (p. ej. un progreso guardado

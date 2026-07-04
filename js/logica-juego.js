@@ -137,15 +137,31 @@ function avanzarContratoDelDia(progreso, puzzle) {
   return false;
 }
 
+// Banco de frases de Capi (FASE G1, Plan V2): elige una variante al azar de frasesCapi.json para
+// la situación dada, y rellena los {marcadores} que traiga (nombre, días, rival, bono...). Así
+// Capi no repite literalmente lo mismo cada vez — la repetición mata la inmersión más rápido que
+// casi cualquier otra cosa en una sesión diaria.
+function fraseCapi(clave, reemplazos) {
+  const variantes = frasesCapi[clave];
+  if (!variantes || variantes.length === 0) return '';
+  let frase = variantes[Math.floor(Math.random() * variantes.length)];
+  if (reemplazos) {
+    Object.keys(reemplazos).forEach((k) => {
+      frase = frase.replace(`{${k}}`, reemplazos[k]);
+    });
+  }
+  return frase;
+}
+
 // Frase de Capi al acertar, según CÓMO se ha llegado al acierto (elogio al esfuerzo/estrategia,
 // no a "ser listo" — mentalidad de crecimiento): directo y sin ayuda, remontada tras fallar, o
 // pista bien aprovechada. Las tres son válidas; ninguna es mejor persona, solo distinto camino.
 function fraseAcierto(resultado) {
   if (resultado.intentosFallidos === 0 && resultado.pistasUsadas === 0) {
-    return '¡Directo y sin pistas! Esa es la jugada de un crack.';
+    return fraseCapi('acierto_limpio');
   }
   if (resultado.intentosFallidos >= 1) {
-    return '¡Buena remontada! No te has rendido y lo has conseguido.';
+    return fraseCapi('remontada');
   }
-  return '¡Bien pensado pedir ayuda en el momento justo!';
+  return fraseCapi('ayuda');
 }

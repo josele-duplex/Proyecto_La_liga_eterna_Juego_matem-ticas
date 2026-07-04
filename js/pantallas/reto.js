@@ -1,7 +1,22 @@
 // Pantalla 4: jugar la serie de retos de un estadio.
 function iniciarEstadio(perfilId, estadio) {
   const rival = RIVALES[Math.floor(Math.random() * RIVALES.length)];
-  const sesion = { hechos: 0, total: estadio.retos, golesRival: 0, rival };
+
+  // Micro-historia del rival (FASE N1, Plan V2): Capi la cuenta solo la PRIMERA vez que este
+  // "Fuera de Juego" concreto aparece para este jugador. progreso.rivalesConocidos se guarda ya
+  // aquí (antes de jugar ningún reto) para que no se repita en partidos futuros con el mismo rival.
+  const progreso = Storage.cargarProgreso(perfilId);
+  progreso.rivalesConocidos = progreso.rivalesConocidos || [];
+  const esRivalNuevo = !progreso.rivalesConocidos.includes(rival.id);
+  if (esRivalNuevo) {
+    progreso.rivalesConocidos.push(rival.id);
+    Storage.guardarProgreso(perfilId, progreso);
+  }
+
+  const sesion = {
+    hechos: 0, total: estadio.retos, golesRival: 0, rival,
+    presentacionRival: esRivalNuevo ? rival.presentacion : null
+  };
   jugarReto(perfilId, estadio, sesion);
 }
 
@@ -36,6 +51,12 @@ async function jugarReto(perfilId, estadio, sesion) {
   app.appendChild(zonaJuego);
 
   const tarjetaCapi = crearTarjetaCapi(puzzle, esDecisivo, entrada.esRepaso);
+  // Micro-historia del rival (FASE N1): solo en el primer reto del partido y solo si es la
+  // primera vez que aparece este rival — sustituye al mensaje de inicio normal, una vez.
+  if (sesion.hechos === 0 && sesion.presentacionRival) {
+    const bocadilloInicial = tarjetaCapi.querySelector('#capi-bocadillo');
+    if (bocadilloInicial) bocadilloInicial.textContent = sesion.presentacionRival;
+  }
   app.appendChild(tarjetaCapi);
 
   // El rival solo "marca" una vez por reto (el primer fallo), aunque el niño falle varias veces
@@ -61,13 +82,21 @@ async function jugarReto(perfilId, estadio, sesion) {
       Sonido.sonidoAcierto();
       celebrarAcierto(zonaJuego, recompensas.energiaPorPuzle, vocabularioDe(puzzleResuelto.estrategia));
       const mensajeCapi = contratoCumplidoAhora
-        ? `¡Contrato cumplido! Aquí tienes tu bono de +${progresoActual.contratoDia.bonus}⚡.`
+        ? fraseCapi('contrato_cumplido', { bono: progresoActual.contratoDia.bonus })
         : fraseAcierto(resultado);
       reaccionarCapi(tarjetaCapi, 'alegria', mensajeCapi);
       mostrarBarraPerfil(perfilId, { mostrarVolver: true, ocultarCambiarEquipo: true, brilloEnergia: true });
       // El reto ya está resuelto: los poderes dejan de poder usarse (no tiene sentido gastar
       // energía en una pregunta que ya se acertó, mientras el niño ve la celebración).
       zonaJuego.querySelectorAll('.boton-poder').forEach((b) => { b.disabled = true; });
+
+      // Reflexión metamatemática ligera (FASE R1, Plan V2): mismo criterio que la insignia
+      // "Estratega" (limpio y en fase abstracta) — deliberadamente poco frecuente, para no saturar.
+      const resolucionExcepcional = resultado.intentosFallidos === 0 && resultado.pistasUsadas === 0
+        && puzzleResuelto.fase_cpa === 3;
+      if (resolucionExcepcional) {
+        mostrarReflexionLigera(zonaJuego, perfilId);
+      }
 
       sesion.hechos++;
       if (sesion.hechos >= sesion.total) {
@@ -81,14 +110,14 @@ async function jugarReto(perfilId, estadio, sesion) {
       // el marcador refleja la presión del rival (TG.1), pero solo cuenta el primer fallo del reto.
       // El rival "Fueras de Juego" (TG.6) da sentido narrativo al fallo: no "te equivocaste",
       // sino "te ha robado el balón" — el dato es el mismo, el envoltorio emocional es mejor.
-      let fraseFallo = 'Casi. Piensa otra vez… ¿quieres una pista?';
+      let fraseFallo = fraseCapi('fallo');
       if (!falloContado) {
         falloContado = true;
         sesion.golesRival++;
         const marcador = panelMision.querySelector('.marcador-partido');
         if (marcador) marcador.textContent = `${sesion.hechos} - ${sesion.golesRival}`;
         if (sesion.rival) {
-          fraseFallo = `¡${sesion.rival.nombre} te ha robado el balón! Recupéralo: piensa otra vez.`;
+          fraseFallo = fraseCapi('fallo_con_rival', { rival: sesion.rival.nombre });
           const rivalImg = panelMision.querySelector('#rival-mini-actual');
           if (rivalImg) {
             rivalImg.classList.remove('rival-ataca');
@@ -105,7 +134,7 @@ async function jugarReto(perfilId, estadio, sesion) {
     },
     () => {
       // Al pedir la primera pista, Capi da ánimos en vez de quedarse en la duda.
-      reaccionarCapi(tarjetaCapi, 'animo', '¡Tú puedes! Aquí va una ayuda.');
+      reaccionarCapi(tarjetaCapi, 'animo', fraseCapi('animo'));
     }
   );
 
@@ -263,11 +292,11 @@ function crearTarjetaCapi(puzzle, esDecisivo, esRepaso) {
   bocadillo.id = 'capi-bocadillo';
   bocadillo.className = 'bocadillo-capi';
   if (esDecisivo) {
-    bocadillo.textContent = '¡Este es el momento, campeón! Concéntrate, sé que puedes.';
+    bocadillo.textContent = fraseCapi('inicio_decisivo');
   } else if (esRepaso) {
-    bocadillo.textContent = 'Te traigo un repaso de algo que se nos resistió. ¡Vamos a dominarlo!';
+    bocadillo.textContent = fraseCapi('inicio_repaso');
   } else {
-    bocadillo.textContent = '¡Vamos, campeón! Escucha mi consejo.';
+    bocadillo.textContent = fraseCapi('inicio_normal');
   }
   cuerpo.appendChild(bocadillo);
 
@@ -311,6 +340,48 @@ function celebrarAcierto(zonaJuego, energia, vocabulario) {
   en.className = 'celebracion-energia';
   en.textContent = `+${energia} energía`;
   feedback.append(titulo, sub, en);
+}
+
+// Reflexión metamatemática ligera (FASE R1, Plan V2): un botón opcional de un solo toque que, al
+// tocarlo, despliega 4 chips de opción fija (nunca texto libre ni voz). Si el niño no lo toca, no
+// pasa nada — no bloquea "Siguiente reto" ni exige elegir. Deliberadamente poco frecuente: solo se
+// llama a esta función tras un acierto ya excepcional (ver el resolver de Engine.render arriba).
+function mostrarReflexionLigera(zonaJuego, perfilId) {
+  const OPCIONES = [
+    { id: 'vistazo', texto: 'Lo vi de un vistazo' },
+    { id: 'estrategia', texto: 'Usé una estrategia' },
+    { id: 'probando', texto: 'Fui probando' },
+    { id: 'ayuda', texto: 'Pedí ayuda y por fin entendí' }
+  ];
+
+  const zona = document.createElement('div');
+  zona.className = 'zona-reflexion';
+
+  const boton = document.createElement('button');
+  boton.className = 'boton-reflexion';
+  boton.textContent = '🤔 ¿Cómo lo pensaste?';
+  boton.addEventListener('click', () => {
+    zona.innerHTML = '';
+    OPCIONES.forEach((opcion) => {
+      const chip = document.createElement('button');
+      chip.className = 'chip-reflexion';
+      chip.textContent = opcion.texto;
+      chip.addEventListener('click', () => {
+        const progreso = Storage.cargarProgreso(perfilId);
+        Evaluacion.registrarReflexion(progreso, opcion.id);
+        Storage.guardarProgreso(perfilId, progreso);
+        zona.innerHTML = '';
+        const gracias = document.createElement('p');
+        gracias.className = 'reflexion-gracias';
+        gracias.textContent = '¡Gracias por contármelo! 🌟';
+        zona.appendChild(gracias);
+      });
+      zona.appendChild(chip);
+    });
+  });
+  zona.appendChild(boton);
+
+  zonaJuego.appendChild(zona);
 }
 
 function mostrarBotonSiguiente(perfilId, estadio, sesion) {

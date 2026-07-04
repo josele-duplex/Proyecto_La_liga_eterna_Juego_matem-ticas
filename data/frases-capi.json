@@ -1,0 +1,65 @@
+{
+  "nota": "Banco de frases de Capi (FASE G1, Plan V2): arrays de variantes por situacion, elegidas al azar (fraseCapi() en logica-juego.js) para que Capi no repita literalmente lo mismo cada vez. Anade una frase nueva aqui sin tocar codigo. Los {marcadores} entre llaves se rellenan en tiempo de juego (nombre del jugador, dias de racha, nombre del rival, bono del contrato).",
+  "inicio_normal": [
+    "¡Vamos, campeón! Escucha mi consejo.",
+    "A por este, ¡tú puedes!",
+    "Piensa con calma, no hay prisa.",
+    "Vamos a resolver esta jugada juntos."
+  ],
+  "inicio_decisivo": [
+    "¡Este es el momento, campeón! Concéntrate, sé que puedes.",
+    "¡La jugada decisiva! Respira y confía en lo que sabes.",
+    "Aquí se gana el partido. ¡Vamos con todo!"
+  ],
+  "inicio_repaso": [
+    "Te traigo un repaso de algo que se nos resistió. ¡Vamos a dominarlo!",
+    "Esto ya lo hemos visto antes. Seguro que hoy te sale mejor.",
+    "Un poco de repaso nunca viene mal. ¡A por ello!"
+  ],
+  "acierto_limpio": [
+    "¡Directo y sin pistas! Esa es la jugada de un crack.",
+    "¡Ni lo has dudado! Así se juega.",
+    "¡Golazo limpio! Lo tienes dominado.",
+    "¡Impresionante! No has necesitado ayuda."
+  ],
+  "remontada": [
+    "¡Buena remontada! No te has rendido y lo has conseguido.",
+    "Fallaste, pero no te frenó. ¡Eso es tener carácter!",
+    "¡Así se responde a un tropiezo! Bien hecho."
+  ],
+  "ayuda": [
+    "¡Bien pensado pedir ayuda en el momento justo!",
+    "Usar una pista a tiempo también es jugar inteligente.",
+    "¡Eso es! A veces una ayuda es lo que hace falta."
+  ],
+  "fallo": [
+    "Casi. Piensa otra vez… ¿quieres una pista?",
+    "No era esa. ¡Prueba otra vez, tú puedes!",
+    "Casi lo tenías. Vuelve a mirarlo con calma."
+  ],
+  "fallo_con_rival": [
+    "¡{rival} te ha robado el balón! Recupéralo: piensa otra vez.",
+    "{rival} se ha adelantado esta vez. ¡Vamos a por el balón de nuevo!",
+    "¡{rival} anda suelto! Piensa otra vez y recupera el control."
+  ],
+  "animo": [
+    "¡Tú puedes! Aquí va una ayuda.",
+    "Vamos a verlo juntos, paso a paso.",
+    "¡No te rindas! Esta pista te va a ayudar."
+  ],
+  "contrato_cumplido": [
+    "¡Contrato cumplido! Aquí tienes tu bono de +{bono}⚡.",
+    "¡Lo has conseguido! Bono de +{bono}⚡ por cumplir el contrato.",
+    "¡Misión del día completada! +{bono}⚡ para ti."
+  ],
+  "saludo_racha_1": [
+    "¡Hola, {nombre}! Hoy empieza tu racha de entrenamiento. 🔥",
+    "¡Bienvenido, {nombre}! Vamos a empezar una buena racha.",
+    "¡{nombre}! Hoy es un buen día para empezar a entrenar."
+  ],
+  "saludo_racha_n": [
+    "¡Hola, {nombre}! Llevas {dias} días seguidos entrenando. 🔥 ¡Sigue así!",
+    "¡{nombre}! {dias} días seguidos ya. ¡Vaya racha llevas!",
+    "¡Qué constancia, {nombre}! {dias} días entrenando sin parar."
+  ]
+}

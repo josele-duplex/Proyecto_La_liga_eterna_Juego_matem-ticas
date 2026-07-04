@@ -51,10 +51,27 @@ const MODOS = [
 // Rivales del partido (TG.6): los "Fueras de Juego", criaturas del error numérico. Se elige uno
 // al azar por partido (sesion.rival) y da sentido narrativo al fallo: no "te has equivocado",
 // sino "el rival te ha robado el balón" — mismo dato (un fallo), distinto envoltorio emocional.
+// 'presentacion' (FASE N1, Plan V2) es la micro-historia que Capi cuenta la PRIMERA vez que este
+// rival concreto aparece para el jugador (ver progreso.rivalesConocidos en pantallas/reto.js).
 const RIVALES = [
-  { id: 'energia', nombre: 'Energía', imagen: 'assets/img/decoracion/fuera-de-juego-energia.webp' },
-  { id: 'asustado', nombre: 'Asustado', imagen: 'assets/img/decoracion/fuera-de-juego-asustado.webp' },
-  { id: 'malvado', nombre: 'Malvado', imagen: 'assets/img/decoracion/fuera-de-juego-malvado.webp' }
+  {
+    id: 'energia',
+    nombre: 'Energía',
+    imagen: 'assets/img/decoracion/fuera-de-juego-energia.webp',
+    presentacion: 'Soy Energía, un Fuera de Juego que se cuela cuando corres demasiado rápido con los números. ¡Contra mí no hace falta prisa, solo calma!'
+  },
+  {
+    id: 'asustado',
+    nombre: 'Asustado',
+    imagen: 'assets/img/decoracion/fuera-de-juego-asustado.webp',
+    presentacion: 'Me llamo Asustado. Aparezco cuando dudas de ti mismo antes de intentarlo. ¡Pero ya verás que puedes conmigo!'
+  },
+  {
+    id: 'malvado',
+    nombre: 'Malvado',
+    imagen: 'assets/img/decoracion/fuera-de-juego-malvado.webp',
+    presentacion: 'Soy Malvado, el más travieso de los Fueras de Juego. Me encanta desordenar los números... ¡pero contigo no lo voy a conseguir!'
+  }
 ];
 
 // Poderes (TG.7): formas concretas de gastar la energía que AYUDAN sin saltarse el aprendizaje

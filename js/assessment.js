@@ -68,5 +68,14 @@ const Evaluacion = {
       else break;
     }
     return n;
+  },
+
+  // Reflexión metamatemática ligera (FASE R1, Plan V2): registra por CONTEO, no por evento con
+  // fecha — basta para ver "qué estrategia dice usar más" sin acumular datos de más. El niño elige
+  // una de 4 opciones fijas tras un acierto ya excepcional (ver reto.js); nunca texto libre ni voz.
+  registrarReflexion(progreso, opcionId) {
+    progreso.registro = progreso.registro || { porConcepto: {}, ultimasJugadas: [] };
+    progreso.registro.reflexiones = progreso.registro.reflexiones || {};
+    progreso.registro.reflexiones[opcionId] = (progreso.registro.reflexiones[opcionId] || 0) + 1;
   }
 };

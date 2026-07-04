@@ -144,8 +144,8 @@ function crearSaludoCapi(perfilId, dias) {
   const texto = document.createElement('p');
   const nombre = perfil ? perfil.nombre : 'campeón';
   texto.textContent = dias > 1
-    ? `¡Hola, ${nombre}! Llevas ${dias} días seguidos entrenando. 🔥 ¡Sigue así!`
-    : `¡Hola, ${nombre}! Hoy empieza tu racha de entrenamiento. 🔥`;
+    ? fraseCapi('saludo_racha_n', { nombre, dias })
+    : fraseCapi('saludo_racha_1', { nombre });
   saludo.appendChild(texto);
 
   return saludo;

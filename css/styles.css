@@ -1248,6 +1248,24 @@ button:focus-visible {
   to { opacity: 1; transform: none; }
 }
 
+/* Reflexión metamatemática ligera (FASE R1, Plan V2): tono lavanda propio, distinto del dorado de
+   la celebración, para que se lea como "algo aparte y opcional", no como parte del premio. */
+.zona-reflexion { margin-top: 0.8rem; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.boton-reflexion, .chip-reflexion {
+  font-family: inherit;
+  font-weight: 700;
+  min-height: 2.75rem;
+  background: #f3eefc;
+  border: 2px solid rgba(106, 63, 181, 0.25);
+  color: #6a3fb5;
+  border-radius: var(--radio-pildora);
+  cursor: pointer;
+}
+.boton-reflexion { font-size: 0.9rem; padding: 0.5rem 1rem; }
+.chip-reflexion { font-size: 0.85rem; padding: 0.45rem 0.85rem; background: #fff; }
+.chip-reflexion:hover { background: #f3eefc; }
+.reflexion-gracias { margin: 0.3rem 0 0; font-weight: 700; color: #6a3fb5; }
+
 /* Tarjeta del entrenador Capi (P2, P6): retrato grande, bocadillo y rebote. */
 .tarjeta-capi {
   display: flex;
