@@ -14,7 +14,12 @@ const Engine = {
   // resultado = { intentosFallidos, pistasUsadas, tiempoMs } para que otras piezas (progresión,
   // evaluación) sepan cómo le fue. alFallar() es opcional: avisa en cada intento fallido (p. ej.
   // para un sonido). El motor solo mide y notifica: no sabe qué hará nadie con esos avisos.
-  render(puzzle, container, alResolver, alFallar, alPedirPista) {
+  // `opciones.pistasAutomaticas` (FASE M5, B.7 modificado, por defecto true): si es false (modo de
+  // dificultad Profesional) el botón "Pedir una pista" ya NO aparece solo al fallar — sigue
+  // disponible pagando con el poder "Consejo del Capitán" (forzarPista), nunca deja de ser
+  // accesible, solo deja de ser automático. El tiempo no se toca en ningún caso.
+  render(puzzle, container, alResolver, alFallar, alPedirPista, opciones) {
+    const pistasAutomaticas = !opciones || opciones.pistasAutomaticas !== false;
     if (this._temporizador) {
       clearInterval(this._temporizador);
       this._temporizador = null;
@@ -61,7 +66,7 @@ const Engine = {
         }
       } else {
         intentosFallidos++;
-        pistas.activar();
+        if (pistasAutomaticas) pistas.activar();
         if (alFallar) alFallar();
       }
     };

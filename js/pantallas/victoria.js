@@ -113,47 +113,10 @@ function mostrarPartidoGanado(perfilId, estadio, sesion) {
   }
   panel.appendChild(premios);
 
-  // Si en este partido desbloqueó un equipo superior por ir sobrado, se lo ofrecemos aquí, destacado.
-  if (modoRecienDesbloqueado) {
-    const modo = modoRecienDesbloqueado;
-    modoRecienDesbloqueado = null;
-
-    const desbloqueo = document.createElement('div');
-    desbloqueo.className = 'victoria-desbloqueo';
-    const aviso = document.createElement('p');
-    aviso.textContent = `¡Vas sobrado! Has desbloqueado el equipo ${modo.icono} ${modo.nombre}.`;
-    desbloqueo.appendChild(aviso);
-    const probar = document.createElement('button');
-    probar.className = 'boton-siguiente';
-    probar.textContent = `Jugar en ${modo.nombre}`;
-    probar.addEventListener('click', () => {
-      const progreso = Storage.cargarProgreso(perfilId);
-      progreso.modoId = modo.id;
-      Storage.guardarProgreso(perfilId, progreso);
-      mostrarCalendario(perfilId);
-    });
-    desbloqueo.appendChild(probar);
-    panel.appendChild(desbloqueo);
-  }
-
-  // Si este partido desbloqueó una Leyenda del Orden nueva (FASE M3), se celebra igual que un
-  // equipo nuevo: aviso destacado con acceso directo al Museo para leer su historia completa.
-  if (leyendaRecienDesbloqueada) {
-    const leyenda = leyendaRecienDesbloqueada;
-    leyendaRecienDesbloqueada = null;
-
-    const desbloqueoLeyenda = document.createElement('div');
-    desbloqueoLeyenda.className = 'victoria-desbloqueo';
-    const aviso = document.createElement('p');
-    aviso.textContent = `🏛 ¡Has desbloqueado una Leyenda del Orden: ${leyenda.icono} ${leyenda.nombre}!`;
-    desbloqueoLeyenda.appendChild(aviso);
-    const verMuseo = document.createElement('button');
-    verMuseo.className = 'boton-siguiente';
-    verMuseo.textContent = 'Ver en el Museo';
-    verMuseo.addEventListener('click', () => mostrarMuseo(perfilId));
-    desbloqueoLeyenda.appendChild(verMuseo);
-    panel.appendChild(desbloqueoLeyenda);
-  }
+  // Si este partido desbloqueó un equipo superior por ir sobrado, o una Leyenda del Museo nueva
+  // (FASE M3), se ofrecen aquí destacados (FASE M5: función compartida con el resumen de
+  // Contrarreloj, que también puede dispararlos).
+  crearBloquesDesbloqueo(perfilId).forEach((bloque) => panel.appendChild(bloque));
 
   const boton = document.createElement('button');
   boton.className = 'boton-siguiente boton-cta';

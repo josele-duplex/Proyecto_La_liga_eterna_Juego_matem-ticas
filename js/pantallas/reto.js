@@ -50,7 +50,12 @@ async function jugarReto(perfilId, estadio, sesion) {
   zonaJuego.className = esDecisivo ? 'zona-juego zona-juego-decisiva' : 'zona-juego';
   app.appendChild(zonaJuego);
 
-  const tarjetaCapi = crearTarjetaCapi(puzzle, esDecisivo, entrada.esRepaso);
+  const fraseInicial = esDecisivo
+    ? fraseCapi('inicio_decisivo')
+    : entrada.esRepaso
+      ? fraseCapi('inicio_repaso')
+      : fraseCapi('inicio_normal');
+  const tarjetaCapi = crearTarjetaCapi(puzzle, fraseInicial);
   // Micro-historia del rival (FASE N1): solo en el primer reto del partido y solo si es la
   // primera vez que aparece este rival — sustituye al mensaje de inicio normal, una vez.
   if (sesion.hechos === 0 && sesion.presentacionRival) {
@@ -151,7 +156,10 @@ async function jugarReto(perfilId, estadio, sesion) {
     () => {
       // Al pedir la primera pista, Capi da ánimos en vez de quedarse en la duda.
       reaccionarCapi(tarjetaCapi, 'animo', fraseCapi('animo'));
-    }
+    },
+    // Modo de dificultad (FASE M5, B.7 modificado): en Profesional, la pista deja de aparecer
+    // sola tras fallar (sigue disponible pagando "Consejo del Capitán"). Nunca se toca el tiempo.
+    { pistasAutomaticas: dificultadDe(progreso) !== 'profesional' }
   );
 
   zonaJuego.appendChild(crearZonaPoderes(perfilId, capacidades));
@@ -288,9 +296,9 @@ function crearPanelMision(estadio, sesion, puzzle, esDecisivo, esRepaso) {
 }
 
 // Tarjeta del entrenador Capi: retrato grande, bocadillo y botón para escuchar el enunciado.
-// En la jugada decisiva (TG.1) el primer mensaje sube la tensión; en un repaso (TG.5) avisa de
-// que es un refuerzo, no un reto nuevo (la decisiva manda si coinciden, es más rara y más teatral).
-function crearTarjetaCapi(puzzle, esDecisivo, esRepaso) {
+// `fraseInicial` la decide quien llama (jugada decisiva/repaso en Liga — TG.1/TG.5 —, o el saludo
+// tranquilo de Entrenamiento/Contrarreloj, FASE M5): esta función solo pinta, no elige el mensaje.
+function crearTarjetaCapi(puzzle, fraseInicial) {
   const tarjeta = document.createElement('div');
   tarjeta.className = 'tarjeta-capi';
 
@@ -307,13 +315,7 @@ function crearTarjetaCapi(puzzle, esDecisivo, esRepaso) {
   const bocadillo = document.createElement('p');
   bocadillo.id = 'capi-bocadillo';
   bocadillo.className = 'bocadillo-capi';
-  if (esDecisivo) {
-    bocadillo.textContent = fraseCapi('inicio_decisivo');
-  } else if (esRepaso) {
-    bocadillo.textContent = fraseCapi('inicio_repaso');
-  } else {
-    bocadillo.textContent = fraseCapi('inicio_normal');
-  }
+  bocadillo.textContent = fraseInicial;
   cuerpo.appendChild(bocadillo);
 
   const boton = document.createElement('button');
@@ -341,6 +343,8 @@ function reaccionarCapi(tarjeta, estado, frase) {
 // Convierte el feedback de acierto en una tarjeta de celebración con la energía ganada. Nombra la
 // estrategia con su vocabulario técnico real (FASE M1, A.5: "Has usado DESCOMPOSICIÓN") en vez de
 // un genérico "¡Muy bien!" — construye lenguaje matemático transferible fuera del juego.
+// `energia` es opcional (FASE M5): Entrenamiento del Capitán no reparte energía (a propósito, para
+// no mezclar recompensas con la práctica libre), así que si es 0/undefined se omite esa línea.
 function celebrarAcierto(zonaJuego, energia, vocabulario) {
   const feedback = zonaJuego.querySelector('.feedback');
   if (!feedback) return;
@@ -352,10 +356,13 @@ function celebrarAcierto(zonaJuego, energia, vocabulario) {
   const sub = document.createElement('span');
   sub.className = 'celebracion-sub';
   sub.textContent = vocabulario ? `Has usado ${vocabulario}` : '¡Muy bien! Has acertado.';
-  const en = document.createElement('span');
-  en.className = 'celebracion-energia';
-  en.textContent = `+${energia} energía`;
-  feedback.append(titulo, sub, en);
+  feedback.append(titulo, sub);
+  if (energia) {
+    const en = document.createElement('span');
+    en.className = 'celebracion-energia';
+    en.textContent = `+${energia} energía`;
+    feedback.append(en);
+  }
 }
 
 // Reflexión metamatemática ligera (FASE R1, Plan V2): un botón opcional de un solo toque que, al

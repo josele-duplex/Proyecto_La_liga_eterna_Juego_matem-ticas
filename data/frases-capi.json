@@ -61,5 +61,15 @@
     "¡Hola, {nombre}! Llevas {dias} días seguidos entrenando. 🔥 ¡Sigue así!",
     "¡{nombre}! {dias} días seguidos ya. ¡Vaya racha llevas!",
     "¡Qué constancia, {nombre}! {dias} días entrenando sin parar."
+  ],
+  "inicio_entrenamiento": [
+    "Aquí no hay presión: prueba, falla si hace falta, y aprende tranquilo.",
+    "Este es tu espacio para practicar sin prisa. ¡A por ello!",
+    "Nada de marcador aquí. Solo tú, practicando a tu ritmo."
+  ],
+  "inicio_contrarreloj": [
+    "¡Contrarreloj! Que no se te escape el balón.",
+    "¡El reloj corre! Piensa rápido y confía en tus reflejos.",
+    "¡A toda velocidad! Aquí premiamos la rapidez."
   ]
 }

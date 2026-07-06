@@ -33,6 +33,55 @@ function crearChipInsignia(insignia, cantidad, nivel) {
   return span;
 }
 
+// Bloques de "acabas de desbloquear algo" (equipo nuevo por ir sobrado / Leyenda del Museo):
+// comunes a la pantalla de victoria de Liga (FASE M3/rediseño) y al resumen de Contrarreloj (FASE
+// M5), que también pueden dispararlos. Consume y limpia las variables globales de aviso pendiente
+// (main.js), así solo se celebran una vez. Devuelve un array de elementos listos para añadir al panel.
+function crearBloquesDesbloqueo(perfilId) {
+  const bloques = [];
+
+  if (modoRecienDesbloqueado) {
+    const modo = modoRecienDesbloqueado;
+    modoRecienDesbloqueado = null;
+
+    const desbloqueo = document.createElement('div');
+    desbloqueo.className = 'victoria-desbloqueo';
+    const aviso = document.createElement('p');
+    aviso.textContent = `¡Vas sobrado! Has desbloqueado el equipo ${modo.icono} ${modo.nombre}.`;
+    desbloqueo.appendChild(aviso);
+    const probar = document.createElement('button');
+    probar.className = 'boton-siguiente';
+    probar.textContent = `Jugar en ${modo.nombre}`;
+    probar.addEventListener('click', () => {
+      const progreso = Storage.cargarProgreso(perfilId);
+      progreso.modoId = modo.id;
+      Storage.guardarProgreso(perfilId, progreso);
+      mostrarCalendario(perfilId);
+    });
+    desbloqueo.appendChild(probar);
+    bloques.push(desbloqueo);
+  }
+
+  if (leyendaRecienDesbloqueada) {
+    const leyenda = leyendaRecienDesbloqueada;
+    leyendaRecienDesbloqueada = null;
+
+    const desbloqueoLeyenda = document.createElement('div');
+    desbloqueoLeyenda.className = 'victoria-desbloqueo';
+    const aviso = document.createElement('p');
+    aviso.textContent = `🏛 ¡Has desbloqueado una Leyenda del Orden: ${leyenda.icono} ${leyenda.nombre}!`;
+    desbloqueoLeyenda.appendChild(aviso);
+    const verMuseo = document.createElement('button');
+    verMuseo.className = 'boton-siguiente';
+    verMuseo.textContent = 'Ver en el Museo';
+    verMuseo.addEventListener('click', () => mostrarMuseo(perfilId));
+    desbloqueoLeyenda.appendChild(verMuseo);
+    bloques.push(desbloqueoLeyenda);
+  }
+
+  return bloques;
+}
+
 function mostrarBarraPerfil(perfilId, opciones) {
   const perfil = PERFILES.find((p) => p.id === perfilId);
   const progreso = Storage.cargarProgreso(perfilId);
@@ -63,6 +112,27 @@ function mostrarBarraPerfil(perfilId, opciones) {
     racha.innerHTML = `<img src="assets/icons-svg/llama.svg" alt="" class="icono-svg-inline"> ${progreso.racha.dias}`;
     barra.appendChild(racha);
   }
+
+  // Modo de dificultad (FASE M5, B.7 modificado): indicador SIEMPRE visible, nunca una evaluación
+  // de capacidad. Un toque alterna entre los dos modos disponibles hoy (Élite espera a M7). El
+  // copy de Profesional es LITERAL (regla del plan, sección 8): "juegas en una liga más difícil".
+  const chipDificultad = document.createElement('button');
+  chipDificultad.className = 'chip-dificultad';
+  const pintarDificultad = () => {
+    const info = MODOS_DIFICULTAD[dificultadDe(Storage.cargarProgreso(perfilId))];
+    chipDificultad.textContent = `${info.icono} ${info.nombre}`;
+    chipDificultad.title = info.id === 'profesional'
+      ? 'Modo Profesional: juegas en una liga más difícil (sin pistas automáticas).'
+      : 'Modo Entrenador: pistas automáticas activadas.';
+  };
+  pintarDificultad();
+  chipDificultad.addEventListener('click', () => {
+    const p = Storage.cargarProgreso(perfilId);
+    alternarDificultad(p);
+    Storage.guardarProgreso(perfilId, p);
+    pintarDificultad();
+  });
+  barra.appendChild(chipDificultad);
 
   // El nivel de dominio (para el brillo) necesita el índice de puzles del equipo actual; si el
   // jugador todavía no ha elegido equipo (p. ej. en la propia pantalla de selección), se omite.

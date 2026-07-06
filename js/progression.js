@@ -48,13 +48,13 @@ const Progression = {
     return vistos;
   },
 
-  // Actualiza el progreso tras resolver un puzle: sube/baja la fase CPA de ese concepto y rota al
-  // siguiente concepto. `fueRepaso` indica si el puzle venía de la cola de repaso (cualquier tipo);
-  // en ese caso NO se mueve el puntero de rotación, para que el repaso no desordene la vuelta
-  // normal. `tipoRepaso` ('refuerzo' | 'mantenimiento' | undefined, FASE M4) distingue de cuál de
-  // las dos colas venía, para aplicar la lógica de intervalos de mantenimiento. Modifica y
-  // devuelve el progreso.
-  actualizar(progreso, indice, conceptoJugado, faseJugada, resultado, fueRepaso, tipoRepaso) {
+  // Sube/baja la fase CPA de un concepto (y cuenta los aciertos limpios en su fase máxima) según
+  // el resultado de UNA jugada. Extraído de actualizar() (FASE M5) para que Contrarreloj pueda
+  // tocar SOLO el dominio de 'relampago' sin arrastrar la rotación de conceptos ni la cola de
+  // repaso de Liga — si no, jugar Contrarreloj corrompería el interleaving y el repaso espaciado
+  // del modo Liga (la QA de cada fase exige justo lo contrario). Devuelve { faseMax, justoAhoraCrack }
+  // para que actualizar() siga programando el mantenimiento exactamente igual que antes.
+  actualizarFaseDominio(progreso, indice, conceptoJugado, faseJugada, resultado) {
     progreso.dominio = progreso.dominio || {};
     if (!progreso.dominio[conceptoJugado]) {
       progreso.dominio[conceptoJugado] = { fase: faseJugada };
@@ -86,6 +86,18 @@ const Progression = {
       progreso.dominio[conceptoJugado].aciertosLimpiosFaseMax = nuevoValor;
       justoAhoraCrack = anterior < this.UMBRAL_CRACK && nuevoValor >= this.UMBRAL_CRACK;
     }
+
+    return { faseMax, justoAhoraCrack };
+  },
+
+  // Actualiza el progreso tras resolver un puzle de Liga: sube/baja la fase CPA de ese concepto
+  // (vía actualizarFaseDominio) y rota al siguiente concepto. `fueRepaso` indica si el puzle venía
+  // de la cola de repaso (cualquier tipo); en ese caso NO se mueve el puntero de rotación, para
+  // que el repaso no desordene la vuelta normal. `tipoRepaso` ('refuerzo' | 'mantenimiento' |
+  // undefined, FASE M4) distingue de cuál de las dos colas venía, para aplicar la lógica de
+  // intervalos de mantenimiento. Modifica y devuelve el progreso.
+  actualizar(progreso, indice, conceptoJugado, faseJugada, resultado, fueRepaso, tipoRepaso) {
+    const { justoAhoraCrack } = this.actualizarFaseDominio(progreso, indice, conceptoJugado, faseJugada, resultado);
 
     // Rotación de conceptos (interleaving): tras CADA reto normal se avanza al siguiente concepto
     // de la lista, en círculo. Así el niño ve variedad y NUNCA se queda atascado repitiendo el
@@ -216,6 +228,15 @@ const Progression = {
         : conceptos[0];
     }
 
+    const elegido = this.elegirPuzzleDeConcepto(progreso, indice, concepto);
+    return esRepaso ? { ...elegido, esRepaso: true, tipoRepaso } : elegido;
+  },
+
+  // Elige un puzle concreto de un concepto YA decidido, en la fase más cercana a la fase objetivo
+  // del jugador para ESE concepto (evita repetir el último si hay alternativa). Extraído de
+  // siguiente() (FASE M5) para que Entrenamiento del Capitán y Contrarreloj puedan pedir un puzle
+  // "a la medida" de un concepto fijo sin pasar por la rotación ni la cola de repaso de Liga.
+  elegirPuzzleDeConcepto(progreso, indice, concepto) {
     progreso.dominio = progreso.dominio || {};
     const faseObjetivo = progreso.dominio[concepto]
       ? progreso.dominio[concepto].fase
@@ -231,8 +252,7 @@ const Progression = {
       if (sinRepetir.length > 0) mejores = sinRepetir;
     }
 
-    const elegido = mejores[Math.floor(Math.random() * mejores.length)];
-    return esRepaso ? { ...elegido, esRepaso: true, tipoRepaso } : elegido;
+    return mejores[Math.floor(Math.random() * mejores.length)];
   },
 
   // La fase más alta disponible para un concepto (según el índice), o null si el concepto no

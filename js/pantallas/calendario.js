@@ -60,6 +60,50 @@ function mostrarCalendario(perfilId) {
     lista.appendChild(tarjeta);
   });
   app.appendChild(lista);
+
+  // Modos especiales (FASE M5, 14.5): Entrenamiento del Capitán (práctica libre, no toca la
+  // progresión) y Contrarreloj (rondas de Relámpago a toda velocidad, opt-in). El tercer modo de
+  // la fase, la dificultad Entrenador/Profesional, ya está siempre visible como chip en la barra
+  // de perfil de arriba — no necesita una tarjeta propia aquí.
+  const subtitulo = document.createElement('h3');
+  subtitulo.className = 'subtitulo-calendario';
+  subtitulo.textContent = 'Modos especiales';
+  app.appendChild(subtitulo);
+
+  const especiales = document.createElement('div');
+  especiales.className = 'calendario';
+
+  const tarjetaEntrenamiento = document.createElement('div');
+  tarjetaEntrenamiento.className = 'estadio';
+  const nombreEntrenamiento = document.createElement('h2');
+  nombreEntrenamiento.textContent = '🎯 Entrenamiento del Capitán';
+  tarjetaEntrenamiento.appendChild(nombreEntrenamiento);
+  const descEntrenamiento = document.createElement('p');
+  descEntrenamiento.textContent = 'Practica el concepto que quieras, sin rival ni marcador. No afecta a tu partido de Liga.';
+  tarjetaEntrenamiento.appendChild(descEntrenamiento);
+  const botonEntrenamiento = document.createElement('button');
+  botonEntrenamiento.className = 'boton-siguiente';
+  botonEntrenamiento.textContent = 'Entrenar';
+  botonEntrenamiento.addEventListener('click', () => mostrarSelectorEntrenamiento(perfilId));
+  tarjetaEntrenamiento.appendChild(botonEntrenamiento);
+  especiales.appendChild(tarjetaEntrenamiento);
+
+  const tarjetaContrarreloj = document.createElement('div');
+  tarjetaContrarreloj.className = 'estadio';
+  const nombreContrarreloj = document.createElement('h2');
+  nombreContrarreloj.textContent = '⚡ Contrarreloj';
+  tarjetaContrarreloj.appendChild(nombreContrarreloj);
+  const descContrarreloj = document.createElement('p');
+  descContrarreloj.textContent = `${RONDAS_CONTRARRELOJ} rondas de Relámpago a toda velocidad. Aquí sí cuenta ir rápido.`;
+  tarjetaContrarreloj.appendChild(descContrarreloj);
+  const botonContrarreloj = document.createElement('button');
+  botonContrarreloj.className = 'boton-siguiente';
+  botonContrarreloj.textContent = 'Jugar Contrarreloj';
+  botonContrarreloj.addEventListener('click', () => iniciarContrarreloj(perfilId));
+  tarjetaContrarreloj.appendChild(botonContrarreloj);
+  especiales.appendChild(tarjetaContrarreloj);
+
+  app.appendChild(especiales);
 }
 
 // Tarjeta del Contrato del Día (FASE M2, U2): el texto de Capi, una barra de progreso y el estado

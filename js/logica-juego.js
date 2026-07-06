@@ -19,6 +19,18 @@ function modoDesbloqueado(perfilId, modo) {
   return (progreso.modosDesbloqueados || []).includes(modo.id);
 }
 
+// Modo de dificultad (FASE M5, B.7 modificado): 'entrenador' (con pistas automáticas, por
+// defecto) o 'profesional' (sin pistas automáticas; el tiempo nunca se toca). Élite espera a M7.
+function dificultadDe(progreso) {
+  return progreso.modoDificultad || 'entrenador';
+}
+
+// Alterna entre los dos modos de dificultad disponibles hoy. Modifica y devuelve el progreso.
+function alternarDificultad(progreso) {
+  progreso.modoDificultad = dificultadDe(progreso) === 'entrenador' ? 'profesional' : 'entrenador';
+  return progreso;
+}
+
 // Tras una jugada: si el jugador va sobrado con su equipo actual (por repetición o rapidez) y hay
 // un equipo superior que se desbloquea con este, lo desbloquea. Modifica el progreso (lo guarda
 // quien llama) y devuelve el modo recién desbloqueado, o null si no hay nada que desbloquear ahora.

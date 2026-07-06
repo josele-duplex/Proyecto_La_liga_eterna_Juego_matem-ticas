@@ -106,6 +106,15 @@ body.tema-recompensa {
   --foco-estadio: rgba(255, 214, 130, 0.62);
 }
 
+/* Tema "contrarreloj" (FASE M5, 14.5): identidad visual propia del modo de velocidad, distinta de
+   los tres temas de juego normal, para que se note al instante que aquí manda el reloj. Foco
+   eléctrico morado. */
+body.tema-contrarreloj {
+  --color-primario: #7c3aed;
+  --color-primario-oscuro: #5b21b6;
+  --foco-estadio: rgba(190, 150, 255, 0.55);
+}
+
 /* ============================================================
    2. Estructura general (marco de la app).
    ============================================================ */
@@ -1226,6 +1235,41 @@ button:focus-visible {
 .segmento { flex: 1; height: 9px; border-radius: 999px; background: rgba(20, 40, 70, 0.12); }
 .segmento-hecho { background: var(--color-primario); }
 .segmento-actual { background: #2979ff; box-shadow: 0 0 0 2px rgba(41, 121, 255, 0.25); }
+
+/* ============================================================
+   15. FASE M5 — Modos de juego (Entrenamiento del Capitán, Contrarreloj, dificultad).
+   ============================================================ */
+
+/* Contrarreloj: el mismo panel de misión, con un borde/resplandor morado que lo distingue de un
+   vistazo de la cápsula verde/azul de Liga. */
+.capsula-contrarreloj {
+  border-color: rgba(124, 58, 237, 0.35);
+  box-shadow: var(--sombra-suave), 0 0 0 3px rgba(124, 58, 237, 0.12);
+}
+
+/* Entrenamiento del Capitán: texto de contexto tranquilo bajo el título del selector de concepto. */
+.entrenamiento-explicacion {
+  color: var(--color-texto-suave);
+  margin: 0 0 var(--espacio);
+  line-height: 1.4;
+}
+.entrenamiento-contador {
+  margin: 0.4rem 0 0;
+  font-weight: 700;
+  color: var(--color-texto-suave);
+}
+
+/* Subtítulo de sección dentro de una pantalla (p. ej. "Modos especiales" en el calendario). */
+.subtitulo-calendario {
+  font-family: var(--fuente-titulos);
+  font-weight: 600;
+  color: var(--color-texto-suave);
+  margin: 1.4rem 0 0.4rem;
+}
+
+/* Chip de dificultad (siempre visible en la barra de perfil): reutiliza el estilo base de botón
+   de la barra, solo se distingue por su contenido (🟢/🔵 + nombre). */
+.chip-dificultad { font-weight: 800; }
 
 /* Jugada decisiva (TG.1): el último reto de la serie sube la tensión visual sin cambiar nada
    de la mecánica — solo el marco dorado y un pulso suave avisan de que es "el penalti". */
