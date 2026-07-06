@@ -19,15 +19,19 @@ function modoDesbloqueado(perfilId, modo) {
   return (progreso.modosDesbloqueados || []).includes(modo.id);
 }
 
-// Modo de dificultad (FASE M5, B.7 modificado): 'entrenador' (con pistas automáticas, por
-// defecto) o 'profesional' (sin pistas automáticas; el tiempo nunca se toca). Élite espera a M7.
+// Modo de dificultad (FASE M5, B.7 modificado; Élite añadida en FASE M7): 'entrenador' (con
+// pistas automáticas, por defecto), 'profesional' o 'elite' (ambas sin pistas automáticas; el
+// tiempo nunca se toca en ninguna).
 function dificultadDe(progreso) {
   return progreso.modoDificultad || 'entrenador';
 }
 
-// Alterna entre los dos modos de dificultad disponibles hoy. Modifica y devuelve el progreso.
+// Alterna en círculo entre los tres modos de dificultad (entrenador → profesional → élite →
+// entrenador). Modifica y devuelve el progreso.
 function alternarDificultad(progreso) {
-  progreso.modoDificultad = dificultadDe(progreso) === 'entrenador' ? 'profesional' : 'entrenador';
+  const orden = ['entrenador', 'profesional', 'elite'];
+  const actual = orden.indexOf(dificultadDe(progreso));
+  progreso.modoDificultad = orden[(actual + 1) % orden.length];
   return progreso;
 }
 
@@ -47,6 +51,16 @@ function revisarDesbloqueo(progreso) {
 
   progreso.modosDesbloqueados.push(superior.id);
   return superior;
+}
+
+// Copa de Leyendas (FASE M7, B.2): lista de conceptos del equipo actual que el jugador ya domina
+// (Titular o Crack) — la Copa solo sirve retos de ESTOS conceptos, mezclados, como repaso variado
+// de lo ya aprendido, nunca contenido nuevo. Vacío hasta que se domine al menos uno.
+function conceptosDominadosDe(progreso, indice) {
+  return Progression.conceptos(indice).filter((concepto) => {
+    const nivel = Progression.nivelDominioConcepto(progreso, concepto);
+    return nivel === 'titular' || nivel === 'crack';
+  });
 }
 
 // Museo de la Liga (FASE M3, U5): revisa si alguna Leyenda del Orden nueva se desbloquea con el

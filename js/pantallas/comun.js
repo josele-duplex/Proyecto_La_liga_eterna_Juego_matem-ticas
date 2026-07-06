@@ -52,12 +52,10 @@ function crearBloquesDesbloqueo(perfilId) {
     const probar = document.createElement('button');
     probar.className = 'boton-siguiente';
     probar.textContent = `Jugar en ${modo.nombre}`;
-    probar.addEventListener('click', () => {
-      const progreso = Storage.cargarProgreso(perfilId);
-      progreso.modoId = modo.id;
-      Storage.guardarProgreso(perfilId, progreso);
-      mostrarCalendario(perfilId);
-    });
+    // FASE M7 (B.3 reducido): en vez de saltar directo al calendario, pasa antes por una ceremonia
+    // de ascenso breve y celebratoria. La ceremonia es quien marca progreso.ascensosCelebrados y
+    // ajusta modoId al aceptar — este botón ya no lo hace directamente.
+    probar.addEventListener('click', () => mostrarCeremoniaAscenso(perfilId, modo));
     desbloqueo.appendChild(probar);
     bloques.push(desbloqueo);
   }
@@ -114,16 +112,19 @@ function mostrarBarraPerfil(perfilId, opciones) {
   }
 
   // Modo de dificultad (FASE M5, B.7 modificado): indicador SIEMPRE visible, nunca una evaluación
-  // de capacidad. Un toque alterna entre los dos modos disponibles hoy (Élite espera a M7). El
-  // copy de Profesional es LITERAL (regla del plan, sección 8): "juegas en una liga más difícil".
+  // de capacidad. Un toque alterna en círculo entre los tres modos (Élite añadida en FASE M7). El
+  // copy de Profesional/Élite es LITERAL (regla del plan, sección 8): "juegas en una liga más difícil".
   const chipDificultad = document.createElement('button');
   chipDificultad.className = 'chip-dificultad';
+  const TITULOS_DIFICULTAD = {
+    entrenador: 'Modo Entrenador: pistas automáticas activadas.',
+    profesional: 'Modo Profesional: juegas en una liga más difícil (sin pistas automáticas).',
+    elite: 'Modo Élite: juegas en la liga más difícil (sin pistas automáticas).'
+  };
   const pintarDificultad = () => {
     const info = MODOS_DIFICULTAD[dificultadDe(Storage.cargarProgreso(perfilId))];
     chipDificultad.textContent = `${info.icono} ${info.nombre}`;
-    chipDificultad.title = info.id === 'profesional'
-      ? 'Modo Profesional: juegas en una liga más difícil (sin pistas automáticas).'
-      : 'Modo Entrenador: pistas automáticas activadas.';
+    chipDificultad.title = TITULOS_DIFICULTAD[info.id];
   };
   pintarDificultad();
   chipDificultad.addEventListener('click', () => {

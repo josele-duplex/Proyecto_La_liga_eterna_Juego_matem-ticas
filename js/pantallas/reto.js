@@ -160,9 +160,10 @@ async function jugarReto(perfilId, estadio, sesion) {
       // Al pedir la primera pista, Capi da ánimos en vez de quedarse en la duda.
       reaccionarCapi(tarjetaCapi, 'animo', fraseCapi('animo'));
     },
-    // Modo de dificultad (FASE M5, B.7 modificado): en Profesional, la pista deja de aparecer
-    // sola tras fallar (sigue disponible pagando "Consejo del Capitán"). Nunca se toca el tiempo.
-    { pistasAutomaticas: dificultadDe(progreso) !== 'profesional' }
+    // Modo de dificultad (FASE M5, B.7 modificado; Élite en FASE M7): en Profesional o Élite, la
+    // pista deja de aparecer sola tras fallar (sigue disponible pagando "Consejo del Capitán").
+    // Nunca se toca el tiempo. Solo Entrenador conserva las pistas automáticas.
+    { pistasAutomaticas: dificultadDe(progreso) === 'entrenador' }
   );
 
   zonaJuego.appendChild(crearZonaPoderes(perfilId, capacidades));

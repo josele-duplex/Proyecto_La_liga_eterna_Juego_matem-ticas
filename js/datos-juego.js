@@ -92,17 +92,26 @@ const NIVELES_DOMINIO = {
   crack: { icono: '🥇', imagenSvg: 'assets/icons-svg/medalla-crack.svg', nombre: 'Crack' }
 };
 
-// Modos de dificultad (FASE M5, B.7 modificado): indicador siempre visible en la barra de perfil,
-// nunca una evaluación de capacidad. Profesional quita las pistas automáticas; NINGÚN modo toca el
-// tiempo. Élite queda pendiente (FASE M7, Copa de Leyendas) hasta que existan retos mixtos.
+// Modos de dificultad (FASE M5, B.7 modificado; Élite añadida en FASE M7 ahora que existe la Copa
+// de Leyendas, retos mixtos): indicador siempre visible en la barra de perfil, nunca una
+// evaluación de capacidad. Entrenador tiene pistas automáticas; Profesional y Élite las quitan
+// (mismo efecto mecánico — Élite es el nombre del escalón más alto, sin inventar una restricción
+// nueva que el plan no pide). NINGÚN modo toca el tiempo.
 const MODOS_DIFICULTAD = {
   entrenador: { id: 'entrenador', nombre: 'Entrenador', icono: '🟢' },
-  profesional: { id: 'profesional', nombre: 'Profesional', icono: '🔵' }
+  profesional: { id: 'profesional', nombre: 'Profesional', icono: '🔵' },
+  elite: { id: 'elite', nombre: 'Élite', icono: '🟣' }
 };
 
 // Contrarreloj (FASE M5, 14.5): número de rondas por sesión, siempre puzles del concepto
 // 'relampago' (presente en los 4 bancos de edad).
 const RONDAS_CONTRARRELOJ = 5;
+
+// Copa de Leyendas (FASE M7, B.2): rondas de la serie especial, mezclando conceptos que el
+// jugador YA domina (Titular o Crack) en su equipo actual — retos variados de repaso, no contenido
+// nuevo. Reutiliza la misma cantidad que Contrarreloj para que ambos modos especiales se sientan
+// del mismo tamaño de sesión.
+const RONDAS_COPA = 5;
 
 // Nombres bonitos para mostrar el concepto en pantalla.
 const NOMBRES_CONCEPTO = {

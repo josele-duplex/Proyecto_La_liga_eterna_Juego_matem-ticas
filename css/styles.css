@@ -115,6 +115,15 @@ body.tema-contrarreloj {
   --foco-estadio: rgba(190, 150, 255, 0.55);
 }
 
+/* Tema "copa" (FASE M7, B.2): identidad de la Copa de Leyendas — morado de Élite con foco
+   dorado, mezcla de "competición seria" (morado) y "trofeo" (dorado), distinta de Contrarreloj
+   aunque comparta familia de color. */
+body.tema-copa {
+  --color-primario: #6d28d9;
+  --color-primario-oscuro: #4c1d95;
+  --foco-estadio: rgba(255, 214, 130, 0.5);
+}
+
 /* ============================================================
    2. Estructura general (marco de la app).
    ============================================================ */
@@ -1581,6 +1590,35 @@ button:focus-visible {
 
 .tarjeta-mejora .leyenda-icono-emoji { font-size: 1.8rem; }
 .mejora-maximo { font-weight: 700; color: #b8860b; }
+
+/* ============================================================
+   17. FASE M7 — Ceremonia de ascenso + Copa de Leyendas.
+   ============================================================ */
+
+/* Copa de Leyendas: mismo panel de misión que Liga/Contrarreloj, con un tono morado-dorado propio. */
+.capsula-copa {
+  border-color: rgba(109, 40, 217, 0.35);
+  box-shadow: var(--sombra-suave), 0 0 0 3px rgba(109, 40, 217, 0.12);
+}
+
+/* Distintivo de dificultad Élite (FASE M7): mismo propósito que el chip de la barra de perfil,
+   pero fijo dentro de la cápsula de misión de la Copa (siempre 🟣, no depende de lo que el
+   jugador tenga elegido en su chip global). */
+.badge-elite {
+  font-weight: 800;
+  color: #6d28d9;
+  background: #f3eefc;
+  padding: 0.2rem 0.6rem;
+  border-radius: var(--radio-pildora);
+  font-size: 0.85rem;
+}
+
+/* Ceremonia de ascenso: reutiliza .panel-victoria; el emblema de equipo se pinta más grande que
+   en cualquier otro sitio, porque aquí SÍ es el protagonista de la pantalla. */
+.ascenso-emblema .emblema-modo, .ascenso-emblema .escudo-placeholder {
+  width: 6rem;
+  height: 6rem;
+}
 
 /* ============================================================
    15. Ajustes para pantallas pequeñas (móvil).

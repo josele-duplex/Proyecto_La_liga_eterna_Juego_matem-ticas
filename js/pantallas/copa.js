@@ -1,45 +1,54 @@
-// Pantalla: Contrarreloj (FASE M5, 14.5). Formaliza el juego "Relámpago" (tipo verdadero_falso,
-// con su cronómetro visible desde TG.7) como su propio modo opt-in: una serie fija de rondas,
-// SIEMPRE del concepto 'relampago', con identidad visual propia (tema eléctrico morado, distinto
-// de Liga/Entrenamiento/victoria). Da energía e insignias igual que Liga (incluida "Rayo del
-// Relámpago" por rapidez), y actualiza el dominio de 'relampago' — pero solo su fase y sus
-// aciertos limpios (Progression.actualizarFaseDominio), NUNCA la rotación de conceptos ni la cola
-// de repaso de Liga, que son de otro modo y no deben verse arrastradas por partidas de aquí.
-//
-// Nota de alcance (desviación señalada, ver memoria del proyecto): el plan describe Contrarreloj
-// como "el único lugar donde se premia la velocidad". No se ha retirado la insignia "Rayo del
-// Relámpago" de las rondas de 'relampago' que ya salían dentro de la rotación normal de Liga —
-// hacerlo habría significado reescribir el sistema de recompensas ya existente, en contra de la
-// regla de la sección 1 del plan ("ninguna fase debe reescribir estos sistemas, solo extenderlos").
-// Contrarreloj SÍ es el modo dedicado y opt-in que la fase pedía; restringir del todo esa insignia
-// a este modo queda como posible mejora futura si se decide explícitamente.
-function iniciarContrarreloj(perfilId) {
-  const sesion = { hechos: 0, total: RONDAS_CONTRARRELOJ, aciertos: 0 };
-  jugarRondaContrarreloj(perfilId, sesion);
+// Pantalla: Copa de Leyendas (FASE M7, B.2). Serie especial de retos MIXTOS: cada ronda elige al
+// azar un concepto entre los que el jugador YA domina (Titular o Crack) en su equipo actual —
+// repaso variado de lo aprendido, nunca contenido nuevo. Es la manifestación concreta de la
+// dificultad 🟣 Élite (14.5/14.8): "la Champions League solo la juegan los de primera división".
+// Igual que Contrarreloj (FASE M5), toca SOLO el dominio del concepto de cada ronda
+// (Progression.actualizarFaseDominio), nunca la rotación de conceptos ni la cola de repaso de
+// Liga — jugar la Copa no debe desordenar el interleaving del modo Liga.
+function iniciarCopa(perfilId) {
+  const sesion = { hechos: 0, total: RONDAS_COPA, aciertos: 0, ultimoConcepto: null };
+  jugarRondaCopa(perfilId, sesion);
 }
 
-function jugarRondaContrarreloj(perfilId, sesion) {
-  UI.aplicarTema('contrarreloj');
+function jugarRondaCopa(perfilId, sesion) {
+  UI.aplicarTema('copa');
   limpiarPantalla();
   mostrarBarraPerfil(perfilId, { mostrarVolver: true, ocultarCambiarEquipo: true, ocultarMuseo: true });
 
   const modo = modoDe(perfilId) || MODOS[0];
   const indice = indicesPorEdad[modo.edad];
   const progreso = Storage.cargarProgreso(perfilId);
-  const entrada = Progression.elegirPuzzleDeConcepto(progreso, indice, 'relampago');
+  const dominados = conceptosDominadosDe(progreso, indice);
+
+  // Red de seguridad: la tarjeta del calendario ya comprueba esto antes de ofrecer el botón, pero
+  // si por lo que sea se llega aquí sin ningún concepto dominado, se vuelve al calendario sin
+  // romper nada en vez de intentar elegir un puzle de una lista vacía.
+  if (dominados.length === 0) {
+    mostrarCalendario(perfilId);
+    return;
+  }
+
+  let concepto = dominados[Math.floor(Math.random() * dominados.length)];
+  if (dominados.length > 1 && concepto === sesion.ultimoConcepto) {
+    const alternativas = dominados.filter((c) => c !== sesion.ultimoConcepto);
+    concepto = alternativas[Math.floor(Math.random() * alternativas.length)];
+  }
+  sesion.ultimoConcepto = concepto;
+
+  const entrada = Progression.elegirPuzzleDeConcepto(progreso, indice, concepto);
 
   fetch(entrada.ruta).then((r) => r.json()).then((puzzle) => {
     const app = document.getElementById('app');
     app.className = 'pantalla-reto';
 
-    const panel = crearPanelContrarreloj(sesion);
+    const panel = crearPanelCopa(sesion, concepto);
     app.appendChild(panel);
 
     const zonaJuego = document.createElement('div');
     zonaJuego.className = 'zona-juego';
     app.appendChild(zonaJuego);
 
-    const fraseInicial = sesion.hechos === 0 ? fraseCapi('inicio_contrarreloj') : fraseCapi('inicio_normal');
+    const fraseInicial = sesion.hechos === 0 ? fraseCapi('inicio_copa') : fraseCapi('inicio_normal');
     const tarjetaCapi = crearTarjetaCapi(puzzle, fraseInicial);
     app.appendChild(tarjetaCapi);
 
@@ -49,15 +58,14 @@ function jugarRondaContrarreloj(perfilId, sesion) {
       (puzzleResuelto, resultado) => {
         const progresoActual = Storage.cargarProgreso(perfilId);
         progresoActual.ultimoPuzleId = puzzleResuelto.id;
-        // Solo el dominio de 'relampago' (fase + aciertos limpios): ver nota de alcance arriba.
-        Progression.actualizarFaseDominio(progresoActual, indice, 'relampago', puzzleResuelto.fase_cpa, resultado);
+        // Solo el dominio del concepto de ESTA ronda (fase + aciertos limpios): ver nota de
+        // alcance en la cabecera del archivo.
+        Progression.actualizarFaseDominio(progresoActual, indice, concepto, puzzleResuelto.fase_cpa, resultado);
         Evaluacion.registrar(progresoActual, puzzleResuelto, resultado);
         const desbloqueado = revisarDesbloqueo(progresoActual);
         if (desbloqueado) modoRecienDesbloqueado = desbloqueado;
         const leyendasNuevas = revisarLeyendasNuevas(progresoActual, leyendas);
         if (leyendasNuevas.length > 0) leyendaRecienDesbloqueada = leyendasNuevas[0];
-        // Arquitecto del Estadio (FASE M6): el dominio de 'relampago' que se acaba de tocar arriba
-        // (actualizarFaseDominio) también puede cruzar Titular/Crack aquí, igual que en Liga.
         revisarPuntosReforma(progresoActual);
         otorgarRecompensa(progresoActual, puzzleResuelto.estrategia);
         otorgarInsigniasProceso(progresoActual, puzzleResuelto, resultado);
@@ -73,9 +81,9 @@ function jugarRondaContrarreloj(perfilId, sesion) {
 
         sesion.hechos++;
         if (sesion.hechos >= sesion.total) {
-          mostrarResumenContrarreloj(perfilId, sesion);
+          mostrarResumenCopa(perfilId, sesion);
         } else {
-          mostrarBotonSiguienteContrarreloj(perfilId, sesion);
+          mostrarBotonSiguienteCopa(perfilId, sesion);
         }
       },
       () => {
@@ -85,7 +93,7 @@ function jugarRondaContrarreloj(perfilId, sesion) {
       () => {
         reaccionarCapi(tarjetaCapi, 'animo', fraseCapi('animo'));
       },
-      // FASE M7: Profesional y Élite quitan las pistas automáticas por igual (ver reto.js).
+      // Igual que Liga/Contrarreloj: Profesional y Élite quitan las pistas automáticas.
       { pistasAutomaticas: dificultadDe(progreso) === 'entrenador' }
     );
 
@@ -93,19 +101,27 @@ function jugarRondaContrarreloj(perfilId, sesion) {
   });
 }
 
-function crearPanelContrarreloj(sesion) {
+function crearPanelCopa(sesion, concepto) {
   const panel = document.createElement('div');
-  panel.className = 'capsula-mision capsula-contrarreloj';
+  panel.className = 'capsula-mision capsula-copa';
 
   const fila = document.createElement('div');
   fila.className = 'capsula-linea';
   const titulo = document.createElement('strong');
-  titulo.textContent = '⚡ Contrarreloj';
+  titulo.textContent = '🏆 Copa de Leyendas';
+  const badge = document.createElement('span');
+  badge.className = 'badge-elite';
+  badge.textContent = '🟣 Élite';
+  fila.append(titulo, badge);
+  panel.appendChild(fila);
+
+  const linea2 = document.createElement('div');
+  linea2.className = 'capsula-linea';
   const ronda = document.createElement('span');
   ronda.className = 'capsula-concepto';
-  ronda.textContent = `Ronda ${sesion.hechos + 1} de ${sesion.total}`;
-  fila.append(titulo, ronda);
-  panel.appendChild(fila);
+  ronda.textContent = `Ronda ${sesion.hechos + 1} de ${sesion.total} · ⚽ ${NOMBRES_CONCEPTO[concepto] || concepto}`;
+  linea2.appendChild(ronda);
+  panel.appendChild(linea2);
 
   const barra = document.createElement('div');
   barra.className = 'mini-progreso';
@@ -121,17 +137,17 @@ function crearPanelContrarreloj(sesion) {
   return panel;
 }
 
-function mostrarBotonSiguienteContrarreloj(perfilId, sesion) {
+function mostrarBotonSiguienteCopa(perfilId, sesion) {
   const zona = document.getElementById('siguiente');
   zona.innerHTML = '';
   const boton = document.createElement('button');
   boton.className = 'boton-siguiente boton-cta';
-  boton.textContent = '⚡ Siguiente ronda';
-  boton.addEventListener('click', () => jugarRondaContrarreloj(perfilId, sesion));
+  boton.textContent = '🏆 Siguiente reto de la Copa';
+  boton.addEventListener('click', () => jugarRondaCopa(perfilId, sesion));
   zona.appendChild(boton);
 }
 
-function mostrarResumenContrarreloj(perfilId, sesion) {
+function mostrarResumenCopa(perfilId, sesion) {
   UI.aplicarTema('recompensa');
   limpiarPantalla();
   mostrarBarraPerfil(perfilId, { mostrarVolver: false });
@@ -146,20 +162,20 @@ function mostrarResumenContrarreloj(perfilId, sesion) {
 
   const cabecera = document.createElement('div');
   cabecera.className = 'victoria-cabecera';
-  const rayo = document.createElement('span');
-  rayo.className = 'victoria-trofeo';
-  rayo.textContent = '⚡';
+  const trofeo = document.createElement('span');
+  trofeo.className = 'victoria-trofeo';
+  trofeo.textContent = '🏆';
   const titulo = document.createElement('h2');
   titulo.className = 'victoria-titulo';
-  titulo.textContent = '¡CONTRARRELOJ SUPERADO!';
-  cabecera.append(rayo, titulo);
+  titulo.textContent = '¡COPA DE LEYENDAS SUPERADA!';
+  cabecera.append(trofeo, titulo);
   panel.appendChild(cabecera);
 
   const sub = document.createElement('p');
   sub.className = 'victoria-sub';
   sub.textContent = perfil
-    ? `¡Vaya reflejos, ${perfil.nombre}! ${sesion.aciertos} de ${sesion.total} rondas acertadas.`
-    : `${sesion.aciertos} de ${sesion.total} rondas acertadas.`;
+    ? `¡Nivel Élite, ${perfil.nombre}! ${sesion.aciertos} de ${sesion.total} retos acertados.`
+    : `${sesion.aciertos} de ${sesion.total} retos acertados.`;
   panel.appendChild(sub);
 
   const grupo = document.createElement('div');

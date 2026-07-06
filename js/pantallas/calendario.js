@@ -103,6 +103,34 @@ function mostrarCalendario(perfilId) {
   tarjetaContrarreloj.appendChild(botonContrarreloj);
   especiales.appendChild(tarjetaContrarreloj);
 
+  // Copa de Leyendas (FASE M7, B.2): serie de retos mixtos con conceptos que el jugador YA domina
+  // (Titular o Crack) en su equipo actual. Si todavía no hay ninguno, se muestra bloqueada (mismo
+  // patrón visual que un equipo sin desbloquear en modo.js) en vez de arrancar una sesión vacía.
+  const tarjetaCopa = document.createElement('div');
+  tarjetaCopa.className = 'estadio';
+  const nombreCopa = document.createElement('h2');
+  nombreCopa.textContent = '🏆 Copa de Leyendas';
+  tarjetaCopa.appendChild(nombreCopa);
+
+  const dominados = indiceModo ? conceptosDominadosDe(Storage.cargarProgreso(perfilId), indiceModo) : [];
+  if (dominados.length > 0) {
+    const descCopa = document.createElement('p');
+    descCopa.textContent = `${RONDAS_COPA} retos mixtos de nivel 🟣 Élite, con conceptos que ya dominas.`;
+    tarjetaCopa.appendChild(descCopa);
+    const botonCopa = document.createElement('button');
+    botonCopa.className = 'boton-siguiente';
+    botonCopa.textContent = 'Jugar la Copa';
+    botonCopa.addEventListener('click', () => iniciarCopa(perfilId));
+    tarjetaCopa.appendChild(botonCopa);
+  } else {
+    tarjetaCopa.classList.add('estadio-bloqueado');
+    const avisoCopa = document.createElement('p');
+    avisoCopa.className = 'aviso-bloqueado';
+    avisoCopa.textContent = 'Domina (Titular o Crack) al menos un concepto de tu equipo actual para desbloquearla.';
+    tarjetaCopa.appendChild(avisoCopa);
+  }
+  especiales.appendChild(tarjetaCopa);
+
   app.appendChild(especiales);
 }
 
