@@ -174,6 +174,15 @@ function mostrarBarraPerfil(perfilId, opciones) {
     barra.appendChild(museo);
   }
 
+  // Mi Estadio (FASE M6, C.1): mismo criterio de visibilidad que el Museo (reutiliza el flag
+  // ocultarMuseo en vez de añadir uno nuevo — ambos son "consulta secundaria, oculta a mitad de reto").
+  if (!(opciones && opciones.ocultarMuseo)) {
+    const estadio = document.createElement('button');
+    estadio.textContent = '🏟️ Mi Estadio';
+    estadio.addEventListener('click', () => mostrarMiEstadio(perfilId));
+    barra.appendChild(estadio);
+  }
+
   const sonidoBoton = document.createElement('button');
   sonidoBoton.className = 'boton-sonido';
   sonidoBoton.title = 'Activar o desactivar el sonido';

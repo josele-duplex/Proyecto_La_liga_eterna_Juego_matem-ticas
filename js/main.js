@@ -10,6 +10,7 @@ let contratos = null;
 let frasesCapi = null;
 let leyendas = null;
 let enciclopedia = null;
+let reformas = null;
 // Si el jugador acaba de desbloquear un equipo superior por ir sobrado, lo guardamos aquí para
 // sugerírselo al terminar el partido (un buen momento de pausa, no a mitad de un reto).
 let modoRecienDesbloqueado = null;
@@ -28,6 +29,7 @@ async function arrancar() {
   frasesCapi = await (await fetch('data/frases-capi.json')).json();
   leyendas = await (await fetch('data/leyendas.json')).json();
   enciclopedia = await (await fetch('data/enciclopedia.json')).json();
+  reformas = await (await fetch('data/reformas.json')).json();
 
   mostrarPortada(() => {
     // Red de seguridad: si al retomar el último perfil algo falla (p. ej. un progreso guardado

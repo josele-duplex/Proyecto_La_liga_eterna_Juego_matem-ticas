@@ -1,0 +1,42 @@
+{
+  "nota": "FASE M6 (C.1), Arquitecto del Estadio. Config fija de las mejoras compradas con puntos de reforma; el estado del jugador (puntos y nivel comprado de cada categoria) vive en progreso.reforma, no aqui. puntosPorNivelDominio: cuantos puntos da CADA concepto la primera vez que llega a Titular, y por separado la primera vez que llega a Crack (no por volumen de partidas). categorias: 4 mejoras visuales del estadio propio, cada una con hasta 3 niveles (nombre/costo/descripcion); nivel 0 = sin comprar.",
+  "puntosPorNivelDominio": { "titular": 1, "crack": 2 },
+  "categorias": {
+    "cesped": {
+      "nombre": "Césped",
+      "icono": "🌱",
+      "niveles": [
+        { "nombre": "Césped recién segado", "costo": 2, "descripcion": "Un campo cuidado, listo para jugar en condiciones." },
+        { "nombre": "Césped de competición", "costo": 3, "descripcion": "Líneas marcadas con precisión, como en un partido de verdad." },
+        { "nombre": "Césped de gran final", "costo": 4, "descripcion": "El tipo de césped que ves en las noches grandes." }
+      ]
+    },
+    "focos": {
+      "nombre": "Focos",
+      "icono": "💡",
+      "niveles": [
+        { "nombre": "Focos encendidos", "costo": 2, "descripcion": "Ya se puede jugar de noche sin problema." },
+        { "nombre": "Focos de partido importante", "costo": 3, "descripcion": "Todo el campo iluminado, sin ninguna sombra." },
+        { "nombre": "Focos de gala", "costo": 4, "descripcion": "El estadio brilla como en la final del campeonato." }
+      ]
+    },
+    "grada": {
+      "nombre": "Grada",
+      "icono": "🎪",
+      "niveles": [
+        { "nombre": "Primeras gradas", "costo": 2, "descripcion": "Ya hay sitio donde la afición pueda animar." },
+        { "nombre": "Grada completa", "costo": 3, "descripcion": "El estadio se llena de banderas y colores." },
+        { "nombre": "Grada de estadio grande", "costo": 4, "descripcion": "Lleno hasta la bandera, como un gran clásico." }
+      ]
+    },
+    "banquillo": {
+      "nombre": "Banquillo",
+      "icono": "🪑",
+      "niveles": [
+        { "nombre": "Banquillo propio", "costo": 2, "descripcion": "Un sitio digno para el equipo suplente." },
+        { "nombre": "Banquillo cubierto", "costo": 3, "descripcion": "Protegido del sol y de la lluvia." },
+        { "nombre": "Banquillo de primer nivel", "costo": 4, "descripcion": "Como el de los grandes equipos." }
+      ]
+    }
+  }
+}

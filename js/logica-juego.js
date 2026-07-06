@@ -68,6 +68,45 @@ function revisarLeyendasNuevas(progreso, datosLeyendas) {
   return nuevas;
 }
 
+// Arquitecto del Estadio (FASE M6, C.1): puntos de reforma ganados por DOMINIO demostrado, nunca
+// por volumen de partidas — un concepto da puntos la primera vez que llega a Titular, y otra
+// tanda (aparte) la primera vez que llega a Crack. progreso.reforma.nivelesPremiados guarda el
+// mejor nivel ya pagado por concepto para no volver a pagar el mismo salto dos veces: mismo patrón
+// que revisarLeyendasNuevas (comparar contra lo ya registrado en cada pasada, no un evento
+// puntual), así que llamar a esto tras cada acierto de Liga/Contrarreloj es seguro y barato.
+function revisarPuntosReforma(progreso) {
+  progreso.reforma = progreso.reforma || { puntos: 0, cesped: 0, focos: 0, grada: 0, banquillo: 0, nivelesPremiados: {} };
+  let ganados = 0;
+  Object.keys(progreso.dominio || {}).forEach((concepto) => {
+    const nivel = Progression.nivelDominioConcepto(progreso, concepto);
+    const premiado = progreso.reforma.nivelesPremiados[concepto] || null;
+    if (nivel === 'titular' && premiado === null) {
+      ganados += reformas.puntosPorNivelDominio.titular;
+      progreso.reforma.nivelesPremiados[concepto] = 'titular';
+    } else if (nivel === 'crack' && premiado !== 'crack') {
+      ganados += reformas.puntosPorNivelDominio.crack;
+      progreso.reforma.nivelesPremiados[concepto] = 'crack';
+    }
+  });
+  progreso.reforma.puntos += ganados;
+  return ganados;
+}
+
+// Compra la siguiente mejora de una categoría del estadio (cesped/focos/grada/banquillo) si hay
+// puntos suficientes y no está ya al nivel máximo. Modifica progreso.reforma y devuelve true solo
+// si la compra se realizó (para que la pantalla sepa si debe refrescarse).
+function comprarMejora(progreso, categoria) {
+  progreso.reforma = progreso.reforma || { puntos: 0, cesped: 0, focos: 0, grada: 0, banquillo: 0, nivelesPremiados: {} };
+  const niveles = reformas.categorias[categoria].niveles;
+  const nivelActual = progreso.reforma[categoria] || 0;
+  if (nivelActual >= niveles.length) return false;
+  const costo = niveles[nivelActual].costo;
+  if (progreso.reforma.puntos < costo) return false;
+  progreso.reforma.puntos -= costo;
+  progreso.reforma[categoria] = nivelActual + 1;
+  return true;
+}
+
 // Da energía y, según la estrategia usada, una insignia distinta. Modifica el progreso recibido.
 function otorgarRecompensa(progreso, estrategia) {
   progreso.energia = (progreso.energia || 0) + recompensas.energiaPorPuzle;

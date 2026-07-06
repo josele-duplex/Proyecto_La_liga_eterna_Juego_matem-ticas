@@ -56,6 +56,9 @@ function jugarRondaContrarreloj(perfilId, sesion) {
         if (desbloqueado) modoRecienDesbloqueado = desbloqueado;
         const leyendasNuevas = revisarLeyendasNuevas(progresoActual, leyendas);
         if (leyendasNuevas.length > 0) leyendaRecienDesbloqueada = leyendasNuevas[0];
+        // Arquitecto del Estadio (FASE M6): el dominio de 'relampago' que se acaba de tocar arriba
+        // (actualizarFaseDominio) también puede cruzar Titular/Crack aquí, igual que en Liga.
+        revisarPuntosReforma(progresoActual);
         otorgarRecompensa(progresoActual, puzzleResuelto.estrategia);
         otorgarInsigniasProceso(progresoActual, puzzleResuelto, resultado);
         avanzarContratoDelDia(progresoActual, puzzleResuelto);

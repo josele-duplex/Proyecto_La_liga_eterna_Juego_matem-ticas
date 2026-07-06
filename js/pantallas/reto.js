@@ -89,6 +89,9 @@ async function jugarReto(perfilId, estadio, sesion) {
       // solo guardamos la primera para no saturar la pantalla de victoria con una lista larga.
       const leyendasNuevas = revisarLeyendasNuevas(progresoActual, leyendas);
       if (leyendasNuevas.length > 0) leyendaRecienDesbloqueada = leyendasNuevas[0];
+      // Arquitecto del Estadio (FASE M6): puntos de reforma por dominio, no por volumen —
+      // revisarPuntosReforma ya se encarga de no pagar el mismo salto de nivel dos veces.
+      revisarPuntosReforma(progresoActual);
       otorgarRecompensa(progresoActual, puzzleResuelto.estrategia);
       otorgarInsigniasProceso(progresoActual, puzzleResuelto, resultado);
       // Contrato del Día (FASE M2, U2): si este acierto lo cumple, Capi lo celebra en vez del

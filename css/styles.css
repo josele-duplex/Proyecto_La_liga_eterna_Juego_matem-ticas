@@ -1495,6 +1495,94 @@ button:focus-visible {
 }
 
 /* ============================================================
+   16. FASE M6 — Arquitecto del Estadio ("Mi Estadio").
+   ============================================================ */
+.reforma-puntos {
+  font-weight: 700;
+  color: var(--color-texto-suave);
+  margin: 0 0 var(--espacio);
+}
+
+/* El escenario propio: una franja de césped aparte del fondo general de la app, que va ganando
+   capas (césped/focos/grada/banquillo) según lo comprado. Nivel 0 de cada categoría = aspecto
+   base, sin ninguna mejora todavía. */
+.escenario-estadio {
+  position: relative;
+  height: 8.5rem;
+  border-radius: var(--radio);
+  overflow: hidden;
+  margin: 0 0 var(--espacio);
+  box-shadow: var(--sombra-suave);
+  background: #2f8a4e;
+}
+.escenario-estadio.cesped-nivel-1 {
+  background: repeating-linear-gradient(90deg, #2f8a4e 0 28px, #2a7e46 28px 56px);
+}
+.escenario-estadio.cesped-nivel-2 {
+  background: repeating-linear-gradient(90deg, #34995a 0 28px, #2a7e46 28px 56px);
+}
+.escenario-estadio.cesped-nivel-3 {
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), transparent 40%),
+    repeating-linear-gradient(90deg, #3aa863 0 28px, #278041 28px 56px);
+}
+
+/* Focos: uno o varios resplandores radiales por encima del césped. Cuantos más niveles, más
+   focos y más brillantes (nunca cambia el tiempo de juego, es puramente decorativo). */
+.escenario-estadio.focos-nivel-1::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(60% 70% at 50% 0%, rgba(255, 255, 220, 0.35), transparent 70%);
+}
+.escenario-estadio.focos-nivel-2::before {
+  background:
+    radial-gradient(35% 60% at 20% 0%, rgba(255, 255, 220, 0.4), transparent 70%),
+    radial-gradient(35% 60% at 80% 0%, rgba(255, 255, 220, 0.4), transparent 70%);
+}
+.escenario-estadio.focos-nivel-3::before {
+  background:
+    radial-gradient(30% 65% at 15% 0%, rgba(255, 255, 220, 0.5), transparent 70%),
+    radial-gradient(30% 65% at 50% 0%, rgba(255, 255, 220, 0.55), transparent 70%),
+    radial-gradient(30% 65% at 85% 0%, rgba(255, 255, 220, 0.5), transparent 70%);
+}
+
+/* Grada: una banda decorativa en la parte superior, más ancha y colorida en cada nivel. */
+.escenario-banda {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 0;
+}
+.escenario-estadio.grada-nivel-1 .escenario-banda { height: 0.5rem; background: rgba(255, 255, 255, 0.5); }
+.escenario-estadio.grada-nivel-2 .escenario-banda {
+  height: 0.85rem;
+  background: repeating-linear-gradient(90deg, #ffc107 0 20px, #2979ff 20px 40px);
+}
+.escenario-estadio.grada-nivel-3 .escenario-banda {
+  height: 1.2rem;
+  background: repeating-linear-gradient(90deg, #ffc107 0 16px, #2979ff 16px 32px, #ff9100 32px 48px);
+}
+
+/* Banquillo: fila de asientos propia (nunca dentro del escenario, para no tapar el césped). */
+.escenario-banquillo {
+  display: flex;
+  gap: 0.4rem;
+  margin: 0 0 var(--espacio);
+  min-height: 1.6rem;
+}
+.asiento-banquillo {
+  width: 1.6rem;
+  height: 1.6rem;
+  border-radius: 6px;
+  background: var(--color-primario);
+}
+
+.tarjeta-mejora .leyenda-icono-emoji { font-size: 1.8rem; }
+.mejora-maximo { font-weight: 700; color: #b8860b; }
+
+/* ============================================================
    15. Ajustes para pantallas pequeñas (móvil).
    Este bloque vive A PROPÓSITO al final del archivo: en CSS, cuando dos reglas tienen la misma
    especificidad, gana la que aparece DESPUÉS en el código — no importa el ancho de pantalla. Antes
