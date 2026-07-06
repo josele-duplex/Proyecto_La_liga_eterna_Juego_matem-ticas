@@ -86,6 +86,13 @@ function mostrarBarraPerfil(perfilId, opciones) {
   const barra = document.getElementById('barra-perfil');
   barra.innerHTML = '';
 
+  // Tipografía para dislexia (FASE M8, D.6): se aplica en <html>, no en <body>, a propósito — el
+  // body cambia entero de className en cada UI.aplicarTema('tema-...') de cualquier pantalla, así
+  // que una clase de accesibilidad ahí se perdería en la siguiente pantalla. mostrarBarraPerfil ya
+  // se llama desde CASI todas las pantallas del juego, así que es el único sitio que hace falta
+  // tocar para que el ajuste se mantenga siempre, sin depender de cada pantalla nueva que se añada.
+  document.documentElement.classList.toggle('modo-dislexia', !!(progreso.ajustes && progreso.ajustes.tipografiaDislexia));
+
   barra.appendChild(UI.crearAvatarMini(perfil));
 
   const texto = document.createElement('span');
@@ -182,6 +189,14 @@ function mostrarBarraPerfil(perfilId, opciones) {
     estadio.textContent = '🏟️ Mi Estadio';
     estadio.addEventListener('click', () => mostrarMiEstadio(perfilId));
     barra.appendChild(estadio);
+  }
+
+  // Panel de Familia (FASE M8, D.3+D.6): mismo criterio de visibilidad que Museo/Mi Estadio.
+  if (!(opciones && opciones.ocultarMuseo)) {
+    const familia = document.createElement('button');
+    familia.textContent = '👪 Familia';
+    familia.addEventListener('click', () => mostrarPanelFamilia(perfilId));
+    barra.appendChild(familia);
   }
 
   const sonidoBoton = document.createElement('button');

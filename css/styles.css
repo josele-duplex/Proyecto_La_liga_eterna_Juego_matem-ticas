@@ -1621,6 +1621,47 @@ button:focus-visible {
 }
 
 /* ============================================================
+   18. FASE M8 — Familia y accesibilidad.
+   ============================================================ */
+
+/* Tipografía para dislexia (D.6): la clase vive en <html>, no en <body> — el body cambia entero
+   de className en cada UI.aplicarTema('tema-...') de cualquier pantalla, así que una clase de
+   accesibilidad puesta ahí se perdería en la siguiente pantalla. Sin un archivo de fuente
+   especializada (Claude no puede descargar fuentes), el ajuste se apoya en lo que SÍ mejora la
+   lectura para muchos lectores con dislexia: una sola familia tipográfica sencilla (se quita
+   Fredoka de los títulos), más espacio entre letras y más interlineado. */
+html.modo-dislexia {
+  --fuente-titulos: var(--fuente-principal);
+}
+html.modo-dislexia body {
+  letter-spacing: 0.02em;
+  line-height: 1.65;
+}
+html.modo-dislexia .enunciado {
+  line-height: 1.5;
+}
+
+.familia-seccion { margin-top: var(--espacio); }
+.familia-seccion h3 { margin: 0 0 0.6rem; color: var(--color-primario-oscuro); }
+
+.familia-ajuste-fila {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+}
+.familia-ajuste-fila input { width: 1.3rem; height: 1.3rem; }
+
+.familia-fila-concepto {
+  padding: 0.7rem 0;
+  border-top: var(--borde-sutil);
+}
+.familia-fila-concepto:first-of-type { border-top: none; }
+.familia-fila-cabecera { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.3rem; }
+.familia-fila-cabecera .icono-medalla { width: 1.4rem; height: 1.4rem; }
+.familia-fila-concepto p { margin: 0 0 0.5rem; color: var(--color-texto); line-height: 1.4; }
+
+/* ============================================================
    15. Ajustes para pantallas pequeñas (móvil).
    Este bloque vive A PROPÓSITO al final del archivo: en CSS, cuando dos reglas tienen la misma
    especificidad, gana la que aparece DESPUÉS en el código — no importa el ancho de pantalla. Antes
