@@ -319,9 +319,12 @@ const Engine = {
       if (restante <= 0) {
         clearInterval(intervalo);
         if (!resuelto) {
-          resuelto = true;
+          // Cuenta como un fallo normal (mismo camino que tocar mal, arriba): NO se marca
+          // `resuelto` ni se desactivan los botones, para que el niño pueda seguir intentándolo
+          // igual que si hubiera tocado una opción incorrecta. Antes esto bloqueaba el reto entero
+          // (ambos botones desactivados sin ninguna forma de continuar) porque replicaba el camino
+          // de "acierto" (todo desactivado) en vez del de "fallo".
           tiempo.textContent = '⏱ ¡Tiempo!';
-          Array.from(cont.children).forEach((b) => { b.disabled = true; });
           marcarResultado(false);
         }
       }
