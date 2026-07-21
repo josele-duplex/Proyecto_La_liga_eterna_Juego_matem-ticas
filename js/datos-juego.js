@@ -53,24 +53,42 @@ const MODOS = [
 // sino "el rival te ha robado el balón" — mismo dato (un fallo), distinto envoltorio emocional.
 // 'presentacion' (FASE N1, Plan V2) es la micro-historia que Capi cuenta la PRIMERA vez que este
 // rival concreto aparece para el jugador (ver progreso.rivalesConocidos en pantallas/reto.js).
+// 'provocaciones' (mejora de jugabilidad): frases cortas de pique que el rival suelta en la
+// pantalla de presentación del partido (una al azar) — tensión de videojuego, nunca crueldad:
+// pican al jugador, jamás se burlan de un fallo ya cometido.
 const RIVALES = [
   {
     id: 'energia',
     nombre: 'Energía',
     imagen: 'assets/img/decoracion/fuera-de-juego-energia.webp',
-    presentacion: 'Soy Energía, un Fuera de Juego que se cuela cuando corres demasiado rápido con los números. ¡Contra mí no hace falta prisa, solo calma!'
+    presentacion: 'Soy Energía, un Fuera de Juego que se cuela cuando corres demasiado rápido con los números. ¡Contra mí no hace falta prisa, solo calma!',
+    provocaciones: [
+      '¡Corre, corre, que así te equivocas antes! Ji, ji...',
+      'Hoy vengo a toda velocidad. ¿Podrás mantener la calma?',
+      '¡Los que van con prisa son los que más balones me regalan!'
+    ]
   },
   {
     id: 'asustado',
     nombre: 'Asustado',
     imagen: 'assets/img/decoracion/fuera-de-juego-asustado.webp',
-    presentacion: 'Me llamo Asustado. Aparezco cuando dudas de ti mismo antes de intentarlo. ¡Pero ya verás que puedes conmigo!'
+    presentacion: 'Me llamo Asustado. Aparezco cuando dudas de ti mismo antes de intentarlo. ¡Pero ya verás que puedes conmigo!',
+    provocaciones: [
+      '¿Y si te sale mal? ¿Y si es muy difícil? Uy, uy, uy...',
+      'Yo de ti no lo intentaría... ¡espera, sí, soy yo el que tiembla!',
+      'Cuando dudes, ahí estaré yo para robarte el balón...'
+    ]
   },
   {
     id: 'malvado',
     nombre: 'Malvado',
     imagen: 'assets/img/decoracion/fuera-de-juego-malvado.webp',
-    presentacion: 'Soy Malvado, el más travieso de los Fueras de Juego. Me encanta desordenar los números... ¡pero contigo no lo voy a conseguir!'
+    presentacion: 'Soy Malvado, el más travieso de los Fueras de Juego. Me encanta desordenar los números... ¡pero contigo no lo voy a conseguir!',
+    provocaciones: [
+      '¡Muahaha! Hoy pienso marcarte tres goles por lo menos.',
+      'He desordenado todos los números del estadio. ¡A ver si te aclaras!',
+      '¿Tú otra vez? Esta vez no pienso dejarte ganar tan fácil...'
+    ]
   }
 ];
 
@@ -106,6 +124,29 @@ const MODOS_DIFICULTAD = {
 // Contrarreloj (FASE M5, 14.5): número de rondas por sesión, siempre puzles del concepto
 // 'relampago' (presente en los 4 bancos de edad).
 const RONDAS_CONTRARRELOJ = 5;
+
+// Partido especial del día (mejora de jugabilidad, C.3 en versión ligera): cada día el calendario
+// ofrece UN partido con una condición distinta al partido normal, para variar la dinámica. Se
+// elige de forma determinista por fecha (día del año % lista), igual para todos los perfiles.
+// Ningún tipo castiga: si no se cumple la condición, se gana el partido igual, solo sin el bono.
+const PARTIDOS_ESPECIALES = [
+  {
+    id: 'porteria-cero',
+    nombre: 'Portería a cero',
+    icono: '🧤',
+    descripcion: 'Gana el partido sin que el rival marque ningún gol.',
+    bono: 20,
+    retos: 3
+  },
+  {
+    id: 'partido-largo',
+    nombre: 'Partido de 5 retos',
+    icono: '🏃',
+    descripcion: 'Un partido más largo de lo normal: aguanta los 5 retos.',
+    bono: 15,
+    retos: 5
+  }
+];
 
 // Copa de Leyendas (FASE M7, B.2): rondas de la serie especial, mezclando conceptos que el
 // jugador YA domina (Titular o Crack) en su equipo actual — retos variados de repaso, no contenido

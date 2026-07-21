@@ -1,10 +1,12 @@
-// Pantalla 4: jugar la serie de retos de un estadio.
-function iniciarEstadio(perfilId, estadio) {
+// Pantalla 4: jugar la serie de retos de un estadio. `especial` (opcional) es el partido especial
+// del día (PARTIDOS_ESPECIALES): puede cambiar el número de retos y añade un bono si se cumple su
+// condición — nunca castiga si no se cumple.
+function iniciarEstadio(perfilId, estadio, especial) {
   const rival = RIVALES[Math.floor(Math.random() * RIVALES.length)];
 
-  // Micro-historia del rival (FASE N1, Plan V2): Capi la cuenta solo la PRIMERA vez que este
-  // "Fuera de Juego" concreto aparece para este jugador. progreso.rivalesConocidos se guarda ya
-  // aquí (antes de jugar ningún reto) para que no se repita en partidos futuros con el mismo rival.
+  // Micro-historia del rival (FASE N1, Plan V2): se cuenta solo la PRIMERA vez que este "Fuera de
+  // Juego" concreto aparece para este jugador, en su pantalla de presentación (rival.js).
+  // progreso.rivalesConocidos se guarda ya aquí para que no se repita en partidos futuros.
   const progreso = Storage.cargarProgreso(perfilId);
   progreso.rivalesConocidos = progreso.rivalesConocidos || [];
   const esRivalNuevo = !progreso.rivalesConocidos.includes(rival.id);
@@ -14,10 +16,16 @@ function iniciarEstadio(perfilId, estadio) {
   }
 
   const sesion = {
-    hechos: 0, total: estadio.retos, golesRival: 0, rival,
+    hechos: 0,
+    total: (especial && especial.retos) || estadio.retos,
+    golesRival: 0,
+    rival,
+    especial: especial || null,
     presentacionRival: esRivalNuevo ? rival.presentacion : null
   };
-  jugarReto(perfilId, estadio, sesion);
+  // Presentación del rival estilo videojuego (pantalla "VS"): el partido siempre empieza viendo
+  // a quién te enfrentas — un poco de nervio antes del primer reto.
+  mostrarPresentacionRival(perfilId, estadio, sesion);
 }
 
 async function jugarReto(perfilId, estadio, sesion) {
@@ -56,12 +64,6 @@ async function jugarReto(perfilId, estadio, sesion) {
       ? fraseCapi('inicio_repaso')
       : fraseCapi('inicio_normal');
   const tarjetaCapi = crearTarjetaCapi(puzzle, fraseInicial);
-  // Micro-historia del rival (FASE N1): solo en el primer reto del partido y solo si es la
-  // primera vez que aparece este rival — sustituye al mensaje de inicio normal, una vez.
-  if (sesion.hechos === 0 && sesion.presentacionRival) {
-    const bocadilloInicial = tarjetaCapi.querySelector('#capi-bocadillo');
-    if (bocadilloInicial) bocadilloInicial.textContent = sesion.presentacionRival;
-  }
   app.appendChild(tarjetaCapi);
 
   // El rival solo "marca" una vez por reto (el primer fallo), aunque el niño falle varias veces
@@ -89,25 +91,73 @@ async function jugarReto(perfilId, estadio, sesion) {
       // solo guardamos la primera para no saturar la pantalla de victoria con una lista larga.
       const leyendasNuevas = revisarLeyendasNuevas(progresoActual, leyendas);
       if (leyendasNuevas.length > 0) leyendaRecienDesbloqueada = leyendasNuevas[0];
+      // ¿Este acierto sube la medalla del concepto? Se anuncia en el momento (el niño debe SENTIR
+      // qué gana y por qué, no descubrirlo en un menú). Solo Titular/Crack: anunciar Aprendiz en
+      // cada concepto nuevo sería ruido.
+      const nivelDespues = Progression.nivelDominioConcepto(progresoActual, puzzleResuelto.concepto);
+      const ordenNiveles = [null, 'aprendiz', 'titular', 'crack'];
+      const medallaSubida = ordenNiveles.indexOf(nivelDespues) > ordenNiveles.indexOf(nivelAntes)
+        && (nivelDespues === 'titular' || nivelDespues === 'crack');
       // Arquitecto del Estadio (FASE M6): puntos de reforma por dominio, no por volumen —
       // revisarPuntosReforma ya se encarga de no pagar el mismo salto de nivel dos veces.
-      revisarPuntosReforma(progresoActual);
+      // Se acumulan en la sesión para ENSEÑARLOS en la victoria (antes se ganaban en silencio).
+      const reformaGanada = revisarPuntosReforma(progresoActual);
+      sesion.reformaGanada = (sesion.reformaGanada || 0) + reformaGanada;
       otorgarRecompensa(progresoActual, puzzleResuelto.estrategia);
       otorgarInsigniasProceso(progresoActual, puzzleResuelto, resultado);
+      // Combo (mejora de jugabilidad): retos seguidos resueltos limpios (a la primera, sin
+      // pistas) DENTRO del partido. A partir de 3, energía extra. Fallar solo reinicia el
+      // contador: nunca quita nada.
+      const fueLimpio = resultado.intentosFallidos === 0 && resultado.pistasUsadas === 0;
+      sesion.combo = fueLimpio ? (sesion.combo || 0) + 1 : 0;
+      const bonusCombo = sesion.combo >= 3 ? 5 : 0;
+      if (bonusCombo) progresoActual.energia += bonusCombo;
       // Contrato del Día (FASE M2, U2): si este acierto lo cumple, Capi lo celebra en vez del
       // elogio normal — es el "propósito inmediato" de la sesión, merece su propio mensaje.
       const contratoCumplidoAhora = avanzarContratoDelDia(progresoActual, puzzleResuelto);
+      // Avisos de primera vez (Guía del Capi jugada): la primera energía, el primer cromo, los
+      // primeros puntos de reforma o el primer combo se explican en el momento. Se dispara COMO
+      // MUCHO uno por acierto (el primero pendiente de la lista): si dos cosas nuevas coinciden
+      // en la misma jugada, la segunda se explica en el siguiente acierto — nunca se pierde,
+      // porque la condición es "ya tienes esto" y no "acaba de aparecer justo ahora".
+      // CLAVE: solo se consume (se marca visto) si de verdad va a mostrarse — si un mensaje de
+      // mayor prioridad (contrato, medalla...) gana el bocadillo de Capi este turno, el aviso
+      // queda pendiente para el siguiente acierto en vez de perderse en silencio.
+      const hayMensajePrioritario = contratoCumplidoAhora || cromoNecesitaEntrenar || medallaSubida;
+      const avisoNuevo = hayMensajePrioritario ? null
+        : (progresoActual.energia > 0 && avisoPrimeraVez(progresoActual, 'energia'))
+        || (Object.keys(progresoActual.insignias || {}).length > 0 && avisoPrimeraVez(progresoActual, 'cromo'))
+        || (((progresoActual.reforma && progresoActual.reforma.puntos > 0) || reformaGanada > 0) && avisoPrimeraVez(progresoActual, 'reforma'))
+        || (sesion.combo >= 2 && avisoPrimeraVez(progresoActual, 'combo'))
+        || null;
       Storage.guardarProgreso(perfilId, progresoActual);
       Sonido.sonidoAcierto();
       celebrarAcierto(zonaJuego, recompensas.energiaPorPuzle, vocabularioDe(puzzleResuelto.estrategia));
+      // Chip de combo en la tarjeta de celebración: el jugador ve la racha crecer en el momento.
+      if (sesion.combo >= 2) {
+        const feedback = zonaJuego.querySelector('.feedback');
+        if (feedback) {
+          const chipCombo = document.createElement('span');
+          chipCombo.className = 'celebracion-combo';
+          chipCombo.textContent = bonusCombo
+            ? `🔥 ¡Combo ×${sesion.combo}! +${bonusCombo}⚡ extra`
+            : `🔥 ¡Combo ×${sesion.combo}!`;
+          feedback.appendChild(chipCombo);
+        }
+      }
       // El copy de "necesita entrenar de nuevo" es LITERAL (regla del plan, sección 8): no se
-      // parafrasea ni se pasa por el banco de variantes de fraseCapi.
-      const nombreConceptoNecesitaEntrenar = NOMBRES_CONCEPTO[puzzleResuelto.concepto] || puzzleResuelto.concepto;
+      // parafrasea ni se pasa por el banco de variantes de fraseCapi. Prioridad de mensajes de
+      // Capi: contrato > cromo que necesita entrenar > medalla nueva > aviso de primera vez > elogio.
+      const nombreConcepto = NOMBRES_CONCEPTO[puzzleResuelto.concepto] || puzzleResuelto.concepto;
       const mensajeCapi = contratoCumplidoAhora
         ? fraseCapi('contrato_cumplido', { bono: progresoActual.contratoDia.bonus })
         : cromoNecesitaEntrenar
-          ? `Este cromo de ${nombreConceptoNecesitaEntrenar} necesita entrenar de nuevo. ¡Vamos a por ello!`
-          : fraseAcierto(resultado);
+          ? `Este cromo de ${nombreConcepto} necesita entrenar de nuevo. ¡Vamos a por ello!`
+          : medallaSubida
+            ? (nivelDespues === 'crack'
+              ? `¡MEDALLA DE CRACK en ${nombreConcepto}! 🥇 Lo dominas de verdad: esto suma puntos de reforma para tu estadio.`
+              : `¡Medalla de Titular en ${nombreConcepto}! 🥈 Ya lo resuelves tú solo en su nivel más alto.`)
+            : avisoNuevo || fraseAcierto(resultado);
       reaccionarCapi(tarjetaCapi, 'alegria', mensajeCapi);
       mostrarBarraPerfil(perfilId, { mostrarVolver: true, ocultarCambiarEquipo: true, ocultarMuseo: true, brilloEnergia: true });
       // El reto ya está resuelto: los poderes dejan de poder usarse (no tiene sentido gastar
@@ -147,6 +197,24 @@ async function jugarReto(perfilId, estadio, sesion) {
             rivalImg.classList.remove('rival-ataca');
             void rivalImg.offsetWidth; // reinicia la animación
             rivalImg.classList.add('rival-ataca');
+          }
+          // Destello de gol rival (sensación de videojuego): un cartel breve que cruza la
+          // pantalla cuando el rival marca. Solo el PRIMER fallo del reto (los reintentos no
+          // vuelven a dispararlo) y nunca con "reducir movimiento" activado.
+          if (!UI.prefiereMenosMovimiento()) {
+            const flash = document.createElement('div');
+            flash.className = 'flash-gol-rival';
+            const cartel = document.createElement('div');
+            cartel.className = 'flash-gol-cartel';
+            const img = document.createElement('img');
+            img.src = sesion.rival.imagen;
+            img.alt = sesion.rival.nombre;
+            const texto = document.createElement('span');
+            texto.textContent = `⚽ ¡GOL de ${sesion.rival.nombre}!`;
+            cartel.append(img, texto);
+            flash.appendChild(cartel);
+            document.body.appendChild(flash);
+            setTimeout(() => flash.remove(), 1400);
           }
         }
         // "Ojo del Águila" solo aparece tras el primer fallo, igual que el botón de pista.
@@ -416,7 +484,20 @@ function mostrarBotonSiguiente(perfilId, estadio, sesion) {
   zona.innerHTML = '';
   const boton = document.createElement('button');
   boton.className = 'boton-siguiente boton-cta';
-  boton.textContent = '⚽ Siguiente reto';
-  boton.addEventListener('click', () => jugarReto(perfilId, estadio, sesion));
+
+  // El Descanso: a mitad de partido (como el descanso de un partido de verdad), el botón lleva a
+  // una pausa tranquila con un truco/curiosidad/juego (data/descansos.json) antes de la segunda
+  // parte. Solo una vez por partido, y solo si el partido tiene al menos 3 retos (con menos no
+  // hay "mitad" que valga la pena interrumpir).
+  const mitad = Math.ceil(sesion.total / 2);
+  const tocaDescanso = sesion.total >= 3 && sesion.hechos === mitad && !sesion.descansoHecho;
+  if (tocaDescanso) {
+    sesion.descansoHecho = true;
+    boton.textContent = '🥤 ¡Al descanso!';
+    boton.addEventListener('click', () => mostrarDescanso(perfilId, estadio, sesion));
+  } else {
+    boton.textContent = '⚽ Siguiente reto';
+    boton.addEventListener('click', () => jugarReto(perfilId, estadio, sesion));
+  }
   zona.appendChild(boton);
 }

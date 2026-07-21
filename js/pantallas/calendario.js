@@ -59,6 +59,25 @@ function mostrarCalendario(perfilId) {
 
     lista.appendChild(tarjeta);
   });
+
+  // Partido especial del día (C.3 ligero): un partido con una condición distinta cada día, para
+  // variar la dinámica. Se juega en el primer estadio del calendario; solo cambia la condición.
+  const especialHoy = partidoEspecialDeHoy();
+  const tarjetaEspecial = document.createElement('div');
+  tarjetaEspecial.className = 'estadio tarjeta-especial';
+  const nombreEspecial = document.createElement('h2');
+  nombreEspecial.textContent = `${especialHoy.icono} ${especialHoy.nombre}`;
+  tarjetaEspecial.appendChild(nombreEspecial);
+  const descEspecial = document.createElement('p');
+  descEspecial.textContent = `Partido especial de hoy: ${especialHoy.descripcion} Bono: +${especialHoy.bono}⚡`;
+  tarjetaEspecial.appendChild(descEspecial);
+  const jugarEspecial = document.createElement('button');
+  jugarEspecial.className = 'boton-siguiente';
+  jugarEspecial.textContent = 'Aceptar el desafío';
+  jugarEspecial.addEventListener('click', () => iniciarEstadio(perfilId, calendario.estadios[0], especialHoy));
+  tarjetaEspecial.appendChild(jugarEspecial);
+  lista.appendChild(tarjetaEspecial);
+
   app.appendChild(lista);
 
   // Modos especiales (FASE M5, 14.5): Entrenamiento del Capitán (práctica libre, no toca la

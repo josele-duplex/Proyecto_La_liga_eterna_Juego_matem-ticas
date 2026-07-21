@@ -157,6 +157,12 @@ function mostrarResumenCopa(perfilId, sesion) {
 
   const perfil = PERFILES.find((p) => p.id === perfilId);
 
+  // Vitrina de trofeos: cada Copa superada suma al palmarés (Sala de Trofeos del Museo).
+  const progresoTrofeos = Storage.cargarProgreso(perfilId);
+  progresoTrofeos.trofeos = progresoTrofeos.trofeos || { partidos: 0, copas: 0, contrarrelojes: 0 };
+  progresoTrofeos.trofeos.copas++;
+  Storage.guardarProgreso(perfilId, progresoTrofeos);
+
   const panel = document.createElement('div');
   panel.className = 'panel-victoria';
 

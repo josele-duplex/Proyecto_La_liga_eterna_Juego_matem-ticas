@@ -11,6 +11,8 @@ let frasesCapi = null;
 let leyendas = null;
 let enciclopedia = null;
 let reformas = null;
+let descansos = null;
+let guia = null;
 // Si el jugador acaba de desbloquear un equipo superior por ir sobrado, lo guardamos aquí para
 // sugerírselo al terminar el partido (un buen momento de pausa, no a mitad de un reto).
 let modoRecienDesbloqueado = null;
@@ -30,6 +32,8 @@ async function arrancar() {
   leyendas = await (await fetch('data/leyendas.json')).json();
   enciclopedia = await (await fetch('data/enciclopedia.json')).json();
   reformas = await (await fetch('data/reformas.json')).json();
+  descansos = await (await fetch('data/descansos.json')).json();
+  guia = await (await fetch('data/guia.json')).json();
 
   mostrarPortada(() => {
     // Red de seguridad: si al retomar el último perfil algo falla (p. ej. un progreso guardado

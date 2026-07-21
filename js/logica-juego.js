@@ -63,6 +63,47 @@ function conceptosDominadosDe(progreso, indice) {
   });
 }
 
+// Aviso de primera vez (Guía del Capi jugada, no leída): la PRIMERA vez que el niño gana cada
+// tipo de recompensa (energía, cromo, puntos de reforma, combo...), Capi explica en el momento
+// qué es y para qué sirve — el tutorial ocurre dentro del juego, justo cuando la cosa aparece.
+// Devuelve el texto del aviso (y lo marca como visto; quien llama guarda el progreso), o null si
+// ya se dio. Textos en data/guia.json → avisos.
+function avisoPrimeraVez(progreso, clave) {
+  const texto = guia.avisos && guia.avisos[clave];
+  if (!texto) return null;
+  progreso.avisosVistos = progreso.avisosVistos || [];
+  if (progreso.avisosVistos.includes(clave)) return null;
+  progreso.avisosVistos.push(clave);
+  return texto;
+}
+
+// Partido especial del día (C.3 ligero): cuál toca hoy, determinista por fecha (mismo para todos
+// los perfiles y estable durante todo el día). Rota por la lista PARTIDOS_ESPECIALES.
+function partidoEspecialDeHoy() {
+  const hoy = new Date();
+  const inicioAnio = new Date(hoy.getFullYear(), 0, 0);
+  const diaDelAnio = Math.floor((hoy - inicioAnio) / (24 * 60 * 60 * 1000));
+  return PARTIDOS_ESPECIALES[diaDelAnio % PARTIDOS_ESPECIALES.length];
+}
+
+// El Descanso (pausa a mitad de partido): elige el siguiente truco/curiosidad/juego que el
+// jugador todavía no ha visto, y lo marca como visto (quien llama guarda el progreso). Cuando ya
+// los ha visto todos, la lista de vistos se reinicia y la rotación vuelve a empezar — el
+// conocimiento se repasa, no se agota. Sin aleatoriedad: en orden, para que dos hermanos en el
+// mismo punto vean cosas distintas solo si han jugado distinto.
+function elegirDescanso(progreso, datosDescansos) {
+  const todos = datosDescansos.descansos;
+  progreso.descansosVistos = progreso.descansosVistos || [];
+  let pendientes = todos.filter((d) => !progreso.descansosVistos.includes(d.id));
+  if (pendientes.length === 0) {
+    progreso.descansosVistos = [];
+    pendientes = todos;
+  }
+  const elegido = pendientes[0];
+  progreso.descansosVistos.push(elegido.id);
+  return elegido;
+}
+
 // Museo de la Liga (FASE M3, U5): revisa si alguna Leyenda del Orden nueva se desbloquea con el
 // dominio actual (nivel Titular o Crack en su concepto asociado — Progression.nivelDominioConcepto
 // no necesita saber de qué banco/edad es el concepto, lee directamente progreso.dominio). Modifica

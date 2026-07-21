@@ -107,6 +107,13 @@ function mostrarBarraPerfil(perfilId, opciones) {
   energia.className = 'barra-energia';
   if (opciones && opciones.brilloEnergia) energia.classList.add('brillo-energia');
   energia.innerHTML = `<img src="assets/icons-svg/rayo.svg" alt="" class="icono-svg-inline"> ${progreso.energia || 0}`;
+  // Tocar la energía abre la Guía del Capi ("¿qué es esto y para qué sirve?") — salvo en mitad
+  // de un reto, donde navegar fuera abandonaría la pregunta (mismo criterio que el botón Museo).
+  energia.title = 'Tu energía. Toca para ver la Guía del Capi.';
+  if (!(opciones && opciones.ocultarMuseo)) {
+    energia.classList.add('barra-energia-tocable');
+    energia.addEventListener('click', () => mostrarMuseo(perfilId, 'guia'));
+  }
   barra.appendChild(energia);
 
   // Racha de días jugados (TG.3): solo se muestra si ya hay al menos un día contado.

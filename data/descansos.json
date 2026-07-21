@@ -1,0 +1,120 @@
+{
+  "nota": "El Descanso (pausa a mitad de partido): trucos matematicos, curiosidades y juegos que el nino puede aprender y ensenar a sus amigos. Sin pregunta, sin cronometro, sin recompensa: es puro conocimiento y calma entre la primera y la segunda parte. 'tipo' decide la etiqueta (truco/curiosidad/juego); 'paraAmigos' es opcional (la frase de 'ensenaselo a tus amigos'). Se rotan sin repetir (progreso.descansosVistos) hasta verlos todos, y vuelta a empezar.",
+  "descansos": [
+    {
+      "id": "truco-sumar-9",
+      "tipo": "truco",
+      "titulo": "El truco del 9",
+      "texto": "Sumar 9 es facilísimo: suma 10 y quita 1. Por ejemplo, 25 + 9: primero 25 + 10 = 35, y después 35 − 1 = 34. ¡Ya está!",
+      "paraAmigos": "Reta a un amigo a sumar 9 más rápido que tú. Con este truco, ganarás casi siempre."
+    },
+    {
+      "id": "truco-tabla-9-dedos",
+      "tipo": "truco",
+      "titulo": "La tabla del 9 con los dedos",
+      "texto": "Pon las dos manos abiertas. Para 9 × 3, dobla el tercer dedo empezando por la izquierda: quedan 2 dedos a un lado y 7 al otro. ¡27! Funciona con toda la tabla del 9.",
+      "paraAmigos": "Enséñaselo a tus amigos: parecerá magia, pero son matemáticas."
+    },
+    {
+      "id": "truco-empezar-mayor",
+      "tipo": "truco",
+      "titulo": "Empieza por el grande",
+      "texto": "En una suma, el orden da igual: 3 + 28 es lo mismo que 28 + 3. Así que empieza siempre por el número grande y cuenta desde ahí: 28... 29, 30, 31. Mucho más rápido."
+    },
+    {
+      "id": "truco-completar-decena",
+      "tipo": "truco",
+      "titulo": "El puente del 10",
+      "texto": "Para sumar 8 + 5, primero llega hasta 10: al 8 le faltan 2. Le quitas 2 al 5 (queda 3) y ya tienes 10 + 3 = 13. Los cracks del cálculo usan este puente todo el rato."
+    },
+    {
+      "id": "truco-multiplicar-10",
+      "tipo": "truco",
+      "titulo": "Multiplicar por 10",
+      "texto": "Para multiplicar cualquier número por 10, solo añade un cero al final: 7 × 10 = 70, 23 × 10 = 230. El cero hace todo el trabajo por ti."
+    },
+    {
+      "id": "truco-restar-contando",
+      "tipo": "truco",
+      "titulo": "Restar contando hacia delante",
+      "texto": "Para 42 − 38 no hace falta restar: cuenta desde 38 hasta 42 con los dedos... 39, 40, 41, 42. ¡Son 4! Cuando los números están cerca, contar hacia delante es más fácil que restar."
+    },
+    {
+      "id": "curiosidad-balon",
+      "tipo": "curiosidad",
+      "titulo": "El balón está hecho de matemáticas",
+      "texto": "El balón de fútbol clásico está cosido con 12 pentágonos negros y 20 hexágonos blancos. Sin esas figuras geométricas exactas, no sería redondo. ¡Cada balón es geometría pura!"
+    },
+    {
+      "id": "curiosidad-cero",
+      "tipo": "curiosidad",
+      "titulo": "El número que tardó siglos en nacer",
+      "texto": "El cero es el número más joven: durante miles de años nadie lo escribía porque parecía absurdo escribir 'nada'. Hoy sin el cero no habría ordenadores, ni móviles, ni marcadores de fútbol."
+    },
+    {
+      "id": "curiosidad-capicua",
+      "tipo": "curiosidad",
+      "titulo": "Números capicúa",
+      "texto": "Un capicúa se lee igual del derecho y del revés: 121, 343, 2002. La palabra viene del catalán 'cap i cua': cabeza y cola.",
+      "paraAmigos": "Juega con tus amigos a cazar capicúas en las matrículas de los coches. El primero que vea uno, gana."
+    },
+    {
+      "id": "curiosidad-partido-segundos",
+      "tipo": "curiosidad",
+      "titulo": "¿Cuánto dura un partido?",
+      "texto": "Un partido de fútbol dura 90 minutos. Como cada minuto tiene 60 segundos, son 90 × 60 = 5.400 segundos. ¡Y una final con prórroga pasa de 7.000!"
+    },
+    {
+      "id": "curiosidad-abejas",
+      "tipo": "curiosidad",
+      "titulo": "Las abejas saben geometría",
+      "texto": "Las abejas construyen sus panales con hexágonos perfectos. Es la figura que guarda más miel gastando menos cera. Lo descubrieron millones de años antes que los matemáticos."
+    },
+    {
+      "id": "curiosidad-googol",
+      "tipo": "curiosidad",
+      "titulo": "Un número con 100 ceros",
+      "texto": "Existe un número llamado gúgol: un 1 seguido de 100 ceros. Es más grande que el número de granos de arena de todas las playas de la Tierra. Y aun así, los números nunca se acaban: siempre puedes sumar 1 más."
+    },
+    {
+      "id": "curiosidad-dorsales",
+      "tipo": "curiosidad",
+      "titulo": "Los números de la camiseta",
+      "texto": "Antes, los dorsales del 1 al 11 decían tu posición en el campo: el 1 era el portero y el 9 el delantero centro. Por eso a los goleadores todavía se les llama 'nueves'."
+    },
+    {
+      "id": "juego-adivino-resultado",
+      "tipo": "juego",
+      "titulo": "Adivino tu número",
+      "texto": "Dile a alguien: piensa un número. Súmale 5. Multiplica por 2. Réstale 10. Divide entre 2. ¡El resultado es su número secreto! Funciona siempre, porque los pasos se deshacen entre sí.",
+      "paraAmigos": "Hazlo con cara de mago. Nadie sabrá que el truco son las matemáticas."
+    },
+    {
+      "id": "juego-carrera-20",
+      "tipo": "juego",
+      "titulo": "La carrera al 20",
+      "texto": "Por turnos, cada jugador suma 1 o 2 al número anterior, empezando desde 0. Quien diga 20, gana. El secreto: si consigues decir 2, 5, 8, 11, 14 y 17, ganarás siempre.",
+      "paraAmigos": "Juega primero sin contar el secreto... y luego enséñaselo. Se quedarán de piedra."
+    },
+    {
+      "id": "juego-adivinar-100",
+      "tipo": "juego",
+      "titulo": "Tu número en 7 preguntas",
+      "texto": "Reta a alguien: piensa un número del 1 al 100 y lo adivino con 7 preguntas de sí o no. El truco es preguntar siempre por la mitad: ¿es mayor que 50? ¿mayor que 25?... Cada pregunta descarta la mitad de los números.",
+      "paraAmigos": "Parece imposible y siempre funciona. Es el mismo truco que usan los ordenadores para buscar rápido."
+    },
+    {
+      "id": "juego-calculadora-rota",
+      "tipo": "juego",
+      "titulo": "La calculadora rota",
+      "texto": "Imagina una calculadora en la que solo funcionan el 3, el +, el − y el =. ¿Puedes conseguir el 12? ¿Y el 5? (Pista: 3 + 3 = 6... y también puedes restar).",
+      "paraAmigos": "Retaos por turnos a conseguir un número. Gana quien lo logre con menos teclas."
+    },
+    {
+      "id": "truco-dobles-espejo",
+      "tipo": "truco",
+      "titulo": "Los dobles son un espejo",
+      "texto": "6 + 6, 7 + 7, 8 + 8... los dobles son los más fáciles de recordar. Y esconden un regalo: si sabes que 7 + 7 = 14, entonces 7 + 8 es solo uno más: 15. Un doble te regala dos sumas."
+    }
+  ]
+}

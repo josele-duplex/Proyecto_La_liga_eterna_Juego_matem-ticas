@@ -1,0 +1,77 @@
+{
+  "nota": "Guia del Capi: explica en lenguaje de nino que es cada cosa que se gana en el juego y para que sirve. 'items' se muestra como sala del Museo (consulta); 'avisos' son las frases que Capi dice DENTRO del juego la primera vez que el nino gana cada cosa (progreso.avisosVistos evita repetirlas) — el aprendizaje de las reglas ocurre jugando, la sala es solo el repaso.",
+  "avisos": {
+    "energia": "¡Tu primera energía! ⚡ Guárdala bien: con ella compras Poderes cuando un reto se ponga difícil. Y tranquilo: fallar nunca te la quita.",
+    "cromo": "¡Tu primer cromo! 🃏 Cada estrategia matemática que uses te da el suyo. Tu colección te espera en la Vitrina del Museo.",
+    "reforma": "¡Puntos de reforma! 🔧 Los ganas al dominar conceptos de verdad. Gástalos en Mi Estadio: tu campo crece cuando creces tú.",
+    "combo": "¡Eso es un combo! 🔥 Encadena 3 aciertos a la primera y te llevas energía extra."
+  },
+  "items": [
+    {
+      "icono": "⚡",
+      "nombre": "Energía",
+      "queEs": "Los puntos que ganas cada vez que aciertas un reto (+10) o cumples el contrato del día.",
+      "paraQueSirve": "Se gasta en los Poderes durante un reto: pedir un consejo del Capitán, tachar una opción mala o conseguir tiempo extra en el Relámpago. Fallar NUNCA te quita energía."
+    },
+    {
+      "icono": "🧠",
+      "nombre": "Poderes",
+      "queEs": "Ayudas que puedes comprar con tu energía en mitad de un reto: 👁️ Ojo del Águila (tacha una opción mala), 🧠 Consejo del Capitán (una pista) y ⏱️ Tiempo Extra (más segundos en el Relámpago).",
+      "paraQueSirve": "Para cuando te atascas: te ayudan a pensar, pero nunca te dan la respuesta hecha. Usarlos es de jugadores listos, no de tramposos."
+    },
+    {
+      "icono": "🃏",
+      "nombre": "Cromos",
+      "queEs": "Cada estrategia matemática tiene su cromo (Rey de los Dobles, Maestro de la Decena...). Ganas uno cada vez que la usas para acertar.",
+      "paraQueSirve": "Son tu colección: cuantas más veces usas una estrategia, más crece su número. Y brillan más cuando dominas de verdad ese concepto."
+    },
+    {
+      "icono": "🥇",
+      "nombre": "Medallas",
+      "queEs": "Cada concepto tiene su medalla: 🥉 Aprendiz cuando lo empiezas, 🥈 Titular cuando lo resuelves solo una vez en su nivel más alto, 🥇 Crack cuando lo haces varias veces.",
+      "paraQueSirve": "Enseñan lo que ya sabes hacer. Se ganan demostrándolo jugando, nunca por jugar mucho rato. Si una medalla pierde brillo, solo significa que ese cromo quiere entrenar de nuevo."
+    },
+    {
+      "icono": "🏅",
+      "nombre": "Trofeos",
+      "queEs": "Tu palmarés: partidos ganados 🏅, Copas de Leyendas 🏆 y Contrarrelojes superados ⚡. Está en la Vitrina del Museo.",
+      "paraQueSirve": "Cuentan tu historia como jugador. Nunca se pierden, ni aunque falles mil veces después."
+    },
+    {
+      "icono": "🔧",
+      "nombre": "Puntos de reforma",
+      "queEs": "Los ganas cuando un concepto sube a Titular (+1) o a Crack (+2).",
+      "paraQueSirve": "Se gastan en Mi Estadio: mejorar el césped, los focos, la grada y el banquillo. Tu estadio crece cuando crece lo que sabes."
+    },
+    {
+      "icono": "🔥",
+      "nombre": "Racha y combo",
+      "queEs": "La racha 🔥 cuenta los días seguidos que entrenas. El combo cuenta los retos seguidos que aciertas a la primera dentro de un partido.",
+      "paraQueSirve": "La racha premia la constancia (vuelve mañana para no perderla). El combo premia estar concentrado: con 3 seguidos ganas energía extra."
+    },
+    {
+      "icono": "📋",
+      "nombre": "Contrato del día",
+      "queEs": "La misión que Capi te pone cada día en el calendario (por ejemplo: 3 jugadas de DOBLES).",
+      "paraQueSirve": "Si lo cumples, bono de energía. Si no lo cumples, no pasa absolutamente nada: mañana hay otro."
+    },
+    {
+      "icono": "👾",
+      "nombre": "Los Fueras de Juego",
+      "queEs": "Los rivales de cada partido: Energía, Asustado y Malvado. Cuando fallas un reto, te roban el balón y marcan gol.",
+      "paraQueSirve": "Son el equipo contrario: gana el partido y los dejarás fuera de juego. Si acabas sin que marquen ninguno, ¡victoria perfecta!"
+    },
+    {
+      "icono": "🛡️",
+      "nombre": "Escudos y emblemas",
+      "queEs": "El escudo de cada estadio y el emblema de cada equipo (Promesas, Aspirantes, Estrellas, Leyendas).",
+      "paraQueSirve": "Dicen dónde juegas y en qué división estás. Subir de división se celebra con su ceremonia de ascenso 🎉."
+    },
+    {
+      "icono": "🏛",
+      "nombre": "Leyendas del Orden",
+      "queEs": "Matemáticos y matemáticas de verdad (Gauss, Hypatia, Fibonacci...) que se desbloquean dominando conceptos.",
+      "paraQueSirve": "Cada una te cuenta su historia y su truco en la Sala de Leyendas del Museo. Coleccionarlas es coleccionar conocimiento."
+    }
+  ]
+}

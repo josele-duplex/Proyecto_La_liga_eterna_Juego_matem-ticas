@@ -9,6 +9,23 @@ function mostrarPartidoGanado(perfilId, estadio, sesion) {
   const perfil = PERFILES.find((p) => p.id === perfilId);
   const progresoFinal = Storage.cargarProgreso(perfilId);
 
+  // Vitrina de trofeos: cada partido ganado cuenta y se queda para siempre (se enseña en la
+  // Sala de Trofeos del Museo). Lazy-default, mismo patrón que reforma/contratoDia.
+  progresoFinal.trofeos = progresoFinal.trofeos || { partidos: 0, copas: 0, contrarrelojes: 0 };
+  progresoFinal.trofeos.partidos++;
+
+  // Partido especial del día: si la condición se cumplió, el bono se cobra aquí (una sola vez,
+  // en el mismo guardado que el trofeo). No cumplirla no quita nada: el partido se gana igual.
+  let bonoEspecial = 0;
+  if (sesion && sesion.especial) {
+    const cumplido = sesion.especial.id === 'porteria-cero' ? sesion.golesRival === 0 : true;
+    if (cumplido) {
+      bonoEspecial = sesion.especial.bono;
+      progresoFinal.energia = (progresoFinal.energia || 0) + bonoEspecial;
+    }
+  }
+  Storage.guardarProgreso(perfilId, progresoFinal);
+
   // Toda la pantalla de victoria vive dentro de UN panel con fondo propio: así el texto se lee
   // siempre (antes flotaba directamente sobre el césped verde y los colores rojo/azul se perdían),
   // y la celebración queda recogida y con jerarquía clara.
@@ -111,7 +128,35 @@ function mostrarPartidoGanado(perfilId, estadio, sesion) {
     premioRacha.innerHTML = `<strong><img src="assets/icons-svg/llama.svg" alt="" class="icono-svg-inline"> ${progresoFinal.racha.dias}</strong> ${progresoFinal.racha.dias === 1 ? 'día' : 'días'} de racha`;
     premios.appendChild(premioRacha);
   }
+  // Total de partidos ganados (vitrina): el niño ve crecer su palmarés en cada victoria.
+  const premioPartidos = document.createElement('span');
+  premioPartidos.className = 'premio';
+  premioPartidos.innerHTML = `<strong>🏅 ${progresoFinal.trofeos.partidos}</strong> ${progresoFinal.trofeos.partidos === 1 ? 'partido ganado' : 'partidos ganados'}`;
+  premios.appendChild(premioPartidos);
+  // Puntos de reforma ganados en ESTE partido: antes se ganaban en silencio y el niño no sabía
+  // ni que existían — ahora se ven aquí, con su destino ("para Mi Estadio") bien claro.
+  if (sesion && sesion.reformaGanada > 0) {
+    const premioReforma = document.createElement('span');
+    premioReforma.className = 'premio';
+    premioReforma.innerHTML = `<strong>🔧 +${sesion.reformaGanada}</strong> para Mi Estadio`;
+    premios.appendChild(premioReforma);
+  }
+  // Bono del partido especial cumplido: se celebra con nombre y apellidos.
+  if (bonoEspecial > 0) {
+    const premioEspecial = document.createElement('span');
+    premioEspecial.className = 'premio premio-especial';
+    premioEspecial.innerHTML = `<strong>${sesion.especial.icono} +${bonoEspecial}⚡</strong> ${sesion.especial.nombre}`;
+    premios.appendChild(premioEspecial);
+  }
   panel.appendChild(premios);
+
+  // Acceso directo a la Sala de Trofeos del Museo: justo después de ganar es cuando más apetece
+  // ver el palmarés completo (todo lo ganado y lo aprendido).
+  const verVitrina = document.createElement('button');
+  verVitrina.className = 'boton-voz';
+  verVitrina.textContent = '🏅 Ver mi vitrina de trofeos';
+  verVitrina.addEventListener('click', () => mostrarMuseo(perfilId, 'trofeos'));
+  panel.appendChild(verVitrina);
 
   // Si este partido desbloqueó un equipo superior por ir sobrado, o una Leyenda del Museo nueva
   // (FASE M3), se ofrecen aquí destacados (FASE M5: función compartida con el resumen de

@@ -1662,6 +1662,234 @@ html.modo-dislexia .enunciado {
 .familia-fila-concepto p { margin: 0 0 0.5rem; color: var(--color-texto); line-height: 1.4; }
 
 /* ============================================================
+   19. El Descanso (pausa a mitad de partido) + Vitrina de Trofeos.
+   ============================================================ */
+
+.descanso-marcador { color: var(--color-texto-suave); margin: 0 0 var(--espacio); }
+
+/* La tarjeta del truco/curiosidad/juego: tranquila, cálida, sin ninguna prisa. */
+.tarjeta-descanso {
+  background: linear-gradient(180deg, #fffdf5, #fff8e6);
+  border: 2px solid #f0d890;
+  border-radius: var(--radio-grande);
+  padding: 1.2rem 1.3rem;
+  box-shadow: var(--sombra-suave);
+}
+.tarjeta-descanso h3 {
+  margin: 0.5rem 0 0.5rem;
+  font-family: var(--fuente-titulos);
+  font-size: 1.35rem;
+  color: #8a5a12;
+}
+.descanso-etiqueta {
+  display: inline-block;
+  font-weight: 800;
+  font-size: 0.85rem;
+  padding: 0.25rem 0.7rem;
+  border-radius: var(--radio-pildora);
+  background: #fff;
+  border: var(--borde-sutil);
+  color: var(--color-texto-suave);
+}
+.descanso-truco { color: #6a3fb5; background: #f3eefc; }
+.descanso-curiosidad { color: #1c54b2; background: #e8f1ff; }
+.descanso-juego { color: #1e6522; background: #e3f6e3; }
+.descanso-texto { margin: 0 0 0.7rem; font-size: 1.1rem; line-height: 1.5; color: var(--color-texto); }
+.descanso-amigos {
+  margin: 0 0 0.7rem;
+  padding: 0.6rem 0.8rem;
+  background: rgba(255, 255, 255, 0.7);
+  border-left: 4px solid #2e9e5b;
+  border-radius: 8px;
+  font-weight: 700;
+  color: #1e6522;
+  line-height: 1.4;
+}
+.capi-descanso {
+  display: block;
+  width: 5.5rem;
+  margin: 0.8rem auto 0;
+}
+
+/* Vitrina de Trofeos (sala del Museo): grandes números primero, saber después, mismo cariño. */
+.vitrina-contadores {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 1fr));
+  gap: 0.7rem;
+  margin-top: var(--espacio);
+}
+.vitrina-contador {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.15rem;
+  background: linear-gradient(180deg, #fff8e1, #fff3cc);
+  border: 2px solid #f0d890;
+  border-radius: var(--radio);
+  padding: 0.8rem 0.5rem;
+  text-align: center;
+}
+.vitrina-contador-vacio { background: #fff; border-color: rgba(20, 40, 70, 0.1); opacity: 0.7; }
+.vitrina-icono { font-size: 1.6rem; line-height: 1; }
+.vitrina-numero { font-family: var(--fuente-titulos); font-size: 1.7rem; font-weight: 700; color: #8a5a12; }
+.vitrina-contador-vacio .vitrina-numero { color: var(--color-texto-suave); }
+.vitrina-nombre { font-size: 0.8rem; color: var(--color-texto-suave); line-height: 1.2; }
+
+.vitrina-titulo-seccion {
+  font-family: var(--fuente-titulos);
+  margin: 1.3rem 0 0.5rem;
+  color: var(--color-primario-oscuro);
+}
+.vitrina-cromos { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+.vitrina-cromo {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  background: #fff;
+  border: var(--borde-sutil);
+  border-radius: var(--radio-pildora);
+  padding: 0.35rem 0.8rem 0.35rem 0.45rem;
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: var(--color-texto);
+  box-shadow: var(--sombra-suave);
+}
+.vitrina-aprendido { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 0.8rem; }
+.vitrina-aprendido-fila {
+  background: #fff;
+  border: var(--borde-sutil);
+  border-left: 5px solid #2e9e5b;
+  border-radius: 12px;
+  padding: 0.7rem 0.9rem;
+}
+.vitrina-aprendido-fila strong { color: #1e6522; }
+.vitrina-aprendido-fila p { margin: 0.25rem 0 0; color: var(--color-texto-suave); line-height: 1.4; }
+.vitrina-vacio { color: var(--color-texto-suave); font-style: italic; }
+
+/* ============================================================
+   20. Rivales de videojuego: pantalla "VS", gol rival, combo, partido especial, guía.
+   ============================================================ */
+
+/* Pantalla de presentación del rival: oscura y teatral, la única del juego (nervio bueno). */
+.tarjeta-vs {
+  background: linear-gradient(180deg, #241b3a, #3a2a5e);
+  border: 2px solid rgba(190, 150, 255, 0.4);
+  border-radius: var(--radio-grande);
+  padding: 1.3rem 1.2rem 1.5rem;
+  text-align: center;
+  box-shadow: var(--sombra-media);
+}
+.vs-anuncio { margin: 0 0 0.3rem; font-weight: 700; color: #cbb8ff; font-size: 0.95rem; }
+.vs-titulo {
+  margin: 0 0 0.8rem;
+  font-family: var(--fuente-titulos);
+  font-size: 1.7rem;
+  color: #fff;
+  text-shadow: 0 2px 10px rgba(124, 58, 237, 0.8);
+}
+.vs-rival {
+  width: 9rem;
+  height: 9rem;
+  object-fit: contain;
+  filter: drop-shadow(0 6px 18px rgba(0, 0, 0, 0.5));
+  animation: vs-flotar 2.2s ease-in-out infinite;
+}
+@keyframes vs-flotar {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-8px) scale(1.04); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .vs-rival { animation: none; }
+}
+.vs-provocacion {
+  margin: 0.8rem auto 0.5rem;
+  max-width: 34rem;
+  font-style: italic;
+  font-weight: 700;
+  color: #e8ddff;
+  line-height: 1.4;
+}
+.vs-condicion {
+  margin: 0.5rem auto;
+  max-width: 34rem;
+  padding: 0.5rem 0.8rem;
+  background: rgba(255, 214, 130, 0.15);
+  border: 1px solid rgba(255, 214, 130, 0.5);
+  border-radius: 10px;
+  color: #ffe9b8;
+  font-weight: 700;
+  line-height: 1.35;
+}
+.vs-capi { margin: 0.6rem 0 0; color: #b9f0cd; line-height: 1.4; }
+
+/* Destello "¡GOL del rival!": cartel breve que cruza la pantalla al primer fallo del reto. */
+.flash-gol-rival {
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(60, 20, 90, 0.35);
+  pointer-events: none;
+  animation: flash-fondo 1.4s ease forwards;
+}
+.flash-gol-cartel {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: linear-gradient(180deg, #3a2a5e, #241b3a);
+  border: 3px solid #b18cff;
+  border-radius: var(--radio-pildora);
+  padding: 0.7rem 1.6rem;
+  animation: flash-cartel 1.4s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+}
+.flash-gol-cartel img { width: 3.2rem; height: 3.2rem; object-fit: contain; }
+.flash-gol-cartel span {
+  font-family: var(--fuente-titulos);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+}
+@keyframes flash-fondo {
+  0% { opacity: 0; } 12% { opacity: 1; } 80% { opacity: 1; } 100% { opacity: 0; }
+}
+@keyframes flash-cartel {
+  0% { transform: translateX(-110vw); }
+  22% { transform: translateX(0); }
+  78% { transform: translateX(0); }
+  100% { transform: translateX(110vw); }
+}
+
+/* Chip de combo en la tarjeta de celebración. */
+.celebracion-combo {
+  display: inline-block;
+  margin-top: 0.35rem;
+  padding: 0.25rem 0.8rem;
+  background: linear-gradient(180deg, #ff9100, #e65100);
+  color: #fff;
+  font-weight: 800;
+  border-radius: var(--radio-pildora);
+  box-shadow: 0 2px 8px rgba(230, 81, 0, 0.4);
+}
+
+/* Tarjeta del partido especial del día (calendario): dorada, se distingue del partido normal. */
+.tarjeta-especial {
+  background: linear-gradient(180deg, #fff8e1, #ffedb8);
+  border: 2px solid #f0b429;
+}
+.tarjeta-especial h2 { color: #8a5a12; }
+
+/* Bono especial en la pantalla de victoria. */
+.premio-especial { background: linear-gradient(180deg, #fff3cc, #ffe9a8); border-color: #f0b429; }
+
+/* Guía del Capi (sala del Museo) + energía tocable en la barra. */
+.tarjeta-guia h3 { margin: 0 0 0.5rem; color: var(--color-primario-oscuro); }
+.barra-energia-tocable { cursor: pointer; }
+.barra-energia-tocable:active { transform: scale(0.95); }
+
+/* ============================================================
    15. Ajustes para pantallas pequeñas (móvil).
    Este bloque vive A PROPÓSITO al final del archivo: en CSS, cuando dos reglas tienen la misma
    especificidad, gana la que aparece DESPUÉS en el código — no importa el ancho de pantalla. Antes

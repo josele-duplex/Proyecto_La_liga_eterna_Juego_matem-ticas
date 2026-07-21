@@ -141,6 +141,12 @@ function mostrarResumenContrarreloj(perfilId, sesion) {
 
   const perfil = PERFILES.find((p) => p.id === perfilId);
 
+  // Vitrina de trofeos: cada Contrarreloj superado suma al palmarés (Sala de Trofeos del Museo).
+  const progresoTrofeos = Storage.cargarProgreso(perfilId);
+  progresoTrofeos.trofeos = progresoTrofeos.trofeos || { partidos: 0, copas: 0, contrarrelojes: 0 };
+  progresoTrofeos.trofeos.contrarrelojes++;
+  Storage.guardarProgreso(perfilId, progresoTrofeos);
+
   const panel = document.createElement('div');
   panel.className = 'panel-victoria';
 
