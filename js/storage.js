@@ -30,6 +30,21 @@ const Storage = {
     localStorage.setItem(this.claveProgreso(perfilId), JSON.stringify(progreso));
   },
 
+  // Reseteo puntual pedido por el usuario (2026-07-21): borra el progreso de TODOS los perfiles
+  // de PERFILES (datos-juego.js), como si nadie hubiera jugado nunca — trofeos, medallas,
+  // energía, todo. Se dispara UNA sola vez por dispositivo, marcado con RESETEO_MARCA; si se
+  // sube una versión nueva de la marca en el futuro, se podría repetir, así que solo se toca esa
+  // constante si de verdad se quiere otro reseteo global. No toca la preferencia de sonido ni qué
+  // perfil estaba activo, solo el progreso guardado de cada uno.
+  RESETEO_MARCA: 'reseteo-2026-07-21',
+
+  aplicarReseteoUnaVez() {
+    const CLAVE_RESETEO_APLICADO = 'liga-eterna:reseteo-aplicado';
+    if (localStorage.getItem(CLAVE_RESETEO_APLICADO) === this.RESETEO_MARCA) return;
+    PERFILES.forEach((perfil) => localStorage.removeItem(this.claveProgreso(perfil.id)));
+    localStorage.setItem(CLAVE_RESETEO_APLICADO, this.RESETEO_MARCA);
+  },
+
   // Trae cualquier progreso guardado (de esta versión o de una anterior, incluida la que no tenía
   // ni campo "version") a la forma actual, sin tocar ni renombrar nada que ya existiera — solo
   // añade lo que falte con un valor por defecto inofensivo. Así un progreso de hace meses sigue

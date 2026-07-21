@@ -1,12 +1,15 @@
 // Datos de configuración del juego: perfiles disponibles, equipos/modos, rivales narrativos y
 // poderes comprables con energía. Solo datos (listas y objetos); ninguna lógica vive aquí.
 
+// `pin` (opcional): contraseña familiar para que un hermano no entre sin querer en la partida de
+// otro (privacidad entre hermanos, NO seguridad real — comparación sin distinguir mayúsculas, ver
+// pin.js). Solo los perfiles con nombre propio la llevan; Invitado 3 queda libre.
 const PERFILES = [
-  { id: 'pepe', nombre: 'Pepe', avatar: 'assets/img/avatares/avatar-pepe.webp', avatarCelebrando: 'assets/img/avatares/avatar-pepe-celebrando.webp' },
-  { id: 'bruno', nombre: 'Bruno', avatar: 'assets/img/avatares/avatar-bruno.webp', avatarCelebrando: 'assets/img/avatares/avatar-bruno-celebrando.webp' },
-  { id: 'david', nombre: 'David', avatar: 'assets/img/avatares/avatar-david.webp', avatarCelebrando: 'assets/img/avatares/avatar-david-celebrando.webp' },
-  { id: 'invitado-1', nombre: 'Invitado 1' },
-  { id: 'invitado-2', nombre: 'Invitado 2' },
+  { id: 'pepe', nombre: 'Pepe', avatar: 'assets/img/avatares/avatar-pepe.webp', avatarCelebrando: 'assets/img/avatares/avatar-pepe-celebrando.webp', pin: 'pepe1' },
+  { id: 'bruno', nombre: 'Bruno', avatar: 'assets/img/avatares/avatar-bruno.webp', avatarCelebrando: 'assets/img/avatares/avatar-bruno-celebrando.webp', pin: 'bruno1' },
+  { id: 'david', nombre: 'David', avatar: 'assets/img/avatares/avatar-david.webp', avatarCelebrando: 'assets/img/avatares/avatar-david-celebrando.webp', pin: 'david1' },
+  { id: 'invitado-1', nombre: 'Invitado 1', avatar: 'assets/img/avatares/avatar-invitado-1.webp', avatarCelebrando: 'assets/img/avatares/avatar-invitado-1-celebrando.webp', pin: 'invitado1' },
+  { id: 'invitado-2', nombre: 'Invitado 2', avatar: 'assets/img/avatares/avatar-invitado-2.webp', avatarCelebrando: 'assets/img/avatares/avatar-invitado-2-celebrando.webp', pin: 'invitado2' },
   { id: 'invitado-3', nombre: 'Invitado 3' }
 ];
 

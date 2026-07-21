@@ -21,6 +21,7 @@ let leyendaRecienDesbloqueada = null;
 
 async function arrancar() {
   Sonido.cargarPreferencia();
+  Storage.aplicarReseteoUnaVez();
   indicesPorEdad['6-anios'] = await (await fetch('data/puzzles/6-anios/indice.json')).json();
   indicesPorEdad['7-anios'] = await (await fetch('data/puzzles/7-anios/indice.json')).json();
   indicesPorEdad['8-anios'] = await (await fetch('data/puzzles/8-anios/indice.json')).json();
@@ -42,10 +43,13 @@ async function arrancar() {
     // dañados nunca "no abre" la aplicación entera.
     try {
       const perfilActivo = Storage.cargarPerfilActivo();
-      if (perfilActivo && modoDe(perfilActivo)) {
-        mostrarCalendario(perfilActivo);
-      } else if (perfilActivo) {
-        mostrarSelectorModo(perfilActivo);
+      if (perfilActivo) {
+        // Contraseña de perfil: mismo punto de entrada que perfil.js (entrarEnPerfil), para que
+        // reanudar la sesión automáticamente NO se salte la contraseña de un perfil protegido.
+        entrarEnPerfil(perfilActivo, () => {
+          if (modoDe(perfilActivo)) mostrarCalendario(perfilActivo);
+          else mostrarSelectorModo(perfilActivo);
+        });
       } else {
         mostrarSelectorPerfil();
       }

@@ -21,16 +21,21 @@ function mostrarSelectorPerfil() {
     boton.appendChild(nombre);
     boton.addEventListener('click', () => {
       Storage.guardarPerfilActivo(perfil.id);
-      try {
-        mostrarSelectorModo(perfil.id);
-      } catch (e) {
-        // Si el progreso guardado de este jugador estuviera dañado y reventara al entrar, en vez de
-        // dejarlo bloqueado para siempre lo reiniciamos (datos corruptos, de todas formas inservibles)
-        // y volvemos a entrar limpio. Solo salta si algo va mal; en uso normal nunca se ejecuta.
-        console.error(`Progreso de ${perfil.id} dañado; reiniciándolo.`, e);
-        Storage.guardarProgreso(perfil.id, {});
-        mostrarSelectorModo(perfil.id);
-      }
+      // Contraseña de perfil (privacidad familiar): si este perfil lleva `pin`, entrarEnPerfil la
+      // pide antes de continuar; si no, entra directo. Mismo punto de entrada que main.js usa al
+      // reanudar la sesión, para que la contraseña se pida siempre, no solo esta primera vez.
+      entrarEnPerfil(perfil.id, () => {
+        try {
+          mostrarSelectorModo(perfil.id);
+        } catch (e) {
+          // Si el progreso guardado de este jugador estuviera dañado y reventara al entrar, en vez de
+          // dejarlo bloqueado para siempre lo reiniciamos (datos corruptos, de todas formas inservibles)
+          // y volvemos a entrar limpio. Solo salta si algo va mal; en uso normal nunca se ejecuta.
+          console.error(`Progreso de ${perfil.id} dañado; reiniciándolo.`, e);
+          Storage.guardarProgreso(perfil.id, {});
+          mostrarSelectorModo(perfil.id);
+        }
+      });
     });
     lista.appendChild(boton);
   });
