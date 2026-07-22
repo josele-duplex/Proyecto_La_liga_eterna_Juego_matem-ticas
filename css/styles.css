@@ -506,22 +506,31 @@ button:focus-visible {
   margin-top: var(--espacio);
 }
 
+/* FASE D3 (rediseño premium — auditoría UX/UI §5: "parecen botones de formulario"): tarjeta con
+   relieve físico en vez de campo plano. --gradiente-superficie mata el blanco liso; --sombra-carta
+   (borde inferior duro + halo suave, mismo token de D1) da la sensación de "botón elevado"; al
+   pulsar se hunde de verdad (translateY igual al offset de la sombra dura + la sombra se
+   comprime), en vez del scale genérico de antes. */
 .opcion {
   font-family: inherit;
   font-size: 1.5rem;
   font-weight: 800;
   padding: 1.1rem 1rem;
   min-height: 4.2rem;
-  background: #fff;
+  background: var(--gradiente-superficie);
   color: var(--color-texto);
   border: 2.5px solid rgba(20, 40, 70, 0.14);
   border-radius: var(--radio);
+  box-shadow: var(--sombra-carta);
   cursor: pointer;
-  transition: transform 0.06s ease, border-color 0.15s ease, background 0.15s ease;
+  transition: transform 0.08s ease, box-shadow 0.08s ease, border-color 0.15s ease, background 0.15s ease;
 }
 
 .opcion:hover:not(:disabled) { border-color: var(--color-primario); background: #f6faff; }
-.opcion:active:not(:disabled) { transform: scale(0.97); }
+.opcion:active:not(:disabled) {
+  transform: translateY(4px);
+  box-shadow: 0 1px 0 rgba(20, 40, 70, 0.14), 0 3px 8px rgba(20, 40, 70, 0.10);
+}
 
 .opcion-correcta {
   background: var(--color-exito-fondo);
@@ -1407,14 +1416,33 @@ button:focus-visible {
 .capsula-decisiva .capsula-linea strong { color: #8a5a12; }
 .capsula-decisiva .banner-estadio { border-bottom-color: rgba(138, 90, 18, 0.25); }
 
-/* Zona de juego: la tarjeta blanca que contiene pregunta, respuestas y feedback (P3, P12). */
+/* Zona de juego: la tarjeta que contiene pregunta, respuestas y feedback (P3, P12). FASE D3:
+   --gradiente-superficie en vez de blanco plano (auditoría UX/UI §2, "sensación de documento"). */
 .zona-juego {
   position: relative;
-  background: var(--color-superficie);
+  background: var(--gradiente-superficie);
   border: 2px solid rgba(20, 40, 70, 0.08);
   border-radius: 24px;
   box-shadow: var(--sombra-suave);
   padding: 1.5rem 1.2rem 1.4rem;
+}
+
+/* Cabecera fina "⚽ Jugada clave · Minuto N" (FASE D3, auditoría §4/§5): que la pregunta se sienta
+   como una jugada del partido, no un formulario. Solo en reto.js (Liga) — "Minuto" reutiliza el
+   número de reto actual dentro del partido, puramente cosmético, sin escala real de fútbol. */
+.zona-juego-cabecera {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--fuente-titulos);
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--color-texto-suave);
+  margin: 0 0 0.6rem;
+  padding-bottom: 0.5rem;
+  border-bottom: var(--borde-sutil);
 }
 
 .zona-juego-decisiva {
@@ -1455,11 +1483,15 @@ button:focus-visible {
 /* Respuestas: esquinas 24px y animaciones de acierto/fallo (P4, P11, P12). */
 .opcion { border-radius: 24px; }
 .pantalla-reto .opcion { font-size: 1.6rem; }
+/* FASE D3: destello DORADO al acertar (auditoría UX/UI §6, "destellos dorados en recompensas"),
+   antes era un halo verde — el verde ya lo llevan el fondo/borde de .opcion-correcta, así que el
+   destello puede permitirse ser el color de celebración (--dorado-brillo, token de D1) sin perder
+   la lectura de "esto es un acierto". El fallo sigue en naranja, nunca en este dorado ni en rojo. */
 .opcion-correcta { animation: destello-correcto 0.35s ease; }
 @keyframes destello-correcto {
-  0% { box-shadow: 0 0 0 0 rgba(46, 125, 50, 0); }
-  40% { box-shadow: 0 0 16px 4px rgba(46, 125, 50, 0.5); }
-  100% { box-shadow: 0 0 0 0 rgba(46, 125, 50, 0); }
+  0% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0); }
+  40% { box-shadow: 0 0 18px 5px rgba(251, 191, 36, 0.65); }
+  100% { box-shadow: 0 0 0 0 rgba(251, 191, 36, 0); }
 }
 .opcion-incorrecta { animation: rebote-error 0.4s ease; }
 @keyframes rebote-error {
