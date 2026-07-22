@@ -35,6 +35,7 @@ async function jugarReto(perfilId, estadio, sesion) {
   UI.aplicarTema('mate');
   limpiarPantalla();
   mostrarBarraPerfil(perfilId, { mostrarVolver: true, ocultarCambiarEquipo: true, ocultarMuseo: true });
+  mostrarCargaBalon();
 
   const modo = modoDe(perfilId) || MODOS[0];
   const indice = indicesPorEdad[modo.edad];
@@ -49,6 +50,7 @@ async function jugarReto(perfilId, estadio, sesion) {
   // Pantalla de reto como "panel de videojuego": el #app deja de ser una sola tarjeta blanca y pasa a
   // apilar paneles flotando sobre el césped (banner de estadio, cápsula de misión, zona de juego, Capi).
   const app = document.getElementById('app');
+  app.innerHTML = ''; // quita el balón de carga (FASE D6)
   app.className = 'pantalla-reto';
 
   // FASE V2 (Plan V2): banner de estadio y cápsula de misión fusionados en UNA sola tarjeta
@@ -192,7 +194,13 @@ async function jugarReto(perfilId, estadio, sesion) {
         falloContado = true;
         sesion.golesRival++;
         const marcador = panelMision.querySelector('.marcador-partido');
-        if (marcador) marcador.textContent = `${sesion.hechos} - ${sesion.golesRival}`;
+        // FASE D6 (rediseño premium, auditoría §8): el tanteo "salta" en vez de cambiar en seco.
+        if (marcador) {
+          marcador.textContent = `${sesion.hechos} - ${sesion.golesRival}`;
+          marcador.classList.remove('marcador-cambio');
+          void marcador.offsetWidth;
+          marcador.classList.add('marcador-cambio');
+        }
         if (sesion.rival) {
           fraseFallo = fraseCapi('fallo_con_rival', { rival: sesion.rival.nombre });
           const rivalImg = panelMision.querySelector('#rival-mini-actual');

@@ -14,6 +14,7 @@ function jugarRondaCopa(perfilId, sesion) {
   UI.aplicarTema('copa');
   limpiarPantalla();
   mostrarBarraPerfil(perfilId, { mostrarVolver: true, ocultarCambiarEquipo: true, ocultarMuseo: true });
+  mostrarCargaBalon();
 
   const modo = modoDe(perfilId) || MODOS[0];
   const indice = indicesPorEdad[modo.edad];
@@ -39,6 +40,7 @@ function jugarRondaCopa(perfilId, sesion) {
 
   fetch(entrada.ruta).then((r) => r.json()).then((puzzle) => {
     const app = document.getElementById('app');
+    app.innerHTML = ''; // quita el balón de carga (FASE D6)
     app.className = 'pantalla-reto';
 
     const panel = crearPanelCopa(sesion, concepto);

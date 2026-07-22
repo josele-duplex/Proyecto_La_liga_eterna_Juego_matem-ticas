@@ -51,6 +51,7 @@ function jugarRetoEntrenamiento(perfilId, concepto, rondasSeguidas) {
   UI.aplicarTema('mate');
   limpiarPantalla();
   mostrarBarraPerfil(perfilId, { mostrarVolver: true, ocultarCambiarEquipo: true, ocultarMuseo: true });
+  mostrarCargaBalon();
 
   const modo = modoDe(perfilId) || MODOS[0];
   const indice = indicesPorEdad[modo.edad];
@@ -59,6 +60,7 @@ function jugarRetoEntrenamiento(perfilId, concepto, rondasSeguidas) {
 
   fetch(entrada.ruta).then((r) => r.json()).then((puzzle) => {
     const app = document.getElementById('app');
+    app.innerHTML = ''; // quita el balón de carga (FASE D6)
     app.className = 'pantalla-reto';
 
     const panel = crearPanelEntrenamiento(concepto, rondasSeguidas);

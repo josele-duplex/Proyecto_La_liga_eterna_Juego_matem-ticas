@@ -1374,6 +1374,15 @@ button:focus-visible {
   background: linear-gradient(180deg, var(--color-primario), var(--color-primario-oscuro));
   border-radius: var(--radio-pildora);
   padding: 0.25rem 0.75rem;
+  display: inline-block;
+}
+/* FASE D6: el tanteo "salta" al cambiar (auditoría §8, "marcador con count-up") en vez de
+   cambiar en seco — se añade/quita por JS en reto.js cada vez que marca el rival. */
+.marcador-cambio { animation: marcador-cambio 0.35s ease; }
+@keyframes marcador-cambio {
+  0% { transform: scale(1); }
+  45% { transform: scale(1.3); }
+  100% { transform: scale(1); }
 }
 
 /* Nota de cierre narrativo del rival en la victoria (TG.6). */
@@ -1425,9 +1434,16 @@ button:focus-visible {
   color: var(--color-texto-suave);
 }
 .mini-progreso { display: flex; gap: 5px; margin-top: 0.2rem; }
-.segmento { flex: 1; height: 9px; border-radius: 999px; background: rgba(20, 40, 70, 0.12); }
+.segmento { flex: 1; height: 9px; border-radius: 999px; background: rgba(20, 40, 70, 0.12); transition: background-color 0.3s ease; }
 .segmento-hecho { background: var(--color-primario); }
 .segmento-actual { background: #2979ff; box-shadow: 0 0 0 2px rgba(41, 121, 255, 0.25); }
+/* FASE D6 (auditoría §8, "barra de progreso fluida"): el segmento no aparece relleno en seco,
+   crece desde el centro. Se dispara solo al pintarse (segmento nuevo cada pantalla de reto). */
+.segmento-hecho, .segmento-actual { animation: segmento-aparece 0.35s ease both; }
+@keyframes segmento-aparece {
+  from { transform: scale(0.4); opacity: 0.3; }
+  to { transform: scale(1); opacity: 1; }
+}
 
 /* ============================================================
    15. FASE M5 — Modos de juego (Entrenamiento del Capitán, Contrarreloj, dificultad).
@@ -1607,6 +1623,38 @@ button:focus-visible {
 @keyframes destello-estalla {
   0% { transform: rotate(var(--angulo, 0deg)) translateX(0) scale(1); opacity: 1; }
   100% { transform: rotate(var(--angulo, 0deg)) translateX(3.4rem) scale(0.2); opacity: 0; }
+}
+
+/* FASE D6 (rediseño premium, auditoría §8): balón girando mientras se carga el próximo reto
+   (fetch del JSON del puzle). CSS puro, sin imagen: manchas oscuras a modo de pentágonos sobre
+   un balón blanco, con --sombra-suave para que no quede plano. Si el sistema pide menos
+   movimiento, la regla global de la sección 12 desactiva el giro y el balón queda quieto. */
+.carga-balon {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.7rem;
+  padding: 3rem 1rem;
+  font-weight: 700;
+  color: var(--color-texto-suave);
+}
+.balon-girando {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 50% 18%, #1c1c1c 9%, transparent 10%),
+    radial-gradient(circle at 22% 42%, #1c1c1c 9%, transparent 10%),
+    radial-gradient(circle at 78% 42%, #1c1c1c 9%, transparent 10%),
+    radial-gradient(circle at 36% 78%, #1c1c1c 9%, transparent 10%),
+    radial-gradient(circle at 64% 78%, #1c1c1c 9%, transparent 10%),
+    #ffffff;
+  box-shadow: var(--sombra-suave);
+  animation: girar-balon 0.9s linear infinite;
+}
+@keyframes girar-balon {
+  to { transform: rotate(360deg); }
 }
 
 /* Reflexión metamatemática ligera (FASE R1, Plan V2): tono lavanda propio, distinto del dorado de

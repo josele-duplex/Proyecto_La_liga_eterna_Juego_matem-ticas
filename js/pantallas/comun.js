@@ -9,6 +9,22 @@ function limpiarPantalla() {
   document.getElementById('progreso').textContent = '';
 }
 
+// FASE D6 (rediseño premium, auditoría §8): balón girando mientras se hace fetch() del próximo
+// puzle. Se llama justo después de limpiarPantalla() (así ocupa el hueco vacío) en cada pantalla
+// que carga un reto (reto.js, entrenamiento.js, copa.js, contrarreloj.js); quien lo llama es quien
+// vuelve a vaciar #app al recibir el JSON, así que no hace falta una función para quitarlo.
+function mostrarCargaBalon() {
+  const app = document.getElementById('app');
+  const carga = document.createElement('div');
+  carga.className = 'carga-balon';
+  const balon = document.createElement('span');
+  balon.className = 'balon-girando';
+  const texto = document.createElement('p');
+  texto.textContent = 'Preparando la jugada…';
+  carga.append(balon, texto);
+  app.appendChild(carga);
+}
+
 // Chip de insignia para la barra de perfil (icono o imagen + contador): lo comparten las
 // insignias de estrategia y las de proceso, que solo se diferencian en de dónde sale la definición.
 // `nivel` (FASE M1, U1, opcional: solo insignias de estrategia lo llevan) añade el brillo del
