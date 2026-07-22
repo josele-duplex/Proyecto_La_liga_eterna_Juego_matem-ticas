@@ -259,6 +259,7 @@ button:focus-visible {
 .barra-perfil {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   flex-wrap: wrap;
   gap: 0.5rem;
   background: var(--color-superficie);
@@ -268,22 +269,54 @@ button:focus-visible {
   padding: 0.5rem 0.8rem;
 }
 
-.barra-perfil > span {
+/* FASE D2 (HUD compacto): dos bloques con roles distintos en vez de una fila plana de 8+
+   elementos iguales — a la izquierda "lo que tienes" (datos), a la derecha "a dónde ir"
+   (acciones, la mayoría colapsadas tras "☰ Más"). Docs/PLAN_REDISENO_VISUAL_PREMIUM.md, D2. */
+.hud-datos {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.hud-acciones {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  position: relative; /* ancla el menú desplegable "☰ Más», que se posiciona absoluto respecto a esto */
+}
+
+.barra-perfil > .hud-datos > span,
+.barra-jugando {
   font-weight: 700;
   color: var(--color-texto);
 }
 
-/* Hallazgo D1: .barra-racha (línea de abajo) y .barra-energia (más abajo en el archivo) llevaban
-   su propio color naranja desde que se escribieron, pero NUNCA se veía — la regla genérica de
-   arriba (.barra-perfil > span, especificidad 0-1-1) siempre ganaba a la suya (una sola clase,
-   0-1-0), sin importar el orden en el archivo. Se cualifican aquí con .barra-perfil delante para
-   igualar la especificidad a 0-2-0 y que sí ganen. Puramente visual, sin tocar su color. */
+/* Chip de dato compacto (energía, nivel del equipo, trofeos, racha): fondo propio para que se
+   lean como "cosas que tienes", no como texto suelto flotando en la barra (auditoría UX/UI:
+   "poca energía visual"). */
+.hud-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  min-height: 2.1rem;
+  padding: 0.25rem 0.6rem;
+  background: #f4f6f9;
+  border-radius: var(--radio-pildora);
+  font-weight: 800;
+}
+
+/* Hallazgo D1: .barra-racha y .barra-energia llevaban su propio color naranja desde que se
+   escribieron, pero NUNCA se veía — una regla genérica anterior siempre ganaba a la suya sin
+   importar el orden en el archivo. Cualificadas con .barra-perfil delante para que sí ganen. */
 .barra-perfil .barra-energia,
 .barra-perfil .barra-racha {
   color: var(--color-energia-texto);
 }
 
-/* Botones secundarios de la barra (cambiar equipo/jugador): píldoras discretas.
+.barra-energia-tocable { cursor: pointer; min-height: 2.75rem; } /* pulsable: toque real ≥44px */
+
+/* Botones de acción de la barra (Volver, ☰ Más): píldoras discretas.
    min-height 2.75rem (~44px) para que un dedo infantil no falle el toque. */
 .barra-perfil button {
   font-family: inherit;
@@ -302,8 +335,46 @@ button:focus-visible {
 .barra-perfil button:hover { background: #f2f6fb; border-color: var(--color-primario); }
 .barra-perfil button:active { transform: scale(0.96); }
 
-/* El botón de sonido y el de cambiar jugador se empujan a la derecha. */
-.barra-perfil .boton-sonido { margin-left: auto; }
+/* Menú desplegable "☰ Más" (FASE D2): agrupa Cambiar equipo/Museo/Mi Estadio/Familia/sonido/
+   Cambiar jugador, para que dejen de competir en la fila principal. Oculto por defecto (opacity+
+   visibility, no display:none, para poder animar la transición); .hud-menu-abierto lo muestra. */
+.hud-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  z-index: 40;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 13rem;
+  padding: 0.4rem;
+  background: #fff;
+  border-radius: var(--radio);
+  border: var(--borde-sutil);
+  box-shadow: var(--sombra-media);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+  pointer-events: none;
+}
+.hud-menu.hud-menu-abierto {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+  pointer-events: auto;
+}
+/* Dentro del menú, los botones son una lista vertical alineada a la izquierda, no píldoras
+   flotando — se sobrescribe el estilo genérico de .barra-perfil button de arriba. */
+.hud-menu button {
+  width: 100%;
+  justify-content: flex-start;
+  text-align: left;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+}
+.hud-menu button:hover { background: #f2f6fb; border-color: transparent; }
 
 .icono-insignia {
   width: 1.7rem;

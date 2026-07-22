@@ -80,6 +80,14 @@ function crearBloquesDesbloqueo(perfilId) {
   return bloques;
 }
 
+// Barra superior (FASE D2, HUD compacto — Docs/PLAN_REDISENO_VISUAL_PREMIUM.md): antes era una
+// única fila donde datos (energía, racha, cromos...) y acciones (Museo, cambiar equipo, sonido...)
+// competían con el mismo peso visual, hasta 8+ elementos que envolvían en 2-3 filas en móvil (la
+// auditoría UX/UI lo señaló como jerarquía confusa). Ahora se separan en dos bloques: `.hud-datos`
+// (izquierda, "lo que tienes": avatar, energía, nivel del equipo, trofeos, racha) y
+// `.hud-acciones` (derecha, "a dónde ir": siempre visibles solo Volver y el chip de dificultad —
+// el resto vive colapsado tras "☰ Más"). La colección completa de cromos por estrategia ya NO se
+// repite aquí (crecía sin límite): se ve entera en la Vitrina de Trofeos del Museo.
 function mostrarBarraPerfil(perfilId, opciones) {
   const perfil = PERFILES.find((p) => p.id === perfilId);
   const progreso = Storage.cargarProgreso(perfilId);
@@ -93,18 +101,21 @@ function mostrarBarraPerfil(perfilId, opciones) {
   // tocar para que el ajuste se mantenga siempre, sin depender de cada pantalla nueva que se añada.
   document.documentElement.classList.toggle('modo-dislexia', !!(progreso.ajustes && progreso.ajustes.tipografiaDislexia));
 
-  barra.appendChild(UI.crearAvatarMini(perfil));
+  const datos = document.createElement('div');
+  datos.className = 'hud-datos';
+
+  datos.appendChild(UI.crearAvatarMini(perfil));
 
   const texto = document.createElement('span');
   texto.className = 'barra-jugando';
-  texto.textContent = `Jugando: ${perfil.nombre}`;
-  barra.appendChild(texto);
+  texto.textContent = perfil.nombre;
+  datos.appendChild(texto);
 
   // Iconos SVG propios (FASE V1, Plan V2) en vez de emoji: se ven igual en cualquier
   // plataforma. progreso.energia/racha.dias son siempre números (nunca texto del usuario),
   // así que construir con innerHTML aquí es seguro.
   const energia = document.createElement('span');
-  energia.className = 'barra-energia';
+  energia.className = 'barra-energia hud-chip';
   if (opciones && opciones.brilloEnergia) energia.classList.add('brillo-energia');
   energia.innerHTML = `<img src="assets/icons-svg/rayo.svg" alt="" class="icono-svg-inline"> ${progreso.energia || 0}`;
   // Tocar la energía abre la Guía del Capi ("¿qué es esto y para qué sirve?") — salvo en mitad
@@ -114,20 +125,59 @@ function mostrarBarraPerfil(perfilId, opciones) {
     energia.classList.add('barra-energia-tocable');
     energia.addEventListener('click', () => mostrarMuseo(perfilId, 'guia'));
   }
-  barra.appendChild(energia);
+  datos.appendChild(energia);
+
+  // Nivel de dominio del EQUIPO (FASE D2): un único chip agregado ("cuántos conceptos dominas del
+  // todo") en vez de la fila creciente de un cromo por estrategia que había antes aquí — esa
+  // colección completa se ve en la Vitrina de Trofeos del Museo, no hace falta repetirla arriba.
+  const modoParaNivel = modoDe(perfilId);
+  const indiceParaNivel = modoParaNivel ? indicesPorEdad[modoParaNivel.edad] : null;
+  if (indiceParaNivel) {
+    const nivelEquipo = nivelDominioEquipoDe(progreso, indiceParaNivel);
+    const chipNivel = document.createElement('span');
+    chipNivel.className = 'hud-chip';
+    chipNivel.title = `${nivelEquipo.crack} de ${nivelEquipo.total} conceptos dominados del todo (🥇 Crack) en ${modoParaNivel.nombre}`;
+    chipNivel.innerHTML = `<img src="${NIVELES_DOMINIO.crack.imagenSvg}" alt="" class="icono-svg-inline"> ${nivelEquipo.crack}/${nivelEquipo.total}`;
+    datos.appendChild(chipNivel);
+  }
+
+  // Trofeos (FASE M6/M7, ya existentes en progreso.trofeos): total de partidos + Copas +
+  // Contrarrelojes ganados, un único número que crece con cada victoria. El palmarés detallado
+  // (uno por tipo) sigue en la Vitrina.
+  const trofeos = progreso.trofeos || { partidos: 0, copas: 0, contrarrelojes: 0 };
+  const totalTrofeos = trofeos.partidos + trofeos.copas + trofeos.contrarrelojes;
+  const chipTrofeos = document.createElement('span');
+  chipTrofeos.className = 'hud-chip';
+  chipTrofeos.title = `${totalTrofeos} ${totalTrofeos === 1 ? 'trofeo ganado' : 'trofeos ganados'} en total. Ver la Vitrina completa en el Museo.`;
+  chipTrofeos.textContent = `🏅 ${totalTrofeos}`;
+  datos.appendChild(chipTrofeos);
 
   // Racha de días jugados (TG.3): solo se muestra si ya hay al menos un día contado.
   if (progreso.racha && progreso.racha.dias > 0) {
     const racha = document.createElement('span');
-    racha.className = 'barra-racha';
+    racha.className = 'barra-racha hud-chip';
     racha.title = `${progreso.racha.dias} ${progreso.racha.dias === 1 ? 'día seguido' : 'días seguidos'} jugando`;
     racha.innerHTML = `<img src="assets/icons-svg/llama.svg" alt="" class="icono-svg-inline"> ${progreso.racha.dias}`;
-    barra.appendChild(racha);
+    datos.appendChild(racha);
+  }
+
+  barra.appendChild(datos);
+
+  const acciones = document.createElement('div');
+  acciones.className = 'hud-acciones';
+
+  if (opciones && opciones.mostrarVolver) {
+    const volver = document.createElement('button');
+    volver.className = 'hud-boton-volver';
+    volver.textContent = 'Volver al calendario';
+    volver.addEventListener('click', () => mostrarCalendario(perfilId));
+    acciones.appendChild(volver);
   }
 
   // Modo de dificultad (FASE M5, B.7 modificado): indicador SIEMPRE visible, nunca una evaluación
-  // de capacidad. Un toque alterna en círculo entre los tres modos (Élite añadida en FASE M7). El
-  // copy de Profesional/Élite es LITERAL (regla del plan, sección 8): "juegas en una liga más difícil".
+  // de capacidad — por eso queda fuera del menú colapsado "☰ Más", no es una acción de navegación
+  // sino un ajuste que siempre debe verse. Un toque alterna en círculo entre los tres modos (Élite
+  // añadida en FASE M7). El copy de Profesional/Élite es LITERAL (regla del plan, sección 8).
   const chipDificultad = document.createElement('button');
   chipDificultad.className = 'chip-dificultad';
   const TITULOS_DIFICULTAD = {
@@ -147,79 +197,83 @@ function mostrarBarraPerfil(perfilId, opciones) {
     Storage.guardarProgreso(perfilId, p);
     pintarDificultad();
   });
-  barra.appendChild(chipDificultad);
+  acciones.appendChild(chipDificultad);
 
-  // El nivel de dominio (para el brillo) necesita el índice de puzles del equipo actual; si el
-  // jugador todavía no ha elegido equipo (p. ej. en la propia pantalla de selección), se omite.
-  const modoParaNivel = modoDe(perfilId);
-  const indiceParaNivel = modoParaNivel ? indicesPorEdad[modoParaNivel.edad] : null;
+  // Menú "☰ Más" (FASE D2): agrupa las acciones secundarias que antes competían en la misma fila
+  // (Cambiar equipo, Museo, Mi Estadio, Familia, sonido, Cambiar jugador). Se abre/cierra con un
+  // toque; un click fuera del menú también lo cierra (con limpieza explícita del listener de
+  // documento en cada camino de salida, para no acumular uno nuevo cada vez que se reconstruye
+  // la barra — cosa que pasa en CADA cambio de pantalla).
+  const botonMas = document.createElement('button');
+  botonMas.className = 'hud-menu-boton';
+  botonMas.textContent = '☰ Más';
+  botonMas.title = 'Más opciones';
+  acciones.appendChild(botonMas);
 
-  Object.keys(progreso.insignias || {}).forEach((estrategia) => {
-    const nivel = indiceParaNivel ? Progression.nivelDominioEstrategia(progreso, indiceParaNivel, estrategia) : null;
-    const chip = crearChipInsignia(recompensas.insignias[estrategia], progreso.insignias[estrategia], nivel);
-    if (chip) barra.appendChild(chip);
+  const menu = document.createElement('div');
+  menu.className = 'hud-menu';
+  let cerrarAlTocarFuera = null;
+  const cerrarMenu = () => {
+    menu.classList.remove('hud-menu-abierto');
+    if (cerrarAlTocarFuera) {
+      document.removeEventListener('click', cerrarAlTocarFuera);
+      cerrarAlTocarFuera = null;
+    }
+  };
+  botonMas.addEventListener('click', (evento) => {
+    evento.stopPropagation();
+    const seAbre = !menu.classList.contains('hud-menu-abierto');
+    cerrarMenu();
+    if (seAbre) {
+      menu.classList.add('hud-menu-abierto');
+      cerrarAlTocarFuera = (ev) => {
+        if (!menu.contains(ev.target) && ev.target !== botonMas) cerrarMenu();
+      };
+      // En el siguiente tick, para no capturar este mismo click que acaba de abrir el menú.
+      setTimeout(() => document.addEventListener('click', cerrarAlTocarFuera), 0);
+    }
   });
 
-  // Insignias de proceso (TG.4): el CÓMO se ha jugado, no el contenido matemático.
-  Object.keys(progreso.insigniasProceso || {}).forEach((clave) => {
-    const chip = crearChipInsignia(recompensas.insigniasProceso[clave], progreso.insigniasProceso[clave]);
-    if (chip) barra.appendChild(chip);
-  });
-
-  if (opciones && opciones.mostrarVolver) {
-    const volver = document.createElement('button');
-    volver.textContent = 'Volver al calendario';
-    volver.addEventListener('click', () => mostrarCalendario(perfilId));
-    barra.appendChild(volver);
-  }
+  // Cada opción del menú cierra el menú (y su listener de documento) antes de navegar — igual de
+  // importante que el cierre por click-fuera, porque un click EN un botón del menú nunca pasa por
+  // esa ruta (el botón está "dentro" del menú, no "fuera").
+  const anadirOpcionMenu = (etiqueta, alPulsar) => {
+    const boton = document.createElement('button');
+    boton.textContent = etiqueta;
+    boton.addEventListener('click', () => {
+      cerrarMenu();
+      alPulsar();
+    });
+    menu.appendChild(boton);
+  };
 
   if (modoDe(perfilId) && !(opciones && opciones.ocultarCambiarEquipo)) {
-    const cambiarModo = document.createElement('button');
-    cambiarModo.textContent = 'Cambiar de equipo';
-    cambiarModo.addEventListener('click', () => mostrarSelectorModo(perfilId));
-    barra.appendChild(cambiarModo);
+    anadirOpcionMenu('Cambiar de equipo', () => mostrarSelectorModo(perfilId));
   }
 
-  // Museo de la Liga (FASE M3): consultable desde cualquier pantalla salvo durante el reto (donde
-  // distraería a mitad de una pregunta) — mismo criterio que "Cambiar de equipo".
+  // Museo de la Liga (FASE M3) y Mi Estadio (FASE M6): consultables desde cualquier pantalla
+  // salvo durante el reto (donde distraerían a mitad de una pregunta).
   if (!(opciones && opciones.ocultarMuseo)) {
-    const museo = document.createElement('button');
-    museo.textContent = '🏛 Museo';
-    museo.addEventListener('click', () => mostrarMuseo(perfilId));
-    barra.appendChild(museo);
+    anadirOpcionMenu('🏛 Museo', () => mostrarMuseo(perfilId));
+    anadirOpcionMenu('🏟️ Mi Estadio', () => mostrarMiEstadio(perfilId));
+    anadirOpcionMenu('👪 Familia', () => mostrarPanelFamilia(perfilId));
   }
 
-  // Mi Estadio (FASE M6, C.1): mismo criterio de visibilidad que el Museo (reutiliza el flag
-  // ocultarMuseo en vez de añadir uno nuevo — ambos son "consulta secundaria, oculta a mitad de reto").
-  if (!(opciones && opciones.ocultarMuseo)) {
-    const estadio = document.createElement('button');
-    estadio.textContent = '🏟️ Mi Estadio';
-    estadio.addEventListener('click', () => mostrarMiEstadio(perfilId));
-    barra.appendChild(estadio);
-  }
-
-  // Panel de Familia (FASE M8, D.3+D.6): mismo criterio de visibilidad que Museo/Mi Estadio.
-  if (!(opciones && opciones.ocultarMuseo)) {
-    const familia = document.createElement('button');
-    familia.textContent = '👪 Familia';
-    familia.addEventListener('click', () => mostrarPanelFamilia(perfilId));
-    barra.appendChild(familia);
-  }
-
-  const sonidoBoton = document.createElement('button');
-  sonidoBoton.className = 'boton-sonido';
-  sonidoBoton.title = 'Activar o desactivar el sonido';
-  sonidoBoton.textContent = Sonido.activo ? '🔊' : '🔇';
-  sonidoBoton.addEventListener('click', () => {
-    sonidoBoton.textContent = Sonido.alternar() ? '🔊' : '🔇';
+  const opcionSonido = document.createElement('button');
+  opcionSonido.className = 'boton-sonido';
+  const pintarSonido = () => { opcionSonido.textContent = Sonido.activo ? '🔊 Sonido activado' : '🔇 Sonido silenciado'; };
+  pintarSonido();
+  opcionSonido.addEventListener('click', () => {
+    Sonido.alternar();
+    pintarSonido();
   });
-  barra.appendChild(sonidoBoton);
+  menu.appendChild(opcionSonido);
 
-  const boton = document.createElement('button');
-  boton.textContent = 'Cambiar de jugador';
-  boton.addEventListener('click', () => {
+  anadirOpcionMenu('Cambiar de jugador', () => {
     Storage.borrarPerfilActivo();
     mostrarSelectorPerfil();
   });
-  barra.appendChild(boton);
+
+  acciones.appendChild(menu);
+  barra.appendChild(acciones);
 }

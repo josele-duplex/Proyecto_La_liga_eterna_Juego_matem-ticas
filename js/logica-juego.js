@@ -53,6 +53,16 @@ function revisarDesbloqueo(progreso) {
   return superior;
 }
 
+// Nivel de dominio del EQUIPO (FASE D2, HUD compacto — Docs/PLAN_REDISENO_VISUAL_PREMIUM.md):
+// cuántos conceptos del equipo actual el jugador ya domina del todo (Crack) sobre el total de
+// conceptos de ese equipo. Un único número agregado para la barra superior, en vez de la fila
+// creciente de un cromo por estrategia (esa colección completa sigue viéndose en la Vitrina).
+function nivelDominioEquipoDe(progreso, indice) {
+  const conceptos = Progression.conceptos(indice);
+  const crack = conceptos.filter((c) => Progression.nivelDominioConcepto(progreso, c) === 'crack').length;
+  return { crack, total: conceptos.length };
+}
+
 // Copa de Leyendas (FASE M7, B.2): lista de conceptos del equipo actual que el jugador ya domina
 // (Titular o Crack) — la Copa solo sirve retos de ESTOS conceptos, mezclados, como repaso variado
 // de lo ya aprendido, nunca contenido nuevo. Vacío hasta que se domine al menos uno.
