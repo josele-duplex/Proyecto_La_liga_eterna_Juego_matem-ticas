@@ -100,6 +100,15 @@ function mostrarPartidoGanado(perfilId, estadio, sesion) {
     marcador.append(ladoTu, tanteo, ladoRival);
     panel.appendChild(marcador);
 
+    // FASE D5 (rediseño premium, auditoría §6): "MVP del partido" remata el marcador tipo
+    // estadio ya existente — dato ya disponible (el propio perfil), sin economía nueva.
+    if (perfil) {
+      const mvp = document.createElement('p');
+      mvp.className = 'victoria-mvp';
+      mvp.textContent = `⭐ MVP del partido: ${perfil.nombre}`;
+      panel.appendChild(mvp);
+    }
+
     if (sesion.golesRival === 0) {
       const perfecta = document.createElement('p');
       perfecta.className = 'victoria-perfecta';

@@ -1204,6 +1204,13 @@ button:focus-visible {
   font-weight: 800;
   color: #c2561a;
 }
+/* FASE D5: "MVP del partido" remata el marcador tipo estadio (auditoría §6). */
+.victoria-mvp {
+  margin: 0.1rem 0 0.3rem;
+  font-family: var(--fuente-titulos);
+  font-weight: 700;
+  color: #8a5a12;
+}
 .rival-derrotado {
   margin: 0.2rem 0 0.4rem;
   font-weight: 700;
@@ -1407,7 +1414,17 @@ button:focus-visible {
   border-radius: var(--radio-pildora);
   padding: 0.1rem 0.55rem;
 }
-.mini-progreso { display: flex; gap: 5px; margin-top: 0.55rem; }
+/* FASE D5: etiqueta de "parte" del partido sobre la barra de progreso (auditoría §6). */
+.etiqueta-parte {
+  display: block;
+  margin-top: 0.55rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--color-texto-suave);
+}
+.mini-progreso { display: flex; gap: 5px; margin-top: 0.2rem; }
 .segmento { flex: 1; height: 9px; border-radius: 999px; background: rgba(20, 40, 70, 0.12); }
 .segmento-hecho { background: var(--color-primario); }
 .segmento-actual { background: #2979ff; box-shadow: 0 0 0 2px rgba(41, 121, 255, 0.25); }
@@ -1542,6 +1559,7 @@ button:focus-visible {
 
 /* Celebración de acierto (P5): tarjeta dorada con la energía ganada. */
 .feedback.celebracion {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1559,6 +1577,36 @@ button:focus-visible {
 @keyframes aparecer-celebracion {
   from { opacity: 0; transform: scale(0.9); }
   to { opacity: 1; transform: none; }
+}
+
+/* FASE D5 (rediseño premium, auditoría §6): "punch" de recompensa. Sacudida suave de TODO el
+   panel de reto (screen shake, .sacudida-golazo se añade/quita por JS en reto-comun.js) +
+   destellos dorados que estallan desde el centro de la tarjeta de celebración. */
+.sacudida-golazo { animation: sacudida-golazo 0.4s ease; }
+@keyframes sacudida-golazo {
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-5px, 3px); }
+  40% { transform: translate(4px, -3px); }
+  60% { transform: translate(-3px, 2px); }
+  80% { transform: translate(2px, -1px); }
+}
+.destello-dorado {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0.5rem;
+  height: 0.5rem;
+  margin: -0.25rem;
+  border-radius: 50%;
+  background: var(--dorado-brillo);
+  box-shadow: 0 0 6px 1px rgba(251, 191, 36, 0.8);
+  pointer-events: none;
+  animation: destello-estalla 0.6s ease-out both;
+  animation-delay: var(--retraso, 0s);
+}
+@keyframes destello-estalla {
+  0% { transform: rotate(var(--angulo, 0deg)) translateX(0) scale(1); opacity: 1; }
+  100% { transform: rotate(var(--angulo, 0deg)) translateX(3.4rem) scale(0.2); opacity: 0; }
 }
 
 /* Reflexión metamatemática ligera (FASE R1, Plan V2): tono lavanda propio, distinto del dorado de

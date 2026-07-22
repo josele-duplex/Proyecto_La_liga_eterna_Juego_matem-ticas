@@ -313,6 +313,13 @@ function crearPanelMision(estadio, sesion, puzzle, esDecisivo, esRepaso) {
   fila2.appendChild(fase);
   panel.appendChild(fila2);
 
+  // FASE D5 (rediseño premium, auditoría §6): la barra de progreso del partido se lee como las
+  // dos partes de un encuentro real, no solo como "reto N de M" (dato ya disponible, cosmético).
+  const etiquetaParte = document.createElement('span');
+  etiquetaParte.className = 'etiqueta-parte';
+  etiquetaParte.textContent = sesion.hechos < sesion.total / 2 ? '⚽ Primera parte' : '⚽ Segunda parte';
+  panel.appendChild(etiquetaParte);
+
   const barra = document.createElement('div');
   barra.className = 'mini-progreso';
   for (let i = 0; i < sesion.total; i++) {

@@ -124,4 +124,26 @@ function celebrarAcierto(zonaJuego, energia, vocabulario) {
     en.textContent = `+${energia} energía`;
     feedback.append(en);
   }
+
+  // FASE D5 (rediseño premium, auditoría §6): "punch" de recompensa — sacudida suave del panel
+  // de reto + destellos dorados que estallan desde la tarjeta. Se omiten si el sistema pide menos
+  // movimiento (mismo patrón que UI.celebrarVictoria con el confeti).
+  if (!UI.prefiereMenosMovimiento()) {
+    const app = document.getElementById('app');
+    if (app) {
+      app.classList.remove('sacudida-golazo');
+      void app.offsetWidth; // reinicia la animación si dos aciertos llegan seguidos
+      app.classList.add('sacudida-golazo');
+      setTimeout(() => app.classList.remove('sacudida-golazo'), 400);
+    }
+    const NUM_DESTELLOS = 8;
+    for (let i = 0; i < NUM_DESTELLOS; i++) {
+      const destello = document.createElement('span');
+      destello.className = 'destello-dorado';
+      destello.style.setProperty('--angulo', `${(360 / NUM_DESTELLOS) * i}deg`);
+      destello.style.setProperty('--retraso', `${Math.random() * 0.1}s`);
+      feedback.appendChild(destello);
+      setTimeout(() => destello.remove(), 750);
+    }
+  }
 }
