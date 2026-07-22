@@ -46,16 +46,21 @@
    1. Tokens de diseño — cambiar aquí cambia todo el aspecto.
    ============================================================ */
 :root {
-  /* Color base (lo redefinen los temas por zona más abajo). */
+  /* Color base (lo redefinen los temas por zona más abajo). Verde estadio: identidad principal
+     de la app (FASE D1, rediseño visual premium — Docs/PLAN_REDISENO_VISUAL_PREMIUM.md), mismo
+     tono que fija tema-mundo, para que la pantalla de portada/login (que no aplica ningún tema)
+     ya nazca con el verde de la marca en vez del azul genérico de antes. */
   --color-fondo-a: #eaf3ff;
   --color-fondo-b: #e7f7ee;
   --color-texto: #1c2530;
   --color-texto-suave: #5b6672;
-  --color-primario: #1565c0;
-  --color-primario-oscuro: #0d47a1;
+  --color-primario: #0d7e3d;
+  --color-primario-oscuro: #095e2d;
   --color-superficie: #ffffff;
 
-  /* Estados (comunes a todos los temas). */
+  /* Estados (comunes a todos los temas). El fallo del niño SIEMPRE en naranja de "reintenta",
+     nunca en rojo de alarma — decisión firme del proyecto (T2.6), reafirmada explícitamente al
+     rechazar la propuesta de rojo de la auditoría UX/UI de 2026-07 (ver plan, sección 3.3). */
   --color-exito-fondo: #d8f5d8;
   --color-exito-borde: #2e7d32;
   --color-exito-texto: #1e6522;
@@ -64,6 +69,17 @@
   --color-reintenta-texto: #c2561a;
   --color-pista-fondo: #fff6d6;
   --color-pista-borde: #f0c000;
+
+  /* Tokens de marca (FASE D1): acentos de identidad para insignias/energía/celebración, DISTINTOS
+     de --color-primario (que varía por tema). Contraste comprobado: FBBF24 y F97316 dan muy buen
+     contraste con TEXTO OSCURO encima (9.3:1 y 5.5:1) pero muy malo con blanco — así que estos dos
+     tokens son para FONDOS de insignia/chip con texto oscuro o para brillos/destellos, nunca para
+     pintar texto directamente sobre blanco ni para poner texto blanco encima.
+     --color-energia-texto SÍ es seguro como color de texto sobre blanco (ya lo era, ahora con
+     nombre — antes iba escrito a mano en .barra-energia). */
+  --dorado-brillo: #fbbf24;
+  --color-energia: #f97316;
+  --color-energia-texto: #c2561a;
 
   /* Césped del estadio (constante: siempre estamos en el campo). Dos verdes de siega. */
   --cesped-a: #2f8a4e;
@@ -82,26 +98,43 @@
   --sombra-media: 0 14px 32px rgba(10, 30, 15, 0.26);
   --sombra-boton: 0 4px 0 rgba(0, 0, 0, 0.12);
   --borde-sutil: 1px solid rgba(20, 40, 70, 0.08);
+
+  /* Tokens nuevos de profundidad (FASE D1), listos para que D2-D6 los apliquen a componentes
+     concretos (tarjetas de respuesta, zona de juego...); D1 solo los DEFINE, no cambia todavía
+     ningún componente con ellos, para no mezclar "repintar paleta" con "rediseñar estructura".
+     --sombra-carta: sombra física de "botón que se hunde" (borde inferior sólido + halo suave),
+     pensada para .opcion en la FASE D3. --gradiente-superficie: blanco a gris muy tenue, para
+     matar la sensación de "documento en blanco" de .zona-juego en la FASE D3-D4. */
+  --sombra-carta: 0 4px 0 rgba(20, 40, 70, 0.16), 0 10px 22px rgba(20, 40, 70, 0.12);
+  --gradiente-superficie: linear-gradient(180deg, #ffffff, #f3f5f8);
 }
 
-/* Tema "mundo": calendario y selección. Foco cálido de día de partido. */
+/* Tema "mundo": calendario y selección. Foco cálido de día de partido. Verde estadio (FASE D1):
+   ajustado del #0F8A43 que proponía la auditoría — un 8% más oscuro para pasar 4.5:1 de contraste
+   con texto blanco en botones (el tono original daba 4.43:1, insuficiente para texto normal). */
 body.tema-mundo {
-  --color-primario: #1a7a3c;
-  --color-primario-oscuro: #145c2d;
+  --color-primario: #0d7e3d;
+  --color-primario-oscuro: #095e2d;
   --foco-estadio: rgba(232, 255, 224, 0.6);
 }
 
-/* Tema "mate": mientras se juega un puzle. Foco azul de claridad/concentración. */
+/* Tema "mate": mientras se juega un puzle. Azul victoria (FASE D1, auditoría UX/UI): #2563EB tal
+   cual, ya pasa 5.17:1 de contraste con blanco sin ajustar nada. Foco azul de claridad/concentración. */
 body.tema-mate {
-  --color-primario: #2979ff;
-  --color-primario-oscuro: #1c54b2;
+  --color-primario: #2563eb;
+  --color-primario-oscuro: #1b4ab0;
   --foco-estadio: rgba(150, 205, 255, 0.5);
 }
 
-/* Tema "recompensa": partido ganado. Foco dorado de celebración. */
+/* Tema "recompensa": partido ganado. Dorado/naranja de celebración (FASE D1): más vivo que el
+   naranja plano de antes (#ff9100, que solo daba 2.26:1 de contraste — ya insuficiente incluso
+   para texto grande). #D97600 da 3.2:1 (pasa el umbral de texto grande/negrita de los botones);
+   llevarlo más claro hacia el dorado puro (#FBBF24) de la auditoría bajaría el contraste todavía
+   más, así que ese dorado puro se reserva como --dorado-brillo (fondos/destellos con texto
+   oscuro), no como color de botón con texto blanco. */
 body.tema-recompensa {
-  --color-primario: #ff9100;
-  --color-primario-oscuro: #c66900;
+  --color-primario: #d97600;
+  --color-primario-oscuro: #a86400;
   --color-exito-texto: #b8590f;
   --foco-estadio: rgba(255, 214, 130, 0.62);
 }
@@ -240,6 +273,16 @@ button:focus-visible {
   color: var(--color-texto);
 }
 
+/* Hallazgo D1: .barra-racha (línea de abajo) y .barra-energia (más abajo en el archivo) llevaban
+   su propio color naranja desde que se escribieron, pero NUNCA se veía — la regla genérica de
+   arriba (.barra-perfil > span, especificidad 0-1-1) siempre ganaba a la suya (una sola clase,
+   0-1-0), sin importar el orden en el archivo. Se cualifican aquí con .barra-perfil delante para
+   igualar la especificidad a 0-2-0 y que sí ganen. Puramente visual, sin tocar su color. */
+.barra-perfil .barra-energia,
+.barra-perfil .barra-racha {
+  color: var(--color-energia-texto);
+}
+
 /* Botones secundarios de la barra (cambiar equipo/jugador): píldoras discretas.
    min-height 2.75rem (~44px) para que un dedo infantil no falle el toque. */
 .barra-perfil button {
@@ -272,10 +315,10 @@ button:focus-visible {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
 }
 
-/* Racha de días jugados (TG.3), en la barra de perfil. */
+/* Racha de días jugados (TG.3), en la barra de perfil. El color naranja vive arriba, en
+   .barra-perfil .barra-racha (hacía falta esa especificidad para que ganara de verdad). */
 .barra-racha {
   font-weight: 800;
-  color: #c2561a;
 }
 
 /* Icono SVG puesto en línea con texto (energía, racha...): mismo tamaño en cualquier
@@ -1126,10 +1169,11 @@ button:focus-visible {
 /* Barra de estado más fina (P1). */
 .barra-perfil { padding: 0.3rem 0.7rem; gap: 0.45rem; }
 .barra-jugando { font-weight: 800; }
+/* El color naranja vive en .barra-perfil .barra-energia (arriba del archivo, especificidad
+   necesaria para ganar a .barra-perfil > span). */
 .barra-energia {
   display: inline-block;
   font-weight: 900;
-  color: #c2561a;
 }
 .brillo-energia { animation: brillo-energia 0.7s ease; }
 @keyframes brillo-energia {
