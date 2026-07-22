@@ -84,8 +84,11 @@
   /* Césped del estadio (constante: siempre estamos en el campo). Dos verdes de siega. */
   --cesped-a: #2f8a4e;
   --cesped-b: #2a7e46;
-  /* Luz del estadio: un foco de color que cambia según el momento del juego (lo fijan los temas). */
-  --foco-estadio: rgba(225, 255, 230, 0.55);
+  /* Luz del estadio: un foco de color que cambia según el momento del juego (lo fijan los temas).
+     FASE D4: intensidad subida (+0.06/+0.08 de alfa respecto al valor de D1) para que el foco se
+     note más — es puro brillo AMBIENTE detrás de las tarjetas, nunca texto encima, así que no
+     afecta a ningún contraste ya verificado en D1. */
+  --foco-estadio: rgba(225, 255, 230, 0.62);
 
   /* Forma y profundidad. */
   --fuente-principal: "Nunito", "Baloo 2", system-ui, -apple-system, "Segoe UI", sans-serif;
@@ -115,7 +118,7 @@
 body.tema-mundo {
   --color-primario: #0d7e3d;
   --color-primario-oscuro: #095e2d;
-  --foco-estadio: rgba(232, 255, 224, 0.6);
+  --foco-estadio: rgba(232, 255, 224, 0.68);
 }
 
 /* Tema "mate": mientras se juega un puzle. Azul victoria (FASE D1, auditoría UX/UI): #2563EB tal
@@ -123,7 +126,7 @@ body.tema-mundo {
 body.tema-mate {
   --color-primario: #2563eb;
   --color-primario-oscuro: #1b4ab0;
-  --foco-estadio: rgba(150, 205, 255, 0.5);
+  --foco-estadio: rgba(150, 205, 255, 0.58);
 }
 
 /* Tema "recompensa": partido ganado. Dorado/naranja de celebración (FASE D1): más vivo que el
@@ -136,7 +139,7 @@ body.tema-recompensa {
   --color-primario: #d97600;
   --color-primario-oscuro: #a86400;
   --color-exito-texto: #b8590f;
-  --foco-estadio: rgba(255, 214, 130, 0.62);
+  --foco-estadio: rgba(255, 214, 130, 0.7);
 }
 
 /* Tema "contrarreloj" (FASE M5, 14.5): identidad visual propia del modo de velocidad, distinta de
@@ -145,7 +148,7 @@ body.tema-recompensa {
 body.tema-contrarreloj {
   --color-primario: #7c3aed;
   --color-primario-oscuro: #5b21b6;
-  --foco-estadio: rgba(190, 150, 255, 0.55);
+  --foco-estadio: rgba(190, 150, 255, 0.62);
 }
 
 /* Tema "copa" (FASE M7, B.2): identidad de la Copa de Leyendas — morado de Élite con foco
@@ -154,7 +157,7 @@ body.tema-contrarreloj {
 body.tema-copa {
   --color-primario: #6d28d9;
   --color-primario-oscuro: #4c1d95;
-  --foco-estadio: rgba(255, 214, 130, 0.5);
+  --foco-estadio: rgba(255, 214, 130, 0.58);
 }
 
 /* ============================================================
@@ -164,26 +167,63 @@ body.tema-copa {
 
 html { touch-action: manipulation; }
 
-/* Fondo: terreno de juego de estadio. Cuatro capas (de arriba a abajo en el código):
-   1) foco de luz cenital (color según el momento del juego, lo fija el tema);
-   2) viñeta que oscurece los bordes para dar profundidad y volumen al campo;
-   3) franjas de siega del césped (lo que hace que "se lea" como un campo de fútbol);
-   4) verde base de respaldo. Va detrás de la tarjeta blanca, que flota sobre el campo. */
+/* Fondo: terreno de juego de estadio CON PROFUNDIDAD (FASE D4, auditoría §7 — antes era un
+   patrón verde plano sin sensación de "estar dentro de un estadio"). Siete capas (de arriba a
+   abajo en el código = de más cercana a la cámara a más lejana):
+   1-2) grada: dos filas de puntos muy tenues (público visto de lejos), pura CSS, sin imagen;
+   3) sombra de grada: banda oscura tras los puntos, para que se lean como gente en la sombra;
+   4) foco de luz cenital (color según el momento del juego, lo fija el tema; D4 lo sube de
+      intensidad y de tamaño respecto a D1-D3);
+   5) barniz sutil de luz/sombra vertical (igual que antes);
+   6) viñeta que oscurece los bordes para dar profundidad y volumen al campo (D4: más presente);
+   7) césped con PERSPECTIVA: un repeating-conic-gradient con el punto de fuga muy por encima del
+      viewport en vez del repeating-linear-gradient plano de antes — las franjas de siega quedan
+      más juntas cerca del horizonte (arriba) y más anchas cerca del jugador (abajo), como un
+      campo visto desde la grada, no un papel pintado. Todo pura CSS, sin SVG ni imagen: coste de
+      rendimiento igual de bajo que antes (mismos gradientes, solo con otra forma).
+   Va detrás de la tarjeta blanca, que flota sobre el campo. */
 body {
   font-family: var(--fuente-principal);
   color: var(--color-texto);
   margin: 0;
   min-height: 100vh;
-  background:
-    radial-gradient(125% 80% at 50% -12%, var(--foco-estadio), transparent 58%),
+  background-color: var(--cesped-a);
+  background-image:
+    radial-gradient(circle at 5px 3px, rgba(255, 255, 255, 0.30) 0 1.6px, transparent 1.8px),
+    radial-gradient(circle at 4px 2px, rgba(255, 255, 255, 0.18) 0 1.1px, transparent 1.3px),
+    linear-gradient(180deg, rgba(4, 12, 8, 0.60) 0%, rgba(4, 12, 8, 0.28) 65%, transparent 100%),
+    radial-gradient(140% 90% at 50% -10%, var(--foco-estadio), transparent 62%),
     linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(0, 0, 0, 0) 32%, rgba(0, 0, 0, 0.26)),
-    radial-gradient(150% 130% at 50% 45%, transparent 50%, rgba(6, 28, 14, 0.52)),
-    repeating-linear-gradient(90deg, var(--cesped-a) 0 46px, var(--cesped-b) 46px 92px),
-    var(--cesped-a);
+    radial-gradient(150% 130% at 50% 45%, transparent 46%, rgba(4, 18, 10, 0.62)),
+    repeating-conic-gradient(from 0deg at 50% -140%, var(--cesped-a) 0deg 3deg, var(--cesped-b) 3deg 6deg);
+  background-size:
+    13px 13px,
+    10px 10px,
+    100% 90px,
+    auto,
+    auto,
+    auto,
+    auto;
+  background-position:
+    0 16px,
+    0 5px,
+    top,
+    center,
+    center,
+    center,
+    center;
+  background-repeat:
+    repeat-x,
+    repeat-x,
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat,
+    no-repeat;
   background-attachment: fixed;
   -webkit-text-size-adjust: 100%;
   overscroll-behavior-y: contain;
-  transition: background 0.4s ease;
+  transition: background-image 0.4s ease;
 }
 
 /* Línea de banda blanca tenue alrededor de la pantalla, como las marcas pintadas del césped.
