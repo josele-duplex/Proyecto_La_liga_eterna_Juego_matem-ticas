@@ -272,7 +272,7 @@ function mostrarBarraPerfil(perfilId, opciones) {
   if (!(opciones && opciones.ocultarMuseo)) {
     anadirOpcionMenu('🏛 Museo', () => mostrarMuseo(perfilId));
     anadirOpcionMenu('🏟️ Mi Estadio', () => mostrarMiEstadio(perfilId));
-    anadirOpcionMenu('👪 Familia', () => mostrarPanelFamilia(perfilId));
+    anadirOpcionMenu('👪 Familia', () => mostrarPuertaAdulto(perfilId, () => mostrarPanelFamilia(perfilId)));
   }
 
   const opcionSonido = document.createElement('button');

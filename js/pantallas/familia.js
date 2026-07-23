@@ -20,12 +20,43 @@ function mostrarPanelFamilia(perfilId) {
 
   const explicacion = document.createElement('p');
   explicacion.className = 'entrenamiento-explicacion';
-  explicacion.textContent = `Un resumen en lenguaje claro de cómo practica ${perfil ? perfil.nombre : 'tu hijo/a'}. Esto nunca lo ve el niño ni afecta a su partida: es solo para la familia.`;
+  explicacion.textContent = `Un resumen en lenguaje claro de cómo practica ${perfil ? perfil.nombre : 'tu hijo/a'}. Esta sección es para la familia y no afecta a su partida.`;
   app.appendChild(explicacion);
 
   app.appendChild(crearSeccionAjustes(perfilId, progreso));
   app.appendChild(crearSeccionResumen(progreso));
   app.appendChild(crearSeccionExportar(perfilId, progreso));
+  app.appendChild(crearSeccionManual());
+}
+
+// Manual para las familias (Docs/MANUAL_FAMILIAS_Liga_Eterna.html): se enlaza aquí, dentro del
+// Panel de Familia, para que quede detrás de la misma puerta de adulto y no aparezca suelto en
+// ningún menú que el niño pueda tocar. Se abre en pestaña nueva porque es un documento aparte,
+// no una pantalla del juego (no usa limpiarPantalla ni el motor de rutas).
+function crearSeccionManual() {
+  const seccion = document.createElement('div');
+  seccion.className = 'tarjeta-leyenda familia-seccion';
+
+  const titulo = document.createElement('h3');
+  titulo.textContent = 'Manual para la familia';
+  seccion.appendChild(titulo);
+
+  const texto = document.createElement('p');
+  texto.textContent = 'Dos páginas que explican el juego, Mi Estadio, el Museo y este panel.';
+  seccion.appendChild(texto);
+
+  const enlace = document.createElement('a');
+  enlace.className = 'boton-siguiente';
+  enlace.style.display = 'inline-block';
+  enlace.style.textDecoration = 'none';
+  enlace.style.textAlign = 'center';
+  enlace.textContent = '📖 Abrir el manual';
+  enlace.href = 'Docs/MANUAL_FAMILIAS_Liga_Eterna.html';
+  enlace.target = '_blank';
+  enlace.rel = 'noopener';
+  seccion.appendChild(enlace);
+
+  return seccion;
 }
 
 // Ajustes de accesibilidad (D.6): tipografía para dislexia, activable con un solo toque.

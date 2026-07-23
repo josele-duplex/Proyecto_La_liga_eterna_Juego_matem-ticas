@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>La Liga Eterna — Manual para las familias</title>
+<style>
+  /* Tipografías del propio juego (se ven idénticas si abres el archivo dentro del proyecto;
+     si lo mueves o lo envías por correo, cae a una fuente redondeada del sistema). */
+  @font-face { font-family:"Nunito"; src:url("../assets/fonts/nunito-regular.woff2") format("woff2"); font-weight:400; }
+  @font-face { font-family:"Nunito"; src:url("../assets/fonts/nunito-bold.woff2") format("woff2"); font-weight:700; }
+  @font-face { font-family:"Nunito"; src:url("../assets/fonts/nunito-extrabold.woff2") format("woff2"); font-weight:800; }
+  @font-face { font-family:"Fredoka"; src:url("../assets/fonts/fredoka-bold.woff2") format("woff2"); font-weight:700; }
+
+  :root{
+    --verde:#0d7e3d; --verde-oscuro:#095e2d;
+    --cesped-a:#2f8a4e; --cesped-b:#2a7e46;
+    --dorado:#fbbf24; --naranja:#f97316; --naranja-texto:#c2561a;
+    --exito-fondo:#d8f5d8; --exito-borde:#2e7d32;
+    --pista-fondo:#fff6d6; --pista-borde:#f0c000;
+    --texto:#1c2530; --suave:#5b6672;
+    --azul-suave:#eaf3ff; --verde-suave:#e7f7ee;
+  }
+
+  *{ box-sizing:border-box; margin:0; padding:0; }
+  body{
+    font-family:"Nunito", "Segoe UI", "Trebuchet MS", sans-serif;
+    color:var(--texto); background:#c8d6e5;
+    line-height:1.5; -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+  h1,h2,h3{ font-family:"Fredoka", "Segoe UI", sans-serif; }
+
+  /* Cada hoja es un A4. En pantalla se ven como dos folios; al imprimir, una por página. */
+  .pagina{
+    width:210mm; min-height:297mm; margin:8mm auto; padding:12mm 15mm;
+    background:#fff; box-shadow:0 6px 24px rgba(0,0,0,.18); position:relative; overflow:hidden;
+  }
+
+  /* ---------- Cabecera ---------- */
+  .cabecera{
+    background:linear-gradient(135deg, var(--verde) 0%, var(--verde-oscuro) 100%);
+    color:#fff; border-radius:18px; padding:20px 24px; position:relative; overflow:hidden;
+    margin-bottom:16px;
+  }
+  .cabecera::after{ /* líneas de césped sutiles */
+    content:""; position:absolute; inset:0;
+    background:repeating-linear-gradient(90deg, rgba(255,255,255,.05) 0 26px, transparent 26px 52px);
+  }
+  .cabecera .escudo{ font-size:34px; }
+  .cabecera h1{ font-size:30px; line-height:1.05; margin:2px 0 4px; letter-spacing:.3px; }
+  .cabecera p{ font-size:14px; opacity:.95; position:relative; }
+  .cinta{ display:inline-block; background:var(--dorado); color:var(--verde-oscuro);
+    font-weight:800; font-size:12px; padding:3px 12px; border-radius:999px; margin-bottom:6px; position:relative; }
+
+  h2.seccion{
+    font-size:20px; color:var(--verde-oscuro); margin:13px 0 9px;
+    display:flex; align-items:center; gap:8px;
+  }
+  h2.seccion .punto{ width:12px; height:12px; border-radius:50%; background:var(--dorado); display:inline-block; }
+
+  p.intro{ font-size:14.5px; margin-bottom:6px; }
+  strong{ color:var(--verde-oscuro); }
+
+  /* ---------- Tarjetas ---------- */
+  .tarjeta{
+    border-radius:14px; padding:13px 16px; margin-bottom:11px; border:2px solid;
+  }
+  .t-verde{ background:var(--verde-suave); border-color:var(--exito-borde); }
+  .t-azul{ background:var(--azul-suave); border-color:#7ea8dd; }
+  .t-pista{ background:var(--pista-fondo); border-color:var(--pista-borde); }
+  .t-naranja{ background:#ffe7c2; border-color:var(--naranja); }
+  .tarjeta h3{ font-size:16px; margin-bottom:4px; display:flex; align-items:center; gap:7px; }
+  .tarjeta p{ font-size:13.5px; }
+  .tarjeta .emoji{ font-size:20px; }
+
+  /* ---------- Pasos numerados ---------- */
+  .pasos{ display:grid; grid-template-columns:1fr 1fr; gap:10px; margin:6px 0 4px; }
+  .paso{ background:#fff; border:2px solid var(--verde); border-radius:14px; padding:11px 13px; display:flex; gap:11px; align-items:flex-start; }
+  .paso .num{
+    flex:0 0 auto; width:30px; height:30px; border-radius:50%; background:var(--verde); color:#fff;
+    font-family:"Fredoka"; font-weight:700; font-size:16px; display:flex; align-items:center; justify-content:center;
+  }
+  .paso b{ font-size:14px; color:var(--verde-oscuro); display:block; }
+  .paso span{ font-size:12.5px; color:var(--suave); }
+
+  /* ---------- Ligas y medallas ---------- */
+  .ligas{ display:flex; gap:8px; margin:8px 0 2px; flex-wrap:wrap; }
+  .liga{ flex:1; min-width:90px; text-align:center; background:linear-gradient(160deg,#fff,#eef6ff);
+    border:2px solid #cdd9e6; border-radius:12px; padding:8px 4px; }
+  .liga .n{ font-size:22px; display:block; }
+  .liga b{ font-size:12.5px; color:var(--verde-oscuro); }
+  .liga small{ display:block; font-size:11px; color:var(--suave); }
+
+  .medallas{ display:flex; gap:10px; justify-content:center; margin-top:8px; }
+  .medalla{ text-align:center; font-size:13px; }
+  .medalla .m{ font-size:26px; display:block; }
+  .medalla b{ color:var(--verde-oscuro); }
+
+  /* ---------- Mejoras del estadio ---------- */
+  .mejoras{ display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:6px; }
+  .mejora{ background:var(--verde-suave); border:2px solid var(--exito-borde); border-radius:12px; padding:9px 12px; font-size:13px; }
+  .mejora b{ color:var(--verde-oscuro); }
+
+  ul.consejos{ list-style:none; }
+  ul.consejos li{ font-size:13px; padding:5px 0 5px 26px; position:relative; }
+  ul.consejos li::before{ content:"⚽"; position:absolute; left:0; top:4px; font-size:14px; }
+
+  .pie{ position:absolute; left:15mm; right:15mm; bottom:8mm; border-top:2px dashed #cdd9e6;
+    padding-top:6px; display:flex; justify-content:space-between; font-size:11px; color:var(--suave); }
+
+  .nota{ background:var(--exito-fondo); border-left:5px solid var(--exito-borde); border-radius:8px;
+    padding:9px 13px; font-size:13px; margin-top:8px; }
+
+  @media print{
+    body{ background:#fff; }
+    .pagina{ margin:0; box-shadow:none; page-break-after:always; }
+    .pagina:last-child{ page-break-after:auto; }
+    @page{ size:A4; margin:0; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== PÁGINA 1 ===================== -->
+<section class="pagina">
+  <header class="cabecera">
+    <span class="cinta">MANUAL PARA LAS FAMILIAS</span>
+    <div class="escudo">🛡️⚽</div>
+    <h1>La Liga Eterna</h1>
+    <p>Los Guardianes del Juego · Entrenar mates jugando al fútbol</p>
+  </header>
+
+  <p class="intro">Bienvenida, bienvenido. Aquí tu hijo o hija <strong>entrena matemáticas jugando</strong>: cada partida es un partido, cada acierto suma y poco a poco sube de categoría. Este manual te cuenta, en dos páginas, cómo funciona todo.</p>
+
+  <div class="tarjeta t-verde">
+    <h3><span class="emoji">💚</span> La idea que lo sostiene todo</h3>
+    <p>El juego <strong>celebra el intento, nunca castiga</strong>. Cuando algo no sale, no aparece un rojo de alarma: sale un aviso <strong style="color:var(--naranja-texto)">naranja de "¡inténtalo otra vez!"</strong> y una pista amable. Equivocarse es parte de aprender, y aquí está pensado así a propósito.</p>
+  </div>
+
+  <h2 class="seccion"><span class="punto"></span> Cómo se juega, en 4 pasos</h2>
+  <div class="pasos">
+    <div class="paso"><div class="num">1</div><div><b>Elige tu jugador</b><span>Cada niño tiene su perfil (con foto y, si quieres, contraseña para que un hermano no entre por error).</span></div></div>
+    <div class="paso"><div class="num">2</div><div><b>Entrena</b><span>Partidas cortas de un mismo tema (sumas, restas, tablas…) para coger soltura sin agobio.</span></div></div>
+    <div class="paso"><div class="num">3</div><div><b>Juega los retos</b><span>Partidos contra rivales. Hay pistas de ayuda que se pueden "comprar" con la energía ganada.</span></div></div>
+    <div class="paso"><div class="num">4</div><div><b>Sube de liga</b><span>Con lo aprendido, tu peque asciende de categoría y desbloquea premios.</span></div></div>
+  </div>
+
+  <h2 class="seccion"><span class="punto"></span> Las cuatro ligas</h2>
+  <div class="ligas">
+    <div class="liga"><span class="n">🌱</span><b>Promesas</b><small>el inicio</small></div>
+    <div class="liga"><span class="n">⭐</span><b>Aspirantes</b><small>cogiendo ritmo</small></div>
+    <div class="liga"><span class="n">🌟</span><b>Estrellas</b><small>con soltura</small></div>
+    <div class="liga"><span class="n">🏆</span><b>Leyendas</b><small>la cima</small></div>
+  </div>
+
+  <h2 class="seccion"><span class="punto"></span> Las medallas de cada tema</h2>
+  <p class="intro">En cada tipo de operación, tu hijo/a gana una medalla según lo domina. Son las mismas que verás en el Panel de Familia:</p>
+  <div class="medallas">
+    <div class="medalla"><span class="m">🥉</span><b>Aprendiz</b><br><small>empezando</small></div>
+    <div class="medalla"><span class="m">🥈</span><b>Titular</b><br><small>ya le sale</small></div>
+    <div class="medalla"><span class="m">🥇</span><b>Crack</b><br><small>lo domina</small></div>
+  </div>
+
+  <div class="pie"><span>La Liga Eterna · Manual para las familias</span><span>Página 1 de 2</span></div>
+</section>
+
+<!-- ===================== PÁGINA 2 ===================== -->
+<section class="pagina">
+  <h2 class="seccion" style="margin-top:0"><span class="punto"></span> 🏟️ Mi Estadio</h2>
+  <p class="intro">Es <strong>el campo de tu peque</strong>, que puede ir mejorando poco a poco. Lo importante: los puntos para reformarlo se ganan <strong>solo demostrando que domina un tema</strong>, no por jugar muchas horas. Y una vez hecha, <strong>una mejora no se pierde jamás</strong>.</p>
+  <div class="mejoras">
+    <div class="mejora">🌱 <b>Césped</b> — un campo cada vez más cuidado.</div>
+    <div class="mejora">💡 <b>Focos</b> — para jugar de noche con luz de estadio.</div>
+    <div class="mejora">👥 <b>Grada</b> — se llena de afición que anima.</div>
+    <div class="mejora">🪑 <b>Banquillo</b> — el equipo al completo.</div>
+  </div>
+
+  <h2 class="seccion"><span class="punto"></span> 🏛 Museo de la Liga</h2>
+  <p class="intro">Una sala que se puede visitar <strong>cuando se quiera</strong>, para revivir lo conseguido. Tiene tres rincones:</p>
+  <div class="tarjeta t-azul">
+    <p><strong>🏅 Vitrina de Trofeos</strong> — todas las copas y logros ganados.<br>
+    <strong>🦁 Sala de Leyendas</strong> — los personajes que se desbloquean por el camino.<br>
+    <strong>📖 Enciclopedia del Entrenador</strong> — trucos y explicaciones de cada tema, para consultar sin prisa.</p>
+  </div>
+
+  <h2 class="seccion"><span class="punto"></span> 👪 Panel de Familia</h2>
+  <p class="intro">Es <strong>tu rincón</strong>: un resumen claro de cómo va practicando, tema por tema, sin etiquetas ni notas que agobien.</p>
+  <div class="tarjeta t-naranja">
+    <h3><span class="emoji">🔒</span> Solo para adultos</h3>
+    <p>Para entrar hay que resolver una <strong>multiplicación escrita con letras</strong> (por ejemplo, "catorce por doce"). Es una pequeña puerta pensada para que tu hijo/a no lea por su cuenta este informe: <strong>esta parte es para la familia</strong>.</p>
+  </div>
+  <div class="tarjeta t-verde">
+    <p>Dentro encontrarás también: <strong>tipografía para dislexia</strong> (más espacio entre letras, se activa con un toque) y una opción para <strong>descargar una copia del progreso</strong> guardado en el dispositivo.</p>
+  </div>
+
+  <h2 class="seccion"><span class="punto"></span> Buenas noticias para las familias</h2>
+  <ul class="consejos">
+    <li><strong>Sin anuncios y sin compras.</strong> Nada de pagos ni publicidad dentro del juego.</li>
+    <li><strong>Funciona sin conexión.</strong> Una vez abierto, se puede jugar aunque no haya internet.</li>
+    <li><strong>Cada niño, su partida.</strong> Puedes poner una contraseña de perfil para que los hermanos no se mezclen.</li>
+    <li><strong>El ritmo lo marca tu peque.</strong> No hay prisa ni castigo por fallar: se avanza cuando se está listo.</li>
+  </ul>
+
+  <div class="nota">💡 <strong>Consejo:</strong> siéntate un rato a su lado las primeras veces. Ver que te interesa su "equipo" y sus medallas es, para un niño, el mejor de los premios.</div>
+
+  <div class="pie"><span>La Liga Eterna · Manual para las familias</span><span>Página 2 de 2</span></div>
+</section>
+
+</body>
+</html>
